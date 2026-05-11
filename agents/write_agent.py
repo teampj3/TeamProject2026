@@ -13,6 +13,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from services.llm_client import LLMClient
+from services.output_service import get_run_output_dir, write_json, write_markdown
 
 
 RELEVANCE_PATH = Path("data/processed/relevance_result.json")
@@ -98,6 +99,7 @@ def merge_writer_inputs(relevance_rows: list[dict], summary_rows: list[dict]) ->
         summary = summary_by_title.get(title, {})
         merged.append(
             {
+                "id": relevance.get("id", summary.get("id", "")),
                 "title": title,
                 "score": relevance.get("score"),
                 "reason": relevance.get("reason", ""),
@@ -308,6 +310,25 @@ def save_report_draft(draft: str, topic: str) -> Path:
     return save_path
 
 
+def save_run_writer_outputs(
+    *,
+    run_id: str,
+    draft: str,
+    report_path: Path,
+) -> None:
+    run_dir = get_run_output_dir(run_id)
+    writer_payload = {
+        "gptDraft": "",
+        "claudeDraft": draft,
+        "commonHighlights": [],
+        "differentHighlights": [],
+        "reviewResult": "",
+        "mergedReport": draft,
+    }
+    write_json(run_dir / "writer_output.json", writer_payload)
+    write_markdown(run_dir / "report.md", draft)
+
+
 def find_latest_report_file(topic: str) -> Path | None:
     topic_slug = slugify_topic(topic)
     candidates = sorted(REPORT_OUTPUT_DIR.glob(f"{topic_slug}_*.md"))
@@ -462,6 +483,7 @@ def run_writer_preparation_flow(
 def run_writer_draft_generation(
     topic: str = DEFAULT_WRITER_TOPIC,
     score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD,
+    run_id: str | None = None,
 ) -> str:
     preparation = run_writer_preparation_flow(
         topic=topic,
@@ -477,6 +499,8 @@ def run_writer_draft_generation(
     synthesis_check = check_synthesis_markers(draft)
     print_synthesis_check(synthesis_check)
     saved_path = save_report_draft(draft, topic=topic)
+    if run_id:
+        save_run_writer_outputs(run_id=run_id, draft=draft, report_path=saved_path)
     print(f"\n초안 저장 완료: {saved_path}")
     print("\n보고서 초안 생성 완료")
     return draft
