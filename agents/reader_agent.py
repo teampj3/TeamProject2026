@@ -12,6 +12,7 @@ if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
 from services.llm_client import LLMClient
+from services.output_service import get_run_output_dir, write_json
 
 llm = LLMClient()
 
@@ -83,7 +84,29 @@ def save_summary_results(results: list[dict], path: str = "data/processed/summar
     print(f"\n저장 완료: {path}")
 
 
-def run_reader(max_papers: int | None = None) -> list[dict]:
+def save_run_reader_results(results: list[dict], run_id: str) -> None:
+    run_dir = get_run_output_dir(run_id)
+    payload = [
+        {
+            "id": result.get("id", ""),
+            "summary": " ".join(
+                filter(
+                    None,
+                    [
+                        result.get("purpose", "").strip(),
+                        result.get("method", "").strip(),
+                        result.get("result", "").strip(),
+                        result.get("limitation", "").strip(),
+                    ],
+                )
+            ),
+        }
+        for result in results
+    ]
+    write_json(run_dir / "reader_results.json", payload)
+
+
+def run_reader(max_papers: int | None = None, run_id: str | None = None) -> list[dict]:
     papers = load_search_results()
     if not papers:
         return []
@@ -105,6 +128,7 @@ def run_reader(max_papers: int | None = None) -> list[dict]:
             continue
 
         result = {
+            "id": paper.get("id", ""),
             "title": title,
             "abstract": abstract,
             "authors": paper.get("authors", []),
@@ -125,6 +149,8 @@ def run_reader(max_papers: int | None = None) -> list[dict]:
         print(f"  한계: {result['limitation'][:60]}\n")
 
     save_summary_results(summarized)
+    if run_id:
+        save_run_reader_results(summarized, run_id)
     return summarized
 
 

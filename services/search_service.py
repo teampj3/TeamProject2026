@@ -7,7 +7,9 @@ import os
 import re
 import socket
 import time
+import hashlib
 import xml.etree.ElementTree as ET
+from collections.abc import Callable
 from difflib import SequenceMatcher
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
@@ -34,6 +36,11 @@ MIN_TOPIC_MATCH_COUNT = 1
 MIN_METADATA_AUTHORS = 1
 TITLE_SIMILARITY_THRESHOLD = 0.92
 TITLE_TOKEN_OVERLAP_THRESHOLD = 0.8
+ARXIV_RETRY_ATTEMPTS = 2
+SEMANTIC_SCHOLAR_RETRY_ATTEMPTS = 2
+ARXIV_INITIAL_WAIT_SECONDS = 1
+ARXIV_BACKOFF_SECONDS = [5, 10]
+SEMANTIC_SCHOLAR_BACKOFF_SECONDS = [3, 6]
 
 COMPUTER_SCIENCE_HINTS = {
     "code",
@@ -67,9 +74,25 @@ TOPIC_EXPANSIONS = {
 }
 
 
+class SearchStageError(RuntimeError):
+    def __init__(self, error_code: str, message: str) -> None:
+        super().__init__(message)
+        self.error_code = error_code
+        self.message = message
+
+
 def parse_to_paper_schema(raw: dict, source: str) -> dict:
     """Normalize raw API results into one common paper schema."""
+    paper_id_seed = "|".join(
+        [
+            raw.get("url", ""),
+            raw.get("title", ""),
+            str(raw.get("year", "")),
+            source,
+        ]
+    )
     return {
+        "id": hashlib.sha1(paper_id_seed.encode("utf-8")).hexdigest()[:12],
         "title": raw.get("title", ""),
         "abstract": raw.get("abstract", ""),
         "authors": raw.get("authors", []),
@@ -264,7 +287,8 @@ def build_arxiv_url(
 def fetch_arxiv_papers(
     keyword: str,
     max_results: int = DEFAULT_MAX_RESULTS,
-    retries: int = 2,
+    retries: int = ARXIV_RETRY_ATTEMPTS,
+    status_callback: Callable[[str, str | None], None] | None = None,
 ) -> list[dict]:
     """Fetch papers from arXiv with retries."""
     url = build_arxiv_url(keyword=keyword, max_results=max_results)
@@ -280,11 +304,16 @@ def fetch_arxiv_papers(
 
     for attempt in range(retries + 1):
         if attempt > 0:
-            wait_seconds = 10 * attempt
+            wait_seconds = ARXIV_BACKOFF_SECONDS[min(attempt - 1, len(ARXIV_BACKOFF_SECONDS) - 1)]
             print(f"arXiv 재시도 대기 중... {wait_seconds}초")
+            if status_callback:
+                status_callback(
+                    f"Retrying arXiv after rate limit (attempt {attempt}/{retries})",
+                    "SEARCH_RATE_LIMIT",
+                )
             time.sleep(wait_seconds)
         else:
-            time.sleep(2)
+            time.sleep(ARXIV_INITIAL_WAIT_SECONDS)
 
         try:
             with urlopen(request, timeout=45) as response:
@@ -292,7 +321,18 @@ def fetch_arxiv_papers(
             break
         except HTTPError as error:
             if error.code == 429 and attempt < retries:
+                print("arXiv 요청 제한(429) 발생, 백오프 후 재시도합니다.")
+                if status_callback:
+                    status_callback(
+                        f"arXiv rate limit detected. Waiting before retry {attempt + 1}/{retries}.",
+                        "SEARCH_RATE_LIMIT",
+                    )
                 continue
+            if error.code == 429:
+                raise SearchStageError(
+                    "SEARCH_RATE_LIMIT",
+                    "arXiv rate limit exceeded",
+                ) from error
             raise
         except (TimeoutError, socket.timeout) as error:
             if attempt < retries:
@@ -346,7 +386,11 @@ def fetch_arxiv_papers(
     return papers
 
 
-def search_semantic_scholar(query: str, limit: int = DEFAULT_MAX_RESULTS) -> list[dict]:
+def search_semantic_scholar(
+    query: str,
+    limit: int = DEFAULT_MAX_RESULTS,
+    status_callback: Callable[[str, str | None], None] | None = None,
+) -> list[dict]:
     """Fetch paper metadata from Semantic Scholar."""
     params = {
         "query": query,
@@ -362,34 +406,60 @@ def search_semantic_scholar(query: str, limit: int = DEFAULT_MAX_RESULTS) -> lis
         headers["x-api-key"] = SEMANTIC_SCHOLAR_API_KEY
     else:
         print("Semantic Scholar API 키가 .env에 없어 공개 요청으로 진행합니다.")
+        if status_callback:
+            status_callback(
+                "Semantic Scholar API key is missing. Falling back to public request mode.",
+                None,
+            )
 
     request = Request(url, headers=headers)
 
     data: dict = {}
-    for attempt in range(3):
+    for attempt in range(SEMANTIC_SCHOLAR_RETRY_ATTEMPTS):
         try:
             with urlopen(request, timeout=30) as response:
                 data = json.loads(response.read().decode("utf-8"))
             break
         except HTTPError as error:
-            if error.code == 429 and attempt < 2:
-                wait_seconds = 5 * (attempt + 1)
+            if error.code == 429 and attempt < (SEMANTIC_SCHOLAR_RETRY_ATTEMPTS - 1):
+                wait_seconds = SEMANTIC_SCHOLAR_BACKOFF_SECONDS[
+                    min(attempt, len(SEMANTIC_SCHOLAR_BACKOFF_SECONDS) - 1)
+                ]
                 print(f"Semantic Scholar 요청 제한으로 {wait_seconds}초 후 재시도합니다.")
+                if status_callback:
+                    status_callback(
+                        f"Retrying Semantic Scholar after rate limit (attempt {attempt + 1}/{SEMANTIC_SCHOLAR_RETRY_ATTEMPTS - 1})",
+                        "SEARCH_RATE_LIMIT",
+                    )
                 time.sleep(wait_seconds)
                 continue
+            if error.code == 429:
+                raise SearchStageError(
+                    "SEARCH_RATE_LIMIT",
+                    "Semantic Scholar rate limit exceeded",
+                ) from error
             print(f"Semantic Scholar API 요청 실패: HTTP {error.code}")
-            return []
+            raise SearchStageError(
+                "SEARCH_API_ERROR",
+                f"Semantic Scholar API request failed with HTTP {error.code}",
+            ) from error
         except URLError as error:
             print(f"Semantic Scholar API 연결 실패: {error.reason}")
-            return []
+            raise SearchStageError(
+                "SEARCH_API_ERROR",
+                f"Semantic Scholar API connection failed: {error.reason}",
+            ) from error
         except (TimeoutError, socket.timeout):
-            if attempt < 2:
+            if attempt < (SEMANTIC_SCHOLAR_RETRY_ATTEMPTS - 1):
                 wait_seconds = 5 * (attempt + 1)
                 print(f"Semantic Scholar 응답 지연으로 {wait_seconds}초 후 재시도합니다.")
                 time.sleep(wait_seconds)
                 continue
             print("Semantic Scholar API 응답 대기 시간이 초과되었습니다.")
-            return []
+            raise SearchStageError(
+                "SEARCH_API_ERROR",
+                "Semantic Scholar API timed out",
+            )
 
     results = []
     for paper in data.get("data", []):
@@ -441,7 +511,7 @@ def display_results(papers: list[dict]) -> None:
 
 def validate_search_results(papers: list[dict]) -> bool:
     # 저장 전에 최소 필드 구조가 유지되는지 마지막으로 확인한다.
-    required_fields = {"title", "abstract", "authors", "year", "url", "source"}
+    required_fields = {"id", "title", "abstract", "authors", "year", "url", "source"}
     return all(required_fields.issubset(paper.keys()) for paper in papers)
 
 
@@ -457,36 +527,95 @@ def save_search_result(papers: list[dict]) -> None:
         print(f"\n저장 경고: {save_path} 파일 구조를 다시 확인하세요.")
 
 
-def run_search(topic: str) -> list[dict]:
+def save_run_search_result(papers: list[dict], run_id: str) -> None:
+    from services.output_service import get_run_output_dir, write_json
+
+    run_dir = get_run_output_dir(run_id)
+    payload = [
+        {
+            "id": paper.get("id", ""),
+            "title": paper.get("title", ""),
+            "authors": paper.get("authors", []),
+            "year": paper.get("year", ""),
+            "source": paper.get("source", ""),
+            "abstract": paper.get("abstract", ""),
+            "snippet": " ".join(paper.get("abstract", "").split())[:280],
+        }
+        for paper in papers
+    ]
+    write_json(run_dir / "search_results.json", payload)
+
+
+def run_search(
+    topic: str,
+    run_id: str | None = None,
+    status_callback: Callable[[str, str | None], None] | None = None,
+) -> list[dict]:
     """Integrated search flow for Search Agent."""
     if not topic.strip():
-        print("검색어를 입력해주세요.")
-        return []
+        raise SearchStageError("SEARCH_API_ERROR", "검색어가 비어 있습니다.")
+
+    source_errors: list[SearchStageError] = []
 
     print(f"\n[arXiv 검색 중...] '{topic}'")
     try:
-        arxiv_results = fetch_arxiv_papers(topic)
+        arxiv_results = fetch_arxiv_papers(topic, status_callback=status_callback)
+    except SearchStageError as error:
+        print(f"arXiv 검색 실패: {error.message}")
+        source_errors.append(error)
+        arxiv_results = []
     except HTTPError as error:
         print(f"arXiv API 요청 실패: HTTP {error.code}")
+        source_errors.append(SearchStageError(
+            "SEARCH_API_ERROR",
+            f"arXiv API request failed with HTTP {error.code}",
+        ))
         arxiv_results = []
     except URLError as error:
         print(f"arXiv API 연결 실패: {error.reason}")
+        source_errors.append(SearchStageError(
+            "SEARCH_API_ERROR",
+            f"arXiv API connection failed: {error.reason}",
+        ))
         arxiv_results = []
     except TimeoutError:
         print("arXiv API 응답 대기 시간이 초과되었습니다.")
+        source_errors.append(SearchStageError(
+            "SEARCH_API_ERROR",
+            "arXiv API timed out",
+        ))
         arxiv_results = []
 
     print(f"[Semantic Scholar 검색 중...] '{topic}'")
-    semantic_results = search_semantic_scholar(topic)
+    try:
+        semantic_results = search_semantic_scholar(topic, status_callback=status_callback)
+    except SearchStageError as error:
+        print(f"Semantic Scholar 검색 실패: {error.message}")
+        source_errors.append(error)
+        semantic_results = []
+
+    if not arxiv_results and not semantic_results and source_errors:
+        error_codes = {error.error_code for error in source_errors}
+        if "SEARCH_RATE_LIMIT" in error_codes:
+            raise SearchStageError(
+                "SEARCH_RATE_LIMIT",
+                "arXiv or Semantic Scholar rate limit exceeded",
+            )
+        messages = "; ".join(error.message for error in source_errors)
+        raise SearchStageError("SEARCH_API_ERROR", messages)
 
     results = deduplicate_papers(arxiv_results + semantic_results)
     results = filter_papers_by_quality(results, topic)
     if not results:
         print("품질 기준에 맞는 검색 결과가 없습니다. 다른 키워드를 시도해보세요.")
+        if run_id:
+            save_run_search_result(results, run_id)
         return []
 
     display_results(results)
     save_search_result(results)
+    if run_id:
+        save_run_search_result(results, run_id)
     return results
 
 

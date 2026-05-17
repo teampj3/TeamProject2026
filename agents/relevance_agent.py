@@ -7,6 +7,8 @@ import os
 import re
 from collections import Counter
 
+from services.output_service import get_run_output_dir, write_json
+
 
 STOPWORDS = {
     "a",
@@ -161,6 +163,7 @@ def build_fallback_result(
     message: str,
 ) -> dict:
     return {
+        "id": paper.get("id", ""),
         "title": paper.get("title", ""),
         "score": 0.0,
         "reason": message,
@@ -310,6 +313,7 @@ def build_relevance_result(
     )
 
     return {
+        "id": paper.get("id", ""),
         "title": paper.get("title", ""),
         "score": final_score,
         "reason": reason,
@@ -325,7 +329,21 @@ def build_relevance_result(
     }
 
 
-def run_relevance(topic: str) -> list[dict]:
+def save_run_relevance_results(results: list[dict], run_id: str) -> None:
+    run_dir = get_run_output_dir(run_id)
+    payload = [
+        {
+            "id": result.get("id", ""),
+            "relevance_score": result.get("score", 0.0),
+            "selected": result.get("selection_result") == "선별 통과",
+            "reason": result.get("reason", ""),
+        }
+        for result in results
+    ]
+    write_json(run_dir / "relevance_results.json", payload)
+
+
+def run_relevance(topic: str, run_id: str | None = None) -> list[dict]:
     papers = load_summary_results()
     if not papers:
         return []
@@ -404,6 +422,8 @@ def run_relevance(topic: str) -> list[dict]:
     sorted_results = sorted(relevance_results, key=lambda item: item["score"], reverse=True)
     print_selected_papers(sorted_results)
     save_relevance_results(sorted_results)
+    if run_id:
+        save_run_relevance_results(sorted_results, run_id)
     return sorted_results
 
 
