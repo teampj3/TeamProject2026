@@ -31,6 +31,7 @@ DEFAULT_MAX_RESULTS = 20
 MIN_ABSTRACT_WORDS = 40
 # 검색 주제와 최소한 한 번은 직접 맞닿아야 다음 단계로 넘긴다.
 MIN_TOPIC_MATCH_COUNT = 1
+PIPELINE_CONTEXT_PATH = "data/processed/pipeline_context.json"
 MIN_METADATA_AUTHORS = 1
 TITLE_SIMILARITY_THRESHOLD = 0.92
 TITLE_TOKEN_OVERLAP_THRESHOLD = 0.8
@@ -457,6 +458,13 @@ def save_search_result(papers: list[dict]) -> None:
         print(f"\n저장 경고: {save_path} 파일 구조를 다시 확인하세요.")
 
 
+def save_pipeline_topic(topic: str) -> None:
+    os.makedirs("data/processed", exist_ok=True)
+    payload = {"topic": topic}
+    with open(PIPELINE_CONTEXT_PATH, "w", encoding="utf-8") as file:
+        json.dump(payload, file, ensure_ascii=False, indent=2)
+
+
 def run_search(topic: str) -> list[dict]:
     """Integrated search flow for Search Agent."""
     if not topic.strip():
@@ -487,6 +495,7 @@ def run_search(topic: str) -> list[dict]:
 
     display_results(results)
     save_search_result(results)
+    save_pipeline_topic(topic)
     return results
 
 

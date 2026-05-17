@@ -1,126 +1,126 @@
 [
   {
-    "title": "AI governance: a systematic literature review",
-    "abstract": "As artificial intelligence (AI) transforms a wide range of sectors and drives innovation, it also introduces different types of risks that should be identified, assessed, and mitigated. Various AI governance frameworks have been released recently by governments, organizations, and companies to mitigate risks associated with AI. However, it can be challenging for AI stakeholders to have a clear picture of the available AI governance frameworks, tools, or models and analyze the most suitable one for their AI system. To fill the gap, we present the literature to answer key questions: WHO is accountable for AI systems’ governance, WHAT elements are being governed, WHEN governance occurs within the AI development life cycle, and HOW it is implemented through frameworks, tools, policies, or models. Adopting the systematic literature review (SLR) methodology, this study meticulously searched, selected, and analyzed 28 articles, offering a foundation for understanding different facets of AI governance. The analysis is further enhanced by categorizing artifacts of AI governance under team-level governance, organization-level governance, industry-level governance, national-level governance, and international-level governance. The findings of this study on existing AI governance solutions can assist research communities in proposing comprehensive AI governance practices.",
+    "title": "Research on Bitcoin address classification based on transaction history features",
+    "abstract": "As the most popular cryptocurrency now, Bitcoin's transaction data is easy to obtain, so de-anonymizing Bitcoin becomes possible. This paper constructs a data set of Bitcoin addresses including 5 categories, analyzes and extracts the transaction features of Bitcoin addresses in more detail based on related work, and proposes two new features of fourth-order transaction moments and sample distribution. New features improve the performance of Bitcoin address classification. The accuracy of the LightGBM model was 0.94 and the F1 score was 0.91. This method can identify unknown types of Bitcoin addresses, which improves the ability of relevant agencies to investigate Bitcoin illegal activities.",
     "authors": [
-      "Amna Batool",
-      "Didar Zowghi",
-      "Muneera Bano"
+      "Lu Qin",
+      "Li Yi",
+      "Xiancheng Lin",
+      "Ziqiang Luo"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/380dcd9a2dd61dabbc26c2b9b902420924721beb",
+    "year": "2023",
+    "url": "https://www.semanticscholar.org/paper/a6bc6c242651e63dcd72dbf9b09e121f14c9b4ba",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 거버넌스 프레임워크, 도구, 모델에 대한 명확한 전체상을 제공하기 위해 AI 거버넌스의 책임 주체(WHO), 거버넌스 대상 요소(WHAT), 거버넌스 발생 시점(WHEN), 구현 방식(HOW)에 관한 핵심 질문에 답하는 것",
-    "method": "체계적 문헌 검토(Systematic Literature Review, SLR) 방법론을 채택하여 28편의 논문을 체계적으로 검색, 선별 및 분석",
-    "result": "AI 거버넌스의 다양한 측면을 이해하기 위한 기반을 제공하였으며, AI 거버넌스 산출물을 팀 수준, 조직 수준, 산업 수준, 국가 수준, 국제 수준 거버넌스로 분류하여 기존 AI 거버넌스 솔루션에 대한 포괄적인 분석 결과를 도출",
-    "limitation": "분석에 포함된 논문이 28편으로 제한적이며, 연구 결과가 포괄적인 AI 거버넌스 실천 방안 제안을 위한 기초 자료로서의 역할에 그치고 있어 향후 연구 커뮤니티의 추가적인 연구가 필요함"
+    "purpose": "비트코인 주소의 익명성을 해제하기 위해 거래 내역 특성을 기반으로 비트코인 주소를 5가지 카테고리로 분류하는 방법을 연구하고, 불법 활동 조사 능력을 향상시키는 것",
+    "method": "비트코인 주소의 거래 특성을 분석 및 추출하고, 4차 거래 모멘트(fourth-order transaction moments)와 샘플 분포(sample distribution)라는 두 가지 새로운 특성을 제안하여 LightGBM 모델에 적용한 머신러닝 기반 분류 방법",
+    "result": "LightGBM 모델에서 정확도 0.94, F1 점수 0.91을 달성하였으며, 새로운 특성이 비트코인 주소 분류 성능을 향상시키고 미지의 유형의 비트코인 주소 식별이 가능함을 확인",
+    "limitation": "5가지 카테고리로 한정된 데이터셋 구성으로 인해 다양한 주소 유형 포괄에 한계가 있을 수 있으며, 지속적으로 진화하는 비트코인 거래 패턴 및 새로운 불법 활동 유형에 대한 대응 방안과 모델의 일반화 가능성에 대한 추가 연구가 필요함"
   },
   {
-    "title": "TRiSM for Agentic AI: A Review of Trust, Risk, and Security Management in LLM-based Agentic Multi-Agent Systems",
-    "abstract": "Agentic AI systems, built upon large language models (LLMs) and deployed in multi-agent configurations, are redefining intelligence, autonomy, collaboration, and decision-making across enterprise and societal domains. This review presents a structured analysis of Trust, Risk, and Security Management (TRiSM) in the context of LLM-based Agentic Multi-Agent Systems (AMAS). We begin by examining the conceptual foundations of Agentic AI and highlight its architectural distinctions from traditional AI agents. We then adapt and extend the AI TRiSM framework for Agentic AI, structured around key pillars: \\textit{ Explainability, ModelOps, Security, Privacy} and \\textit{their Lifecycle Governance}, each contextualized to the challenges of AMAS. A risk taxonomy is proposed to capture the unique threats and vulnerabilities of Agentic AI, ranging from coordination failures to prompt-based adversarial manipulation. To support practical assessment in Agentic AI works, we introduce two novel metrics: the Component Synergy Score (CSS), which quantifies the quality of inter-agent collaboration, and the Tool Utilization Efficacy (TUE), which evaluates the efficiency of tool use within agent workflows. We further discuss strategies for improving explainability in Agentic AI, as well as approaches to enhancing security and privacy through encryption, adversarial robustness, and regulatory compliance. The review concludes with a research roadmap for the responsible development and deployment of Agentic AI, highlighting key directions to align emerging systems with TRiSM principles-ensuring safety, transparency, and accountability in their operation.",
+    "title": "History of bitcoin-blockchain tandem technology",
+    "abstract": "The rapid development of technology during the last decade of the 20th century and the first two decades of the 21st century, predetermined qualitative changes in the economic life of the global community. The author deliberately highlights the last decade of the 20th century because in 1990-1991 the concept of the World Wide Web has found material embodiment, becoming generally available to the mass user. As the technological foundation of the modern digital economy, author analyzes the digital currency bitcoin and blockchain algorithms through the prism of economic, technological, legal and social practice. The key trends for the modern digital economy are identified and, on their basis, a mid-term forecast of its development is given. Despite the economic subject of scientific analysis, the methods of historical science are used in the work: historical analytics, historical-comparative method, historical-systematical method and retrospective methods.",
     "authors": [
-      "Shaina Raza",
-      "Ranjan Sapkota",
-      "Manoj Karkee",
-      "Christos Emmanouilidis"
+      "N. Parkhit'ko"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/753736d18fa9bf3ed730836b30b89bf5653cd8dd",
+    "year": "2022",
+    "url": "https://www.semanticscholar.org/paper/a341bbcb8a33ef34793212e07452035607970d6e",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "LLM 기반 에이전틱 멀티에이전트 시스템(AMAS)에서의 신뢰, 위험, 보안 관리(TRiSM) 프레임워크를 체계적으로 분석하고, 에이전틱 AI의 안전하고 책임감 있는 개발 및 배포를 위한 구조적 기반을 제공하는 것",
-    "method": "AI TRiSM 프레임워크를 에이전틱 AI에 맞게 확장하여 설명가능성, ModelOps, 보안, 프라이버시 및 생명주기 거버넌스 등 핵심 축을 중심으로 구조화하고, 위험 분류 체계(risk taxonomy) 제안 및 두 가지 새로운 평가 지표(Component Synergy Score, Tool Utilization Efficacy)를 도입하는 리뷰 연구 방법론 적용",
-    "result": "에이전틱 AI의 고유한 위협과 취약점을 포착하는 위험 분류 체계를 제안하고, 에이전트 간 협업 품질을 정량화하는 CSS와 도구 사용 효율성을 평가하는 TUE 지표를 개발하였으며, 암호화·적대적 견고성·규제 준수를 통한 보안 및 프라이버시 강화 전략과 TRiSM 원칙에 부합하는 에이전틱 AI 연구 로드맵을 제시",
-    "limitation": "제안된 CSS와 TUE 지표의 실증적 검증이 부족하며, 빠르게 진화하는 에이전틱 AI 환경에서의 프레임워크 적용 가능성과 실제 엔터프라이즈 환경에서의 구현 복잡성에 대한 추가 연구가 필요함"
+    "purpose": "현대 디지털 경제의 기술적 기반으로서 비트코인과 블록체인 알고리즘을 경제적, 기술적, 법적, 사회적 실천의 관점에서 분석하고, 디지털 경제의 발전 역사를 고찰하는 것",
+    "method": "역사적 분석법, 역사-비교 방법, 역사-체계적 방법, 회고적 방법 등 역사학의 연구 방법론을 경제적 주제에 적용",
+    "result": "현대 디지털 경제의 주요 트렌드를 식별하고, 이를 기반으로 디지털 경제의 중기 발전 전망을 제시함",
+    "limitation": "경제학 주제임에도 역사학적 방법론에 의존하여 정량적 분석이 부족할 수 있으며, 중기 예측의 정확성 및 검증 가능성에 한계가 있을 수 있음"
   },
   {
-    "title": "Can We Trust AI Benchmarks? An Interdisciplinary Review of Current Issues in AI Evaluation",
-    "abstract": "Quantitative Artificial Intelligence (AI) Benchmarks have\nemerged as fundamental tools for evaluating the\nperformance, capability, and safety of AI models and\nsystems. Currently, they shape the direction of AI\ndevelopment and are playing an increasingly prominent role\nin regulatory frameworks. As their influence grows,\nhowever, so too does concerns about how and with what\neffects they evaluate highly sensitive topics such as\ncapabilities, including high-impact capabilities, safety\nand systemic risks. This paper presents an\ninterdisciplinary meta-review of about 110 studies that\ndiscuss shortcomings in quantitative benchmarking\npractices, published in the last 10 years. It brings\ntogether many fine-grained issues in the design and\napplication of benchmarks (such as biases in dataset\ncreation, inadequate documentation, data contamination, and\nfailures to distinguish signal from noise) with broader\nsociotechnical issues (such as an over-focus on evaluating\ntext-based AI models according to one-time testing logic\nthat fails to account for how AI models are increasingly\nmultimodal and interact with humans and other technical\nsystems). Our review also highlights a series of systemic\nflaws in current benchmarking practices, such as misaligned\nincentives, construct validity issues, unknown unknowns,\nand problems with the gaming of benchmark results.\nFurthermore, it underscores how benchmark practices are\nfundamentally shaped by cultural, commercial and\ncompetitive dynamics that often prioritise state-of-the-art\nperformance at the expense of broader societal concerns. By\nproviding an overview of risks associated with existing\nbenchmarking procedures, we problematise disproportionate\ntrust placed in benchmarks and contribute to ongoing\nefforts to improve the accountability and relevance of\nquantitative AI benchmarks within the complexities of\nreal-world scenarios.",
+    "title": "An Evaluation of Bitcoin Address Classification based on Transaction History Summarization",
+    "abstract": "Bitcoin is a cryptocurrency that features a distributed, decentralized and trustworthy mechanism, which has made Bitcoin a popular global transaction platform. The transaction efficiency among nations and the privacy benefiting from address anonymity of the Bitcoin network have attracted many activities such as payments, investments, gambling, and even money laundering in the past decade. Unfortunately, some criminal behaviors which took advantage of this platform were not identified. This has discouraged many governments to support cryptocurrency. Thus, the capability to identify criminal addresses becomes an important issue in the cryptocurrency network. In this paper, we propose new features in addition to those commonly used in the literature to build a classification model for detecting abnormality of Bitcoin network addresses. These features include various high orders of moments of transaction time (represented by block height) which summarizes the transaction history in an efficient way. The extracted features are trained by supervised machine learning methods on a labeling category data set. The experimental evaluation shows that these features have improved the performance of Bitcoin address classification significantly. We evaluate the results under eight classifiers and achieve the highest Micro-Fl /Macro-F1 of 87% /86% with LightGBM.",
     "authors": [
-      "Maria Eriksson",
-      "Erasmo Purificato",
-      "Arman Noroozian",
-      "João Vinagre",
-      "Guillaume Chaslot",
-      "Emilia Gómez",
-      "D. Fernández-Llorca"
+      "Yu-Jing Lin",
+      "Po-Wei Wu",
+      "Cheng-Han Hsu",
+      "I-Ping Tu",
+      "Shih-Wei Liao"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/9d99a18b4cbb8fcb8cffde79ade4f462c5b97afe",
+    "year": "2019",
+    "url": "https://www.semanticscholar.org/paper/e457eb18fa83b6916500c97bc6b568d44e0cca8c",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 벤치마크의 신뢰성에 대한 의문을 제기하고, 현재 정량적 AI 벤치마킹 관행의 문제점과 한계를 체계적으로 검토하여 AI 평가의 책임성과 관련성 향상에 기여하는 것",
-    "method": "지난 10년간 발표된 정량적 벤치마킹 관행의 단점을 다룬 약 110편의 연구를 대상으로 학제간 메타 리뷰(interdisciplinary meta-review) 수행",
-    "result": "데이터셋 편향, 불충분한 문서화, 데이터 오염, 신호-노이즈 구분 실패 등 세부적 설계 문제와 함께, 잘못된 인센티브 구조, 구성 타당성 문제, 미지의 미지수(unknown unknowns), 벤치마크 결과 조작 등 시스템적 결함이 존재하며, 벤치마킹 관행이 문화적·상업적·경쟁적 역학에 의해 최첨단 성능 중심으로 편향되어 사회적 우려를 경시한다는 점을 규명",
-    "limitation": "메타 리뷰 방식으로 기존 문헌에 의존하기 때문에 직접적인 실증 분석이 부재하며, 빠르게 변화하는 AI 평가 환경을 완전히 반영하는 데 한계가 있고, 벤치마킹 개선을 위한 구체적인 대안 제시보다는 문제 진단에 초점이 맞춰져 있어 후속 연구에서 실질적 해결 방안 마련이 필요함"
+    "purpose": "비트코인 네트워크에서 비정상적인 주소(범죄 관련 주소)를 탐지하기 위한 분류 모델을 구축하여 암호화폐 네트워크의 범죄 행위 식별 능력을 향상시키는 것",
+    "method": "트랜잭션 시간(블록 높이)의 다양한 고차 모멘트를 포함한 새로운 특징을 기존 문헌의 특징에 추가하여 트랜잭션 히스토리를 요약하고, 레이블링된 카테고리 데이터셋에 LightGBM을 포함한 8가지 지도 학습 분류기를 적용",
+    "result": "제안한 새로운 특징들이 비트코인 주소 분류 성능을 크게 향상시켰으며, LightGBM을 사용하여 Micro-F1 87%, Macro-F1 86%의 최고 성능을 달성",
+    "limitation": "논문에서 명시적인 한계점이 언급되지 않았으나, 레이블링된 데이터셋에 의존하는 지도 학습 방식의 특성상 새로운 유형의 범죄 주소나 레이블이 없는 데이터에 대한 일반화 가능성 및 실시간 대규모 네트워크 적용에 대한 추가 연구가 필요할 수 있음"
   },
   {
-    "title": "Ethical and regulatory considerations in the use of AI and machine learning in nursing: A systematic review.",
-    "abstract": "AIM\nThis study systematically explores the ethical and regulatory considerations surrounding the integration of artificial intelligence (AI) and machine learning (ML) in nursing practice, with a focus on patient autonomy, data privacy, algorithmic bias, and accountability.\n\n\nBACKGROUND\nAI and ML are transforming nursing practice by enhancing clinical decision-making and operational efficiency. However, these technologies present significant ethical challenges related to ensuring patient autonomy, safeguarding data privacy, mitigating algorithmic bias, and ensuring transparency in decision-making processes. Current frameworks are not sufficiently tailored to nursing-specific contexts.\n\n\nMETHODS\nA systematic review was conducted, adhering to PRISMA guidelines. Six major databases were searched for studies published between 2000 and 2024. Seventeen studies met the inclusion criteria and were included in the final analysis.\n\n\nRESULTS\nFive key themes emerged from the review: enhancement of clinical decision-making, promotion of ethical awareness, support for routine nursing tasks, challenges in algorithmic bias, and the importance of public engagement in regulatory frameworks. The review identified critical gaps in nursing-specific ethical guidelines and regulatory oversight for AI integration in practice.\n\n\nDISCUSSION\nAI technologies offer substantial benefits for nursing, particularly in decision-making and task efficiency. However, these advantages must be balanced against ethical concerns, including the protection of patient rights, algorithmic transparency, and bias mitigation. Current regulatory frameworks require adaptation to meet the ethical needs of nursing.\n\n\nCONCLUSION AND IMPLICATIONS FOR NURSING AND HEALTH POLICY\nThe findings emphasize the need for the development of nursing-specific ethical guidelines and robust regulatory frameworks to ensure the responsible integration of AI technologies into nursing practice. AI integration must uphold ethical principles while enhancing the quality of care.",
+    "title": "LVQ: A Lightweight Verifiable Query Approach for Transaction History in Bitcoin",
+    "abstract": "In the Bitcoin system, transaction history of an address can be useful in many scenarios, such as the balance calculation and behavior analysis. However, it is non-trivial for a common user who runs a light node to fetch historical transactions, since it only stores headers without any transaction details. It usually has to request a full node who stores the complete data. Validation of these query results is critical and mainly involves two aspects: correctness and completeness. The former can be implemented via Merkle branch easily, while the latter is quite difficult in the Bitcoin protocol. To enable the completeness validation, a strawman design is proposed, which simply includes the BF (Bloom filter) in the headers. However, since the size of BF is about KB, light nodes in the strawman will suffer from the incremental storage burden. What’s worse, an integrated block must be transmitted when BF cannot work, resulting in large network overhead. In this paper, we propose LVQ, the first lightweight verifiable query approach that reduces the storage requirement and network overhead at the same time. To be specific, by only storing the hash of BF in headers, LVQ keeps data stored by light nodes being little. Besides, LVQ introduces a novel BMT (BF integrated Merkle Tree) structure for lightweight query, which can eliminate the communication costs of query results by merging the multiple successive BFs. Furthermore, when BF cannot work, a lightweight proof by SMT (Sorted Merkle Tree) is exploited to further reduce the network overhead. The security analysis confirms LVQ’s ability to enable both correctness and completeness validation. In addition, the experimental results demonstrate its lightweight.",
     "authors": [
-      "Sobhia Ahmed Abdel Kader Mohammed",
-      "Yasmine M Osman",
-      "A. Ibrahim",
-      "Mostafa Shaban"
+      "Xiaohai Dai",
+      "Jiang Xiao",
+      "Wenhui Yang",
+      "Chaofan Wang",
+      "Jian Chang",
+      "Rui Han",
+      "Hai Jin"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/0487760acb05d31a7601b54fed2139cef3c2bbf9",
+    "year": "2020",
+    "url": "https://www.semanticscholar.org/paper/7db25d2f725cd5604e854553293850a37c9e5db5",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "간호 실무에서 인공지능(AI) 및 머신러닝(ML) 통합과 관련된 윤리적·규제적 고려사항, 특히 환자 자율성, 데이터 프라이버시, 알고리즘 편향, 책임성을 체계적으로 탐구하는 것",
-    "method": "PRISMA 가이드라인을 준수한 체계적 문헌 고찰로, 6개의 주요 데이터베이스에서 2000년부터 2024년 사이에 발표된 연구를 검색하여 최종적으로 17개의 연구를 분석에 포함",
-    "result": "임상 의사결정 향상, 윤리적 인식 증진, 일상적 간호 업무 지원, 알고리즘 편향의 도전, 규제 프레임워크에서 공공 참여의 중요성 등 5가지 핵심 주제가 도출되었으며, 간호 특화 윤리 지침 및 AI 통합에 대한 규제 감독의 중요한 공백이 확인됨",
-    "limitation": "현재 규제 프레임워크가 간호 특화 맥락에 충분히 맞춰져 있지 않으며, 간호 분야 AI 통합을 위한 구체적인 윤리 지침 및 규제 체계 개발이 후속 과제로 필요함"
+    "purpose": "비트코인 라이트 노드가 풀 노드에 트랜잭션 히스토리를 질의할 때 결과의 정확성(correctness)과 완전성(completeness)을 모두 검증할 수 있는 경량화된 검증 가능 질의 방법을 제안하는 것",
+    "method": "블록 헤더에 Bloom Filter(BF) 전체 대신 해시만 저장하여 라이트 노드의 저장 부담을 줄이고, 여러 연속적인 BF를 병합하는 BMT(BF integrated Merkle Tree) 구조를 도입하여 통신 비용을 절감하며, BF가 작동하지 않을 경우 SMT(Sorted Merkle Tree)를 활용한 경량 증명을 적용하는 LVQ 기법을 제안",
+    "result": "LVQ는 라이트 노드의 저장 요구량과 네트워크 오버헤드를 동시에 줄이면서 트랜잭션 히스토리 질의 결과의 정확성과 완전성 검증을 모두 가능하게 하며, 보안 분석 및 실험을 통해 경량성과 유효성이 확인됨",
+    "limitation": "Bloom Filter의 고유한 오탐(false positive) 특성으로 인한 한계가 존재하며, BF가 작동하지 않는 경우에 대한 추가적인 처리가 필요하고, 실제 비트코인 프로토콜에 통합하기 위한 구체적인 배포 및 호환성 문제에 대한 후속 연구가 필요할 수 있음"
   },
   {
-    "title": "Exploring the Landscape of Generative AI (ChatGPT)-Powered Writing Instruction in English as a Foreign Language Education: A Scoping Review",
-    "abstract": "Purpose Recent advancements in artificial intelligence (AI)-powered technologies, particularly ChatGPT, have sparked significant interest in English as a Foreign Language (EFL) education. This review aims to explore the landscape of ChatGPT's application in EFL writing. Design/Approach/Method Given the nascence of this field, the study conducts a scoping review by analyzing 16 empirical studies published before December 2023 to investigate the role of ChatGPT in EFL writing. Findings The review explores the current and potential uses of ChatGPT in EFL writing, highlighting its dual role as both a writing assistant and an assessment tool. On one hand, ChatGPT is widely acknowledged for providing real-time feedback that enhances writing quality and efficiency. On the other hand, challenges and concerns remain prevalent. Originality/Value The findings reveal key gaps in the literature, such as the need for more interdisciplinary research, the adaptation of AI models to meet the linguistic and cultural needs of EFL learners, and the integration of multimodal AI tools. The review emphasizes the importance of critical thinking and information literacy training for educators and students while addressing ethical considerations. These insights offer a roadmap for future research and the practical implementation of AI in language education, providing valuable guidance for different stakeholders.",
+    "title": "Dissection of Bitcoin’s multiscale bubble history from January 2012 to February 2018",
+    "abstract": "We present a detailed bubble analysis of the Bitcoin to US Dollar price dynamics from January 2012 to February 2018. We introduce a robust automatic peak detection method that classifies price time series into periods of uninterrupted market growth (drawups) and regimes of uninterrupted market decrease (drawdowns). In combination with the Lagrange Regularization Method for detecting the beginning of a new market regime, we identify three major peaks and 10 additional smaller peaks, that have punctuated the dynamics of Bitcoin price during the analysed time period. We explain this classification of long and short bubbles by a number of quantitative metrics and graphs to understand the main socio-economic drivers behind the ascent of Bitcoin over this period. Then, a detailed analysis of the growing risks associated with the three long bubbles using the Log-Periodic Power-Law Singularity (LPPLS) model is based on the LPPLS Confidence Indicators, defined as the fraction of qualified fits of the LPPLS model over multiple time windows. Furthermore, for various fictitious ‘present’ times t2 before the crashes, we employ a clustering method to group the predicted critical times tc of the LPPLS fits over different time scales, where tc is the most probable time for the ending of the bubble. Each cluster is proposed as a plausible scenario for the subsequent Bitcoin price evolution. We present these predictions for the three long bubbles and the four short bubbles that our time scale of analysis was able to resolve. Overall, our predictive scheme provides useful information to warn of an imminent crash risk.",
     "authors": [
-      "Feiwen Xiao (肖斐文)",
-      "Siyu Zhu (朱思宇)",
-      "Wen Xin (辛闻)"
+      "J-C Gerlach",
+      "Guilherme Demos",
+      "D. Sornette"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/9c2dcb66fbf8735541b0ec2ba2b0bd4daa7bd9a1",
+    "year": "2018",
+    "url": "https://www.semanticscholar.org/paper/34d626443cf02aa44e3b0bea2f7154518e2ee995",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "EFL(영어를 외국어로 배우는) 교육에서 ChatGPT를 활용한 쓰기 지도의 현황과 잠재적 활용 가능성을 탐색하는 것",
-    "method": "2023년 12월 이전에 출판된 16편의 실증 연구를 분석하는 스코핑 리뷰(scoping review) 방법론 사용",
-    "result": "ChatGPT는 EFL 쓰기에서 실시간 피드백을 제공하는 쓰기 보조 도구이자 평가 도구로서 이중적 역할을 수행하며 쓰기 품질과 효율성을 향상시키는 것으로 나타났으나, 동시에 여러 도전과 우려도 존재함",
-    "limitation": "학제 간 연구 부족, EFL 학습자의 언어적·문화적 필요에 맞는 AI 모델 적응 필요, 멀티모달 AI 도구 통합 부재, 교육자와 학생을 위한 비판적 사고 및 정보 리터러시 교육의 필요성, 윤리적 고려사항 해결 등이 후속 과제로 제시됨"
+    "purpose": "2012년 1월부터 2018년 2월까지 비트코인-미국 달러 가격 동학의 다중 시간 규모 버블 역사를 분석하고, 버블 형성 및 붕괴 위험을 예측하는 체계를 제시하는 것",
+    "method": "가격 시계열을 상승(drawup)과 하락(drawdown) 구간으로 분류하는 자동 피크 탐지 방법, 새로운 시장 국면 시작을 감지하는 라그랑주 정규화 방법(Lagrange Regularization Method), 그리고 로그-주기적 거듭제곱 법칙 특이점(LPPLS) 모델 및 LPPLS 신뢰 지표를 활용하며, 다중 시간 창에서의 예측 임계 시간 tc를 군집화(clustering) 방법으로 그룹화",
+    "result": "비트코인 가격 동학에서 3개의 주요 장기 버블 피크와 10개의 추가 단기 피크를 식별하였으며, LPPLS 모델을 통해 각 버블의 붕괴 위험 증가를 정량적으로 분석하고, 3개의 장기 버블과 4개의 단기 버블에 대한 가격 진화 시나리오 예측을 제시하여 임박한 붕괴 위험 경고에 유용한 정보를 제공함",
+    "limitation": "분석 기간이 2018년 2월까지로 한정되어 이후 시장 동학에 대한 검증이 부재하며, 예측 시나리오가 군집화된 임계 시간에 기반한 확률적 추정에 불과하고, 사회경제적 동인에 대한 정성적 해석의 한계와 모델의 비트코인 외 다른 암호화폐에 대한 일반화 가능성이 검토되지 않음"
   },
   {
-    "title": "Holding AI-Based Systems Accountable in the Public Sector: A Systematic Review",
-    "abstract": "Abstract Due to the significant advancements in technology and computing power over the past few decades, artificial intelligence-based systems have emerged as desirable tools for improving public services. Scholars have dedicated considerable effort to understanding this growing trend. A key focus of this research has been accountability, which has become a prominent concern in the scholarly discourse. Studies reveal that the integration of AI into government processes introduces unique challenges to maintaining governmental accountability. In response, scholars have proposed various policy and management strategies to tackle these issues. Despite extensive research, there remains a divergence in how accountability is conceptualized in the context of using AI-based systems in government, indicating a gap in the systematic understanding regarding how to hold the use of such systems accountable. To bridge this gap, we conducted a systematic review of the existing research on AI-based system accountability in the public sector. Our findings based on thirty-six articles highlight the existence of different forums and actors, and the mechanisms recommended to ensure accountability. We also identified challenges and enablers that could affect the efficacy of these mechanisms. Lastly, our analysis uncovers several areas requiring further exploration, offering directions for future research in this field.",
+    "title": "Unveiling Decentralization: A Comprehensive Review of Technologies, Comparison, Challenges in Bitcoin, Ethereum, and Solana Blockchain",
+    "abstract": "Bitcoin stands as a groundbreaking development in decentralized exchange throughout human history, enabling transactions without the need for intermediaries. By leveraging cryptographic proof mechanisms, Bitcoin eliminates the reliance on third-party financial institutions. Ethereum, ranking as the second-largest cryptocurrency by market capitalization, builds upon Bitcoin’s groundwork by introducing smart contracts and decentralized applications. Ethereum strives to surpass the limitations of Bitcoin’s scripting language, achieving full Turing-completeness for executing intricate computational tasks. Solana introduces a novel architecture for high-performance blockchain, employing timestamps to validate decentralized transactions and significantly boosting block creation throughput. Through a comprehensive examination of these blockchain technologies, their distinctions, and the associated challenges, this paper aims to offer valuable insights and comparative analysis for both researchers and practitioners.",
     "authors": [
-      "Qianli Yuan",
-      "Tzuhao Chen"
+      "Han Song",
+      "Yihao Wei",
+      "Zhongche Qu",
+      "Weihan Wang"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/3b72dde7b6a48b36b136bc63189594e40b0d27ca",
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/509d4a3765d9a6f558616b3638eda5bc55dbf6ee",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "공공 부문에서 AI 기반 시스템의 책임성(accountability)을 어떻게 확보할 것인지에 대한 체계적 이해의 부재를 해소하고, 관련 연구의 개념적 다양성을 정리하기 위함",
-    "method": "공공 부문의 AI 기반 시스템 책임성에 관한 기존 연구를 대상으로 체계적 문헌 검토(systematic review) 수행 (총 36편의 논문 분석)",
-    "result": "AI 책임성 확보를 위한 다양한 포럼과 행위자의 존재를 확인하였으며, 책임성 메커니즘과 이를 촉진하거나 저해하는 도전 요인 및 활성화 요인을 식별함",
-    "limitation": "추가적인 탐구가 필요한 여러 영역이 존재하며, 향후 연구 방향을 제시하는 데 그쳐 구체적인 실증적 검증이 부족하고 AI 책임성 개념화 방식의 다양성으로 인한 연구 간 비교의 어려움이 존재함"
+    "purpose": "Bitcoin, Ethereum, Solana 세 가지 블록체인 기술의 탈중앙화 특성, 차이점 및 관련 과제를 종합적으로 분석하여 연구자와 실무자에게 유용한 통찰과 비교 분석을 제공하는 것",
+    "method": "Bitcoin, Ethereum, Solana 블록체인 기술에 대한 포괄적인 문헌 검토 및 비교 분석 방법론을 활용하여 각 기술의 아키텍처, 합의 메커니즘, 기능적 특성을 체계적으로 검토",
+    "result": "Bitcoin은 암호학적 증명 메커니즘을 통한 탈중앙화 거래를 실현하였고, Ethereum은 스마트 계약과 탈중앙화 애플리케이션을 도입하여 튜링 완전성을 달성하였으며, Solana는 타임스탬프 기반의 새로운 아키텍처로 높은 블록 생성 처리량을 구현하였음을 비교 분석함",
+    "limitation": "초록에서 명시적인 한계점이 언급되지 않았으나, 빠르게 진화하는 블록체인 생태계의 특성상 최신 기술 동향 반영의 시간적 한계가 존재할 수 있으며, 세 가지 블록체인에 한정된 분석으로 다른 블록체인 플랫폼에 대한 일반화에 제약이 있을 수 있음"
   },
   {
-    "title": "A review of sustainability assessment of geopolymer concrete through AI-based life cycle analysis",
-    "abstract": "Geopolymer concrete is acknowledged as a sustainable alternative to conventional Portland cement concrete owing to its ability to reduce carbon emissions and reutilize industrial by-products. This paper reviews the application of Artificial Intelligence-based Life Cycle Analysis (LCA) techniques in the sustainability assessment of geopolymer concrete. The assessment covers the entire life cycle of geopolymer concrete, spanning from the extraction of raw materials to its ultimate disposal, with a particular focus on its environmental, economic, and social impacts. The incorporation of AI techniques into the LCA process offers notable advantages, such as the efficient management of large datasets, enhancement of data quality, prediction of environmental impacts, and facilitation of informed decision-making. Key sustainability metrics to be considered include environmental impacts such as carbon footprint and energy consumption, economic factors like cost-effectiveness, as well as social implications. The amalgamation of AI within the LCA framework provides a comprehensive and efficient approach to evaluating the sustainability of geopolymer concrete, thereby facilitating its application in sustainable construction practices.",
+    "title": "Bitcoin Supply, Demand, and Price Dynamics",
+    "abstract": "We refine a bottom-up, quantity-clearing framework of Bitcoin price formation that couples its fixed 21-million-coin cap with plausible demand growth and execution behavior. This approach relies on first-principles economic supply-and-demand dynamics rather than assumptions about anticipated Bitcoin price appreciation, its price history, or its potential effectiveness in demonetizing other asset classes. We considered five key high-level factors that may affect price determination: level of market demand; intertemporal investment preferences; fiat-denominated withdrawal sensitivity; initial liquid supply; and daily withdrawal levels from liquid supply. With a goal of both increasing understanding of the impacts of price drivers and developing probabilistic forecasts, we show two models: (1) a baseline to assess the impacts of parameter changes, alone and in combination, on Bitcoin price trajectories and liquid supply over time and (2) a Monte Carlo simulation that incorporates uncertainty across a range of uncertain parameterizations and presents probabilistic price and liquid supply forecasts to 2036. Our baseline model highlighted the importance of liquid supply and withdrawal sensitivity in price impacts. The Monte Carlo simulation results suggest a 50% likelihood that Bitcoin price will exceed USD 5.17 M by April 2036. Generally, prices from the low single millions to the low tens of millions per Bitcoin by 2036 emerge under broad parameter sets; hyperbolic paths to higher price levels are relatively rare and concentrate when liquid supply falls near or below BTC 2 M and withdrawal sensitivity is low. Our results help locate where right-tail risk and disorderly market outcomes concentrate and suggest that policy tools are available to help guide trajectories.",
     "authors": [
-      "V. Ramesh",
-      "B. Muthramu",
-      "D. Rebekhal"
+      "Murray A. Rudd",
+      "Dennis Porter"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/3f5f851249a51dac57da5327fc9bbead86862f68",
+    "url": "https://www.semanticscholar.org/paper/bd8f2d655b5fe42e1abe73949fb428ac4be648b0",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "지오폴리머 콘크리트의 지속가능성 평가를 위해 AI 기반 전과정평가(LCA) 기법의 적용 현황을 검토하고, 환경적·경제적·사회적 영향을 종합적으로 분석하는 것",
-    "method": "지오폴리머 콘크리트의 원자재 추출부터 최종 폐기까지 전체 생애주기를 대상으로 AI 기술을 접목한 LCA 기법을 적용하여 문헌 검토(review) 방식으로 분석",
-    "result": "AI 기술을 LCA 프레임워크에 통합함으로써 대규모 데이터의 효율적 관리, 데이터 품질 향상, 환경 영향 예측, 의사결정 지원이 가능하며, 탄소 발자국·에너지 소비·비용 효율성 등 핵심 지속가능성 지표 평가에 있어 포괄적이고 효율적인 접근이 가능함을 확인",
-    "limitation": "리뷰 논문으로서 실험적 검증이 부재하며, AI 기반 LCA의 실제 현장 적용 사례 및 사회적 영향 평가에 대한 구체적 데이터가 부족하고, 향후 실증 연구 및 표준화된 평가 체계 마련이 필요함"
+    "purpose": "비트코인의 2100만 개 고정 공급량과 수요 성장, 실행 행동을 결합한 상향식 수량 청산 프레임워크를 통해 비트코인 가격 형성 메커니즘을 이해하고 확률적 가격 예측을 개발하는 것",
+    "method": "5가지 핵심 요인(시장 수요 수준, 기간 간 투자 선호도, 법정화폐 기준 인출 민감도, 초기 유동 공급량, 일일 인출 수준)을 고려한 기준선 모델과 몬테카를로 시뮬레이션을 활용하여 2036년까지의 비트코인 가격 및 유동 공급량을 분석",
+    "result": "2036년 4월까지 비트코인 가격이 517만 달러를 초과할 확률이 50%로 나타났으며, 광범위한 매개변수 집합에서 2036년까지 비트코인당 수백만 달러 초반에서 수천만 달러 초반 수준의 가격이 도출되었고, 유동 공급량이 200만 BTC 이하로 떨어지고 인출 민감도가 낮을 때 극단적 가격 상승 경로가 집중됨을 확인",
+    "limitation": "가격 역사, 예상 비트코인 가격 상승, 또는 다른 자산 클래스 탈화폐화 가능성에 대한 가정에 의존하지 않는 원칙 중심 접근법을 사용했으나, 불확실한 매개변수화 범위에 걸친 불확실성과 시장의 복잡한 행동 요인들을 완전히 포착하는 데 한계가 있으며, 우측 꼬리 위험 및 무질서한 시장 결과의 정책적 대응 방안에 대한 추가 연구가 필요"
   }
 ]

@@ -1,633 +1,98 @@
 [
   {
-    "title": "Using StackOverflow content to assist in code review",
-    "abstract": "An important goal for programmers is to minimize cost of identifying and correcting defects in source code. Code review is commonly used for identifying programming defects. However, manual code review has some shortcomings: a) it is time consuming, b) outcomes are subjective and depend on the skills of reviewers. An automated approach for assisting in code reviews is thus highly desirable. We present a tool for assisting in code review and results from our experiments evaluating the tool in different scenarios. The tool leveraged content available from professional programmer support forums (e.g. StackOverflow.com) to determine potential defectiveness of a given piece of source code. The defectiveness is expressed on the scale of {Likely defective, Neutral, Unlikely to be defective}. Basic idea employed in the tool is to: a) Identify a set P of discussion posts on StackOverflow such that each p in P contains source code fragment(s) which sufficiently resemble the input code C being reviewed. b) Determine the likelihood of C being defective by considering all p in P . A novel aspect of our approach is to use document fingerprinting for comparing two pieces of source code. Our choice of document fingerprinting technique is inspired by source code plagiarism detection tools where it has proven to be very successful. In the experiments that we performed to verify effectiveness of our approach source code samples from more than 300 GitHub open source repositories were taken as input. A precision of more than 90% in identifying correct/relevant results has been achieved.",
+    "title": "Research on Bitcoin address classification based on transaction history features",
+    "abstract": "As the most popular cryptocurrency now, Bitcoin's transaction data is easy to obtain, so de-anonymizing Bitcoin becomes possible. This paper constructs a data set of Bitcoin addresses including 5 categories, analyzes and extracts the transaction features of Bitcoin addresses in more detail based on related work, and proposes two new features of fourth-order transaction moments and sample distribution. New features improve the performance of Bitcoin address classification. The accuracy of the LightGBM model was 0.94 and the F1 score was 0.91. This method can identify unknown types of Bitcoin addresses, which improves the ability of relevant agencies to investigate Bitcoin illegal activities.",
     "authors": [
-      "Balwinder Sodhi",
-      "Shipra Sharma"
+      "Lu Qin",
+      "Li Yi",
+      "Xiancheng Lin",
+      "Ziqiang Luo"
     ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/1803.05689v1",
-    "year": "2018",
-    "categories": [
-      "cs.SE",
-      "cs.ET"
-    ]
-  },
-  {
-    "title": "Review Beats Planning: Dual-Model Interaction Patterns for Code Synthesis",
-    "abstract": "How should two language models interact to produce better code than either can alone? The conventional approach -- a reasoning model plans, a code specialist implements -- seems natural but fails: on HumanEval+, plan-then-code degrades performance by 2.4 percentage points versus the code specialist alone. We show that reversing the interaction changes everything. When the code specialist generates freely and the reasoning model reviews instead of plans, the same two models on the same hardware achieve 90.2% pass@1 -- exceeding GPT-4o (87.2%) and O1 Preview (89.0%) -- on ~$2/hr of commodity GPU. Cross-benchmark validation across 542 problems (HumanEval+ and MBPP+) reveals a moderating variable: review effectiveness scales with specification richness, yielding 4x more improvement on richly-specified problems (+9.8pp) than on lean ones (+2.3pp), while remaining net-positive in both cases. The practical implication is twofold: compose models by their cognitive strengths (reviewers review, coders code), and invest in specification quality to amplify the returns.",
-    "authors": [
-      "Jan Miller"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2603.03406v1",
-    "year": "2026",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "AgenticSCR: An Autonomous Agentic Secure Code Review for Immature Vulnerabilities Detection",
-    "abstract": "Secure code review is critical at the pre-commit stage, where vulnerabilities must be caught early under tight latency and limited-context constraints. Existing SAST-based checks are noisy and often miss immature, context-dependent vulnerabilities, while standalone Large Language Models (LLMs) are constrained by context windows and lack explicit tool use. Agentic AI, which combine LLMs with autonomous decision-making, tool invocation, and code navigation, offer a promising alternative, but their effectiveness for pre-commit secure code review is not yet well understood. In this work, we introduce AgenticSCR, an agentic AI for secure code review for detecting immature vulnerabilities during the pre-commit stage, augmented by security-focused semantic memories. Using our own curated benchmark of immature vulnerabilities, tailored to the pre-commit secure code review, we empirically evaluate how accurate is our AgenticSCR for localizing, detecting, and explaining immature vulnerabilities. Our results show that AgenticSCR achieves at least 153% relatively higher percentage of correct code review comments than the static LLM-based baseline, and also substantially surpasses SAST tools. Moreover, AgenticSCR generates more correct comments in four out of five vulnerability types, consistently and significantly outperforming all other baselines. These findings highlight the importance of Agentic Secure Code Review, paving the way towards an emerging research area of immature vulnerability detection.",
-    "authors": [
-      "Wachiraphan Charoenwet",
-      "Kla Tantithamthavorn",
-      "Patanamon Thongtanunam",
-      "Hong Yi Lin",
-      "Minwoo Jeong",
-      "Ming Wu"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2601.19138v1",
-    "year": "2026",
-    "categories": [
-      "cs.CR",
-      "cs.AI",
-      "cs.LG",
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "Previously on... Automating Code Review",
-    "abstract": "Modern Code Review (MCR) is a standard practice in software engineering, yet it demands substantial time and resource investments. Recent research has increasingly explored automating core review tasks using machine learning (ML) and deep learning (DL). As a result, there is substantial variability in task definitions, datasets, and evaluation procedures. This study provides the first comprehensive analysis of MCR automation research, aiming to characterize the field's evolution, formalize learning tasks, highlight methodological challenges, and offer actionable recommendations to guide future research. Focusing on the primary code review tasks, we systematically surveyed 691 publications and identified 24 relevant studies published between May 2015 and April 2024. Each study was analyzed in terms of tasks, models, metrics, baselines, results, validity concerns, and artifact availability. In particular, our analysis reveals significant potential for standardization, including 48 task metric combinations, 22 of which were unique to their original paper, and limited dataset reuse. We highlight challenges and derive concrete recommendations for examples such as the temporal bias threat, which are rarely addressed so far. Our work contributes to a clearer overview of the field, supports the framing of new research, helps to avoid pitfalls, and promotes greater standardization in evaluation practices.",
-    "authors": [
-      "Robert Heumüller",
-      "Frank Ortmeier"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2508.18003v1",
-    "year": "2025",
-    "categories": [
-      "cs.SE",
-      "cs.AI"
-    ]
-  },
-  {
-    "title": "SecureReviewer: Enhancing Large Language Models for Secure Code Review through Secure-aware Fine-tuning",
-    "abstract": "Identifying and addressing security issues during the early phase of the development lifecycle is critical for mitigating the long-term negative impacts on software systems. Code review serves as an effective practice that enables developers to check their teammates' code before integration into the codebase. To streamline the generation of review comments, various automated code review approaches have been proposed, where LLM-based methods have significantly advanced the capabilities of automated review generation. However, existing models primarily focus on general-purpose code review, their effectiveness in identifying and addressing security-related issues remains underexplored. Moreover, adapting existing code review approaches to target security issues faces substantial challenges, including data scarcity and inadequate evaluation metrics. To address these limitations, we propose SecureReviewer, a new approach designed for enhancing LLMs' ability to identify and resolve security-related issues during code review. Specifically, we first construct a dataset tailored for training and evaluating secure code review capabilities. Leveraging this dataset, we fine-tune LLMs to generate code review comments that can effectively identify security issues and provide fix suggestions with our proposed secure-aware fine-tuning strategy. To mitigate hallucination in LLMs and enhance the reliability of their outputs, we integrate the RAG technique, which grounds the generated comments in domain-specific security knowledge. Additionally, we introduce SecureBLEU, a new evaluation metric designed to assess the effectiveness of review comments in addressing security issues. Experimental results demonstrate that SecureReviewer outperforms state-of-the-art baselines in both security issue detection accuracy and the overall quality and practical utility of generated review comments.",
-    "authors": [
-      "Fang Liu",
-      "Simiao Liu",
-      "Yinghao Zhu",
-      "Xiaoli Lian",
-      "Li Zhang"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2510.26457v1",
-    "year": "2025",
-    "categories": [
-      "cs.SE",
-      "cs.AI",
-      "cs.CL"
-    ]
-  },
-  {
-    "title": "DNA-Based Data Storage Systems: A Review of Implementations and Code Constructions",
-    "abstract": "In this review paper, we delve into the nascent field of molecular data storage, focusing on system implementations and code constructions. We start by providing an overview of basic concepts in synthetic and computational biology. Afterwards, we proceed with a review of the diverse approaches followed to implement such systems. In the process, we identify new problems in communication and coding theory, and discuss some relevant results pertaining to DNA sequence profiles, coded trace reconstruction, coding for DNA punchcard systems and coding for unique reconstruction.",
-    "authors": [
-      "Olgica Milenkovic",
-      "Chao Pan"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2310.04694v1",
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/a6bc6c242651e63dcd72dbf9b09e121f14c9b4ba",
     "year": "2023",
-    "categories": [
-      "cs.ET",
-      "cs.IT"
-    ]
+    "categories": []
   },
   {
-    "title": "On Assessing the Relevance of Code Reviews Authored by Generative Models",
-    "abstract": "The use of large language models like ChatGPT in code review offers promising efficiency gains but also raises concerns about correctness and safety. Existing evaluation methods for code review generation either rely on automatic comparisons to a single ground truth, which fails to capture the variability of human perspectives, or on subjective assessments of \"usefulness\", a highly ambiguous concept. We propose a novel evaluation approach based on what we call multi-subjective ranking. Using a dataset of 280 self-contained code review requests and corresponding comments from CodeReview StackExchange, multiple human judges ranked the quality of ChatGPT-generated comments alongside the top human responses from the platform. Results show that ChatGPT's comments were ranked significantly better than human ones, even surpassing StackExchange's accepted answers. Going further, our proposed method motivates and enables more meaningful assessments of generative AI's performance in code review, while also raising awareness of potential risks of unchecked integration into review processes.",
+    "title": "History of bitcoin-blockchain tandem technology",
+    "abstract": "The rapid development of technology during the last decade of the 20th century and the first two decades of the 21st century, predetermined qualitative changes in the economic life of the global community. The author deliberately highlights the last decade of the 20th century because in 1990-1991 the concept of the World Wide Web has found material embodiment, becoming generally available to the mass user. As the technological foundation of the modern digital economy, author analyzes the digital currency bitcoin and blockchain algorithms through the prism of economic, technological, legal and social practice. The key trends for the modern digital economy are identified and, on their basis, a mid-term forecast of its development is given. Despite the economic subject of scientific analysis, the methods of historical science are used in the work: historical analytics, historical-comparative method, historical-systematical method and retrospective methods.",
     "authors": [
-      "Robert Heumüller",
-      "Frank Ortmeier"
+      "N. Parkhit'ko"
     ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2512.15466v1",
-    "year": "2025",
-    "categories": [
-      "cs.SE",
-      "cs.AI"
-    ]
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/a341bbcb8a33ef34793212e07452035607970d6e",
+    "year": "2022",
+    "categories": []
   },
   {
-    "title": "Prompt-Driven Code Summarization: A Systematic Literature Review",
-    "abstract": "Software documentation is essential for program comprehension, developer onboarding, code review, and long-term maintenance. Yet producing quality documentation manually is time-consuming and frequently yields incomplete or inconsistent results. Large language models (LLMs) offer a promising solution by automatically generating natural language descriptions from source code, helping developers understand code more efficiently, facilitating maintenance, and supporting downstream activities such as defect localization and commit message generation. However, the effectiveness of LLMs in documentation tasks critically depends on how they are prompted. Properly structured instructions can substantially improve model performance, making prompt engineering-the design of input prompts to guide model behavior-a foundational technique in LLM-based software engineering. Approaches such as few-shot prompting, chain-of-thought reasoning, retrieval-augmented generation, and zero-shot learning show promise for code summarization, yet current research remains fragmented. There is limited understanding of which prompting strategies work best, for which models, and under what conditions. Moreover, evaluation practices vary widely, with most studies relying on overlap-based metrics that may not capture semantic quality. This systematic literature review consolidates existing evidence, categorizes prompting paradigms, examines their effectiveness, and identifies gaps to guide future research and practical adoption.",
+    "title": "An Evaluation of Bitcoin Address Classification based on Transaction History Summarization",
+    "abstract": "Bitcoin is a cryptocurrency that features a distributed, decentralized and trustworthy mechanism, which has made Bitcoin a popular global transaction platform. The transaction efficiency among nations and the privacy benefiting from address anonymity of the Bitcoin network have attracted many activities such as payments, investments, gambling, and even money laundering in the past decade. Unfortunately, some criminal behaviors which took advantage of this platform were not identified. This has discouraged many governments to support cryptocurrency. Thus, the capability to identify criminal addresses becomes an important issue in the cryptocurrency network. In this paper, we propose new features in addition to those commonly used in the literature to build a classification model for detecting abnormality of Bitcoin network addresses. These features include various high orders of moments of transaction time (represented by block height) which summarizes the transaction history in an efficient way. The extracted features are trained by supervised machine learning methods on a labeling category data set. The experimental evaluation shows that these features have improved the performance of Bitcoin address classification significantly. We evaluate the results under eight classifiers and achieve the highest Micro-Fl /Macro-F1 of 87% /86% with LightGBM.",
     "authors": [
-      "Afia Farjana",
-      "Zaiyu Cheng",
-      "Antonio Mastropaolo"
+      "Yu-Jing Lin",
+      "Po-Wei Wu",
+      "Cheng-Han Hsu",
+      "I-Ping Tu",
+      "Shih-Wei Liao"
     ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2604.15385v1",
-    "year": "2026",
-    "categories": [
-      "cs.SE",
-      "cs.LG"
-    ]
-  },
-  {
-    "title": "Large Language Model for Verilog Code Generation: Literature Review and the Road Ahead",
-    "abstract": "Code generation has emerged as a critical research area at the intersection of Software Engineering (SE) and Artificial Intelligence (AI), attracting significant attention from both academia and industry. Within this broader landscape, Verilog, as a representative hardware description language (HDL), plays a fundamental role in digital circuit design and verification, making its automated generation particularly significant for Electronic Design Automation (EDA). Consequently, recent research has increasingly focused on applying Large Language Models (LLMs) to Verilog code generation, particularly at the Register Transfer Level (RTL), exploring how these AI-driven techniques can be effectively integrated into hardware design workflows. Despite substantial research efforts have explored LLM applications in this domain, a comprehensive survey synthesizing these developments remains absent from the literature. This review fill addresses this gap by providing a systematic literature review of LLM-based methods for Verilog code generation, examining their effectiveness, limitations, and potential for advancing automated hardware design. The review encompasses research work from conferences and journals in the fields of SE, AI, and EDA, encompassing 70 papers published on venues, along with 32 high-quality preprint papers, bringing the total to 102 papers. By answering four key research questions, we aim to (1) identify the LLMs used for Verilog generation, (2) examine the datasets and metrics employed in evaluation, (3) categorize the techniques proposed for Verilog generation, and (4) analyze LLM alignment approaches for Verilog generation. Based on our findings, we have identified a series of limitations of existing studies. Finally, we have outlined a roadmap highlighting potential opportunities for future research endeavors in LLM-assisted hardware design.",
-    "authors": [
-      "Guang Yang",
-      "Wei Zheng",
-      "Xiang Chen",
-      "Dong Liang",
-      "Peng Hu",
-      "Yukui Yang",
-      "Shaohang Peng",
-      "Zhenghan Li",
-      "Jiahui Feng",
-      "Xiao Wei",
-      "Kexin Sun",
-      "Deyuan Ma",
-      "Haotian Cheng",
-      "Yiheng Shen",
-      "Xing Hu",
-      "Terry Yue Zhuo",
-      "David Lo"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2512.00020v2",
-    "year": "2025",
-    "categories": [
-      "cs.AR",
-      "cs.AI"
-    ]
-  },
-  {
-    "title": "Predicting Code Review Completion Time in Modern Code Review",
-    "abstract": "Context. Modern Code Review (MCR) is being adopted in both open source and commercial projects as a common practice. MCR is a widely acknowledged quality assurance practice that allows early detection of defects as well as poor coding practices. It also brings several other benefits such as knowledge sharing, team awareness, and collaboration.\n  Problem. In practice, code reviews can experience significant delays to be completed due to various socio-technical factors which can affect the project quality and cost. For a successful review process, peer reviewers should perform their review tasks in a timely manner while providing relevant feedback about the code change being reviewed. However, there is a lack of tool support to help developers estimating the time required to complete a code review prior to accepting or declining a review request.\n  Objective. Our objective is to build and validate an effective approach to predict the code review completion time in the context of MCR and help developers better manage and prioritize their code review tasks.\n  Method. We formulate the prediction of the code review completion time as a learning problem. In particular, we propose a framework based on regression models to (i) effectively estimate the code review completion time, and (ii) understand the main factors influencing code review completion time.",
-    "authors": [
-      "Moataz Chouchen",
-      "Jefferson Olongo",
-      "Ali Ouni",
-      "Mohamed Wiem Mkaouer"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2109.15141v1",
-    "year": "2021",
-    "categories": [
-      "cs.SE",
-      "cs.LG"
-    ]
-  },
-  {
-    "title": "Code Review Agent Benchmark",
-    "abstract": "Software engineering agents have shown significant promise in writing code. As AI agents permeate code writing, and generate huge volumes of code automatically -- the matter of code quality comes front and centre. As the automatically generated code gets integrated into huge code-bases -- the issue of code review and broadly quality assurance becomes important. In this paper, we take a fresh look at the problem and curate a code review dataset for AI agents to work with. Our dataset called c-CRAB (pronounced see-crab) can evaluate agents for code review tasks. Specifically given a pull-request (which could be coming from code generation agents or humans), if a code review agent produces a review, our evaluation framework can asses the reviewing capability of the code review agents. Our evaluation framework is used to evaluate the state of the art today -- the open-source PR-agent, as well as commercial code review agents from Devin, Claude Code, and Codex.\n  Our c-CRAB dataset is systematically constructed from human reviews -- given a human review of a pull request instance we generate corresponding tests to evaluate the code review agent generated reviews. Such a benchmark construction gives us several insights. Firstly, the existing review agents taken together can solve only around 40% of the c-CRAB tasks, indicating the potential to close this gap by future research. Secondly, we observe that the agent reviews often consider different aspects from the human reviews -- indicating the potential for human-agent collaboration for code review that could be deployed in future software teams. Last but not the least, the agent generated tests from our data-set act as a held out test-suite and hence quality gate for agent generated reviews. What this will mean for future collaboration of code generation agents, test generation agents and code review agents -- remains to be investigated.",
-    "authors": [
-      "Yuntong Zhang",
-      "Zhiyuan Pan",
-      "Imam Nur Bani Yusuf",
-      "Haifeng Ruan",
-      "Ridwan Shariffdeen",
-      "Abhik Roychoudhury"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2603.23448v3",
-    "year": "2026",
-    "categories": [
-      "cs.SE",
-      "cs.AI"
-    ]
-  },
-  {
-    "title": "Code Review Comprehension: Reviewing Strategies Seen Through Code Comprehension Theories",
-    "abstract": "Despite the popularity and importance of modern code review, the understanding of the cognitive processes that enable reviewers to analyze code and provide meaningful feedback is lacking. To address this gap, we observed and interviewed ten experienced reviewers while they performed 25 code reviews from their review queue. Since comprehending code changes is essential to perform code review and the primary challenge for reviewers, we focused our analysis on this cognitive process. Using Letovsky's model of code comprehension, we performed a theory-driven thematic analysis to investigate how reviewers apply code comprehension to navigate changes and provide feedback. Our findings confirm that code comprehension is fundamental to code review. We extend Letovsky's model to propose the Code Review Comprehension Model and demonstrate that code review, like code comprehension, relies on opportunistic strategies. These strategies typically begin with a context-building phase, followed by code inspection involving code reading, testing, and discussion management. To interpret and evaluate the proposed change, reviewers construct a mental model of the change as an extension of their understanding of the overall software system and contrast mental representations of expected and ideal solutions against the actual implementation. Based on our findings, we discuss how review tools and practices can better support reviewers in employing their strategies and in forming understanding. Data and material: https://doi.org/10.5281/zenodo.14748996",
-    "authors": [
-      "Pavlína Wurzel Gonçalves",
-      "Pooja Rani",
-      "Margaret-Anne Storey",
-      "Diomidis Spinellis",
-      "Alberto Bacchelli"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2503.21455v1",
-    "year": "2025",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "Quo Vadis, Code Review? Exploring the Future of Code Review",
-    "abstract": "Context: Code review has long been a core practice in collaborative software engineering. As automation becomes increasingly embedded in development workflows, the role and functioning of code review are subject to change.\n  Objective: This study explores how professional developers anticipate the evolution of code review and identifies emerging tensions reflected in these expectations.\n  Method: We conducted a cross-sectional survey with 100 developers across five software-driven companies. The survey captured estimates of current review time and reviewed artifacts, as well as anticipated changes over a five-year horizon. Open-ended questions invited reflections on the future of code review. Quantitative responses were analyzed descriptively, and open-ended responses were independently coded by multiple researchers using thematic analysis to identify recurring patterns in participant responses.\n  Results: Practitioners expect code review to remain essential, anticipating stable or increased time investment and a broader range of reviewed artifacts over the next five years. In open-ended responses, many participants explicitly referenced AI and large language models (LLMs), describing increasing automation in both code authoring and reviewing, including scenarios in which automated systems operate in both roles.\n  Conclusion: Our analysis suggests emerging tensions concerning understanding, accountability, and trust in automation-mediated code review. These tensions provide early empirical signals of socio-technical challenges and position code review as a concrete setting for examining the implications of LLM integration in collaborative software engineering.",
-    "authors": [
-      "Michael Dorner",
-      "Andreas Bauer",
-      "Darja Šmite",
-      "Lukas Thode",
-      "Daniel Mendez",
-      "Ricardo Britto",
-      "Stephan Lukasczyk",
-      "Ehsan Zabardast",
-      "Michael Kormann"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2508.06879v5",
-    "year": "2025",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "Towards Automating Code Review Activities",
-    "abstract": "Code reviews are popular in both industrial and open source projects. The benefits of code reviews are widely recognized and include better code quality and lower likelihood of introducing bugs. However, since code review is a manual activity it comes at the cost of spending developers' time on reviewing their teammates' code.\n  Our goal is to make the first step towards partially automating the code review process, thus, possibly reducing the manual costs associated with it. We focus on both the contributor and the reviewer sides of the process, by training two different Deep Learning architectures. The first one learns code changes performed by developers during real code review activities, thus providing the contributor with a revised version of her code implementing code transformations usually recommended during code review before the code is even submitted for review. The second one automatically provides the reviewer commenting on a submitted code with the revised code implementing her comments expressed in natural language.\n  The empirical evaluation of the two models shows that, on the contributor side, the trained model succeeds in replicating the code transformations applied during code reviews in up to 16% of cases. On the reviewer side, the model can correctly implement a comment provided in natural language in up to 31% of cases. While these results are encouraging, more research is needed to make these models usable by developers.",
-    "authors": [
-      "Rosalia Tufano",
-      "Luca Pascarella",
-      "Michele Tufano",
-      "Denys Poshyvanyk",
-      "Gabriele Bavota"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2101.02518v4",
-    "year": "2021",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "A Systematic Literature Review of Automated ICD Coding and Classification Systems using Discharge Summaries",
-    "abstract": "Codification of free-text clinical narratives have long been recognised to be beneficial for secondary uses such as funding, insurance claim processing and research. The current scenario of assigning codes is a manual process which is very expensive, time-consuming and error prone. In recent years, many researchers have studied the use of Natural Language Processing (NLP), related Machine Learning (ML) and Deep Learning (DL) methods and techniques to resolve the problem of manual coding of clinical narratives and to assist human coders to assign clinical codes more accurately and efficiently. This systematic literature review provides a comprehensive overview of automated clinical coding systems that utilises appropriate NLP, ML and DL methods and techniques to assign ICD codes to discharge summaries. We have followed the Preferred Reporting Items for Systematic Reviews and Meta-Analyses(PRISMA) guidelines and conducted a comprehensive search of publications from January, 2010 to December 2020 in four academic databases- PubMed, ScienceDirect, Association for Computing Machinery(ACM) Digital Library, and the Association for Computational Linguistics(ACL) Anthology. We reviewed 7,556 publications; 38 met the inclusion criteria. This review identified: datasets having discharge summaries; NLP techniques along with some other data extraction processes, different feature extraction and embedding techniques. To measure the performance of classification methods, different evaluation metrics are used. Lastly, future research directions are provided to scholars who are interested in automated ICD code assignment. Efforts are still required to improve ICD code prediction accuracy, availability of large-scale de-identified clinical corpora with the latest version of the classification system. This can be a platform to guide and share knowledge with the less experienced coders and researchers.",
-    "authors": [
-      "Rajvir Kaur",
-      "Jeewani Anupama Ginige",
-      "Oliver Obst"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2107.10652v1",
-    "year": "2021",
-    "categories": [
-      "cs.CL",
-      "cs.LG"
-    ]
-  },
-  {
-    "title": "Code Review For and By Scientists",
-    "abstract": "We describe two pilot studies of code review by and for scientists. Our principal findings are that scientists are enthusiastic, but need to be shown code review in action, and that just-in-time review of small code changes is more likely to succeed than large-scale end-of-work reviews.",
-    "authors": [
-      "Marian Petre",
-      "Greg Wilson"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/1407.5648v2",
-    "year": "2014",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "On The Effect Of Code Review On Code Smells",
-    "abstract": "Code smells are symptoms of poor design quality. Since code review is a process that also aims at improving code quality, we investigate whether and how code review influences the severity of code smells. In this study, we analyze more than 21,000 code reviews belonging to seven Java open-source projects; we find that active and participated code reviews have a significant influence on the likelihood of reducing the severity of code smells. This result seems to confirm the expectations around code review's influence on code quality. However, by manually investigating 365 cases in which the severity of a code smell in a file was reduced with a review, we found that-in 95% of the cases-the reduction was a side effect of changes that reviewers requested on matters unrelated to code smells. Data and materials [https://doi.org/10.5281/zenodo.3588501].",
-    "authors": [
-      "Luca Pascarella",
-      "Davide Spadini",
-      "Fabio Palomba",
-      "Alberto Bacchelli"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/1912.10098v1",
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/e457eb18fa83b6916500c97bc6b568d44e0cca8c",
     "year": "2019",
-    "categories": [
-      "cs.SE"
-    ]
+    "categories": []
   },
   {
-    "title": "Automating Code Review: A Systematic Literature Review",
-    "abstract": "Code Review consists in assessing the code written by teammates with the goal of increasing code quality. Empirical studies documented the benefits brought by such a practice that, however, has its cost to pay in terms of developers' time. For this reason, researchers have proposed techniques and tools to automate code review tasks such as the reviewers selection (i.e., identifying suitable reviewers for a given code change) or the actual review of a given change (i.e., recommending improvements to the contributor as a human reviewer would do). Given the substantial amount of papers recently published on the topic, it may be challenging for researchers and practitioners to get a complete overview of the state-of-the-art.\n  We present a systematic literature review (SLR) featuring 119 papers concerning the automation of code review tasks. We provide: (i) a categorization of the code review tasks automated in the literature; (ii) an overview of the under-the-hood techniques used for the automation, including the datasets used for training data-driven techniques; (iii) publicly available techniques and datasets used for their evaluation, with a description of the evaluation metrics usually adopted for each task.\n  The SLR is concluded by a discussion of the current limitations of the state-of-the-art, with insights for future research directions.",
+    "title": "LVQ: A Lightweight Verifiable Query Approach for Transaction History in Bitcoin",
+    "abstract": "In the Bitcoin system, transaction history of an address can be useful in many scenarios, such as the balance calculation and behavior analysis. However, it is non-trivial for a common user who runs a light node to fetch historical transactions, since it only stores headers without any transaction details. It usually has to request a full node who stores the complete data. Validation of these query results is critical and mainly involves two aspects: correctness and completeness. The former can be implemented via Merkle branch easily, while the latter is quite difficult in the Bitcoin protocol. To enable the completeness validation, a strawman design is proposed, which simply includes the BF (Bloom filter) in the headers. However, since the size of BF is about KB, light nodes in the strawman will suffer from the incremental storage burden. What’s worse, an integrated block must be transmitted when BF cannot work, resulting in large network overhead. In this paper, we propose LVQ, the first lightweight verifiable query approach that reduces the storage requirement and network overhead at the same time. To be specific, by only storing the hash of BF in headers, LVQ keeps data stored by light nodes being little. Besides, LVQ introduces a novel BMT (BF integrated Merkle Tree) structure for lightweight query, which can eliminate the communication costs of query results by merging the multiple successive BFs. Furthermore, when BF cannot work, a lightweight proof by SMT (Sorted Merkle Tree) is exploited to further reduce the network overhead. The security analysis confirms LVQ’s ability to enable both correctness and completeness validation. In addition, the experimental results demonstrate its lightweight.",
     "authors": [
-      "Rosalia Tufano",
-      "Gabriele Bavota"
+      "Xiaohai Dai",
+      "Jiang Xiao",
+      "Wenhui Yang",
+      "Chaofan Wang",
+      "Jian Chang",
+      "Rui Han",
+      "Hai Jin"
     ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2503.09510v1",
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/7db25d2f725cd5604e854553293850a37c9e5db5",
+    "year": "2020",
+    "categories": []
+  },
+  {
+    "title": "Dissection of Bitcoin’s multiscale bubble history from January 2012 to February 2018",
+    "abstract": "We present a detailed bubble analysis of the Bitcoin to US Dollar price dynamics from January 2012 to February 2018. We introduce a robust automatic peak detection method that classifies price time series into periods of uninterrupted market growth (drawups) and regimes of uninterrupted market decrease (drawdowns). In combination with the Lagrange Regularization Method for detecting the beginning of a new market regime, we identify three major peaks and 10 additional smaller peaks, that have punctuated the dynamics of Bitcoin price during the analysed time period. We explain this classification of long and short bubbles by a number of quantitative metrics and graphs to understand the main socio-economic drivers behind the ascent of Bitcoin over this period. Then, a detailed analysis of the growing risks associated with the three long bubbles using the Log-Periodic Power-Law Singularity (LPPLS) model is based on the LPPLS Confidence Indicators, defined as the fraction of qualified fits of the LPPLS model over multiple time windows. Furthermore, for various fictitious ‘present’ times t2 before the crashes, we employ a clustering method to group the predicted critical times tc of the LPPLS fits over different time scales, where tc is the most probable time for the ending of the bubble. Each cluster is proposed as a plausible scenario for the subsequent Bitcoin price evolution. We present these predictions for the three long bubbles and the four short bubbles that our time scale of analysis was able to resolve. Overall, our predictive scheme provides useful information to warn of an imminent crash risk.",
+    "authors": [
+      "J-C Gerlach",
+      "Guilherme Demos",
+      "D. Sornette"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/34d626443cf02aa44e3b0bea2f7154518e2ee995",
+    "year": "2018",
+    "categories": []
+  },
+  {
+    "title": "Unveiling Decentralization: A Comprehensive Review of Technologies, Comparison, Challenges in Bitcoin, Ethereum, and Solana Blockchain",
+    "abstract": "Bitcoin stands as a groundbreaking development in decentralized exchange throughout human history, enabling transactions without the need for intermediaries. By leveraging cryptographic proof mechanisms, Bitcoin eliminates the reliance on third-party financial institutions. Ethereum, ranking as the second-largest cryptocurrency by market capitalization, builds upon Bitcoin’s groundwork by introducing smart contracts and decentralized applications. Ethereum strives to surpass the limitations of Bitcoin’s scripting language, achieving full Turing-completeness for executing intricate computational tasks. Solana introduces a novel architecture for high-performance blockchain, employing timestamps to validate decentralized transactions and significantly boosting block creation throughput. Through a comprehensive examination of these blockchain technologies, their distinctions, and the associated challenges, this paper aims to offer valuable insights and comparative analysis for both researchers and practitioners.",
+    "authors": [
+      "Han Song",
+      "Yihao Wei",
+      "Zhongche Qu",
+      "Weihan Wang"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/509d4a3765d9a6f558616b3638eda5bc55dbf6ee",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "Bitcoin Supply, Demand, and Price Dynamics",
+    "abstract": "We refine a bottom-up, quantity-clearing framework of Bitcoin price formation that couples its fixed 21-million-coin cap with plausible demand growth and execution behavior. This approach relies on first-principles economic supply-and-demand dynamics rather than assumptions about anticipated Bitcoin price appreciation, its price history, or its potential effectiveness in demonetizing other asset classes. We considered five key high-level factors that may affect price determination: level of market demand; intertemporal investment preferences; fiat-denominated withdrawal sensitivity; initial liquid supply; and daily withdrawal levels from liquid supply. With a goal of both increasing understanding of the impacts of price drivers and developing probabilistic forecasts, we show two models: (1) a baseline to assess the impacts of parameter changes, alone and in combination, on Bitcoin price trajectories and liquid supply over time and (2) a Monte Carlo simulation that incorporates uncertainty across a range of uncertain parameterizations and presents probabilistic price and liquid supply forecasts to 2036. Our baseline model highlighted the importance of liquid supply and withdrawal sensitivity in price impacts. The Monte Carlo simulation results suggest a 50% likelihood that Bitcoin price will exceed USD 5.17 M by April 2036. Generally, prices from the low single millions to the low tens of millions per Bitcoin by 2036 emerge under broad parameter sets; hyperbolic paths to higher price levels are relatively rare and concentrate when liquid supply falls near or below BTC 2 M and withdrawal sensitivity is low. Our results help locate where right-tail risk and disorderly market outcomes concentrate and suggest that policy tools are available to help guide trajectories.",
+    "authors": [
+      "Murray A. Rudd",
+      "Dennis Porter"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/bd8f2d655b5fe42e1abe73949fb428ac4be648b0",
     "year": "2025",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "Towards debiasing code review support",
-    "abstract": "Cognitive biases appear during code review. They significantly impact the creation of feedback and how it is interpreted by developers. These biases can lead to illogical reasoning and decision-making, violating one of the main hypotheses supporting code review: developers' accurate and objective code evaluation. This paper explores harmful cases caused by cognitive biases during code review and potential solutions to avoid such cases or mitigate their effects. In particular, we design several prototypes covering confirmation bias and decision fatigue. We rely on a developer-centered design approach by conducting usability tests and validating the prototype with a user experience questionnaire (UEQ) and participants' feedback. We show that some techniques could be implemented in existing code review tools as they are well accepted by reviewers and help prevent behavior detrimental to code review. This work provides a solid first approach to treating cognitive bias in code review.",
-    "authors": [
-      "Tobias Jetzen",
-      "Xavier Devroey",
-      "Nicolas Matton",
-      "Benoît Vanderose"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2407.01407v1",
-    "year": "2024",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "CodeAgent: Autonomous Communicative Agents for Code Review",
-    "abstract": "Code review, which aims at ensuring the overall quality and reliability of software, is a cornerstone of software development. Unfortunately, while crucial, Code review is a labor-intensive process that the research community is looking to automate. Existing automated methods rely on single input-output generative models and thus generally struggle to emulate the collaborative nature of code review. This work introduces \\tool{}, a novel multi-agent Large Language Model (LLM) system for code review automation. CodeAgent incorporates a supervisory agent, QA-Checker, to ensure that all the agents' contributions address the initial review question. We evaluated CodeAgent on critical code review tasks: (1) detect inconsistencies between code changes and commit messages, (2) identify vulnerability introductions, (3) validate code style adherence, and (4) suggest code revision. The results demonstrate CodeAgent's effectiveness, contributing to a new state-of-the-art in code review automation. Our data and code are publicly available (\\url{https://github.com/Code4Agent/codeagent}).",
-    "authors": [
-      "Xunzhu Tang",
-      "Kisub Kim",
-      "Yewei Song",
-      "Cedric Lothritz",
-      "Bei Li",
-      "Saad Ezzini",
-      "Haoye Tian",
-      "Jacques Klein",
-      "Tegawende F. Bissyande"
-    ],
-    "source": "arXiv",
-    "url": "https://arxiv.org/abs/2402.02172v5",
-    "year": "2024",
-    "categories": [
-      "cs.SE"
-    ]
-  },
-  {
-    "title": "BitsAI-CR: Automated Code Review via LLM in Practice",
-    "abstract": "Code review remains a critical yet resource-intensive process in software development, particularly challenging in large-scale industrial environments. While Large Language Models (LLMs) show promise for automating code review, existing solutions face significant limitations in precision and practicality. This paper presents BitsAI-CR, an innovative framework that enhances code review through a two-stage approach combining RuleChecker for initial issue detection and ReviewFilter for precision verification. The system is built upon a comprehensive taxonomy of review rules and implements a data flywheel mechanism that enables continuous performance improvement through structured feedback and evaluation metrics. Our approach introduces an Outdated Rate metric that can reflect developers' actual adoption of review comments, enabling automated evaluation and systematic optimization at scale. Empirical evaluation demonstrates BitsAI-CR's effectiveness, achieving 75.0% precision in review comment generation. For the Go language which has predominant usage at ByteDance, we maintain an Outdated Rate of 26.7%. The system has been successfully deployed at ByteDance, serving over 12,000 Weekly Active Users (WAU). Our work provides valuable insights into the practical application of automated code review and offers a blueprint for organizations seeking to implement automated code reviews at scale.",
-    "authors": [
-      "Tao Sun",
-      "Jian Xu",
-      "Yuanpeng Li",
-      "Zhaodong Yan",
-      "Ge Zhang",
-      "Lintao Xie",
-      "Lu Geng",
-      "Zheng Wang",
-      "Yueyan Chen",
-      "Qin Lin",
-      "Wenbo Duan",
-      "Kaixin Sui",
-      "Yuanshuo Zhu"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/a7f1ff66bd58da658204e77d0a64eb6be12aeffc",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Combining Large Language Models with Static Analyzers for Code Review Generation",
-    "abstract": "Code review is a crucial but often complex, subjective, and time-consuming activity in software development. Over the past decades, significant efforts have been made to automate this process. Early approaches focused on knowledge-based systems (KBS) that apply rule-based mechanisms to detect code issues, providing precise feedback but struggling with complex, context-dependent cases. More recent work has shifted toward fine-tuning pre-trained language models for code review, enabling broader issue coverage but often at the expense of precision. In this paper, we propose a hybrid approach that combines the strengths of KBS and learning-based systems (LBS) to generate high-quality, comprehensive code reviews. Our method integrates knowledge at three distinct stages of the language model pipeline: during data preparation (DataAugmented Training, DAT), at inference (Retrieval-Augmented Generation, RAG), and after inference (Naive Concatenation of Outputs, NCO). We empirically evaluate our combination strategies against standalone KBS and LBS fine-tuned on a realworld dataset. Our results show that these hybrid strategies enhance the relevance, completeness, and overall quality of review comments, effectively bridging the gap between rule-based tools and deep learning models.",
-    "authors": [
-      "Imen Jaoua",
-      "O. Sghaier",
-      "H. Sahraoui"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/bbab5cffe66f0b30ad7dfa071b4f3701f250a902",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Too Noisy To Learn: Enhancing Data Quality for Code Review Comment Generation",
-    "abstract": "Code review is an important practice in software development, yet it is time-consuming and requires substantial effort. While open-source datasets have been used to train neural models for automating code review tasks, including review comment generation, these datasets contain a significant amount of noisy comments (e.g., vague or non-actionable feedback) that persist despite cleaning methods using heuristics and machine learning approaches. Such remaining noise may lead models to generate low-quality review comments, yet removing them requires a complex semantic understanding of both code changes and natural language comments. In this paper, we investigate the impact of such noise on review comment generation and propose a novel approach using large language models (LLMs) to further clean these datasets. Based on an empirical study on a large-scale code review dataset, our LLM-based approach achieves $66-85 \\%$ precision in detecting valid comments. Using the predicted valid comments to fine-tune the state-of-the-art code review models (cleaned models) can generate review comments that are $13.0 \\%-12.4 \\%$ more similar to valid human-written comments than the original models. We also find that the cleaned models can generate more informative and relevant comments than the original models. Our findings underscore the critical impact of dataset quality on the performance of review comment generation. We advocate for further research into cleaning training data to enhance the practical utility and quality of automated code review.",
-    "authors": [
-      "Chunhua Liu",
-      "H. Lin",
-      "Patanamon Thongtanunam"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/5c029b4dce8549cc697189e9dafe7d828bb210c6",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Automating code review activities by large-scale pre-training",
-    "abstract": "Code review is an essential part to software development lifecycle since it aims at guaranteeing the quality of codes. Modern code review activities necessitate developers viewing, understanding and even running the programs to assess logic, functionality, latency, style and other factors. It turns out that developers have to spend far too much time reviewing the code of their peers. Accordingly, it is in significant demand to automate the code review process. In this research, we focus on utilizing pre-training techniques for the tasks in the code review scenario. We collect a large-scale dataset of real-world code changes and code reviews from open-source projects in nine of the most popular programming languages. To better understand code diffs and reviews, we propose CodeReviewer, a pre-trained model that utilizes four pre-training tasks tailored specifically for the code review scenario. To evaluate our model, we focus on three key tasks related to code review activities, including code change quality estimation, review comment generation and code refinement. Furthermore, we establish a high-quality benchmark dataset based on our collected data for these three tasks and conduct comprehensive experiments on it. The experimental results demonstrate that our model outperforms the previous state-of-the-art pre-training approaches in all tasks. Further analysis show that our proposed pre-training tasks and the multilingual pre-training dataset benefit the model on the understanding of code changes and reviews.",
-    "authors": [
-      "Zhiyu Li",
-      "Shuai Lu",
-      "Daya Guo",
-      "Nan Duan",
-      "Shailesh Jannu",
-      "Grant Jenks",
-      "Deep Majumder",
-      "Jared Green",
-      "Alexey Svyatkovskiy",
-      "Shengyu Fu",
-      "Neel Sundaresan"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/b893513bf54c534adda24da8124ea904e0541ace",
-    "year": "2022",
-    "categories": []
-  },
-  {
-    "title": "Fine-tuning and prompt engineering for large language models-based code review automation",
-    "abstract": "Context: The rapid evolution of Large Language Models (LLMs) has sparked significant interest in leveraging their capabilities for automating code review processes. Prior studies often focus on developing LLMs for code review automation, yet require expensive resources, which is infeasible for organizations with limited budgets and resources. Thus, fine-tuning and prompt engineering are the two common approaches to leveraging LLMs for code review automation. Objective: We aim to investigate the performance of LLMs-based code review automation based on two contexts, i.e., when LLMs are leveraged by fine-tuning and prompting. Fine-tuning involves training the model on a specific code review dataset, while prompting involves providing explicit instructions to guide the model's generation process without requiring a specific code review dataset. Method: We leverage model fine-tuning and inference techniques (i.e., zero-shot learning, few-shot learning and persona) on LLMs-based code review automation. In total, we investigate 12 variations of two LLMs-based code review automation (i.e., GPT- 3.5 and Magicoder), and compare them with the Guo et al.'s approach and three existing code review automation approaches. Results: The fine-tuning of GPT 3.5 with zero-shot learning helps GPT-3.5 to achieve 73.17% -74.23% higher EM than the Guo et al.'s approach. In addition, when GPT-3.5 is not fine-tuned, GPT-3.5 with few-shot learning achieves 46.38% - 659.09% higher EM than GPT-3.5 with zero-shot learning. Conclusions: Based on our results, we recommend that (1) LLMs for code review automation should be fine-tuned to achieve the highest performance; and (2) when data is not sufficient for model fine-tuning (e.g., a cold-start problem), few-shot learning without a persona should be used for LLMs for code review automation.",
-    "authors": [
-      "Chanathip Pornprasit",
-      "C. Tantithamthavorn"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/99fb2bc80e7593743cd4105f6e52a483e9b63d7f",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "AI-powered Code Review with LLMs: Early Results",
-    "abstract": "In this paper, we present a novel approach to improving software quality and efficiency through a Large Language Model (LLM)-based model designed to review code and identify potential issues. Our proposed LLM-based AI agent model is trained on large code repositories. This training includes code reviews, bug reports, and documentation of best practices. It aims to detect code smells, identify potential bugs, provide suggestions for improvement, and optimize the code. Unlike traditional static code analysis tools, our LLM-based AI agent has the ability to predict future potential risks in the code. This supports a dual goal of improving code quality and enhancing developer education by encouraging a deeper understanding of best practices and efficient coding techniques. Furthermore, we explore the model's effectiveness in suggesting improvements that significantly reduce post-release bugs and enhance code review processes, as evidenced by an analysis of developer sentiment toward LLM feedback. For future work, we aim to assess the accuracy and efficiency of LLM-generated documentation updates in comparison to manual methods. This will involve an empirical study focusing on manually conducted code reviews to identify code smells and bugs, alongside an evaluation of best practice documentation, augmented by insights from developer discussions and code reviews. Our goal is to not only refine the accuracy of our LLM-based tool but also to underscore its potential in streamlining the software development lifecycle through proactive code improvement and education.",
-    "authors": [
-      "Zeeshan Rasheed",
-      "Malik Abdul Sami",
-      "Muhammad Waseem",
-      "Kai-Kristian Kemell",
-      "Xiaofeng Wang",
-      "Anh Nguyen",
-      "Kari Systä",
-      "Pekka Abrahamsson"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/db56fcaccb77418cae5ee2c439f8821a99a64815",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Code Review Automation: Strengths and Weaknesses of the State of the Art",
-    "abstract": "The automation of code review has been tackled by several researchers with the goal of reducing its cost. The adoption of deep learning in software engineering pushed the automation to new boundaries, with techniques <italic>imitating</italic> developers in generative tasks, such as commenting on a code change as a reviewer would do or addressing a reviewer's comment by modifying code. The performance of these techniques is usually assessed through quantitative metrics, <italic>e.g.,</italic> the percentage of instances in the test set for which correct predictions are generated, leaving many open questions on the techniques’ capabilities. For example, knowing that an approach is able to correctly address a reviewer's comment in 10% of cases is of little value without knowing what was asked by the reviewer: What if in all successful cases the code change required to address the comment was just the removal of an empty line? In this paper we aim at characterizing the cases in which three code review automation techniques tend to succeed or fail in the two above-described tasks. The study has a strong qualitative focus, with <inline-formula><tex-math notation=\"LaTeX\">$\\sim$</tex-math><alternatives><mml:math><mml:mo>∼</mml:mo></mml:math><inline-graphic xlink:href=\"bavota-ieq1-3348172.gif\"/></alternatives></inline-formula>105 man-hours of manual inspection invested in manually analyzing correct and wrong predictions generated by the three techniques, for a total of 2,291 inspected predictions. The output of this analysis are two taxonomies reporting, for each of the two tasks, the types of code changes on which the experimented techniques tend to succeed or to fail, pointing to areas for future work. A result of our manual analysis was also the identification of several issues in the datasets used to train and test the experimented techniques. Finally, we assess the importance of researching in techniques specialized for code review automation by comparing their performance with ChatGPT, a general purpose large language model, finding that ChatGPT struggles in commenting code as a human reviewer would do.",
-    "authors": [
-      "Rosalia Tufano",
-      "Ozren Dabić",
-      "A. Mastropaolo",
-      "Matteo Ciniselli",
-      "G. Bavota"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/394a5e01539336b54998b335466047333c27a6c5",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Fine-Tuning Large Language Models to Improve Accuracy and Comprehensibility of Automated Code Review",
-    "abstract": "As code review is a tedious and costly software quality practice, researchers have proposed several machine learning-based methods to automate the process. The primary focus has been on accuracy, that is, how accurately the algorithms are able to detect issues in the code under review. However, human intervention still remains inevitable since results produced by automated code review are not 100% correct. To assist human reviewers in making their final decisions on automatically generated review comments, the comprehensibility of the comments underpinned by accurate localization and relevant explanations for the detected issues with repair suggestions is paramount. However, this has largely been neglected in the existing research. Large language models (LLMs) have the potential to generate code review comments that are more readable and comprehensible by humans, thanks to their remarkable processing and reasoning capabilities. However, even mainstream LLMs perform poorly in detecting the presence of code issues because they have not been specifically trained for this binary classification task required in code review. In this article, we contribute Comprehensibility of Automated Code Review using Large Language Models (Carllm), a novel fine-tuned LLM that has the ability to improve not only the accuracy but, more importantly, the comprehensibility of automated code review, as compared to state-of-the-art pre-trained models and general LLMs.",
-    "authors": [
-      "Yongda Yu",
-      "Guoping Rong",
-      "Haifeng Shen",
-      "He Zhang",
-      "Dong Shao",
-      "Min Wang",
-      "Zhao Wei",
-      "Yong Xu",
-      "Juhong Wang"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/aaa631bf0b8c2ec1ed09835e9bfe1e13c2b7684d",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "An Empirical Study of Static Analysis Tools for Secure Code Review",
-    "abstract": "Early identification of security issues in software development is vital to minimize their unanticipated impacts. Code review is a widely used manual analysis method that aims to uncover security issues along with other coding issues in software projects. While some studies suggest that automated static application security testing tools (SASTs) could enhance security issue identification, there is limited understanding of SAST’s practical effectiveness in supporting secure code review. Moreover, most SAST studies rely on synthetic or fully vulnerable versions of the subject program, which may not accurately represent real-world code changes in the code review process. To address this gap, we study C/C++ SASTs using a dataset of actual code changes that contributed to exploitable vulnerabilities. Beyond SAST’s effectiveness, we quantify potential benefits when changed functions are prioritized by SAST warnings. Our dataset comprises 319 real-world vulnerabilities from 815 vulnerability-contributing commits (VCCs) in 92 C and C++ projects. The result reveals that a single SAST can produce warnings in vulnerable functions of 52% of VCCs. Prioritizing changed functions with SAST warnings can improve accuracy (i.e., 12% of precision and 5.6% of recall) and reduce Initial False Alarm (lines of code in non-vulnerable functions inspected until the first vulnerable function) by 13%. Nevertheless, at least 76% of the warnings in vulnerable functions are irrelevant to the VCCs, and 22% of VCCs remain undetected due to limitations of SAST rules. Our findings highlight the benefits and the remaining gaps of SAST-supported secure code reviews and challenges that should be addressed in future work.",
-    "authors": [
-      "Wachiraphan Charoenwet",
-      "Patanamon Thongtanunam",
-      "Van-Thuan Pham",
-      "Christoph Treude"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/1df322ccad10197f844f5b93ab036e15729a78c2",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Resolving Code Review Comments with Machine Learning",
-    "abstract": "Code reviews are a critical part of the software development process, taking a significant amount of the code authors' and the code reviewers' time. As part of this process, the reviewer inspects the proposed code and asks the author for code changes through comments written in natural language. At Google, we see millions of reviewer comments per year, and authors require an average of ~60 minutes active shepherding time between sending changes for review and finally submitting the change. In our measurements, the required active work time that the code author must devote to address reviewer comments grows almost linearly with the number of comments. However, with machine learning (ML), we have an opportunity to automate and streamline the code-review process, e.g., by proposing code changes based on a comment's text. We describe our application of recent advances in large sequence models in a real-world setting to automatically resolve code-review comments in the day-to-day development workflow at Google. We present the evolution of this feature from an asynchronous generation of suggested edits after the reviewer sends feedback, to an interactive experience that suggests code edits to the reviewer at review time. In deployment, code-change authors at Google address 7.5% of all reviewer comments by applying an ML-suggested edit. The impact of this will be to reduce the time spent on code reviews by hundreds of thousands of engineer hours annually at Google scale. Unsolicited, very positive feedback highlights that the impact of ML-suggested code edits increases Googlers' productivity and allows them to focus on more creative and complex tasks.",
-    "authors": [
-      "Alexander Frömmgen",
-      "Jacob Austin",
-      "Peter Choy",
-      "Nimesh Ghelani",
-      "Lera Kharatyan",
-      "G. Surita",
-      "Elena Khrapko",
-      "Pascal Lamblin",
-      "Pierre-Antoine Manzagol",
-      "Marcus Revaj",
-      "Maxim Tabachnyk",
-      "Daniel Tarlow",
-      "Kevin Villela",
-      "Daniel Zheng",
-      "Petros Satish Chandra",
-      "Maniatis Google"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/b094498779d2d1dd1f2552133eab3046d36eb773",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "AI-Assisted Assessment of Coding Practices in Modern Code Review",
-    "abstract": "Modern code review is a process in which an incremental code contribution made by a code author is reviewed by one or more peers before it is committed to the version control system. An important element of modern code review is verifying that code contributions adhere to best practices. While some of these best practices can be automatically verified, verifying others is commonly left to human reviewers. This paper reports on the development, deployment, and evaluation of AutoCommenter, a system backed by a large language model that automatically learns and enforces coding best practices. We implemented AutoCommenter for four programming languages (C++, Java, Python, and Go) and evaluated its performance and adoption in a large industrial setting. Our evaluation shows that an end-to-end system for learning and enforcing coding best practices is feasible and has a positive impact on the developer workflow. Additionally, this paper reports on the challenges associated with deploying such a system to tens of thousands of developers and the corresponding lessons learned.",
-    "authors": [
-      "Manushree Vijayvergiya",
-      "M. Salawa",
-      "Ivan Budiselic",
-      "Dan Zheng",
-      "Pascal Lamblin",
-      "Marko Ivanković",
-      "Juanjo Carin",
-      "Mateusz Lewko",
-      "Jovan Andonov",
-      "Goran Petrović",
-      "Daniel Tarlow",
-      "Petros Maniatis",
-      "René Just"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/0f1ffabf3841a29ad675afcc4815c48b94caf08a",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "On the Use of ChatGPT for Code Review: Do Developers Like Reviews By ChatGPT?",
-    "abstract": "Code review is a critical but time-consuming process for ensuring code quality in modern software engineering. To alleviate the effort of reviewing source code, recent studies have investigated the possibility of automating the review process. Moreover, tools based on large language models such as ChatGPT are playing an increasingly important role in this vision. Understanding how these tools are used during code review can provide valuable insights for code review automation. This study investigates for what purposes developers use ChatGPT during code review and how developers react to the information and suggestions provided by ChatGPT. We manually analyze 229 review comments in 205 pull requests from 179 projects. We find that developers often use ChatGPT for outsourcing their work as frequently as asking for references. Moreover, we observe that only 30.7% of responses to the answers provided by ChatGPT are negative. We further analyze the reasons behind the negative reactions. Our results provide valuable insights for improving the effectiveness of LLMs in code reviews.",
-    "authors": [
-      "Miku Watanabe",
-      "Yutaro Kashiwa",
-      "Bin Lin",
-      "Toshiki Hirao",
-      "Ken'Ichi Yamaguchi",
-      "Hajimu Iida"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/04014eb4eb633be610edce0e125f307e8af097de",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Improving the Learning of Code Review Successive Tasks with Cross-Task Knowledge Distillation",
-    "abstract": "Code review is a fundamental process in software development that plays a pivotal role in ensuring code quality and reducing the likelihood of errors and bugs. However, code review can be complex, subjective, and time-consuming. Quality estimation, comment generation, and code refinement constitute the three key tasks of this process, and their automation has traditionally been addressed separately in the literature using different approaches. In particular, recent efforts have focused on fine-tuning pre-trained language models to aid in code review tasks, with each task being considered in isolation. We believe that these tasks are interconnected, and their fine-tuning should consider this interconnection. In this paper, we introduce a novel deep-learning architecture, named DISCOREV, which employs cross-task knowledge distillation to address these tasks simultaneously. In our approach, we utilize a cascade of models to enhance both comment generation and code refinement models. The fine-tuning of the comment generation model is guided by the code refinement model, while the fine-tuning of the code refinement model is guided by the quality estimation model. We implement this guidance using two strategies: a feedback-based learning objective and an embedding alignment objective. We evaluate DISCOREV by comparing it to state-of-the-art methods based on independent training and fine-tuning. Our results show that our approach generates better review comments, as measured by the BLEU score, as well as more accurate code refinement according to the CodeBLEU score.",
-    "authors": [
-      "Oussama Ben Sghaier",
-      "H. Sahraoui"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/6fdc28beb6ba7ff47d1be0616c597f92736d9a8c",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Using Pre-Trained Models to Boost Code Review Automation",
-    "abstract": "Code review is a practice widely adopted in open source and industrial projects. Given the non-negligible cost of such a process, researchers started investigating the possibility of automating specific code review tasks. We recently proposed Deep Learning (DL) models targeting the automation of two tasks: the first model takes as input a code submitted for review and implements in it changes likely to be recommended by a reviewer; the second takes as input the submitted code and a reviewer comment posted in natural language and automatically implements the change required by the reviewer. While the preliminary results we achieved are encouraging, both models had been tested in rather simple code review scenarios, substantially simplifying the targeted problem. This was also due to the choices we made when designing both the technique and the experiments. In this paper, we build on top of that work by demonstrating that a pre-trained Text-To-Text Transfer Transformer (T5) model can outperform previous DL models for automating code review tasks. Also, we conducted our experiments on a larger and more realistic (and challenging) dataset of code review activities.",
-    "authors": [
-      "Rosalia Tufano",
-      "S. Masiero",
-      "A. Mastropaolo",
-      "L. Pascarella",
-      "D. Poshyvanyk",
-      "G. Bavota"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/c7cbbbdba2c942180675c2a69035e506d9378679",
-    "year": "2022",
-    "categories": []
-  },
-  {
-    "title": "LLaMA-Reviewer: Advancing Code Review Automation with Large Language Models through Parameter-Efficient Fine-Tuning",
-    "abstract": "The automation of code review activities, a long-standing pursuit in software engineering, has been primarily addressed by numerous domain-specific pre-trained models. Despite their success, these models frequently demand extensive resources for pre-training from scratch. In contrast, Large Language Models (LLMs) provide an intriguing alternative, given their remarkable capabilities when supplemented with domain-specific knowledge. However, their potential for automating code review tasks remains largely unexplored.In response to this research gap, we present LLaMA-Reviewer, an innovative framework that leverages the capabilities of LLaMA, a popular LLM, in the realm of code review. Mindful of resource constraints, this framework employs parameter-efficient fine-tuning (PEFT) methods, delivering high performance while using less than 1% of trainable parameters.An extensive evaluation of LLaMA-Reviewer is conducted on two diverse, publicly available datasets. Notably, even with the smallest LLaMA base model consisting of 6.7B parameters and a limited number of tuning epochs, LLaMA-Reviewer equals the performance of existing code-review-focused models.The ablation experiments provide insights into the influence of various fine-tuning process components, including input representation, instruction tuning, and different PEFT methods. To foster continuous progress in this field, the code and all PEFT-weight plugins have been made open-source.",
-    "authors": [
-      "Jun Lu",
-      "Lei Yu",
-      "Xiaojia Li",
-      "Li Yang",
-      "Chun Zuo"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/d955956378b40b23fa4b34098662c54a3b1fd64d",
-    "year": "2023",
-    "categories": []
-  },
-  {
-    "title": "What makes a code review useful to OpenDev developers? An empirical investigation",
-    "abstract": "Context Due to the association of significant efforts, even a minor improvement in the effectiveness of Code Reviews(CR) can incur significant savings for a software development organization. Objective This study aims to develop a finer grain understanding of what makes a code review comment useful to OSS developers, to what extent a code review comment is considered useful to them, and how various contextual and participant-related factors influence its degree of usefulness . Method On this goal, we have conducted a three-stage mixed-method study. We randomly selected 2,500 CR comments from the OpenDev Nova project and manually categorized the comments. We designed a survey of OpenDev developers to better understand their perspectives on useful CRs. Combining our survey-obtained scores with our manually labeled dataset, we trained two regression models - one to identify factors that influence the usefulness of CR comments and the other to identify factors that improve the odds of ‘Functional’ defect identification over the others. Results The results of our study suggest that a CR comment’s usefulness is dictated not only by its technical contributions, such as defect findings or quality improvement tips but also by its linguistic characteristics, such as comprehensibility and politeness. While a reviewer’s coding experience is positively associated with CR usefulness, the number of mutual reviews, comment volume in a file, the total number of lines added /modified, and CR interval have the opposite associations. While authorship and reviewership experiences for the files under review have been the most popular attributes for reviewer recommendation systems, we do not find any significant association of those attributes with CR usefulness. Conclusion We recommend discouraging frequent code review associations between two individuals as such associations may decrease CR usefulness. We also recommend authoring CR comments in a constructive and empathetic tone. As several of our results deviate from prior studies, we recommend more investigations to identify context-specific attributes to build reviewer recommendation models.",
-    "authors": [
-      "A. K. Turzo",
-      "A. Bosu"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/d07c990b5bc1aa7397278e74e1ff122262571019",
-    "year": "2023",
-    "categories": []
-  },
-  {
-    "title": "Generation-based Code Review Automation: How Far Are Weƒ",
-    "abstract": "Code review is an effective software quality assurance activity; however, it is labor-intensive and time-consuming. Thus, a number of generation-based automatic code review (ACR) approaches have been proposed recently, which leverage deep learning techniques to automate various activities in the code review process (e.g., code revision generation and review comment generation).We find the previous works carry three main limitations. First, the ACR approaches have been shown to be beneficial in each work, but those methods are not comprehensively compared with each other to show their superiority over their peer ACR approaches. Second, general-purpose pre-trained models such as CodeT5 are proven to be effective in a wide range of Software Engineering (SE) tasks. However, no prior work has investigated the effectiveness of these models in ACR tasks yet. Third, prior works heavily rely on the Exact Match (EM) metric which only focuses on the perfect predictions and ignores the positive progress made by incomplete answers. To fill such a research gap, we conduct a comprehensive study by comparing the effectiveness of recent ACR tools as well as the general-purpose pre-trained models. The results show that a general-purpose pre-trained model CodeT5 can outperform other models in most cases. Specifically, CodeT5 outperforms the prior state-of-the-art by 13.4%–38.9% in two code revision generation tasks. In addition, we introduce a new metric namely Edit Progress (EP) to quantify the partial progress made by ACR tools. The results show that the rankings of models for each task could be changed according to whether EM or EP is being utilized. Lastly, we derive several insightful lessons from the experimental results and reveal future research directions for generation-based code review automation.",
-    "authors": [
-      "Xin Zhou",
-      "Kisub Kim",
-      "Bowen Xu",
-      "Donggyun Han",
-      "Junda He",
-      "David Lo"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/4e97303aeb299ee736b1b8c29cef046212690354",
-    "year": "2023",
     "categories": []
   }
 ]
