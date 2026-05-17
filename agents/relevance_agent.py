@@ -85,6 +85,7 @@ TOPIC_EXPANSIONS = {
 SELECTION_THRESHOLD = 30.0
 SUMMARY_PATH = "data/processed/summary_result.json"
 RELEVANCE_PATH = "data/processed/relevance_result.json"
+PIPELINE_CONTEXT_PATH = "data/processed/pipeline_context.json"
 MIN_KEYWORD_COUNT = 3
 
 
@@ -106,6 +107,12 @@ def save_relevance_results(results: list[dict], path: str = RELEVANCE_PATH) -> N
         json.dump(results, file, ensure_ascii=False, indent=2)
     print(f"\n저장 완료: {path}")
     print("이 JSON은 이후 Writer Agent 입력으로 사용될 예정입니다.")
+
+
+def save_pipeline_topic(topic: str) -> None:
+    os.makedirs(os.path.dirname(PIPELINE_CONTEXT_PATH), exist_ok=True)
+    with open(PIPELINE_CONTEXT_PATH, "w", encoding="utf-8") as file:
+        json.dump({"topic": topic}, file, ensure_ascii=False, indent=2)
 
 
 def normalize_token(token: str) -> str:
@@ -424,6 +431,7 @@ def run_relevance(topic: str, run_id: str | None = None) -> list[dict]:
     save_relevance_results(sorted_results)
     if run_id:
         save_run_relevance_results(sorted_results, run_id)
+    save_pipeline_topic(topic)
     return sorted_results
 
 

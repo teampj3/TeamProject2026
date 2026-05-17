@@ -1,4 +1,4 @@
-"""Run the Search -> Reader -> Relevance -> Writer pipeline."""
+"""Search -> Reader -> Relevance -> Writer -> Visualization 연결 실행."""
 
 from __future__ import annotations
 
@@ -9,6 +9,7 @@ from uuid import uuid4
 
 from agents.reader_agent import run_reader
 from agents.relevance_agent import run_relevance
+from agents.visualization_agent import run_visualization_pipeline
 from agents.write_agent import run_writer_draft_generation, run_writer_output_test
 from services.output_service import update_status
 from services.search_service import SearchStageError, run_search
@@ -91,10 +92,8 @@ def build_search_status_callback(
         )
 
     return callback
-
-
 def main() -> None:
-    topic = input("연구 주제를 입력하세요 (예: AI code review): ").strip()
+    topic = input(f"검색 주제를 입력하세요 (기본값: {DEFAULT_TOPIC}): ").strip()
     if not topic:
         topic = DEFAULT_TOPIC
     run_id = str(uuid4())
@@ -287,7 +286,14 @@ def main() -> None:
             started_at=started_at,
         )
 
-    print("\n전체 파이프라인 실행 완료")
+    run_writer_output_test(writer_output, topic=topic)
+
+    try:
+        visualization_result = run_visualization_pipeline(topic=topic)
+        if not visualization_result.get("is_valid"):
+            print("\nVisualization 단계에서 일부 결과를 확인할 필요가 있습니다.")
+    except Exception as error:
+        print(f"\nVisualization 단계 예외: {error}")
 
 
 if __name__ == "__main__":
