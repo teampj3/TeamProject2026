@@ -2,3 +2,6 @@ anthropic
 python-dotenv
 fastapi
 uvicorn[standard]
+matplotlib
+pandas
+seaborn

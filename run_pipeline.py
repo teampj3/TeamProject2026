@@ -9,7 +9,6 @@ from uuid import uuid4
 
 from agents.reader_agent import run_reader
 from agents.relevance_agent import run_relevance
-from agents.visualization_agent import run_visualization_pipeline
 from agents.write_agent import run_writer_draft_generation, run_writer_output_test
 from services.output_service import update_status
 from services.search_service import SearchStageError, run_search
@@ -289,6 +288,8 @@ def main() -> None:
     run_writer_output_test(writer_output, topic=topic)
 
     try:
+        from agents.visualization_agent import run_visualization_pipeline
+
         visualization_result = run_visualization_pipeline(topic=topic)
         if not visualization_result.get("is_valid"):
             print("\nVisualization 단계에서 일부 결과를 확인할 필요가 있습니다.")
