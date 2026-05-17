@@ -10,6 +10,7 @@ import time
 import hashlib
 import xml.etree.ElementTree as ET
 from collections.abc import Callable
+from datetime import datetime
 from difflib import SequenceMatcher
 from urllib.error import HTTPError, URLError
 from urllib.parse import quote_plus, urlencode
@@ -34,6 +35,7 @@ MIN_ABSTRACT_WORDS = 40
 # 검색 주제와 최소한 한 번은 직접 맞닿아야 다음 단계로 넘긴다.
 MIN_TOPIC_MATCH_COUNT = 1
 PIPELINE_CONTEXT_PATH = "data/processed/pipeline_context.json"
+SEARCH_CACHE_META_PATH = "data/raw/search_result_meta.json"
 MIN_METADATA_AUTHORS = 1
 TITLE_SIMILARITY_THRESHOLD = 0.92
 TITLE_TOKEN_OVERLAP_THRESHOLD = 0.8
@@ -80,6 +82,10 @@ class SearchStageError(RuntimeError):
         super().__init__(message)
         self.error_code = error_code
         self.message = message
+
+
+def normalize_topic(topic: str) -> str:
+    return re.sub(r"\s+", " ", topic.strip().lower())
 
 
 def parse_to_paper_schema(raw: dict, source: str) -> dict:
@@ -516,11 +522,21 @@ def validate_search_results(papers: list[dict]) -> bool:
     return all(required_fields.issubset(paper.keys()) for paper in papers)
 
 
-def save_search_result(papers: list[dict]) -> None:
+def save_search_result(papers: list[dict], topic: str | None = None) -> None:
     os.makedirs("data/raw", exist_ok=True)
     save_path = "data/raw/search_result.json"
     with open(save_path, "w", encoding="utf-8") as file:
         json.dump(papers, file, ensure_ascii=False, indent=2)
+
+    if topic is not None:
+        meta_payload = {
+            "topic": topic,
+            "normalized_topic": normalize_topic(topic),
+            "saved_at": datetime.now().isoformat(),
+            "count": len(papers),
+        }
+        with open(SEARCH_CACHE_META_PATH, "w", encoding="utf-8") as file:
+            json.dump(meta_payload, file, ensure_ascii=False, indent=2)
 
     if validate_search_results(papers):
         print(f"\n저장 완료: {save_path}")
@@ -551,6 +567,39 @@ def save_run_search_result(papers: list[dict], run_id: str) -> None:
         for paper in papers
     ]
     write_json(run_dir / "search_results.json", payload)
+
+
+def load_cached_search_results(topic: str) -> list[dict]:
+    search_path = "data/raw/search_result.json"
+    if not os.path.exists(search_path) or not os.path.exists(SEARCH_CACHE_META_PATH):
+        return []
+
+    try:
+        with open(SEARCH_CACHE_META_PATH, "r", encoding="utf-8") as file:
+            meta = json.load(file)
+        with open(search_path, "r", encoding="utf-8") as file:
+            cached = json.load(file)
+    except (OSError, json.JSONDecodeError):
+        return []
+
+    cached_topic = normalize_topic(str(meta.get("topic", "")))
+    requested_topic = normalize_topic(topic)
+    if not cached_topic or not requested_topic:
+        return []
+
+    topic_similarity = SequenceMatcher(None, cached_topic, requested_topic).ratio()
+    cached_keywords = extract_topic_keywords(cached_topic)
+    requested_keywords = extract_topic_keywords(requested_topic)
+    keyword_overlap = len(cached_keywords & requested_keywords)
+
+    if topic_similarity < 0.7 and keyword_overlap < 2:
+        return []
+
+    if not isinstance(cached, list):
+        return []
+
+    filtered = filter_papers_by_quality(cached, topic)
+    return filtered
 
 
 def run_search(
@@ -602,6 +651,25 @@ def run_search(
         semantic_results = []
 
     if not arxiv_results and not semantic_results and source_errors:
+        if status_callback:
+            status_callback(
+                "External search APIs are unavailable. Checking cached search results.",
+                "SEARCH_RATE_LIMIT",
+            )
+
+        cached_results = load_cached_search_results(topic)
+        if cached_results:
+            print("외부 API 제한으로 캐시된 검색 결과를 재사용합니다.")
+            if status_callback:
+                status_callback(
+                    f"Using cached search results due to external API limits ({len(cached_results)} papers).",
+                    "SEARCH_RATE_LIMIT",
+                )
+            if run_id:
+                save_run_search_result(cached_results, run_id)
+            save_pipeline_topic(topic)
+            return cached_results
+
         error_codes = {error.error_code for error in source_errors}
         if "SEARCH_RATE_LIMIT" in error_codes:
             raise SearchStageError(
@@ -620,7 +688,7 @@ def run_search(
         return []
 
     display_results(results)
-    save_search_result(results)
+    save_search_result(results, topic=topic)
     if run_id:
         save_run_search_result(results, run_id)
     save_pipeline_topic(topic)
