@@ -597,7 +597,7 @@ def save_run_writer_outputs(
     *,
     run_id: str,
     draft: str,
-    report_path: Path,
+    report_path: Path | None = None,
 ) -> None:
     run_dir = get_run_output_dir(run_id)
     writer_payload = {
@@ -610,6 +610,27 @@ def save_run_writer_outputs(
     }
     write_json(run_dir / "writer_output.json", writer_payload)
     write_markdown(run_dir / "report.md", draft)
+
+
+def initialize_run_writer_outputs(run_id: str, topic: str) -> None:
+    initial_draft = f"# {topic}\n\n초안 생성 중입니다."
+    save_run_writer_outputs(run_id=run_id, draft=initial_draft)
+
+
+def update_run_writer_progress(
+    *,
+    run_id: str,
+    topic: str,
+    section_outputs: list[tuple[str, str]],
+) -> None:
+    if not section_outputs:
+        initialize_run_writer_outputs(run_id, topic)
+        return
+
+    partial_draft = assemble_draft(section_outputs)
+    if not partial_draft.strip():
+        partial_draft = f"# {topic}\n\n초안 생성 중입니다."
+    save_run_writer_outputs(run_id=run_id, draft=partial_draft)
 
 
 def find_latest_report_file(topic: str) -> Path | None:
@@ -779,6 +800,9 @@ def run_writer_draft_generation(
     selected_rows = preparation["selected_rows"]
     outline = preparation["outline"]
 
+    if run_id:
+        initialize_run_writer_outputs(run_id, topic)
+
     section_outputs: list[tuple[str, str]] = []
     for section_name in outline["sections"]:
         print(f"\n섹션 생성 중: {section_name}")
@@ -789,6 +813,12 @@ def run_writer_draft_generation(
             outline=outline,
         )
         section_outputs.append((section_name, section_text))
+        if run_id:
+            update_run_writer_progress(
+                run_id=run_id,
+                topic=topic,
+                section_outputs=section_outputs,
+            )
 
     draft = assemble_draft(section_outputs)
     print_report_draft_preview(draft)
