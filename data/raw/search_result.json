@@ -1,97 +1,265 @@
 [
   {
-    "title": "Research on Bitcoin address classification based on transaction history features",
-    "abstract": "As the most popular cryptocurrency now, Bitcoin's transaction data is easy to obtain, so de-anonymizing Bitcoin becomes possible. This paper constructs a data set of Bitcoin addresses including 5 categories, analyzes and extracts the transaction features of Bitcoin addresses in more detail based on related work, and proposes two new features of fourth-order transaction moments and sample distribution. New features improve the performance of Bitcoin address classification. The accuracy of the LightGBM model was 0.94 and the F1 score was 0.91. This method can identify unknown types of Bitcoin addresses, which improves the ability of relevant agencies to investigate Bitcoin illegal activities.",
+    "title": "ML-Dev-Bench: Comparative Analysis of AI Agents on ML development workflows",
+    "abstract": "In this report, we present ML-Dev-Bench, a benchmark aimed at testing agentic capabilities on applied Machine Learning development tasks. While existing benchmarks focus on isolated coding tasks or Kaggle-style competitions, ML-Dev-Bench tests agents' ability to handle the full complexity of ML development workflows. The benchmark assesses performance across critical aspects including dataset handling, model training, improving existing models, debugging, and API integration with popular ML tools. We evaluate three agents - ReAct, Openhands, and AIDE - on a diverse set of 30 tasks, providing insights into their strengths and limitations in handling practical ML development challenges. We open source the benchmark for the benefit of the community at \\href{https://github.com/ml-dev-bench/ml-dev-bench}{https://github.com/ml-dev-bench/ml-dev-bench}.",
     "authors": [
-      "Lu Qin",
-      "Li Yi",
-      "Xiancheng Lin",
-      "Ziqiang Luo"
+      "Harshith Padigela",
+      "Chintan Shah",
+      "Dinkar Juyal"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/a6bc6c242651e63dcd72dbf9b09e121f14c9b4ba",
-    "year": "2023",
+    "url": "https://www.semanticscholar.org/paper/d3dc789db41b8f6b633bbac276559d0e53bc91e5",
+    "year": "2025",
     "categories": []
   },
   {
-    "title": "History of bitcoin-blockchain tandem technology",
-    "abstract": "The rapid development of technology during the last decade of the 20th century and the first two decades of the 21st century, predetermined qualitative changes in the economic life of the global community. The author deliberately highlights the last decade of the 20th century because in 1990-1991 the concept of the World Wide Web has found material embodiment, becoming generally available to the mass user. As the technological foundation of the modern digital economy, author analyzes the digital currency bitcoin and blockchain algorithms through the prism of economic, technological, legal and social practice. The key trends for the modern digital economy are identified and, on their basis, a mid-term forecast of its development is given. Despite the economic subject of scientific analysis, the methods of historical science are used in the work: historical analytics, historical-comparative method, historical-systematical method and retrospective methods.",
+    "title": "DEVELOPMENT OF A HYBRID TESTING FRAMEWORK FOR MULTIMODAL SYSTEMS BASED ON AI AGENTS",
+    "abstract": ". The relevance of this research stems from the need to ensure the high quality and reliability of multimodal systems that integrate heterogeneous data and artificial intelligence algorithms. These systems are becoming increasingly complex, which requires new approaches to their testing. Existing methodologies are fragmented, do not consider integrated interactions between data channels, and fail to provide a comprehensive assessment of system performance in dynamic environments. This creates risks for the implementation of innovative technologies in critical domains such as healthcare, transportation, and the financial sector. Purpose of the article. The purpose of this study is to develop a hybrid testing framework for multimodal systems based on AI agents that enables a comprehensive assessment of their functional quality and reliability in practical applications. Research methodology. The research is based on systemic and interdisciplinary approaches that provide a holistic view of the problem of testing multimodal systems. Structural-functional analysis was used to identify key characteristics of reliability and quality, while logical and analytical methods were applied to generalize theoretical principles and compare existing approaches. In addition, the principles of agent-oriented architecture were employed to describe interactions between subsystems. This methodology made it possible to integrate different levels of research, from conceptual to applied, and to identify patterns in the functioning of the hybrid framework. Research results. The study identified key challenges in testing multimodal systems, such as data heterogeneity, the complexity of constructing representative scenarios, and the high computational cost of testing processes. It was established that the use of a hybrid approach reduces error risks and improves the accuracy of detecting critical deviations. The feasibility of implementing a multilevel verification model was demonstrated, ensuring consistency between modalities and adaptability",
     "authors": [
-      "N. Parkhit'ko"
+      "Dmytro Kyiashko"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/a341bbcb8a33ef34793212e07452035607970d6e",
-    "year": "2022",
+    "url": "https://www.semanticscholar.org/paper/0a9b1a7684afaa2efb7fffb15f6232d82df9e38d",
+    "year": "2025",
     "categories": []
   },
   {
-    "title": "An Evaluation of Bitcoin Address Classification based on Transaction History Summarization",
-    "abstract": "Bitcoin is a cryptocurrency that features a distributed, decentralized and trustworthy mechanism, which has made Bitcoin a popular global transaction platform. The transaction efficiency among nations and the privacy benefiting from address anonymity of the Bitcoin network have attracted many activities such as payments, investments, gambling, and even money laundering in the past decade. Unfortunately, some criminal behaviors which took advantage of this platform were not identified. This has discouraged many governments to support cryptocurrency. Thus, the capability to identify criminal addresses becomes an important issue in the cryptocurrency network. In this paper, we propose new features in addition to those commonly used in the literature to build a classification model for detecting abnormality of Bitcoin network addresses. These features include various high orders of moments of transaction time (represented by block height) which summarizes the transaction history in an efficient way. The extracted features are trained by supervised machine learning methods on a labeling category data set. The experimental evaluation shows that these features have improved the performance of Bitcoin address classification significantly. We evaluate the results under eight classifiers and achieve the highest Micro-Fl /Macro-F1 of 87% /86% with LightGBM.",
+    "title": "From Sprint Planning to Guardrail Engineering: Rethinking Software Development in the Age of AI Agents",
+    "abstract": "The rapid adoption of AI-assisted coding agents is reshaping software development by reducing the cost of feature creation while simultaneously increasing the risk of latent defects, architecture drift, and poorly understood system interactions. Traditional development processes assume that implementation effort is the primary constraint, making sprint planning, task decomposition, and team specialization central to delivery. In contrast, agent-assisted development shifts the bottleneck from code production to oversight, verification, and constraint design. This paper examines whether conventional agile structures remain adequate when feature implementation can be generated quickly by systems that operate with limited contextual understanding, uneven reasoning depth, and minimal accountability. We argue that future software en- gineering workflows will depend less on language-specific expertise and more on system-specific guardrails, eval- uation harnesses, policy enforcement, and release safety mechanisms. Through analysis of emerging development patterns, this work explores how AI agents change defect introduction, review responsibilities, testing strategy, and organizational roles. The paper proposes a framework for “guardrail-centric development,” where engineering quality is measured by the robustness of constraints, observability, and rollback design rather than by im- plementation velocity alone. The study further identifies novel failure modes, including agent-amplified technical debt, invisible requirement drift, and automated changes that satisfy local tests while violating global system intent. The goal is to define a new process model for software teams operating in an era where code is abundant, but trustworthy integration is scarce.",
     "authors": [
-      "Yu-Jing Lin",
-      "Po-Wei Wu",
-      "Cheng-Han Hsu",
-      "I-Ping Tu",
-      "Shih-Wei Liao"
+      "Anand Ganesh"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/e457eb18fa83b6916500c97bc6b568d44e0cca8c",
-    "year": "2019",
+    "url": "https://www.semanticscholar.org/paper/bd05508f51856ebd96c9fa6ac820149d5da2da76",
+    "year": "2026",
     "categories": []
   },
   {
-    "title": "LVQ: A Lightweight Verifiable Query Approach for Transaction History in Bitcoin",
-    "abstract": "In the Bitcoin system, transaction history of an address can be useful in many scenarios, such as the balance calculation and behavior analysis. However, it is non-trivial for a common user who runs a light node to fetch historical transactions, since it only stores headers without any transaction details. It usually has to request a full node who stores the complete data. Validation of these query results is critical and mainly involves two aspects: correctness and completeness. The former can be implemented via Merkle branch easily, while the latter is quite difficult in the Bitcoin protocol. To enable the completeness validation, a strawman design is proposed, which simply includes the BF (Bloom filter) in the headers. However, since the size of BF is about KB, light nodes in the strawman will suffer from the incremental storage burden. What’s worse, an integrated block must be transmitted when BF cannot work, resulting in large network overhead. In this paper, we propose LVQ, the first lightweight verifiable query approach that reduces the storage requirement and network overhead at the same time. To be specific, by only storing the hash of BF in headers, LVQ keeps data stored by light nodes being little. Besides, LVQ introduces a novel BMT (BF integrated Merkle Tree) structure for lightweight query, which can eliminate the communication costs of query results by merging the multiple successive BFs. Furthermore, when BF cannot work, a lightweight proof by SMT (Sorted Merkle Tree) is exploited to further reduce the network overhead. The security analysis confirms LVQ’s ability to enable both correctness and completeness validation. In addition, the experimental results demonstrate its lightweight.",
+    "title": "Cloud Infrastructure Management in the Age of AI Agents",
+    "abstract": "Cloud infrastructure is the cornerstone of the modern IT industry. However, managing this infrastructure effectively requires considerable manual effort from the DevOps engineering team. We make a case for developing AI agents powered by large language models (LLMs) to automate cloud infrastructure management tasks. In a preliminary study, we investigate the potential for AI agents to use different cloud/user interfaces such as software development kits (SDK), command line interfaces (CLI), Infrastructure-as-Code (IaC) platforms, and web portals. We report takeaways on their effectiveness on different management tasks, and identify research challenges and potential solutions.",
     "authors": [
-      "Xiaohai Dai",
-      "Jiang Xiao",
-      "Wenhui Yang",
-      "Chaofan Wang",
-      "Jian Chang",
-      "Rui Han",
-      "Hai Jin"
+      "Zhenning Yang",
+      "Archit Bhatnagar",
+      "Yiming Qiu",
+      "Tongyuan Miao",
+      "Patrick Tser Jern Kon",
+      "Yunming Xiao",
+      "Yibo Huang",
+      "Martin Casado",
+      "Ang Chen"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/7db25d2f725cd5604e854553293850a37c9e5db5",
-    "year": "2020",
+    "url": "https://www.semanticscholar.org/paper/d56007253166c390c4109a499eb5cb4ec1e19cb1",
+    "year": "2025",
     "categories": []
   },
   {
-    "title": "Dissection of Bitcoin’s multiscale bubble history from January 2012 to February 2018",
-    "abstract": "We present a detailed bubble analysis of the Bitcoin to US Dollar price dynamics from January 2012 to February 2018. We introduce a robust automatic peak detection method that classifies price time series into periods of uninterrupted market growth (drawups) and regimes of uninterrupted market decrease (drawdowns). In combination with the Lagrange Regularization Method for detecting the beginning of a new market regime, we identify three major peaks and 10 additional smaller peaks, that have punctuated the dynamics of Bitcoin price during the analysed time period. We explain this classification of long and short bubbles by a number of quantitative metrics and graphs to understand the main socio-economic drivers behind the ascent of Bitcoin over this period. Then, a detailed analysis of the growing risks associated with the three long bubbles using the Log-Periodic Power-Law Singularity (LPPLS) model is based on the LPPLS Confidence Indicators, defined as the fraction of qualified fits of the LPPLS model over multiple time windows. Furthermore, for various fictitious ‘present’ times t2 before the crashes, we employ a clustering method to group the predicted critical times tc of the LPPLS fits over different time scales, where tc is the most probable time for the ending of the bubble. Each cluster is proposed as a plausible scenario for the subsequent Bitcoin price evolution. We present these predictions for the three long bubbles and the four short bubbles that our time scale of analysis was able to resolve. Overall, our predictive scheme provides useful information to warn of an imminent crash risk.",
+    "title": "Security of AI Agents",
+    "abstract": "AI agents have been boosted by large language models. AI agents can function as intelligent assistants and complete tasks on behalf of their users with access to tools and the ability to execute commands in their environments. Through studying and experiencing the workflow of typical AI agents, we have raised several concerns regarding their security. These potential vulnerabilities are not addressed by the frameworks used to build the agents, nor by research aimed at improving the agents. In this paper, we identify and describe these vulnerabilities in detail from a system security perspective, emphasizing their causes and severe effects. Furthermore, we introduce defense mechanisms corresponding to each vulnerability with design and experiments to evaluate their viability. Altogether, this paper contextualizes the security issues in the current development of AI agents and delineates methods to make AI agents safer and more reliable.",
     "authors": [
-      "J-C Gerlach",
-      "Guilherme Demos",
-      "D. Sornette"
+      "Yifeng He",
+      "Ethan Wang",
+      "Yuyang Rong",
+      "Zifei Cheng",
+      "Hao Chen"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/34d626443cf02aa44e3b0bea2f7154518e2ee995",
-    "year": "2018",
-    "categories": []
-  },
-  {
-    "title": "Unveiling Decentralization: A Comprehensive Review of Technologies, Comparison, Challenges in Bitcoin, Ethereum, and Solana Blockchain",
-    "abstract": "Bitcoin stands as a groundbreaking development in decentralized exchange throughout human history, enabling transactions without the need for intermediaries. By leveraging cryptographic proof mechanisms, Bitcoin eliminates the reliance on third-party financial institutions. Ethereum, ranking as the second-largest cryptocurrency by market capitalization, builds upon Bitcoin’s groundwork by introducing smart contracts and decentralized applications. Ethereum strives to surpass the limitations of Bitcoin’s scripting language, achieving full Turing-completeness for executing intricate computational tasks. Solana introduces a novel architecture for high-performance blockchain, employing timestamps to validate decentralized transactions and significantly boosting block creation throughput. Through a comprehensive examination of these blockchain technologies, their distinctions, and the associated challenges, this paper aims to offer valuable insights and comparative analysis for both researchers and practitioners.",
-    "authors": [
-      "Han Song",
-      "Yihao Wei",
-      "Zhongche Qu",
-      "Weihan Wang"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/509d4a3765d9a6f558616b3638eda5bc55dbf6ee",
+    "url": "https://www.semanticscholar.org/paper/cb61ebdcbb36a799b7460ae33aaad8c08e98bb9f",
     "year": "2024",
     "categories": []
   },
   {
-    "title": "Bitcoin Supply, Demand, and Price Dynamics",
-    "abstract": "We refine a bottom-up, quantity-clearing framework of Bitcoin price formation that couples its fixed 21-million-coin cap with plausible demand growth and execution behavior. This approach relies on first-principles economic supply-and-demand dynamics rather than assumptions about anticipated Bitcoin price appreciation, its price history, or its potential effectiveness in demonetizing other asset classes. We considered five key high-level factors that may affect price determination: level of market demand; intertemporal investment preferences; fiat-denominated withdrawal sensitivity; initial liquid supply; and daily withdrawal levels from liquid supply. With a goal of both increasing understanding of the impacts of price drivers and developing probabilistic forecasts, we show two models: (1) a baseline to assess the impacts of parameter changes, alone and in combination, on Bitcoin price trajectories and liquid supply over time and (2) a Monte Carlo simulation that incorporates uncertainty across a range of uncertain parameterizations and presents probabilistic price and liquid supply forecasts to 2036. Our baseline model highlighted the importance of liquid supply and withdrawal sensitivity in price impacts. The Monte Carlo simulation results suggest a 50% likelihood that Bitcoin price will exceed USD 5.17 M by April 2036. Generally, prices from the low single millions to the low tens of millions per Bitcoin by 2036 emerge under broad parameter sets; hyperbolic paths to higher price levels are relatively rare and concentrate when liquid supply falls near or below BTC 2 M and withdrawal sensitivity is low. Our results help locate where right-tail risk and disorderly market outcomes concentrate and suggest that policy tools are available to help guide trajectories.",
+    "title": "Agentsway - Software Development Methodology for AI Agents-based Teams",
+    "abstract": "The emergence of Agentic AI is fundamentally transforming how software is designed, developed, and maintained. Traditional software development methodologies such as Agile, Kanban, ShapeUp, etc, were originally designed for human-centric teams and are increasingly inadequate in environments where autonomous AI agents contribute to planning, coding, testing, and continuous learning. To address this methodological gap, we present\"Agentsway\"a novel software development framework designed for ecosystems where AI agents operate as first-class collaborators. Agentsway introduces a structured lifecycle centered on human orchestration, and privacy-preserving collaboration among specialized AI agents. The framework defines distinct roles for planning, prompting, coding, testing, and fine-tuning agents, each contributing to iterative improvement and adaptive learning throughout the development process. By integrating fine-tuned LLMs that leverage outputs and feedback from different agents throughout the development cycle as part of a retrospective learning process, Agentsway enhances domain-specific reasoning, and explainable decision-making across the entire software development lifecycle. Responsible AI principles are further embedded across the agents through the coordinated use of multiple fine-tuned LLMs and advanced reasoning models, ensuring balanced, transparent, and accountable decision-making. This work advances software engineering by formalizing agent-centric collaboration, integrating privacy-by-design principles, and defining measurable metrics for productivity and trust. Agentsway represents a foundational step toward the next generation of AI-native, self-improving software development methodologies. To the best of our knowledge, this is the first research effort to introduce a dedicated methodology explicitly designed for AI agent-based software engineering teams.",
     "authors": [
-      "Murray A. Rudd",
-      "Dennis Porter"
+      "Eranga Bandara",
+      "Ross Gore",
+      "Xueping Liang",
+      "Sachini Rajapakse",
+      "Isurunima Kularathne",
+      "Pramoda Karunarathna",
+      "Peter B. Foytik",
+      "Sachin Shetty",
+      "R. Mukkamala",
+      "Abdul Rahman",
+      "Amin Hass",
+      "Ng Wee Keong",
+      "K. D. Zoysa",
+      "A. Withanage",
+      "Nilaan Loganathan"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/bd8f2d655b5fe42e1abe73949fb428ac4be648b0",
+    "url": "https://www.semanticscholar.org/paper/ee15c94d9e34fcc01cd42ffe39f079aa328dbccc",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds",
+    "abstract": "AI for IT Operations (AIOps) aims to automate complex operational tasks, such as fault localization and root cause analysis, to reduce human workload and minimize customer impact. While traditional DevOps tools and AIOps algorithms often focus on addressing isolated operational tasks, recent advances in Large Language Models (LLMs) and AI agents are revolutionizing AIOps by enabling end-to-end and multitask automation. This paper envisions a future where AI agents autonomously manage operational tasks throughout the entire incident lifecycle, leading to self-healing cloud systems, a paradigm we term AgentOps. Realizing this vision requires a comprehensive framework to guide the design, development, and evaluation of these agents. To this end, we present AIOPSLAB, a framework that not only deploys microservice cloud environments, injects faults, generates workloads, and exports telemetry data but also orchestrates these components and provides interfaces for interacting with and evaluating agents. We discuss the key requirements for such a holistic framework and demonstrate how AIOPSLAB can facilitate the evaluation of next-generation AIOps agents. Through evaluations of state-of-the-art LLM agents within the benchmark created by AIOPSLAB, we provide insights into their capabilities and limitations in handling complex operational tasks in cloud environments.",
+    "authors": [
+      "Yinfang Chen",
+      "Manisha M Shetty",
+      "Gagan Somashekar",
+      "Ming-Jie Ma",
+      "Yogesh L. Simmhan",
+      "Jonathan Mace",
+      "Chetan Bansal",
+      "Rujia Wang",
+      "S. Rajmohan"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/c8bbe39285da8e427250cc2a80da8f8f2f92b8cb",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "RAG-Based AI Agents for Enterprise Software Development: Implementation Patterns and Production Deployment",
+    "abstract": "The integration of artificial intelligence (AI) agents into enterprise software development has emerged as a transformative approach to enhance productivity and code quality. Retrieval-Augmented Generation (RAG) represents a paradigm shift in how AI systems access and utilize knowledge, combining the generative capabilities of large language models (LLMs) with dynamic information retrieval mechanisms. This review paper examines the current state of RAG-based AI agents in enterprise software development contexts, focusing on implementation patterns and production deployment strategies. We analyze the architectural foundations of RAG systems, including vector databases, embedding models, and retrieval mechanisms that enable AI agents to access up-to-date code repositories, documentation, and organizational knowledge bases. The paper explores various implementation patterns such as code completion agents, automated testing assistants, documentation generators, and intelligent code review systems. We investigate production deployment challenges including scalability, latency optimization, security considerations, and integration with existing development workflows. Through systematic analysis of recent research and industrial applications, we identify key success factors for deploying RAG-based AI agents in enterprise environments, including context window management, retrieval accuracy, and hallucination mitigation strategies. The review also addresses emerging trends such as multi-agent collaboration, fine-tuning strategies for domain-specific tasks, and hybrid retrieval approaches. Our findings suggest that while RAG-based AI agents demonstrate significant potential for transforming enterprise software development, successful deployment requires careful consideration of organizational context, data privacy requirements, and continuous model evaluation frameworks.",
+    "authors": [
+      "Xiuyuan Zhao",
+      "Tiejiang Sun",
+      "Shaochen Ren",
+      "Jingyun Yang",
+      "Yang Liu"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/c27d3248e95c6ff979476356358298d1216a43c9",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "DoomArena: A framework for Testing AI Agents Against Evolving Security Threats",
+    "abstract": "We present DoomArena, a security evaluation framework for AI agents. DoomArena is designed on three principles: 1) It is a plug-in framework and integrates easily into realistic agentic frameworks like BrowserGym (for web agents) and $\\tau$-bench (for tool calling agents); 2) It is configurable and allows for detailed threat modeling, allowing configuration of specific components of the agentic framework being attackable, and specifying targets for the attacker; and 3) It is modular and decouples the development of attacks from details of the environment in which the agent is deployed, allowing for the same attacks to be applied across multiple environments. We illustrate several advantages of our framework, including the ability to adapt to new threat models and environments easily, the ability to easily combine several previously published attacks to enable comprehensive and fine-grained security testing, and the ability to analyze trade-offs between various vulnerabilities and performance. We apply DoomArena to state-of-the-art (SOTA) web and tool-calling agents and find a number of surprising results: 1) SOTA agents have varying levels of vulnerability to different threat models (malicious user vs malicious environment), and there is no Pareto dominant agent across all threat models; 2) When multiple attacks are applied to an agent, they often combine constructively; 3) Guardrail model-based defenses seem to fail, while defenses based on powerful SOTA LLMs work better. DoomArena is available at https://github.com/ServiceNow/DoomArena.",
+    "authors": [
+      "L'eo Boisvert",
+      "Mihir Bansal",
+      "Chandra Kiran Reddy Evuru",
+      "Gabriel Huang",
+      "Abhay Puri",
+      "Avinandan Bose",
+      "Maryam Fazel",
+      "Quentin Cappart",
+      "Jason Stanley",
+      "Alexandre Lacoste",
+      "Alexandre Drouin",
+      "K. Dvijotham"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/9e85ce8f1822105251870493e5326468fba18f0d",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "Contribution of Artificial Intelligence and Virtual Worlds towards development of Super Intelligent AI Agents",
+    "abstract": "Artificial Intelligence (AI) has always been a goal as\nwell as a challenge in the scientific field with a whole new world\nbeing accessible to people by accomplishing various achievements\nin the past decades. However, in the last many years, tremendous\npopularity has been received by the interactive computer games\ninvolving multi-user virtual environment which has been the\nprime attraction for millions of users around the world. This\npaper focuses on AI agents along with exploring the progress\ntowards super intelligent AI and the roles played by artificial\nintelligence and virtual worlds in its development. It follows a\nunique approach to give an unbiased view on the various\nproblems and the relation between them. There are namely two\nbenefits from this research: firstly, evolution in science and\ntechnology requires a profound understanding on the advanced\nAI agents in the virtual worlds, and secondly, the virtual worlds\nhave always been a magnificent platform for research on the\nchallenging problems faced in the domain of Artificial\nIntelligence",
+    "authors": [
+      "Simran Koul"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/59d83a51f1e09c91bc3368571a3f1f25808cca95",
+    "year": "2020",
+    "categories": []
+  },
+  {
+    "title": "Embodied AI Agents: Modeling the World",
+    "abstract": "This paper describes our research on AI agents embodied in visual, virtual or physical forms, enabling them to interact with both users and their environments. These agents, which include virtual avatars, wearable devices, and robots, are designed to perceive, learn and act within their surroundings, which makes them more similar to how humans learn and interact with the environments as compared to disembodied agents. We propose that the development of world models is central to reasoning and planning of embodied AI agents, allowing these agents to understand and predict their environment, to understand user intentions and social contexts, thereby enhancing their ability to perform complex tasks autonomously. World modeling encompasses the integration of multimodal perception, planning through reasoning for action and control, and memory to create a comprehensive understanding of the physical world. Beyond the physical world, we also propose to learn the mental world model of users to enable better human-agent collaboration.",
+    "authors": [
+      "Pascale Fung",
+      "Yoram Bachrach",
+      "Asli Celikyilmaz",
+      "Kamalika Chaudhuri",
+      "Delong Chen",
+      "Willy Chung",
+      "Emmanuel Dupoux",
+      "Hervé Jégou",
+      "A. Lazaric",
+      "Arjun Majumdar",
+      "Andrea Madotto",
+      "F. Meier",
+      "Florian Metze",
+      "Théo Moutakanni",
+      "Juan Pino",
+      "Basile Terver",
+      "Joseph Tighe",
+      "J. Malik"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/121d34fe66a35ef11e408de4119477971ee6e2cc",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "How Do Consumers Trust and Accept AI Agents? An Extended Theoretical Framework and Empirical Evidence",
+    "abstract": "With the rapid development of generative artificial intelligence (AI), AI agents are evolving into “intelligent partners” integrated into various consumer scenarios, posing new challenges to conventional consumer decision-making processes and perceptions. However, the mechanisms through which consumers develop trust and adopt AI agents in common scenarios remain unclear. Therefore, this article develops a framework based on the heuristic–systematic model to explain the behavioral decision-making mechanisms of future consumers. This model is validated through PLS-SEM with data from 632 participants in China. The results show that trust can link individuals’ dual decision paths to further drive user behavior. Additionally, we identify the key drivers of consumer behavior from two dimensions. These findings provide practical guidance for businesses and policymakers to optimize the design and development of AI agents and promote the widespread acceptance and adoption of AI technologies.",
+    "authors": [
+      "Xue Zhao",
+      "W. You",
+      "Ziqing Zheng",
+      "Shuhui Shi",
+      "Yinyu Lu",
+      "Lingyun Sun"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/ec54d7a834092ed9a7d9caab4be1c6b9ab62624d",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "LeadLets: Towards a Pattern Language for Leadership Development of Human and AI Agents",
+    "abstract": "Advances in artificial intelligence (AI) technologies have inspired businesses and researchers to identify new ways in which AI can improve our way of life. One such quest lies in giving AIs complex human capabilities like leadership. We take the first step towards that goal and propose a pattern-based approach to leadership. We argue that leadership best practices are actually a series of mini interventions each of which results in a consistent and desired response from the followers. When codified, these repeatable interventions can serve as foundational blocks for AI algorithms. To this end, we introduce LeadLets: A pattern language that codifies named, scripted, and repeatable leadership techniques that have a predictable influence causing a purposeful effect on one or more individuals. We argue that a pattern-based approach such as LeadLets can create leadership templates that inform programing leadership behavior into AI artifacts and designing leaders development programs.",
+    "authors": [
+      "Triparna de Vreede",
+      "L. Steele",
+      "G. Vreede",
+      "R. Briggs"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/af1eb5b772e7f6f5f722329efec8364c48d697e1",
+    "year": "2020",
+    "categories": []
+  },
+  {
+    "title": "Generative AI Agents With Large Language Model for Satellite Networks via a Mixture of Experts Transmission",
+    "abstract": "In response to the needs of 6G global communications, satellite communication networks have emerged as a key solution. However, the large-scale development of satellite communication networks is constrained by complex system models, whose modeling is challenging for massive users. Moreover, transmission interference between satellites and users seriously affects communication performance. To solve these problems, this paper develops generative artificial intelligence (AI) agents for model formulation and then applies a mixture of experts (MoE) approach to design transmission strategies. Specifically, we leverage large language models (LLMs) to build an interactive modeling paradigm and utilize retrieval-augmented generation (RAG) to extract satellite expert knowledge that supports mathematical modeling. Afterward, by integrating the expertise of multiple specialized components, we propose an MoE-proximal policy optimization (PPO) approach to solve the formulated problem. Each expert can optimize the optimization variables at which it excels through specialized training through its own network and then aggregate them through the gating network to perform joint optimization. The simulation results validate the accuracy and effectiveness of employing a generative agent for problem formulation. Furthermore, the superiority of the proposed MoE-ppo approach over other benchmarks is confirmed in solving the formulated problem. The adaptability of MoE-PPO to various customized modeling problems has also been demonstrated.",
+    "authors": [
+      "Ruichen Zhang",
+      "Hongyang Du",
+      "Yinqiu Liu",
+      "Dusist Niyato",
+      "Jiawen Kang",
+      "Zehui Xiong",
+      "Abbas Jamalipour",
+      "Dong In Kim"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/6d533b0f318fd22d664356b56b68023560d3c60f",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "Cybersecurity AI Benchmark (CAIBench): A Meta-Benchmark for Evaluating Cybersecurity AI Agents",
+    "abstract": "Cybersecurity spans multiple interconnected domains, complicating the development of meaningful, labor-relevant benchmarks. Existing benchmarks assess isolated skills rather than integrated performance. We find that pre-trained knowledge of cybersecurity in LLMs does not imply attack and defense abilities, revealing a gap between knowledge and capability. To address this limitation, we present the Cybersecurity AI Benchmark (CAIBench), a modular meta-benchmark framework that allows evaluating LLM models and agents across offensive and defensive cybersecurity domains, taking a step towards meaningfully measuring their labor-relevance. CAIBench integrates five evaluation categories, covering over 10,000 instances: Jeopardy-style CTFs, Attack and Defense CTFs, Cyber Range exercises, knowledge benchmarks, and privacy assessments. Key novel contributions include systematic simultaneous offensive-defensive evaluation, robotics-focused cybersecurity challenges (RCTF2), and privacy-preserving performance assessment (CyberPII-Bench). Evaluation of state-of-the-art AI models reveals saturation on security knowledge metrics (~70\\% success) but substantial degradation in multi-step adversarial (A\\&D) scenarios (20-40\\% success), or worse in robotic targets (22\\% success). The combination of framework scaffolding and LLM model choice significantly impacts performance; we find that proper matches improve up to 2.6$\\times$ variance in Attack and Defense CTFs. These results demonstrate a pronounced gap between conceptual knowledge and adaptive capability, emphasizing the need for a meta-benchmark.",
+    "authors": [
+      "Mar'ia Sanz-G'omez",
+      "V. Vilches",
+      "Francesco Balassone",
+      "Luis Javier Navarrete-Lozano",
+      "Cristóbal R. J. Veas Chavez",
+      "Maite del Mundo de Torres"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/86d2b51524d648648e4b483b71cb73ba5575764e",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "Episodic Memory in AI Agents Poses Risks that Should be Studied and Mitigated",
+    "abstract": "Most current AI models have little ability to store and later retrieve a record or representation of what they do. In human cognition, episodic memories play an important role in both recall of the past as well as planning for the future. The ability to form and use episodic memories would similarly enable a broad range of improved capabilities in an AI agent that interacts with and takes actions in the world. Researchers have begun directing more attention to developing memory abilities in AI models. It is therefore likely that models with such capability will be become widespread in the near future. This could in some ways contribute to making such AI agents safer by enabling users to better monitor, understand, and control their actions. However, as a new capability with wide applications, we argue that it will also introduce significant new risks that researchers should begin to study and address. We outline these risks and benefits and propose four principles to guide the development of episodic memory capabilities so that these will enhance, rather than undermine, the effort to keep AI safe and trustworthy.",
+    "authors": [
+      "Chad DeChant"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/555254f52c2eea90a46870b866b3d609e4ddfff0",
     "year": "2025",
     "categories": []
   }
