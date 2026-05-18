@@ -120,7 +120,7 @@ Claude API 연결이 되는지 테스트하는 파일입니다.
 개발해야 할 것:
 
 - 사용자 주제를 검색 키워드로 변환
-- arXiv, Semantic Scholar 같은 소스에서 자료 검색
+- Semantic Scholar 같은 소스에서 자료 검색
 - 제목, 초록, 저자, 링크 등을 정리
 - 결과를 JSON 형태로 반환
 
@@ -132,7 +132,7 @@ Claude API 연결이 되는지 테스트하는 파일입니다.
         "title": "Paper title",
         "abstract": "summary...",
         "authors": ["A", "B"],
-        "source": "arxiv",
+        "source": "Semantic Scholar",
         "url": "..."
     }
 ]
@@ -257,7 +257,7 @@ Claude API를 공통으로 호출하는 파일입니다.
 
 개발해야 할 것:
 
-- arXiv API 요청
+- Semantic Scholar API 요청
 - Semantic Scholar API 요청
 - 응답 데이터 정리
 - 실패 시 재시도 또는 예외 처리

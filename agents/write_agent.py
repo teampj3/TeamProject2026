@@ -23,9 +23,9 @@ REPORT_OUTPUT_DIR = Path("outputs/reports")
 
 DEFAULT_WRITER_TOPIC = "AI code review"
 DEFAULT_WRITER_SCORE_THRESHOLD = 35.0
+DEFAULT_WRITER_TOP_K = 3
 OUTLINE_MAX_TOKENS = 1000
-BULLET_MAX_TOKENS = 450
-SUBSECTION_MAX_TOKENS = 800
+SECTION_MAX_TOKENS = 1400
 
 FIXED_SECTIONS = ["제목", "초록", "서론", "논의", "결론", "참고문헌"]
 FIXED_SECTION_PLAN = {
@@ -167,7 +167,12 @@ def filter_writer_candidates(
     rows: list[dict],
     score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD,
 ) -> list[dict]:
-    return [row for row in rows if float(row.get("score", 0) or 0) >= score_threshold]
+    filtered = [
+        row for row in rows
+        if float(row.get("score", 0) or 0) >= score_threshold
+    ]
+    filtered.sort(key=lambda row: float(row.get("score", 0) or 0), reverse=True)
+    return filtered[:DEFAULT_WRITER_TOP_K]
 
 
 def print_writer_candidate_list(
@@ -213,7 +218,7 @@ def split_pipe_values(value: str) -> list[str]:
 
 
 def build_outline_prompt(topic: str, selected_rows: list[dict]) -> str:
-    paper_text = build_paper_context(selected_rows[:5])
+    paper_text = build_paper_context(selected_rows[:DEFAULT_WRITER_TOP_K])
     return f"""당신은 한국어 학술논문 목차를 설계하는 Writer Planner이다.
 
 주제:
@@ -287,7 +292,7 @@ SECTION_END
 주제: {topic}
 
 참고 논문 요약:
-{build_paper_context(selected_rows[:4])}
+{build_paper_context(selected_rows[:DEFAULT_WRITER_TOP_K])}
 
 원본:
 {raw_text}
@@ -429,6 +434,35 @@ def build_subsection_expansion_prompt(
 - 문장이 중간에 끊기지 않게 완결하게 작성할 것."""
 
 
+def build_section_draft_prompt(
+    topic: str,
+    section_name: str,
+    subsection_names: list[str],
+    selected_rows: list[dict],
+) -> str:
+    paper_text = build_paper_context(selected_rows)
+    subsection_text = " / ".join(subsection_names) if subsection_names else section_name
+    section_role = infer_section_role(section_name, subsection_text)
+    return f"""당신은 한국어 학술논문 초안을 작성하는 Writer Agent이다.
+
+주제: {topic}
+현재 섹션: {section_name}
+이 섹션의 핵심 소주제: {subsection_text}
+
+[참고 논문 데이터]
+{paper_text}
+
+[지시]
+- 이 섹션 전체를 한 번에 완성된 학술 문단으로 작성할 것.
+- 참고 논문은 근거 자료로만 활용하고, 본 섹션의 중심은 본 연구의 주장과 분석이어야 한다.
+- 개별 논문을 길게 나열하지 말고, 필요한 부분만 묶어서 본 연구의 논지에 연결할 것.
+- 소주제 {subsection_text}가 자연스럽게 모두 반영되도록 구성할 것.
+- 불필요한 bullet, 번호 목록, 메모체 표현은 사용하지 말 것.
+- 문장은 중간에 끊기지 않게 완결하게 작성할 것.
+- 너무 길게 늘이지 말고, 이 섹션을 충실히 설명할 정도의 분량으로 작성할 것.
+- {section_role}"""
+
+
 def print_writer_prompt_preview(prompt: str, max_length: int = 2000) -> None:
     print("\nWriter 프롬프트 미리보기")
     safe_print(prompt[:max_length])
@@ -510,31 +544,17 @@ def build_section_text(
     if section_name == "참고문헌":
         return build_references_section(selected_rows)
 
-    section_lines = [build_section_heading(section_name), ""]
-    current_body = ""
     section_plan = outline.get("section_plan", {})
-    for subsection_name in section_plan.get(section_name, [section_name]):
-        bullet_prompt = build_subsection_bullet_prompt(
-            topic=topic,
-            section_name=section_name,
-            subsection_name=subsection_name,
-            selected_rows=selected_rows,
-        )
-        bullets_text = generate_text(bullet_prompt, max_tokens=BULLET_MAX_TOKENS)
-        subsection_prompt = build_subsection_expansion_prompt(
-            topic=topic,
-            section_name=section_name,
-            subsection_name=subsection_name,
-            bullets_text=bullets_text,
-            existing_section_text=current_body,
-        )
-        subsection_text = generate_text(subsection_prompt, max_tokens=SUBSECTION_MAX_TOKENS).strip()
-        subsection_text = sanitize_generated_subsection_text(subsection_text, section_name, subsection_name)
-        if subsection_text:
-            section_lines.append(subsection_text)
-            section_lines.append("")
-            current_body = "\n\n".join(line for line in section_lines[1:] if line.strip())
-    return "\n".join(section_lines).strip()
+    subsection_names = section_plan.get(section_name, [section_name])
+    section_prompt = build_section_draft_prompt(
+        topic=topic,
+        section_name=section_name,
+        subsection_names=subsection_names,
+        selected_rows=selected_rows,
+    )
+    section_text = generate_text(section_prompt, max_tokens=SECTION_MAX_TOKENS).strip()
+    section_text = sanitize_generated_subsection_text(section_text, section_name, section_name)
+    return f"{build_section_heading(section_name)}\n\n{section_text}".strip()
 
 
 def assemble_draft(section_outputs: list[tuple[str, str]]) -> str:
@@ -771,14 +791,14 @@ def run_writer_preparation_flow(
     dynamic_sections = outline.get("dynamic_sections", [])
     if dynamic_sections:
         preview_section = dynamic_sections[0]["name"]
-        preview_subsection = dynamic_sections[0]["subsections"][0]
+        preview_subsections = dynamic_sections[0]["subsections"]
     else:
         preview_section = "서론"
-        preview_subsection = "연구 필요성"
-    preview_prompt = build_subsection_bullet_prompt(
+        preview_subsections = ["연구 필요성"]
+    preview_prompt = build_section_draft_prompt(
         topic=topic,
         section_name=preview_section,
-        subsection_name=preview_subsection,
+        subsection_names=preview_subsections,
         selected_rows=selected_rows,
     )
     print_writer_prompt_preview(preview_prompt)
