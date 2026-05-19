@@ -1,266 +1,225 @@
 [
   {
-    "title": "ML-Dev-Bench: Comparative Analysis of AI Agents on ML development workflows",
-    "abstract": "In this report, we present ML-Dev-Bench, a benchmark aimed at testing agentic capabilities on applied Machine Learning development tasks. While existing benchmarks focus on isolated coding tasks or Kaggle-style competitions, ML-Dev-Bench tests agents' ability to handle the full complexity of ML development workflows. The benchmark assesses performance across critical aspects including dataset handling, model training, improving existing models, debugging, and API integration with popular ML tools. We evaluate three agents - ReAct, Openhands, and AIDE - on a diverse set of 30 tasks, providing insights into their strengths and limitations in handling practical ML development challenges. We open source the benchmark for the benefit of the community at \\href{https://github.com/ml-dev-bench/ml-dev-bench}{https://github.com/ml-dev-bench/ml-dev-bench}.",
+    "title": "Security Degradation in Iterative AI Code Generation: A Systematic Analysis of the Paradox",
+    "abstract": "The rapid adoption of Large Language Models (LLMs) for code generation has transformed software development, yet little attention has been given to how security vulnerabilities evolve through iterative LLM feedback. This paper analyzes security degradation in AI-generated code through a controlled experiment with 400 code samples across 40 rounds of \"improvements\" using four distinct prompting strategies. Our findings show a 37.6% increase in critical vulnerabilities after just five iterations, with distinct vulnerability patterns emerging across different prompting approaches. This evidence challenges the assumption that iterative LLM refinement improves code security and highlights the essential role of human expertise in the loop. We propose practical guidelines for developers to mitigate these risks, emphasizing the need for robust human validation between LLM iterations to prevent the paradoxical introduction of new security issues during supposedly beneficial code \"improvements.\"",
     "authors": [
-      "Harshith Padigela",
-      "Chintan Shah",
-      "Dinkar Juyal"
+      "Shivani Shukla",
+      "Himanshu Joshi",
+      "Romilla Syed"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/d3dc789db41b8f6b633bbac276559d0e53bc91e5",
+    "url": "https://www.semanticscholar.org/paper/6c045fd800bf2fc5dd26e4f85cd90e5f781f93bf",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "DEVELOPMENT OF A HYBRID TESTING FRAMEWORK FOR MULTIMODAL SYSTEMS BASED ON AI AGENTS",
-    "abstract": ". The relevance of this research stems from the need to ensure the high quality and reliability of multimodal systems that integrate heterogeneous data and artificial intelligence algorithms. These systems are becoming increasingly complex, which requires new approaches to their testing. Existing methodologies are fragmented, do not consider integrated interactions between data channels, and fail to provide a comprehensive assessment of system performance in dynamic environments. This creates risks for the implementation of innovative technologies in critical domains such as healthcare, transportation, and the financial sector. Purpose of the article. The purpose of this study is to develop a hybrid testing framework for multimodal systems based on AI agents that enables a comprehensive assessment of their functional quality and reliability in practical applications. Research methodology. The research is based on systemic and interdisciplinary approaches that provide a holistic view of the problem of testing multimodal systems. Structural-functional analysis was used to identify key characteristics of reliability and quality, while logical and analytical methods were applied to generalize theoretical principles and compare existing approaches. In addition, the principles of agent-oriented architecture were employed to describe interactions between subsystems. This methodology made it possible to integrate different levels of research, from conceptual to applied, and to identify patterns in the functioning of the hybrid framework. Research results. The study identified key challenges in testing multimodal systems, such as data heterogeneity, the complexity of constructing representative scenarios, and the high computational cost of testing processes. It was established that the use of a hybrid approach reduces error risks and improves the accuracy of detecting critical deviations. The feasibility of implementing a multilevel verification model was demonstrated, ensuring consistency between modalities and adaptability",
+    "title": "Instructor Perceptions of AI Code Generation Tools - A Multi-Institutional Interview Study",
+    "abstract": "Much of the recent work investigating large language models and AI Code Generation tools in computing education has focused on assessing their capabilities for solving typical programming problems and for generating resources such as code explanations and exercises. If progress is to be made toward the inevitable lasting pedagogical change, there is a need for research that explores the instructor voice, seeking to understand how instructors with a range of experiences plan to adapt. In this paper, we report the results of an interview study involving 12 instructors from Australia, Finland and New Zealand, in which we investigate educators' current practices, concerns, and planned adaptations relating to these tools. Through this empirical study, our goal is to prompt dialogue between researchers and educators to inform new pedagogical strategies in response to the rapidly evolving landscape of AI code generation tools.",
     "authors": [
-      "Dmytro Kyiashko"
+      "Judithe Sheard",
+      "Paul Denny",
+      "Arto Hellas",
+      "Juho Leinonen",
+      "L. Malmi",
+      "Simon"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/0a9b1a7684afaa2efb7fffb15f6232d82df9e38d",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "From Sprint Planning to Guardrail Engineering: Rethinking Software Development in the Age of AI Agents",
-    "abstract": "The rapid adoption of AI-assisted coding agents is reshaping software development by reducing the cost of feature creation while simultaneously increasing the risk of latent defects, architecture drift, and poorly understood system interactions. Traditional development processes assume that implementation effort is the primary constraint, making sprint planning, task decomposition, and team specialization central to delivery. In contrast, agent-assisted development shifts the bottleneck from code production to oversight, verification, and constraint design. This paper examines whether conventional agile structures remain adequate when feature implementation can be generated quickly by systems that operate with limited contextual understanding, uneven reasoning depth, and minimal accountability. We argue that future software en- gineering workflows will depend less on language-specific expertise and more on system-specific guardrails, eval- uation harnesses, policy enforcement, and release safety mechanisms. Through analysis of emerging development patterns, this work explores how AI agents change defect introduction, review responsibilities, testing strategy, and organizational roles. The paper proposes a framework for “guardrail-centric development,” where engineering quality is measured by the robustness of constraints, observability, and rollback design rather than by im- plementation velocity alone. The study further identifies novel failure modes, including agent-amplified technical debt, invisible requirement drift, and automated changes that satisfy local tests while violating global system intent. The goal is to define a new process model for software teams operating in an era where code is abundant, but trustworthy integration is scarce.",
-    "authors": [
-      "Anand Ganesh"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/bd05508f51856ebd96c9fa6ac820149d5da2da76",
-    "year": "2026",
-    "categories": []
-  },
-  {
-    "title": "Cloud Infrastructure Management in the Age of AI Agents",
-    "abstract": "Cloud infrastructure is the cornerstone of the modern IT industry. However, managing this infrastructure effectively requires considerable manual effort from the DevOps engineering team. We make a case for developing AI agents powered by large language models (LLMs) to automate cloud infrastructure management tasks. In a preliminary study, we investigate the potential for AI agents to use different cloud/user interfaces such as software development kits (SDK), command line interfaces (CLI), Infrastructure-as-Code (IaC) platforms, and web portals. We report takeaways on their effectiveness on different management tasks, and identify research challenges and potential solutions.",
-    "authors": [
-      "Zhenning Yang",
-      "Archit Bhatnagar",
-      "Yiming Qiu",
-      "Tongyuan Miao",
-      "Patrick Tser Jern Kon",
-      "Yunming Xiao",
-      "Yibo Huang",
-      "Martin Casado",
-      "Ang Chen"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/d56007253166c390c4109a499eb5cb4ec1e19cb1",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Security of AI Agents",
-    "abstract": "AI agents have been boosted by large language models. AI agents can function as intelligent assistants and complete tasks on behalf of their users with access to tools and the ability to execute commands in their environments. Through studying and experiencing the workflow of typical AI agents, we have raised several concerns regarding their security. These potential vulnerabilities are not addressed by the frameworks used to build the agents, nor by research aimed at improving the agents. In this paper, we identify and describe these vulnerabilities in detail from a system security perspective, emphasizing their causes and severe effects. Furthermore, we introduce defense mechanisms corresponding to each vulnerability with design and experiments to evaluate their viability. Altogether, this paper contextualizes the security issues in the current development of AI agents and delineates methods to make AI agents safer and more reliable.",
-    "authors": [
-      "Yifeng He",
-      "Ethan Wang",
-      "Yuyang Rong",
-      "Zifei Cheng",
-      "Hao Chen"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/cb61ebdcbb36a799b7460ae33aaad8c08e98bb9f",
+    "url": "https://www.semanticscholar.org/paper/1f7228550f2177c83d5fb06a7fef555fe83b9bfb",
     "year": "2024",
     "categories": []
   },
   {
-    "title": "Agentsway - Software Development Methodology for AI Agents-based Teams",
-    "abstract": "The emergence of Agentic AI is fundamentally transforming how software is designed, developed, and maintained. Traditional software development methodologies such as Agile, Kanban, ShapeUp, etc, were originally designed for human-centric teams and are increasingly inadequate in environments where autonomous AI agents contribute to planning, coding, testing, and continuous learning. To address this methodological gap, we present\"Agentsway\"a novel software development framework designed for ecosystems where AI agents operate as first-class collaborators. Agentsway introduces a structured lifecycle centered on human orchestration, and privacy-preserving collaboration among specialized AI agents. The framework defines distinct roles for planning, prompting, coding, testing, and fine-tuning agents, each contributing to iterative improvement and adaptive learning throughout the development process. By integrating fine-tuned LLMs that leverage outputs and feedback from different agents throughout the development cycle as part of a retrospective learning process, Agentsway enhances domain-specific reasoning, and explainable decision-making across the entire software development lifecycle. Responsible AI principles are further embedded across the agents through the coordinated use of multiple fine-tuned LLMs and advanced reasoning models, ensuring balanced, transparent, and accountable decision-making. This work advances software engineering by formalizing agent-centric collaboration, integrating privacy-by-design principles, and defining measurable metrics for productivity and trust. Agentsway represents a foundational step toward the next generation of AI-native, self-improving software development methodologies. To the best of our knowledge, this is the first research effort to introduce a dedicated methodology explicitly designed for AI agent-based software engineering teams.",
+    "title": "Securing AI Code Generation Through Automated Pattern-Based Patching",
+    "abstract": "In an era where AI code generators are reshaping software development, the risk of introducing vulnerabilities is a growing concern. With the increasing reliance on machine learning-driven tools, it is essential to support developers with effective automated vulnerability patching while prioritizing the reliability and security of AI. However, current methods face significant challenges, including a high rate of false positives and difficulties in generating high-quality patches. This paper presents PatchitPy, a new patching solution that leverages a pattern-matching approach to detect and patch Python vulnerabilities. We generated 609 Python code using three popular AI code generators (i.e., GitHub Copilot, Claude-3.7-Sonnet, and DeepSeek- V3)and evaluated our solution's performance on these samples. The results demonstrate the effectiveness of PatchitPy, which outperforms state-of-the-art solutions in both detection and patching. PatchitPy achieved an F1 score of 93% and an Accuracy of 89% for vulnerability detection, and produced high-quality patches with a 80% repair rate for identified vulnerabilities. Furthermore, the patches preserve code quality with minimal impact on complexity, ensuring long-term code maintainability.",
     "authors": [
-      "Eranga Bandara",
-      "Ross Gore",
-      "Xueping Liang",
-      "Sachini Rajapakse",
-      "Isurunima Kularathne",
-      "Pramoda Karunarathna",
-      "Peter B. Foytik",
-      "Sachin Shetty",
-      "R. Mukkamala",
-      "Abdul Rahman",
-      "Amin Hass",
-      "Ng Wee Keong",
-      "K. D. Zoysa",
-      "A. Withanage",
-      "Nilaan Loganathan"
+      "Francesco Altiero",
+      "D. Cotroneo",
+      "Roberta De Luca",
+      "Pietro Liguori"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/ee15c94d9e34fcc01cd42ffe39f079aa328dbccc",
+    "url": "https://www.semanticscholar.org/paper/855dd1099375663bf9f2f60e6a9321685266c7f7",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds",
-    "abstract": "AI for IT Operations (AIOps) aims to automate complex operational tasks, such as fault localization and root cause analysis, to reduce human workload and minimize customer impact. While traditional DevOps tools and AIOps algorithms often focus on addressing isolated operational tasks, recent advances in Large Language Models (LLMs) and AI agents are revolutionizing AIOps by enabling end-to-end and multitask automation. This paper envisions a future where AI agents autonomously manage operational tasks throughout the entire incident lifecycle, leading to self-healing cloud systems, a paradigm we term AgentOps. Realizing this vision requires a comprehensive framework to guide the design, development, and evaluation of these agents. To this end, we present AIOPSLAB, a framework that not only deploys microservice cloud environments, injects faults, generates workloads, and exports telemetry data but also orchestrates these components and provides interfaces for interacting with and evaluating agents. We discuss the key requirements for such a holistic framework and demonstrate how AIOPSLAB can facilitate the evaluation of next-generation AIOps agents. Through evaluations of state-of-the-art LLM agents within the benchmark created by AIOPSLAB, we provide insights into their capabilities and limitations in handling complex operational tasks in cloud environments.",
+    "title": "An Empirical Study of Code Clones from Commercial AI Code Generators",
+    "abstract": "Deep learning (DL) has revolutionized various software engineering tasks. Particularly, the emergence of AI code generators has pushed the boundaries of automatic programming to synthesize entire programs based on user-defined specifications in natural language. However, it remains a mystery if these AI code generators rely on the copy-and-paste programming practice, resulting in code clone concerns. In this work, to comprehensively study the code cloning behavior of AI code generators, we conduct an empirical study on three state-of-the-art commercial AI code generators to investigate the existence of all types of clones, which remains underexplored. Our experimental results show that the total Type-1 and Type-2 clone rates of the state-of-the-art commercial AI code generators can reach up to 7.50%, indicating marked code clone issues. Furthermore, it is observed that AI code generators risk infringing copyrights and propagating buggy and vulnerable code resulting from cloning code and show a certain degree of stability in generating code clones.",
     "authors": [
-      "Yinfang Chen",
-      "Manisha M Shetty",
-      "Gagan Somashekar",
-      "Ming-Jie Ma",
-      "Yogesh L. Simmhan",
-      "Jonathan Mace",
-      "Chetan Bansal",
-      "Rujia Wang",
-      "S. Rajmohan"
+      "Weibin Wu",
+      "Haoxuan Hu",
+      "Zhaoji Fan",
+      "Yitong Qiao",
+      "Yizhan Huang",
+      "Yichen Li",
+      "Zibin Zheng",
+      "Michael R. Lyu"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/c8bbe39285da8e427250cc2a80da8f8f2f92b8cb",
+    "url": "https://www.semanticscholar.org/paper/4dcfe19531fec21e4c2ff27bcd0fa4ccea578c3f",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "RAG-Based AI Agents for Enterprise Software Development: Implementation Patterns and Production Deployment",
-    "abstract": "The integration of artificial intelligence (AI) agents into enterprise software development has emerged as a transformative approach to enhance productivity and code quality. Retrieval-Augmented Generation (RAG) represents a paradigm shift in how AI systems access and utilize knowledge, combining the generative capabilities of large language models (LLMs) with dynamic information retrieval mechanisms. This review paper examines the current state of RAG-based AI agents in enterprise software development contexts, focusing on implementation patterns and production deployment strategies. We analyze the architectural foundations of RAG systems, including vector databases, embedding models, and retrieval mechanisms that enable AI agents to access up-to-date code repositories, documentation, and organizational knowledge bases. The paper explores various implementation patterns such as code completion agents, automated testing assistants, documentation generators, and intelligent code review systems. We investigate production deployment challenges including scalability, latency optimization, security considerations, and integration with existing development workflows. Through systematic analysis of recent research and industrial applications, we identify key success factors for deploying RAG-based AI agents in enterprise environments, including context window management, retrieval accuracy, and hallucination mitigation strategies. The review also addresses emerging trends such as multi-agent collaboration, fine-tuning strategies for domain-specific tasks, and hybrid retrieval approaches. Our findings suggest that while RAG-based AI agents demonstrate significant potential for transforming enterprise software development, successful deployment requires careful consideration of organizational context, data privacy requirements, and continuous model evaluation frameworks.",
+    "title": "Does AI Code Review Lead to Code Changes? A Case Study of GitHub Actions",
+    "abstract": "AI-based code review tools automatically review and comment on pull requests to improve code quality. Despite their growing presence, little is known about their actual impact. We present a large-scale empirical study of 16 popular AI-based code review actions for GitHub workflows, analyzing more than 22,000 review comments in 178 repositories. We investigate (1) how these tools are adopted and configured, (2) whether their comments lead to code changes, and (3) which factors influence their effectiveness. We develop a two-stage LLM-assisted framework to determine whether review comments are addressed, and use interpretable machine learning to identify influencing factors. Our findings show that, while adoption is growing, effectiveness varies widely. Comments that are concise, contain code snippets, and are manually triggered, particularly those from hunk-level review tools, are more likely to result in code changes. These results highlight the importance of careful tool design and suggest directions for improving AI-based code review systems.",
     "authors": [
-      "Xiuyuan Zhao",
-      "Tiejiang Sun",
-      "Shaochen Ren",
-      "Jingyun Yang",
-      "Yang Liu"
+      "Kexin Sun",
+      "Hongyu Kuang",
+      "Sebastian Baltes",
+      "Xin Zhou",
+      "He Zhang",
+      "Xiaoxing Ma",
+      "Guoping Rong",
+      "Dong Shao",
+      "Christoph Treude"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/c27d3248e95c6ff979476356358298d1216a43c9",
+    "url": "https://www.semanticscholar.org/paper/8bb17ddcf2781ea822e8cd7d625a02163f668551",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "DoomArena: A framework for Testing AI Agents Against Evolving Security Threats",
-    "abstract": "We present DoomArena, a security evaluation framework for AI agents. DoomArena is designed on three principles: 1) It is a plug-in framework and integrates easily into realistic agentic frameworks like BrowserGym (for web agents) and $\\tau$-bench (for tool calling agents); 2) It is configurable and allows for detailed threat modeling, allowing configuration of specific components of the agentic framework being attackable, and specifying targets for the attacker; and 3) It is modular and decouples the development of attacks from details of the environment in which the agent is deployed, allowing for the same attacks to be applied across multiple environments. We illustrate several advantages of our framework, including the ability to adapt to new threat models and environments easily, the ability to easily combine several previously published attacks to enable comprehensive and fine-grained security testing, and the ability to analyze trade-offs between various vulnerabilities and performance. We apply DoomArena to state-of-the-art (SOTA) web and tool-calling agents and find a number of surprising results: 1) SOTA agents have varying levels of vulnerability to different threat models (malicious user vs malicious environment), and there is no Pareto dominant agent across all threat models; 2) When multiple attacks are applied to an agent, they often combine constructively; 3) Guardrail model-based defenses seem to fail, while defenses based on powerful SOTA LLMs work better. DoomArena is available at https://github.com/ServiceNow/DoomArena.",
+    "title": "Examining the Use and Impact of an AI Code Assistant on Developer Productivity and Experience in the Enterprise",
+    "abstract": "AI assistants are being created to help software engineers conduct a variety of coding-related tasks, such as writing, documenting, and testing code. We describe the use of the watsonx Code Assistant (WCA), an LLM-powered coding assistant deployed internally within IBM. Through surveys of two user cohorts (N=669) and unmoderated usability testing (N=15), we examined developers’ experiences with WCA and its impact on their productivity. We learned about their motivations for using (or not using) WCA, we examined their expectations of its speed and quality, and we identified new considerations regarding ownership of and responsibility for generated code. Our case study characterizes the impact of an LLM-powered assistant on developers’ perceptions of productivity and it shows that although such tools do often provide net productivity increases, these benefits may not always be experienced by all users.",
     "authors": [
-      "L'eo Boisvert",
-      "Mihir Bansal",
-      "Chandra Kiran Reddy Evuru",
-      "Gabriel Huang",
-      "Abhay Puri",
-      "Avinandan Bose",
-      "Maryam Fazel",
-      "Quentin Cappart",
-      "Jason Stanley",
-      "Alexandre Lacoste",
-      "Alexandre Drouin",
-      "K. Dvijotham"
+      "Justin D. Weisz",
+      "Shraddha Kumar",
+      "Michael J. Muller",
+      "Karen-Ellen Browne",
+      "Arielle Goldberg",
+      "Katrin Ellice Heintze",
+      "Shagun Bajpai"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/9e85ce8f1822105251870493e5326468fba18f0d",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Contribution of Artificial Intelligence and Virtual Worlds towards development of Super Intelligent AI Agents",
-    "abstract": "Artificial Intelligence (AI) has always been a goal as\nwell as a challenge in the scientific field with a whole new world\nbeing accessible to people by accomplishing various achievements\nin the past decades. However, in the last many years, tremendous\npopularity has been received by the interactive computer games\ninvolving multi-user virtual environment which has been the\nprime attraction for millions of users around the world. This\npaper focuses on AI agents along with exploring the progress\ntowards super intelligent AI and the roles played by artificial\nintelligence and virtual worlds in its development. It follows a\nunique approach to give an unbiased view on the various\nproblems and the relation between them. There are namely two\nbenefits from this research: firstly, evolution in science and\ntechnology requires a profound understanding on the advanced\nAI agents in the virtual worlds, and secondly, the virtual worlds\nhave always been a magnificent platform for research on the\nchallenging problems faced in the domain of Artificial\nIntelligence",
-    "authors": [
-      "Simran Koul"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/59d83a51f1e09c91bc3368571a3f1f25808cca95",
-    "year": "2020",
-    "categories": []
-  },
-  {
-    "title": "Embodied AI Agents: Modeling the World",
-    "abstract": "This paper describes our research on AI agents embodied in visual, virtual or physical forms, enabling them to interact with both users and their environments. These agents, which include virtual avatars, wearable devices, and robots, are designed to perceive, learn and act within their surroundings, which makes them more similar to how humans learn and interact with the environments as compared to disembodied agents. We propose that the development of world models is central to reasoning and planning of embodied AI agents, allowing these agents to understand and predict their environment, to understand user intentions and social contexts, thereby enhancing their ability to perform complex tasks autonomously. World modeling encompasses the integration of multimodal perception, planning through reasoning for action and control, and memory to create a comprehensive understanding of the physical world. Beyond the physical world, we also propose to learn the mental world model of users to enable better human-agent collaboration.",
-    "authors": [
-      "Pascale Fung",
-      "Yoram Bachrach",
-      "Asli Celikyilmaz",
-      "Kamalika Chaudhuri",
-      "Delong Chen",
-      "Willy Chung",
-      "Emmanuel Dupoux",
-      "Hervé Jégou",
-      "A. Lazaric",
-      "Arjun Majumdar",
-      "Andrea Madotto",
-      "F. Meier",
-      "Florian Metze",
-      "Théo Moutakanni",
-      "Juan Pino",
-      "Basile Terver",
-      "Joseph Tighe",
-      "J. Malik"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/121d34fe66a35ef11e408de4119477971ee6e2cc",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "How Do Consumers Trust and Accept AI Agents? An Extended Theoretical Framework and Empirical Evidence",
-    "abstract": "With the rapid development of generative artificial intelligence (AI), AI agents are evolving into “intelligent partners” integrated into various consumer scenarios, posing new challenges to conventional consumer decision-making processes and perceptions. However, the mechanisms through which consumers develop trust and adopt AI agents in common scenarios remain unclear. Therefore, this article develops a framework based on the heuristic–systematic model to explain the behavioral decision-making mechanisms of future consumers. This model is validated through PLS-SEM with data from 632 participants in China. The results show that trust can link individuals’ dual decision paths to further drive user behavior. Additionally, we identify the key drivers of consumer behavior from two dimensions. These findings provide practical guidance for businesses and policymakers to optimize the design and development of AI agents and promote the widespread acceptance and adoption of AI technologies.",
-    "authors": [
-      "Xue Zhao",
-      "W. You",
-      "Ziqing Zheng",
-      "Shuhui Shi",
-      "Yinyu Lu",
-      "Lingyun Sun"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/ec54d7a834092ed9a7d9caab4be1c6b9ab62624d",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "LeadLets: Towards a Pattern Language for Leadership Development of Human and AI Agents",
-    "abstract": "Advances in artificial intelligence (AI) technologies have inspired businesses and researchers to identify new ways in which AI can improve our way of life. One such quest lies in giving AIs complex human capabilities like leadership. We take the first step towards that goal and propose a pattern-based approach to leadership. We argue that leadership best practices are actually a series of mini interventions each of which results in a consistent and desired response from the followers. When codified, these repeatable interventions can serve as foundational blocks for AI algorithms. To this end, we introduce LeadLets: A pattern language that codifies named, scripted, and repeatable leadership techniques that have a predictable influence causing a purposeful effect on one or more individuals. We argue that a pattern-based approach such as LeadLets can create leadership templates that inform programing leadership behavior into AI artifacts and designing leaders development programs.",
-    "authors": [
-      "Triparna de Vreede",
-      "L. Steele",
-      "G. Vreede",
-      "R. Briggs"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/af1eb5b772e7f6f5f722329efec8364c48d697e1",
-    "year": "2020",
-    "categories": []
-  },
-  {
-    "title": "Generative AI Agents With Large Language Model for Satellite Networks via a Mixture of Experts Transmission",
-    "abstract": "In response to the needs of 6G global communications, satellite communication networks have emerged as a key solution. However, the large-scale development of satellite communication networks is constrained by complex system models, whose modeling is challenging for massive users. Moreover, transmission interference between satellites and users seriously affects communication performance. To solve these problems, this paper develops generative artificial intelligence (AI) agents for model formulation and then applies a mixture of experts (MoE) approach to design transmission strategies. Specifically, we leverage large language models (LLMs) to build an interactive modeling paradigm and utilize retrieval-augmented generation (RAG) to extract satellite expert knowledge that supports mathematical modeling. Afterward, by integrating the expertise of multiple specialized components, we propose an MoE-proximal policy optimization (PPO) approach to solve the formulated problem. Each expert can optimize the optimization variables at which it excels through specialized training through its own network and then aggregate them through the gating network to perform joint optimization. The simulation results validate the accuracy and effectiveness of employing a generative agent for problem formulation. Furthermore, the superiority of the proposed MoE-ppo approach over other benchmarks is confirmed in solving the formulated problem. The adaptability of MoE-PPO to various customized modeling problems has also been demonstrated.",
-    "authors": [
-      "Ruichen Zhang",
-      "Hongyang Du",
-      "Yinqiu Liu",
-      "Dusist Niyato",
-      "Jiawen Kang",
-      "Zehui Xiong",
-      "Abbas Jamalipour",
-      "Dong In Kim"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/6d533b0f318fd22d664356b56b68023560d3c60f",
+    "url": "https://www.semanticscholar.org/paper/bf93f66fc99cb8788a0043e82175920ef6f5a51a",
     "year": "2024",
     "categories": []
   },
   {
-    "title": "Cybersecurity AI Benchmark (CAIBench): A Meta-Benchmark for Evaluating Cybersecurity AI Agents",
-    "abstract": "Cybersecurity spans multiple interconnected domains, complicating the development of meaningful, labor-relevant benchmarks. Existing benchmarks assess isolated skills rather than integrated performance. We find that pre-trained knowledge of cybersecurity in LLMs does not imply attack and defense abilities, revealing a gap between knowledge and capability. To address this limitation, we present the Cybersecurity AI Benchmark (CAIBench), a modular meta-benchmark framework that allows evaluating LLM models and agents across offensive and defensive cybersecurity domains, taking a step towards meaningfully measuring their labor-relevance. CAIBench integrates five evaluation categories, covering over 10,000 instances: Jeopardy-style CTFs, Attack and Defense CTFs, Cyber Range exercises, knowledge benchmarks, and privacy assessments. Key novel contributions include systematic simultaneous offensive-defensive evaluation, robotics-focused cybersecurity challenges (RCTF2), and privacy-preserving performance assessment (CyberPII-Bench). Evaluation of state-of-the-art AI models reveals saturation on security knowledge metrics (~70\\% success) but substantial degradation in multi-step adversarial (A\\&D) scenarios (20-40\\% success), or worse in robotic targets (22\\% success). The combination of framework scaffolding and LLM model choice significantly impacts performance; we find that proper matches improve up to 2.6$\\times$ variance in Attack and Defense CTFs. These results demonstrate a pronounced gap between conceptual knowledge and adaptive capability, emphasizing the need for a meta-benchmark.",
+    "title": "“You’re on a bicycle with a little motor”: Benefits and Challenges of Using AI Code Assistants",
+    "abstract": "AI code assistants, such as Tabnine, GitHub CoPilot, and ChatGPT, employ Large Language Models (LLMs) trained on extensive source code and other documents. They receive prompts and generate code suggestions aimed to facilitate programming tasks. Previous research in this field has explored the correctness, complexity, quality, and security of the code suggestions. Software developers’ experiences have been studied in the context of controlled experiments. Based on 14 interviews with software developers, this paper describes the developers’ daily and continuous experiences with AI code assistants, presenting benefits and challenges grounded in actual development work, along with strategies to address these challenges.",
     "authors": [
-      "Mar'ia Sanz-G'omez",
-      "V. Vilches",
-      "Francesco Balassone",
-      "Luis Javier Navarrete-Lozano",
-      "Cristóbal R. J. Veas Chavez",
-      "Maite del Mundo de Torres"
+      "Wendy Mendes",
+      "S. Souza",
+      "C. D. de Souza"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/86d2b51524d648648e4b483b71cb73ba5575764e",
+    "url": "https://www.semanticscholar.org/paper/9894760ed0d9f9fae564c32c5c50287a0e29f00d",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "Identifying the Factors That Influence Trust in AI Code Completion",
+    "abstract": "AI-powered software development tooling is changing the way that developers interact with tools and write code. However, the ability for AI to truly transform software development may depend on developers' levels of trust in these tools, which has consequences for tool adoption and repeated usage. In this work, we take a mixed-methods approach to measure the factors that influence developers' trust in AI-powered code completion. We found that characteristics about the AI suggestion itself (e.g., the quality of the suggestion), the developer interacting with the suggestion (e.g., their expertise in a language), and the context of the development work (e.g., was the suggestion in a test file) all influenced acceptance rates of AI-powered code suggestions. Based on these findings we propose a number of recommendations for the design of AI-powered development tools to improve trust.",
+    "authors": [
+      "Adam Brown",
+      "Sarah D’Angelo",
+      "Ambar Murillo",
+      "Ciera Jaspan",
+      "Collin Green"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/14b61b07109f6b8ca2e0d082e4b4c52a0ffaccb9",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "Studying the effect of AI Code Generators on Supporting Novice Learners in Introductory Programming",
+    "abstract": "AI code generators like OpenAI Codex have the potential to assist novice programmers by generating code from natural language descriptions, however, over-reliance might negatively impact learning and retention. To explore the implications that AI code generators have on introductory programming, we conducted a controlled experiment with 69 novices (ages 10-17). Learners worked on 45 Python code-authoring tasks, for which half of the learners had access to Codex, each followed by a code-modification task. Our results show that using Codex significantly increased code-authoring performance (1.15x increased completion rate and 1.8x higher scores) while not decreasing performance on manual code-modification tasks. Additionally, learners with access to Codex during the training phase performed slightly better on the evaluation post-tests conducted one week later, although this difference did not reach statistical significance. Of interest, learners with higher Scratch pre-test scores performed significantly better on retention post-tests, if they had prior access to Codex.",
+    "authors": [
+      "Majeed Kazemitabaar",
+      "J. Chow",
+      "Carlsen Ma",
+      "B. Ericson",
+      "David Weintrop",
+      "Tovi Grossman"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/f03f39f735186c4359b719724be6e1c2eb912fef",
+    "year": "2023",
+    "categories": []
+  },
+  {
+    "title": "Assessing the Effectiveness and Security Implications of AI Code Generators",
+    "abstract": "Students, especially those outside the field of cybersecurity, are increasingly turning to Large Language Model (LLM)-based generative AI tools for coding assistance. These AI code generators provide valuable support to developers by generating code based on provided input and instructions. However, the quality and accuracy of the generated code can vary, depending on factors such as task complexity, the clarity of instructions, and the model’s familiarity with the programming language. Additionally, these generated codes may inadvertently utilize vulnerable built-in functions, potentially leading to source code vulnerabilities and exploits. This research undertakes an in-depth analysis and comparison of code generation, code completion, and security suggestions offered by prominent AI models, including OpenAI CodeX, CodeBert, and ChatGPT. The research aims to evaluate the effectiveness and security aspects of these tools in terms of their code generation, code completion capabilities, and their ability to enhance security. This analysis serves as a valuable resource for developers, enabling them to proactively avoid introducing security vulnerabilities in their projects. By doing so, developers can significantly reduce the need for extensive revisions and resource allocation, whether in the short or long term.",
+    "authors": [
+      "Maryam Taeb",
+      "Hongmei Chi",
+      "Shonda Bernadin"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/35b7027421e64392bd54bf00356826515c4f1d6b",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "AIDE: AI-Driven Exploration in the Space of Code",
+    "abstract": "Machine learning, the foundation of modern artificial intelligence, has driven innovations that have fundamentally transformed the world. Yet, behind advancements lies a complex and often tedious process requiring labor and compute intensive iteration and experimentation. Engineers and scientists developing machine learning models spend much of their time on trial-and-error tasks instead of conceptualizing innovative solutions or research hypotheses. To address this challenge, we introduce AI-Driven Exploration (AIDE), a machine learning engineering agent powered by large language models (LLMs). AIDE frames machine learning engineering as a code optimization problem, and formulates trial-and-error as a tree search in the space of potential solutions. By strategically reusing and refining promising solutions, AIDE effectively trades computational resources for enhanced performance, achieving state-of-the-art results on multiple machine learning engineering benchmarks, including our Kaggle evaluations, OpenAI MLE-Bench and METRs RE-Bench.",
+    "authors": [
+      "Z. Jiang",
+      "Dominik Schmidt",
+      "Dhruv Srikanth",
+      "Dixing Xu",
+      "Ian Kaplan",
+      "Deniss Jacenko",
+      "Yuxiang Wu"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/6eeaf1e7b3be81eb1f44f80906757964e6183fec",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Episodic Memory in AI Agents Poses Risks that Should be Studied and Mitigated",
-    "abstract": "Most current AI models have little ability to store and later retrieve a record or representation of what they do. In human cognition, episodic memories play an important role in both recall of the past as well as planning for the future. The ability to form and use episodic memories would similarly enable a broad range of improved capabilities in an AI agent that interacts with and takes actions in the world. Researchers have begun directing more attention to developing memory abilities in AI models. It is therefore likely that models with such capability will be become widespread in the near future. This could in some ways contribute to making such AI agents safer by enabling users to better monitor, understand, and control their actions. However, as a new capability with wide applications, we argue that it will also introduce significant new risks that researchers should begin to study and address. We outline these risks and benefits and propose four principles to guide the development of episodic memory capabilities so that these will enhance, rather than undermine, the effort to keep AI safe and trustworthy.",
+    "title": "Comparative Study of AI Code Generation Tools: Quality Assessment and Performance Analysis",
+    "abstract": "Artificial intelligence (AI) code generation tools are crucial in software development, processing natural language to improve programming efficiency. Their increasing integration in various industries highlights their potential to transform the way programmers approach and execute software projects. The present research was conducted with the purpose of determining the accuracy and quality of code generated by artificial intelligence (AI) tools. The study began with a systematic mapping of the literature to identify applicable AI tools. Databases such as ACM, Engineering Source, Academic Search Ultimate, IEEE Xplore and Scopus were consulted, from which 621 papers were initially extracted. After applying inclusion criteria, such as English-language papers in computing areas published between 2020 and 2024, 113 resources were selected. A further screening process reduced this number to 44 papers, which identified 11 AI tools for code generation. The method used was a comparative study in which ten programming exercises of varying levels of difficulty were designed and the results obtained from 4 of them are presented. The identified tools generated code for these exercises in different programming languages. The quality of the generated code was evaluated using the SonarQube static analyzer, considering aspects such as safety, reliability and maintainability. The results showed significant variations in code quality among the AI tools. Bing as a code generation tool showed slightly superior performance compared to others, although none stood out as a noticeably superior AI. In conclusion, the research evidenced that, although AI tools for code generation are promising, they still require a pilot to reach their full potential, giving evidence that there is still a long way to go.",
     "authors": [
-      "Chad DeChant"
+      "Michael Alexander Florez Muñoz",
+      "Juan Camilo Jaramillo De La Torre",
+      "Stefany Pareja López",
+      "Stiven Herrera",
+      "Christian Andrés Candela Uribe"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/555254f52c2eea90a46870b866b3d609e4ddfff0",
-    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/5c74b818e952e791434cfdca1fb64d81ad20edba",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "From \"Ban It Till We Understand It\" to \"Resistance is Futile\": How University Programming Instructors Plan to Adapt as More Students Use AI Code Generation and Explanation Tools such as ChatGPT and GitHub Copilot",
+    "abstract": "Over the past year (2022–2023), recently-released AI tools such as ChatGPT and GitHub Copilot have gained significant attention from computing educators. Both researchers and practitioners have discovered that these tools can generate correct solutions to a variety of introductory programming assignments and accurately explain the contents of code. Given their current capabilities and likely advances in the coming years, how do university instructors plan to adapt their courses to ensure that students still learn well? To gather a diverse sample of perspectives, we interviewed 20 introductory programming instructors (9 women + 11 men) across 9 countries (Australia, Botswana, Canada, Chile, China, Rwanda, Spain, Switzerland, United States) spanning all 6 populated continents. To our knowledge, this is the first empirical study to gather instructor perspectives about how they plan to adapt to these AI coding tools that more students will likely have access to in the future. We found that, in the short-term, many planned to take immediate measures to discourage AI-assisted cheating. Then opinions diverged about how to work with AI coding tools longer-term, with one side wanting to ban them and continue teaching programming fundamentals, and the other side wanting to integrate them into courses to prepare students for future jobs. Our study findings capture a rare snapshot in time in early 2023 as computing instructors are just starting to form opinions about this fast-growing phenomenon but have not yet converged to any consensus about best practices. Using these findings as inspiration, we synthesized a diverse set of open research questions regarding how to develop, deploy, and evaluate AI coding tools for computing education.",
+    "authors": [
+      "Sam Lau",
+      "Philip J. Guo"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/a1f3a5f16faf9670f948f1e4e84d12f08dfe353b",
+    "year": "2023",
+    "categories": []
+  },
+  {
+    "title": "Performance, Workload, Emotion, and Self-Efficacy of Novice Programmers Using AI Code Generation",
+    "abstract": "Artificial Intelligence-driven Development Environments (AIDEs) offer developers revolutionary computer programming assistance. There is great potential in incorporating AIDEs into Computer Science education; however, the effects of these tools should be fully examined before doing so. Here, a within-subjects study was conducted to compare the programming performance, workload, emotion, and self-efficacy of seventeen novices coding with and without use of the GitHub Copilot AIDE under time pressure. Results showed that using the AIDE significantly increased programming efficiency and reduced effort and mental workload but did not significantly impact emotion or self-efficacy. However, participants' performance improved with more experience using the AI, and their self-efficacy followed. The results suggest that students who try AIDEs will likely be tempted to use them for time-sensitive work. There is no evidence that providing AIDEs will aid struggling students, but there is a clear need for students to practice with AI to become competent and confident using it.",
+    "authors": [
+      "Nicholas Gardella",
+      "Raymond Pettit",
+      "S. Riggs"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/45562c652d388f2f89805c9e4ae2b77c20d48ff4",
+    "year": "2024",
+    "categories": []
+  },
+  {
+    "title": "Exploring Security Risks and Mitigation Strategies in AI Code Helpers",
+    "abstract": "We aim to tackle the urgent concern of security vulnerabilities linked to the utilization of AI code assistants, with a focus on the unintended disclosure of sensitive data such as secret credentials, intellectual property, and other confidential information. With developers increasingly depending on emerging technologies akin to Copilots, Codeium, CodeGeeX, and similar popular AI code assistants, the peril of information exposure emerges as a significant apprehension. This paper delves into the obstacles encountered and potential remedies to alleviate the security risks entwined with these AI code assistants.",
+    "authors": [
+      "Harshith Sheggam",
+      "Xiaowen Zhang"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/d56afd294e4511fe174adcf7f8ade7757169548d",
+    "year": "2024",
     "categories": []
   }
 ]

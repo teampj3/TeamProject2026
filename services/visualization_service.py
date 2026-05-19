@@ -48,7 +48,11 @@ def clear_topic_visual_outputs(topic: str) -> None:
     slug = slugify_topic(topic)
     for path in VISUALIZATION_OUTPUT_DIR.glob(f"{slug}_*"):
         if path.is_file():
-            path.unlink(missing_ok=True)
+            try:
+                path.unlink(missing_ok=True)
+            except PermissionError:
+                # Windows에서 미리보기로 열어 둔 파일은 삭제가 막힐 수 있으므로 건너뜁니다.
+                continue
 
 
 def save_json_asset(topic: str, filename_suffix: str, payload: dict) -> Path:
@@ -136,7 +140,7 @@ def render_bar_chart(topic: str, visual_id: str, title: str, data_spec: dict) ->
         df[item["name"]] = item.get("values", [])
 
     melted = df.melt(id_vars="label", var_name="series", value_name="value")
-    fig, ax = plt.subplots(figsize=(11, 6))
+    fig, ax = plt.subplots(figsize=(11.5, 6.8))
 
     if orientation == "horizontal":
         sns.barplot(data=melted, y="label", x="value", hue="series", ax=ax, palette="crest")
@@ -146,10 +150,12 @@ def render_bar_chart(topic: str, visual_id: str, title: str, data_spec: dict) ->
         sns.barplot(data=melted, x="label", y="value", hue="series", ax=ax, palette="crest")
         ax.set_xlabel(data_spec.get("category_label", "항목"))
         ax.set_ylabel(data_spec.get("value_label", "값"))
-        ax.tick_params(axis="x", rotation=20)
+        ax.tick_params(axis="x", rotation=0)
 
     _figure_title(ax, title, data_spec.get("source_note", ""))
-    ax.legend(title="")
+    ax.legend(title="", loc="upper right", frameon=True)
+    ax.set_ylim(bottom=0)
+    ax.grid(axis="y", alpha=0.22)
 
     for container in ax.containers:
         try:
@@ -200,21 +206,32 @@ def render_timeline(topic: str, visual_id: str, title: str, data_spec: dict) -> 
 
     events = sorted(events, key=lambda item: str(item.get("time", "")))
     x_values = list(range(len(events)))
-    fig_height = max(4.5, len(events) * 1.05)
-    fig, ax = plt.subplots(figsize=(13, fig_height))
+    fig_height = max(4.8, 4.2 + len(events) * 0.45)
+    fig, ax = plt.subplots(figsize=(12.5, fig_height))
 
     ax.hlines(y=1, xmin=min(x_values, default=0), xmax=max(x_values, default=1), color="#cbd5e1", linewidth=3)
     ax.scatter(x_values, [1] * len(events), s=240, color="#2563eb", zorder=3)
 
     for index, event in enumerate(events):
-        ax.text(index, 1.12, str(event.get("time", "")), ha="center", va="bottom", fontsize=10, fontweight="bold")
-        ax.text(index, 0.89, normalize_text(event.get("label", ""), 42), ha="center", va="top", fontsize=9)
-        ax.text(index, 0.79, normalize_text(event.get("detail", ""), 54), ha="center", va="top", fontsize=8, color="#475569")
+        top = index % 2 == 0
+        year_y = 1.12 if top else 0.88
+        box_y = 1.23 if top else 0.77
+        ax.text(index, year_y, str(event.get("time", "")), ha="center", va="bottom" if top else "top", fontsize=10, fontweight="bold")
+        ax.text(
+            index,
+            box_y,
+            f"{normalize_text(event.get('label', ''), 28)}\n{normalize_text(event.get('detail', ''), 40)}",
+            ha="center",
+            va="bottom" if top else "top",
+            fontsize=8.5,
+            color="#334155",
+            bbox=dict(boxstyle="round,pad=0.35", facecolor="#f8fafc", edgecolor="#cbd5e1"),
+        )
 
     _figure_title(ax, title, data_spec.get("source_note", ""))
     ax.set_yticks([])
     ax.set_xticks([])
-    ax.set_ylim(0.68, 1.22)
+    ax.set_ylim(0.62, 1.34)
     for spine in ax.spines.values():
         spine.set_visible(False)
 
@@ -231,7 +248,7 @@ def render_concept_diagram(topic: str, visual_id: str, title: str, data_spec: di
     if not branches:
         raise ValueError("concept_diagram data_spec requires branches")
 
-    fig, ax = plt.subplots(figsize=(12, 7))
+    fig, ax = plt.subplots(figsize=(12.5, 7.6))
     ax.axis("off")
     _figure_title(ax, title, data_spec.get("source_note", ""))
 
@@ -248,21 +265,19 @@ def render_concept_diagram(topic: str, visual_id: str, title: str, data_spec: di
         transform=ax.transAxes,
     )
 
-    count = max(1, len(branches))
-    if count == 1:
-        positions = [0.5]
-    elif count == 2:
-        positions = [0.28, 0.72]
-    elif count == 3:
-        positions = [0.18, 0.5, 0.82]
-    else:
-        positions = [0.12, 0.37, 0.63, 0.88][:count]
+    count = min(4, max(1, len(branches)))
+    layout = {
+        1: [(0.5, 0.45)],
+        2: [(0.28, 0.45), (0.72, 0.45)],
+        3: [(0.18, 0.45), (0.5, 0.34), (0.82, 0.45)],
+        4: [(0.14, 0.48), (0.38, 0.34), (0.62, 0.34), (0.86, 0.48)],
+    }
 
-    for x_pos, branch in zip(positions, branches[:4]):
-        ax.plot([0.5, x_pos], [0.74, 0.53], color="#99f6e4", linewidth=3, transform=ax.transAxes)
+    for (x_pos, y_pos), branch in zip(layout[count], branches[:count]):
+        ax.plot([0.5, x_pos], [0.74, y_pos + 0.08], color="#99f6e4", linewidth=3, transform=ax.transAxes)
         ax.text(
             x_pos,
-            0.45,
+            y_pos,
             branch.get("label", "핵심 항목"),
             ha="center",
             va="center",
@@ -274,7 +289,7 @@ def render_concept_diagram(topic: str, visual_id: str, title: str, data_spec: di
         )
         ax.text(
             x_pos,
-            0.23,
+            y_pos - 0.18,
             normalize_text(branch.get("detail", ""), 86) or "보조 설명",
             ha="center",
             va="center",

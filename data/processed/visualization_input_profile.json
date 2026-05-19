@@ -1,41 +1,21 @@
 {
-  "topic": "development of AI agents",
+  "topic": "AI code review",
   "score_threshold": 35.0,
-  "selected_paper_count": 13,
+  "selected_paper_count": 1,
   "selected_titles": [
-    "RAG-Based AI Agents for Enterprise Software Development: Implementation Patterns and Production Deployment",
-    "Generative AI Agents With Large Language Model for Satellite Networks via a Mixture of Experts Transmission",
-    "Agentsway - Software Development Methodology for AI Agents-based Teams",
-    "How Do Consumers Trust and Accept AI Agents? An Extended Theoretical Framework and Empirical Evidence",
-    "DEVELOPMENT OF A HYBRID TESTING FRAMEWORK FOR MULTIMODAL SYSTEMS BASED ON AI AGENTS",
-    "Contribution of Artificial Intelligence and Virtual Worlds towards development of Super Intelligent AI Agents",
-    "From Sprint Planning to Guardrail Engineering: Rethinking Software Development in the Age of AI Agents",
-    "AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds",
-    "DoomArena: A framework for Testing AI Agents Against Evolving Security Threats",
-    "Cloud Infrastructure Management in the Age of AI Agents",
-    "Cybersecurity AI Benchmark (CAIBench): A Meta-Benchmark for Evaluating Cybersecurity AI Agents",
-    "Security of AI Agents",
-    "Episodic Memory in AI Agents Poses Risks that Should be Studied and Mitigated"
+    "Comparative Study of AI Code Generation Tools: Quality Assessment and Performance Analysis"
   ],
-  "report_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\development_of_ai_agents_20260517_215725.md",
+  "report_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\ai_code_review_99999999_999999.md",
   "report_sections": [
-    "제목",
+    "AI 에이전트 기반 소프트웨어 개발 지원 시스템의 효과 분석",
     "초록",
     "서론",
-    "1. 서론",
-    "1.1 연구 배경",
-    "1.2 연구 필요성",
-    "AI 에이전트의 기술적 기반과 아키텍처 유형",
-    "도메인별 AI 에이전트 개발 방법론 검토",
-    "AI 에이전트 신뢰성 확보와 사용자 수용 메커니즘",
-    "효과적인 AI 에이전트 개발을 위한 통합 설계 원칙 도출",
-    "논의",
-    "결론",
-    "핵심 정리",
-    "향후 방향",
-    "참고문헌"
+    "실험 설계 및 비교 기준",
+    "시스템 발전 과정",
+    "시스템 구성 구조",
+    "결론"
   ],
-  "section_count": 15,
+  "section_count": 7,
   "supported_visual_types": {
     "table": {
       "description": "정의, 비교 항목, 실험 조건, 장단점처럼 표가 가장 잘 맞는 내용을 정리한다.",
