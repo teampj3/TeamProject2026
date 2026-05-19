@@ -7,6 +7,7 @@ import os
 import sys
 from datetime import datetime
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 
 # 프로젝트 루트를 sys.path에 추가 (agents/ 폴더 기준으로 상위 디렉토리)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -18,7 +19,6 @@ from services.llm_client import LLMClient
 INPUT_PATH  = PROJECT_ROOT / "data" / "processed" / "summary_result.json"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "review_result.json"
 
-# 논문 초안에 반드시 포함되어야 하는 필수 섹션 (purpose/method/result는 필수)
 REQUIRED_FIELDS = ["title", "purpose", "method", "result"]
 
 # ── 검토 기준 프롬프트 ──────────────────────────────────────
@@ -71,7 +71,6 @@ def check_missing_fields(paper: dict) -> list[str]:
 
 def parse_llm_response(raw: str) -> dict:
     """LLM 응답에서 JSON 파싱 (방어적 처리)"""
-    # ```json ... ``` 블록 제거
     cleaned = raw.strip()
     if cleaned.startswith("```"):
         lines = cleaned.splitlines()
@@ -79,7 +78,6 @@ def parse_llm_response(raw: str) -> dict:
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
-        # JSON 파싱 실패 시 기본값 반환
         return {
             "logic_score": 0,
             "duplication_score": 0,
@@ -93,16 +91,14 @@ def parse_llm_response(raw: str) -> dict:
 
 def review_paper(paper: dict, client: LLMClient) -> dict:
     """논문 1편 검토 수행"""
-    title       = paper.get("title", "제목 없음")
-    purpose     = paper.get("purpose", "")
-    method      = paper.get("method", "")
-    result      = paper.get("result", "")
-    limitation  = paper.get("limitation", "초록에 명시되지 않음")
+    title      = paper.get("title", "제목 없음")
+    purpose    = paper.get("purpose", "")
+    method     = paper.get("method", "")
+    result     = paper.get("result", "")
+    limitation = paper.get("limitation", "초록에 명시되지 않음")
 
-    # 1) 필수 섹션 누락 확인
     missing_fields = check_missing_fields(paper)
 
-    # 2) LLM 품질 검토
     prompt = REVIEW_PROMPT_TEMPLATE.format(
         title=title,
         purpose=purpose or "(없음)",
@@ -113,14 +109,12 @@ def review_paper(paper: dict, client: LLMClient) -> dict:
     raw_response = client.ask(prompt, max_tokens=1000)
     review       = parse_llm_response(raw_response)
 
-    # 3) 누락 섹션이 있으면 FAIL 강제
     if missing_fields:
         review["overall_verdict"] = "FAIL"
         review["missing_fields"]  = missing_fields
     else:
         review["missing_fields"] = []
 
-    # 4) 최종 점수 계산 (3개 항목 평균)
     scores = [
         review.get("logic_score", 0),
         review.get("duplication_score", 0),
@@ -129,7 +123,7 @@ def review_paper(paper: dict, client: LLMClient) -> dict:
     valid_scores = [s for s in scores if isinstance(s, (int, float)) and s > 0]
     review["average_score"] = round(sum(valid_scores) / len(valid_scores), 2) if valid_scores else 0.0
 
-    review["title"] = title
+    review["title"]       = title
     review["reviewed_at"] = datetime.now().isoformat(timespec="seconds")
 
     return review
@@ -170,34 +164,37 @@ def main() -> None:
     print("  Review Agent 시작 - 논문 초안 품질 검토")
     print("=" * 60)
 
-    # 초안 로드
     papers = load_draft(INPUT_PATH)
-
-    # LLM 클라이언트 초기화
     client = LLMClient()
+    total  = len(papers)
 
-    # 각 논문 검토
+    MAX_WORKERS = 5  # Rate Limit 에러 시 줄이세요
+
+    def review_with_index(args):
+        i, paper = args
+        title = paper.get("title", f"논문 #{i}")
+        print(f"[{i}/{total}] 검토 중: {title[:50]}...")
+        review = review_paper(paper, client)
+        return i, review
+
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = list(executor.map(review_with_index, enumerate(papers, start=1)))
+
+    futures.sort(key=lambda x: x[0])
+
     results = []
-    total   = len(papers)
     passed  = 0
 
-    for i, paper in enumerate(papers, start=1):
-        title = paper.get("title", f"논문 #{i}")
-        print(f"\n[{i}/{total}] 검토 중: {title[:50]}...")
-        review = review_paper(paper, client)
+    for i, review in futures:
         results.append(review)
-
         if review["overall_verdict"] == "PASS":
             passed += 1
-
         print_feedback(review, i)
 
-    # 결과 저장
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
-    # 최종 요약 출력
     print(f"\n{'='*60}")
     print(f"  검토 완료!")
     print(f"  전체: {total}편  |  통과: {passed}편  |  탈락: {total - passed}편")
