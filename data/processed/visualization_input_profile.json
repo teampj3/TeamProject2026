@@ -1,21 +1,37 @@
 {
-  "topic": "AI code review",
+  "topic": "history of AI agents",
   "score_threshold": 35.0,
-  "selected_paper_count": 1,
+  "selected_paper_count": 14,
   "selected_titles": [
-    "Comparative Study of AI Code Generation Tools: Quality Assessment and Performance Analysis"
+    "A Social Group Chatbot System by Multiple Topics Tracking and Atkinson‐Shiffrin Memory Model Using AI Agents Collaboration",
+    "History of generative Artificial Intelligence (AI) chatbots: past, present, and future development",
+    "How AI Agents Follow the Herd of AI? Network Effects, History, and Machine Optimism",
+    "The coevolution of technology, markets, and culture: the challenging case of AI",
+    "Impact of AI in Humans Life",
+    "The Most Disruptive Near-Term Use of AI in Cancer Care: Patient Empowerment Through Software Agents",
+    "Commonsense AI in the History of the Web",
+    "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
+    "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+    "Zero, Finite, and Infinite Belief History of Theory of Mind Reasoning in Large Language Models",
+    "Cognis: Context-Aware Memory for Conversational AI Agents",
+    "Intelligent Product 3.0: Decentralised AI Agents and Web3 Intelligence Standards",
+    "Towards Automating Data Access Permissions in AI Agents",
+    "Research on Establishing a Digital Conservation System for Architectural cultural heritage Using AI Agents on the “Coze” Platform"
   ],
-  "report_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\ai_code_review_99999999_999999.md",
+  "report_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\history_of_ai_agents_20260523_125111.md",
   "report_sections": [
-    "AI 에이전트 기반 소프트웨어 개발 지원 시스템의 효과 분석",
+    "제목",
     "초록",
     "서론",
-    "실험 설계 및 비교 기준",
-    "시스템 발전 과정",
-    "시스템 구성 구조",
-    "결론"
+    "AI 에이전트의 개념적 기원과 초기 발전",
+    "기계학습 및 신경망 도입에 따른 패러다임 전환",
+    "현대 AI 에이전트의 구조적 특성과 협력 메커니즘 분석",
+    "AI 에이전트 발전의 종합적 평가와 미래 방향 제언",
+    "논의",
+    "결론",
+    "참고문헌"
   ],
-  "section_count": 7,
+  "section_count": 10,
   "supported_visual_types": {
     "table": {
       "description": "정의, 비교 항목, 실험 조건, 장단점처럼 표가 가장 잘 맞는 내용을 정리한다.",

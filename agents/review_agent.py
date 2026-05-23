@@ -1,205 +1,302 @@
-"""Review Agent - 논문 초안 품질 검토 에이전트"""
+"""Review Agent for evaluating the generated draft quality."""
 
 from __future__ import annotations
 
 import json
-import os
+import re
 import sys
+from dataclasses import asdict
 from datetime import datetime
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
 
-# 프로젝트 루트를 sys.path에 추가 (agents/ 폴더 기준으로 상위 디렉토리)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(PROJECT_ROOT))
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
+from schemas.review_schema import ReviewResult
 from services.llm_client import LLMClient
 
-# ── 경로 설정 ───────────────────────────────────────────────
-INPUT_PATH  = PROJECT_ROOT / "data" / "processed" / "summary_result.json"
+REPORTS_DIR = PROJECT_ROOT / "outputs" / "reports"
 OUTPUT_PATH = PROJECT_ROOT / "data" / "processed" / "review_result.json"
 
-REQUIRED_FIELDS = ["title", "purpose", "method", "result"]
+REQUIRED_SECTIONS = ["제목", "초록", "서론", "논의", "결론", "참고문헌"]
 
-# ── 검토 기준 프롬프트 ──────────────────────────────────────
 REVIEW_PROMPT_TEMPLATE = """
-당신은 학술 논문 초안을 검토하는 전문 리뷰어입니다.
-아래 논문 초안 데이터를 분석하고 품질을 평가해주세요.
+당신은 한국어 학술 논문 초안을 검토하는 리뷰어이다.
+아래 초안을 읽고 다음 기준으로 평가하라.
 
-[논문 정보]
-제목: {title}
-목적(purpose): {purpose}
-방법(method): {method}
-결과(result): {result}
-한계(limitation): {limitation}
+평가 기준:
+1. 논리성: 연구 목적, 전개, 결론의 흐름이 자연스러운가
+2. 중복도: 같은 의미의 표현이 과도하게 반복되는가
+3. 구조 적절성: 논문 초안으로서 섹션 구성이 적절한가
+4. 어색한 표현: 문장이 부자연스럽거나 번역투인 부분
+5. 미완성 문장: 문장이 중간에 끊기거나 의미가 불분명한 부분
 
-다음 기준으로 검토하고, 반드시 아래 JSON 형식으로만 응답하세요 (다른 텍스트 없이):
+반드시 아래 JSON 형식으로만 답하라.
 
 {{
-  "logic_score": <1~5 정수, 논리성: 목적-방법-결과의 흐름이 일관되는가>,
-  "duplication_score": <1~5 정수, 중복도: 낮을수록 중복 표현이 적음>,
-  "structure_score": <1~5 정수, 구조 적절성: 섹션 구성이 논문답게 적절한가>,
-  "awkward_expressions": [<어색하거나 중복된 표현 문장 목록, 없으면 빈 배열>],
-  "incomplete_sentences": [<미완성이거나 불명확한 문장 목록, 없으면 빈 배열>],
-  "overall_verdict": "<PASS 또는 FAIL>",
-  "feedback_summary": "<한국어로 2~3문장 요약 피드백>"
+  "logic_score": 1,
+  "duplication_score": 1,
+  "structure_score": 1,
+  "awkward_expressions": ["예시"],
+  "incomplete_sentences": ["예시"],
+  "feedback_summary": "2~3문장 요약"
 }}
+
+[논문 초안]
+{draft_content}
 """
 
-# ── 유틸 함수 ───────────────────────────────────────────────
 
-def load_draft(path: Path) -> list[dict]:
-    """논문 초안 JSON 로드"""
-    if not path.exists():
-        print(f"[오류] 초안 파일을 찾을 수 없습니다: {path}")
-        sys.exit(1)
-    with open(path, encoding="utf-8") as f:
-        data = json.load(f)
-    print(f"[✓] 초안 로드 완료: {len(data)}개 논문")
-    return data
+def safe_print(text: str) -> None:
+    try:
+        print(text)
+    except UnicodeEncodeError:
+        print(text.encode("cp949", errors="replace").decode("cp949"))
 
 
-def check_missing_fields(paper: dict) -> list[str]:
-    """필수 섹션 누락 여부 확인"""
-    missing = []
-    for field in REQUIRED_FIELDS:
-        value = paper.get(field, "")
-        if not value or value.strip() in ("", "초록에 명시되지 않음", "없음"):
-            missing.append(field)
+def find_latest_draft(reports_dir: Path) -> Path | None:
+    candidates = [
+        path
+        for path in reports_dir.glob("*.md")
+        if not path.name.endswith("_visualized.md")
+    ]
+    if not candidates:
+        return None
+    return max(candidates, key=lambda path: path.stat().st_mtime)
+
+
+def load_draft_file(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def parse_sections(draft: str) -> dict[str, str]:
+    sections: dict[str, str] = {}
+    blocks = re.split(r"\n---\n", draft)
+    for block in blocks:
+        block = block.strip()
+        if not block:
+            continue
+        lines = block.splitlines()
+        header_line = lines[0].strip()
+        match = re.match(r"^#{1,3}\s+(.+)$", header_line)
+        if not match:
+            continue
+        section_name = match.group(1).strip()
+        content = "\n".join(lines[1:]).strip()
+        sections[section_name] = content
+    return sections
+
+
+def check_missing_sections(sections: dict[str, str]) -> list[str]:
+    missing: list[str] = []
+    for section_name in REQUIRED_SECTIONS:
+        content = sections.get(section_name, "")
+        if not content.strip():
+            missing.append(section_name)
     return missing
 
 
+def extract_json_block(text: str) -> str:
+    start = text.find("{")
+    if start == -1:
+        return text
+
+    depth = 0
+    in_string = False
+    escape = False
+
+    for index in range(start, len(text)):
+        char = text[index]
+
+        if escape:
+            escape = False
+            continue
+
+        if char == "\\" and in_string:
+            escape = True
+            continue
+
+        if char == '"':
+            in_string = not in_string
+            continue
+
+        if in_string:
+            continue
+
+        if char == "{":
+            depth += 1
+        elif char == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start:index + 1]
+
+    return text[start:]
+
+
 def parse_llm_response(raw: str) -> dict:
-    """LLM 응답에서 JSON 파싱 (방어적 처리)"""
     cleaned = raw.strip()
     if cleaned.startswith("```"):
         lines = cleaned.splitlines()
-        cleaned = "\n".join(lines[1:-1]) if lines[-1].strip() == "```" else "\n".join(lines[1:])
+        if lines and lines[-1].strip() == "```":
+            cleaned = "\n".join(lines[1:-1])
+        else:
+            cleaned = "\n".join(lines[1:])
+
+    cleaned = cleaned.replace("```json", "").replace("```JSON", "").replace("```", "").strip()
+    cleaned = extract_json_block(cleaned)
+
     try:
         return json.loads(cleaned)
     except json.JSONDecodeError:
-        return {
-            "logic_score": 0,
-            "duplication_score": 0,
-            "structure_score": 0,
-            "awkward_expressions": [],
-            "incomplete_sentences": [],
-            "overall_verdict": "FAIL",
-            "feedback_summary": "LLM 응답 파싱 오류 - 수동 검토 필요",
-        }
+        normalized = re.sub(r"[\u201c\u201d]", '"', cleaned)
+        normalized = re.sub(r"[\u2018\u2019]", "'", normalized)
+        normalized = re.sub(r",\s*}", "}", normalized)
+        normalized = re.sub(r",\s*]", "]", normalized)
+        normalized = extract_json_block(normalized)
+        try:
+            return json.loads(normalized)
+        except json.JSONDecodeError:
+            return {
+                "logic_score": 0,
+                "duplication_score": 0,
+                "structure_score": 0,
+                "awkward_expressions": [],
+                "incomplete_sentences": [],
+                "feedback_summary": "LLM 응답 파싱 오류 - 수동 검토 필요",
+                "raw_response": raw[:1000],
+            }
 
 
-def review_paper(paper: dict, client: LLMClient) -> dict:
-    """논문 1편 검토 수행"""
-    title      = paper.get("title", "제목 없음")
-    purpose    = paper.get("purpose", "")
-    method     = paper.get("method", "")
-    result     = paper.get("result", "")
-    limitation = paper.get("limitation", "초록에 명시되지 않음")
+def build_review_result(
+    draft_content: str,
+    draft_path: Path,
+    sections: dict[str, str],
+    parsed_review: dict,
+    missing_sections: list[str],
+) -> ReviewResult:
+    logic_score = int(parsed_review.get("logic_score", 0) or 0)
+    duplication_score = int(parsed_review.get("duplication_score", 0) or 0)
+    structure_score = int(parsed_review.get("structure_score", 0) or 0)
 
-    missing_fields = check_missing_fields(paper)
+    valid_scores = [score for score in [logic_score, duplication_score, structure_score] if score > 0]
+    average_score = round(sum(valid_scores) / len(valid_scores), 2) if valid_scores else 0.0
 
-    prompt = REVIEW_PROMPT_TEMPLATE.format(
-        title=title,
-        purpose=purpose or "(없음)",
-        method=method or "(없음)",
-        result=result or "(없음)",
-        limitation=limitation or "(없음)",
+    overall_verdict = "PASS"
+    if missing_sections or average_score < 3.0:
+        overall_verdict = "FAIL"
+
+    return ReviewResult(
+        title=sections.get("제목", draft_path.stem),
+        source_file=draft_path.name,
+        reviewed_at=datetime.now().isoformat(timespec="seconds"),
+        logic_score=logic_score,
+        duplication_score=duplication_score,
+        structure_score=structure_score,
+        average_score=average_score,
+        overall_verdict=overall_verdict,
+        awkward_expressions=list(parsed_review.get("awkward_expressions", [])),
+        incomplete_sentences=list(parsed_review.get("incomplete_sentences", [])),
+        missing_sections=missing_sections,
+        detected_sections=list(sections.keys()),
+        feedback_summary=str(parsed_review.get("feedback_summary", "")).strip(),
     )
-    raw_response = client.ask(prompt, max_tokens=1000)
-    review       = parse_llm_response(raw_response)
-
-    if missing_fields:
-        review["overall_verdict"] = "FAIL"
-        review["missing_fields"]  = missing_fields
-    else:
-        review["missing_fields"] = []
-
-    scores = [
-        review.get("logic_score", 0),
-        review.get("duplication_score", 0),
-        review.get("structure_score", 0),
-    ]
-    valid_scores = [s for s in scores if isinstance(s, (int, float)) and s > 0]
-    review["average_score"] = round(sum(valid_scores) / len(valid_scores), 2) if valid_scores else 0.0
-
-    review["title"]       = title
-    review["reviewed_at"] = datetime.now().isoformat(timespec="seconds")
-
-    return review
 
 
-def print_feedback(review: dict, index: int) -> None:
-    """검토 결과를 터미널에 출력"""
-    verdict_icon = "✅" if review["overall_verdict"] == "PASS" else "❌"
-    print(f"\n{'='*60}")
-    print(f"[{index}] {review['title']}")
-    print(f"{'='*60}")
-    print(f"  판정: {verdict_icon} {review['overall_verdict']}")
-    print(f"  평균 점수: {review['average_score']} / 5.0")
-    print(f"  논리성:    {review.get('logic_score', 'N/A')} / 5")
-    print(f"  중복도:    {review.get('duplication_score', 'N/A')} / 5")
-    print(f"  구조 적절성: {review.get('structure_score', 'N/A')} / 5")
+def review_draft(draft_content: str, draft_path: Path, client: LLMClient) -> ReviewResult:
+    sections = parse_sections(draft_content)
+    missing_sections = check_missing_sections(sections)
 
-    if review["missing_fields"]:
-        print(f"  ⚠️  누락 섹션: {', '.join(review['missing_fields'])}")
+    content_for_review = draft_content[:6000] if len(draft_content) > 6000 else draft_content
+    prompt = REVIEW_PROMPT_TEMPLATE.format(draft_content=content_for_review)
 
-    if review.get("awkward_expressions"):
-        print(f"  🔸 어색한 표현:")
-        for expr in review["awkward_expressions"]:
-            print(f"     - {expr}")
-
-    if review.get("incomplete_sentences"):
-        print(f"  🔸 미완성 문장:")
-        for sent in review["incomplete_sentences"]:
-            print(f"     - {sent}")
-
-    print(f"  💬 피드백: {review.get('feedback_summary', '')}")
+    raw_response = client.ask(prompt, max_tokens=1200)
+    parsed_review = parse_llm_response(raw_response)
+    return build_review_result(
+        draft_content=draft_content,
+        draft_path=draft_path,
+        sections=sections,
+        parsed_review=parsed_review,
+        missing_sections=missing_sections,
+    )
 
 
-# ── 메인 ────────────────────────────────────────────────────
+def print_feedback(review: ReviewResult) -> None:
+    safe_print(f"\n{'=' * 60}")
+    safe_print(f"초안 파일: {review.source_file}")
+    safe_print(f"제목: {review.title}")
+    safe_print(f"{'=' * 60}")
+    safe_print(f"판정: {review.overall_verdict}")
+    safe_print(f"평균 점수: {review.average_score} / 5.0")
+    safe_print(f"논리성: {review.logic_score} / 5")
+    safe_print(f"중복도: {review.duplication_score} / 5")
+    safe_print(f"구조 적절성: {review.structure_score} / 5")
+    safe_print(f"감지된 섹션: {', '.join(review.detected_sections) if review.detected_sections else '없음'}")
 
-def main() -> None:
-    print("=" * 60)
-    print("  Review Agent 시작 - 논문 초안 품질 검토")
-    print("=" * 60)
+    if review.missing_sections:
+        safe_print(f"누락 섹션: {', '.join(review.missing_sections)}")
 
-    papers = load_draft(INPUT_PATH)
+    if review.awkward_expressions:
+        safe_print("어색한 표현:")
+        for expression in review.awkward_expressions:
+            safe_print(f"- {expression}")
+
+    if review.incomplete_sentences:
+        safe_print("미완성 문장:")
+        for sentence in review.incomplete_sentences:
+            safe_print(f"- {sentence}")
+
+    safe_print(f"피드백: {review.feedback_summary}")
+
+
+def run_review_pipeline() -> dict:
+    safe_print("=" * 60)
+    safe_print("Review Agent 시작 - 논문 초안 품질 검토")
+    safe_print("=" * 60)
+
+    draft_path = find_latest_draft(REPORTS_DIR)
+    if draft_path is None:
+        safe_print(f"[오류] {REPORTS_DIR} 에 초안 파일(.md)이 없습니다.")
+        safe_print("먼저 write_agent를 실행하여 초안을 생성해주세요.")
+        return {"is_valid": False, "review_path": "", "verdict": "FAIL"}
+
+    safe_print(f"[확인] 검토 대상 초안: {draft_path.name}")
+
+    draft_content = load_draft_file(draft_path)
+    safe_print(f"[확인] 초안 로드 완료 ({len(draft_content)}자)")
+
+    sections = parse_sections(draft_content)
+    safe_print(f"[확인] 감지된 섹션: {', '.join(sections.keys()) if sections else '없음'}")
+
     client = LLMClient()
-    total  = len(papers)
+    safe_print("\n[...] LLM 검토 중...")
+    review = review_draft(draft_content, draft_path, client)
 
-    MAX_WORKERS = 5  # Rate Limit 에러 시 줄이세요
-
-    def review_with_index(args):
-        i, paper = args
-        title = paper.get("title", f"논문 #{i}")
-        print(f"[{i}/{total}] 검토 중: {title[:50]}...")
-        review = review_paper(paper, client)
-        return i, review
-
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = list(executor.map(review_with_index, enumerate(papers, start=1)))
-
-    futures.sort(key=lambda x: x[0])
-
-    results = []
-    passed  = 0
-
-    for i, review in futures:
-        results.append(review)
-        if review["overall_verdict"] == "PASS":
-            passed += 1
-        print_feedback(review, i)
+    print_feedback(review)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        json.dump(results, f, ensure_ascii=False, indent=2)
+    with open(OUTPUT_PATH, "w", encoding="utf-8") as file:
+        json.dump([asdict(review)], file, ensure_ascii=False, indent=2)
 
-    print(f"\n{'='*60}")
-    print(f"  검토 완료!")
-    print(f"  전체: {total}편  |  통과: {passed}편  |  탈락: {total - passed}편")
-    print(f"  결과 저장: {OUTPUT_PATH}")
-    print(f"{'='*60}")
+    safe_print(f"\n{'=' * 60}")
+    safe_print("검토 완료")
+    safe_print(f"판정: {review.overall_verdict}")
+    safe_print(f"결과 저장: {OUTPUT_PATH}")
+    safe_print(f"{'=' * 60}")
+
+
+    return {
+        "is_valid": True,
+        "review_path": str(OUTPUT_PATH),
+        "verdict": review.overall_verdict,
+        "source_file": review.source_file,
+    }
+
+
+def main() -> None:
+    result = run_review_pipeline()
+    if not result.get("is_valid"):
+        sys.exit(1)
 
 
 if __name__ == "__main__":

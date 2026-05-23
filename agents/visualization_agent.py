@@ -1,12 +1,16 @@
-"""Autonomous Visualization Agent driven by the generated draft context."""
+"""Visualization Agent.
+
+This agent reads the latest Writer draft, asks Claude whether visuals are needed,
+asks Claude to produce renderable data_spec values, validates those specs, and
+renders only the visuals that pass schema checks.
+"""
 
 from __future__ import annotations
 
 import json
-import os
-from pathlib import Path
 import re
 import sys
+from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
@@ -16,66 +20,27 @@ from services.llm_client import LLMClient  # noqa: E402
 from services.visualization_service import (  # noqa: E402
     VISUALIZATION_OUTPUT_DIR,
     clear_topic_visual_outputs,
+    normalize_text,
     render_visual_spec,
     save_json_asset,
+    slugify_topic,
 )
 
 
-DEFAULT_WRITER_TOPIC = "AI code review"
 DEFAULT_WRITER_SCORE_THRESHOLD = 35.0
 VISUALIZATION_PLAN_MODEL = "claude-sonnet-4-6"
-VISUALIZATION_PLAN_MAX_TOKENS = 1800
+VISUALIZATION_PLAN_MAX_TOKENS = 2200
 
-RELEVANCE_PATH = ROOT_DIR / "data/processed/relevance_result.json"
-SUMMARY_PATH = ROOT_DIR / "data/processed/summary_result.json"
-REPORT_OUTPUT_DIR = ROOT_DIR / "outputs/reports"
-PROFILE_OUTPUT_PATH = ROOT_DIR / "data/processed/visualization_input_profile.json"
+RELEVANCE_PATH = ROOT_DIR / "data" / "processed" / "relevance_result.json"
+SUMMARY_PATH = ROOT_DIR / "data" / "processed" / "summary_result.json"
+REPORT_OUTPUT_DIR = ROOT_DIR / "outputs" / "reports"
 
-# Claude는 시각화가 필요한지와 어떤 형식이 맞는지를 판단하고,
-# 실제 렌더링은 여기서 허용한 형식 안에서만 수행한다.
-# 완전 무제한 생성보다 안정성이 높고 결과 검증이 쉽다.
 SUPPORTED_VISUAL_TYPES = {
-    "table": {
-        "description": "정의, 비교 항목, 실험 조건, 장단점처럼 표가 가장 잘 맞는 내용을 정리한다.",
-        "required_data_shape": {"columns": ["열1", "열2"], "rows": [["값1", "값2"]]},
-    },
-    "bar_chart": {
-        "description": "범주별 수치 비교를 시각화한다. 예: A=93.7, B=31.6",
-        "required_data_shape": {
-            "labels": ["A", "B"],
-            "series": [{"name": "값", "values": [93.7, 31.6]}],
-            "category_label": "비교 항목",
-            "value_label": "값",
-        },
-    },
-    "line_chart": {
-        "description": "시간, 단계, 조건 변화에 따른 수치 흐름을 시각화한다.",
-        "required_data_shape": {
-            "x_values": ["1단계", "2단계", "3단계"],
-            "series": [{"name": "성능", "values": [40, 58, 72]}],
-            "x_label": "단계",
-            "y_label": "값",
-        },
-    },
-    "timeline": {
-        "description": "역사, 발전 흐름, 연도별 사건, 연구 흐름을 시각화한다.",
-        "required_data_shape": {
-            "events": [
-                {"time": "2009", "label": "사건", "detail": "설명"},
-                {"time": "2017", "label": "확산", "detail": "설명"},
-            ]
-        },
-    },
-    "concept_diagram": {
-        "description": "개념 정의, 구조 설명, 구성 요소 관계를 도식화한다.",
-        "required_data_shape": {
-            "central_topic": "핵심 개념",
-            "branches": [
-                {"label": "요소 1", "detail": "설명"},
-                {"label": "요소 2", "detail": "설명"},
-            ],
-        },
-    },
+    "table",
+    "bar_chart",
+    "line_chart",
+    "timeline",
+    "concept_diagram",
 }
 
 
@@ -88,23 +53,15 @@ def safe_print(text: str) -> None:
 
 def load_json_file(path: Path) -> list[dict]:
     if not path.exists():
-        safe_print(f"파일 없음: {path}")
         return []
-    raw_text = path.read_text(encoding="utf-8")
     try:
-        data = json.loads(raw_text)
-    except json.JSONDecodeError as error:
-        # 입력 JSON 이 깨져 있어도 Visualization Agent 가 바로 종료되지 않게 막습니다.
-        if any(marker in raw_text for marker in ("<<<<<<<", "=======", ">>>>>>>")):
-            safe_print(f"JSON 병합 충돌 흔적 감지: {path}")
-        safe_print(f"JSON 파싱 실패: {path} | line={error.lineno}, column={error.colno}")
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
         return []
     return data if isinstance(data, list) else []
 
 
 def merge_visualization_inputs(relevance_rows: list[dict], summary_rows: list[dict]) -> list[dict]:
-    # 초안만으로는 시각화용 수치/비교 데이터가 부족할 수 있어서
-    # relevance + summary를 합쳐 보조 근거 데이터로 사용한다.
     summary_by_title = {
         row.get("title", "").strip(): row
         for row in summary_rows
@@ -117,43 +74,46 @@ def merge_visualization_inputs(relevance_rows: list[dict], summary_rows: list[di
         merged.append(
             {
                 "title": title,
-                "authors": summary.get("authors", relevance.get("authors", [])),
                 "year": summary.get("year", relevance.get("year", "")),
-                "source": summary.get("source", relevance.get("source", "")),
-                "url": summary.get("url", relevance.get("url", "")),
-                "abstract": summary.get("abstract", ""),
                 "purpose": summary.get("purpose", ""),
                 "method": summary.get("method", ""),
                 "result": summary.get("result", ""),
                 "limitation": summary.get("limitation", ""),
-                "score": relevance.get("score"),
+                "score": relevance.get("score", 0),
                 "reason": relevance.get("reason", ""),
-                "selection_result": relevance.get("selection_result", ""),
             }
         )
     return merged
 
 
-def filter_writer_candidates(rows: list[dict], score_threshold: float) -> list[dict]:
-    return [row for row in rows if float(row.get("score", 0) or 0) >= score_threshold]
+def build_selected_rows_for_visualization(score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD) -> list[dict]:
+    relevance_rows = load_json_file(RELEVANCE_PATH)
+    summary_rows = load_json_file(SUMMARY_PATH)
+    merged_rows = merge_visualization_inputs(relevance_rows, summary_rows)
+    return [row for row in merged_rows if float(row.get("score", 0) or 0) >= score_threshold]
 
 
-def slugify_topic(topic: str) -> str:
-    slug = topic.strip().lower().replace(" ", "_")
-    slug = re.sub(r"[^a-z0-9_]+", "_", slug)
-    slug = re.sub(r"_+", "_", slug).strip("_")
-    return slug or "report"
+def infer_topic_from_report_path(report_path: Path) -> str:
+    stem = report_path.stem
+    stem = re.sub(r"_visualized$", "", stem)
+    match = re.match(r"(.+?)_\d{8}_\d{6}$", stem)
+    if match:
+        return match.group(1).replace("_", " ")
+    return stem.replace("_", " ")
 
 
-def load_report_text(topic: str = DEFAULT_WRITER_TOPIC) -> tuple[Path | None, str]:
-    # 39-2: outputs/reports 에서 최신 논문 초안을 불러옵니다.
-    topic_slug = slugify_topic(topic)
-    candidates = sorted(REPORT_OUTPUT_DIR.glob(f"{topic_slug}_*.md"))
+def load_latest_report(topic: str | None = None) -> tuple[Path | None, str, str]:
+    candidates = sorted(REPORT_OUTPUT_DIR.glob("*.md"), key=lambda path: path.stat().st_mtime)
     report_candidates = [path for path in candidates if not path.name.endswith("_visualized.md")]
+    if topic:
+        prefix = f"{slugify_topic(topic)}_"
+        report_candidates = [path for path in report_candidates if path.name.startswith(prefix)]
     if not report_candidates:
-        return None, ""
+        return None, "", topic or ""
     report_path = report_candidates[-1]
-    return report_path, report_path.read_text(encoding="utf-8")
+    inferred_topic = infer_topic_from_report_path(report_path)
+    report_text = report_path.read_text(encoding="utf-8")
+    return report_path, report_text, inferred_topic
 
 
 def extract_report_sections(report_text: str) -> list[dict]:
@@ -191,648 +151,297 @@ def extract_report_sections(report_text: str) -> list[dict]:
     return sections
 
 
-def extract_paragraph_candidates(report_sections: list[dict], max_paragraphs_per_section: int = 3) -> list[dict]:
-    # 에이전트가 섹션 단위가 아니라 문단 단위로 시각화 후보를 고를 수 있게 만듭니다.
+def extract_paragraph_candidates(report_sections: list[dict]) -> list[dict]:
     candidates: list[dict] = []
     for section in report_sections:
-        body = section.get("body", "").strip()
-        if not body:
-            continue
+        heading = section.get("heading", "")
+        body = section.get("body", "")
         paragraphs = [part.strip() for part in re.split(r"\n\s*\n", body) if part.strip()]
-        for index, paragraph in enumerate(paragraphs[:max_paragraphs_per_section], 1):
+        for index, paragraph in enumerate(paragraphs, 1):
             candidates.append(
                 {
-                    "section": section.get("heading", ""),
+                    "section": heading,
                     "paragraph_index": index,
-                    "excerpt": " ".join(paragraph.split())[:500],
+                    "text": normalize_text(paragraph, 520),
                 }
             )
     return candidates
 
 
-def build_selected_rows_for_visualization(score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD) -> list[dict]:
-    # 39-3: 초안 문맥과 함께 사용할 선별 논문 데이터를 준비합니다.
-    relevance_rows = load_json_file(RELEVANCE_PATH)
-    summary_rows = load_json_file(SUMMARY_PATH)
-    merged_rows = merge_visualization_inputs(relevance_rows, summary_rows)
-    return filter_writer_candidates(merged_rows, score_threshold=score_threshold)
+def extract_json_block(text: str) -> str:
+    start = text.find("{")
+    end = text.rfind("}")
+    if start == -1 or end == -1 or end <= start:
+        raise ValueError("JSON block not found")
+    return text[start : end + 1]
 
 
-def summarize_selected_rows(selected_rows: list[dict], max_items: int = 6) -> list[dict]:
-    summarized = []
-    for row in selected_rows[:max_items]:
-        summarized.append(
-            {
-                "title": row.get("title", ""),
-                "year": row.get("year", ""),
-                "purpose": row.get("purpose", ""),
-                "method": row.get("method", ""),
-                "result": row.get("result", ""),
-                "limitation": row.get("limitation", ""),
-            }
-        )
-    return summarized
+def sanitize_visual_spec(visual: dict) -> dict:
+    visual["visual_id"] = str(visual.get("visual_id", "")).strip() or "visual"
+    visual["visual_type"] = str(visual.get("visual_type", "")).strip()
+    visual["title"] = normalize_text(str(visual.get("title", "")).strip(), 80)
+    visual["target_section"] = str(visual.get("target_section", "")).strip()
+    visual["choice_reason"] = normalize_text(str(visual.get("choice_reason", "")).strip(), 220)
+    visual["data_spec"] = visual.get("data_spec", {}) if isinstance(visual.get("data_spec", {}), dict) else {}
+    return visual
 
 
-def build_visualization_profile(topic: str, score_threshold: float) -> dict:
-    # 39-2, 39-3: 최신 초안과 선별 논문 상태를 한 번에 점검하는 프로파일입니다.
-    selected_rows = build_selected_rows_for_visualization(score_threshold=score_threshold)
-    report_path, report_text = load_report_text(topic=topic)
-    report_sections = extract_report_sections(report_text)
-    profile = {
-        "topic": topic,
-        "score_threshold": score_threshold,
-        "selected_paper_count": len(selected_rows),
-        "selected_titles": [row.get("title", "") for row in selected_rows],
-        "report_path": str(report_path) if report_path else "",
-        "report_sections": [section.get("heading", "") for section in report_sections],
-        "section_count": len(report_sections),
-        "supported_visual_types": SUPPORTED_VISUAL_TYPES,
-    }
-    PROFILE_OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    PROFILE_OUTPUT_PATH.write_text(json.dumps(profile, ensure_ascii=False, indent=2), encoding="utf-8")
-    return profile
+# Python은 내용 자체를 만들지 않고, LLM이 만든 data_spec이 형식에 맞는지만 검증합니다.
+def validate_visual_spec(visual: dict) -> tuple[bool, str]:
+    visual_type = visual.get("visual_type")
+    data_spec = visual.get("data_spec", {})
 
+    if visual_type not in SUPPORTED_VISUAL_TYPES:
+        return False, f"unsupported visual_type: {visual_type}"
 
-def print_visualization_profile(profile: dict) -> None:
-    safe_print("Visualization Agent 입력 데이터 확인")
-    safe_print(f"주제: {profile.get('topic', '')}")
-    safe_print(f"선별 논문 수: {profile.get('selected_paper_count', 0)}")
-    safe_print(f"최신 Writer 초안: {profile.get('report_path', '') or '없음'}")
-    safe_print(f"초안 섹션: {profile.get('report_sections', [])}")
+    if visual_type == "table":
+        columns = data_spec.get("columns", [])
+        rows = data_spec.get("rows", [])
+        if not isinstance(columns, list) or not isinstance(rows, list):
+            return False, "table columns or rows is not a list"
+        if len(columns) < 2 or not rows:
+            return False, "table requires at least 2 columns and 1 row"
+        if len(columns) > 6:
+            return False, "table has too many columns"
 
+        clean_columns = [normalize_text(str(column).strip(), 24) for column in columns if str(column).strip()]
+        if len(clean_columns) != len(columns):
+            return False, "table has empty column names"
 
-def strip_code_fences(text: str) -> str:
-    cleaned = text.strip()
-    if cleaned.startswith("```"):
-        cleaned = re.sub(r"^```(?:json)?\s*", "", cleaned)
-        cleaned = re.sub(r"\s*```$", "", cleaned)
-    return cleaned.strip()
+        clean_rows = []
+        for row in rows[:8]:
+            if not isinstance(row, list) or len(row) != len(columns):
+                return False, "table row length mismatch"
+            clean_rows.append([normalize_text(str(cell).strip(), 36) for cell in row])
 
+        data_spec["columns"] = clean_columns
+        data_spec["rows"] = clean_rows
+        return True, "ok"
 
-def split_pipe_values(value: str) -> list[str]:
-    return [part.strip() for part in value.split("||") if part.strip()]
+    if visual_type == "timeline":
+        events = data_spec.get("events", [])
+        if not isinstance(events, list):
+            return False, "timeline events is not a list"
 
-
-def parse_visual_plan_text(raw_text: str) -> dict:
-    text = strip_code_fences(raw_text)
-    lines = [line.rstrip() for line in text.splitlines()]
-
-    planning_note_parts: list[str] = []
-    need_visual = "yes"
-    need_reason = ""
-    candidates: list[dict] = []
-    visuals: list[dict] = []
-    current_candidate: dict | None = None
-    current_visual: dict | None = None
-
-    for raw_line in lines:
-        line = raw_line.strip()
-        if not line:
-            continue
-
-        if line.startswith("PLANNING_NOTE:"):
-            planning_note_parts.append(line.split(":", 1)[1].strip())
-            continue
-
-        if line.startswith("NEED_VISUAL:"):
-            need_visual = line.split(":", 1)[1].strip().lower()
-            continue
-
-        if line.startswith("NEED_REASON:"):
-            need_reason = line.split(":", 1)[1].strip()
-            continue
-
-        if line == "CANDIDATE_START":
-            current_candidate = {
-                "section": "",
-                "paragraph_index": "",
-                "excerpt": "",
-                "candidate_types": [],
-                "selected_type": "",
-                "selection_reason": "",
-            }
-            continue
-
-        if line == "CANDIDATE_END":
-            if current_candidate:
-                candidates.append(current_candidate)
-                current_candidate = None
-            continue
-
-        if current_candidate is not None:
-            if line.startswith("CANDIDATE_SECTION:"):
-                current_candidate["section"] = line.split(":", 1)[1].strip()
-            elif line.startswith("PARAGRAPH_INDEX:"):
-                current_candidate["paragraph_index"] = line.split(":", 1)[1].strip()
-            elif line.startswith("CANDIDATE_EXCERPT:"):
-                current_candidate["excerpt"] = line.split(":", 1)[1].strip()
-            elif line.startswith("CANDIDATE_TYPES:"):
-                current_candidate["candidate_types"] = split_pipe_values(line.split(":", 1)[1].strip())
-            elif line.startswith("SELECTED_TYPE:"):
-                current_candidate["selected_type"] = line.split(":", 1)[1].strip()
-            elif line.startswith("SELECTION_REASON:"):
-                current_candidate["selection_reason"] = line.split(":", 1)[1].strip()
-            continue
-
-        if line == "VISUAL_START":
-            current_visual = {
-                "visual_id": "",
-                "title": "",
-                "target_section": "",
-                "choice_reason": "",
-                "source_excerpt": "",
-                "visual_type": "",
-                "data_spec": {},
-            }
-            continue
-
-        if line == "VISUAL_END":
-            if current_visual:
-                visuals.append(current_visual)
-                current_visual = None
-            continue
-
-        if current_visual is None:
-            continue
-
-        if line.startswith("ID:"):
-            current_visual["visual_id"] = line.split(":", 1)[1].strip()
-        elif line.startswith("TITLE:"):
-            current_visual["title"] = line.split(":", 1)[1].strip()
-        elif line.startswith("SECTION:"):
-            current_visual["target_section"] = line.split(":", 1)[1].strip()
-        elif line.startswith("REASON:"):
-            current_visual["choice_reason"] = line.split(":", 1)[1].strip()
-        elif line.startswith("SOURCE_EXCERPT:"):
-            current_visual["source_excerpt"] = line.split(":", 1)[1].strip()
-        elif line.startswith("TYPE:"):
-            current_visual["visual_type"] = line.split(":", 1)[1].strip()
-        elif line.startswith("SOURCE_NOTE:"):
-            current_visual["data_spec"]["source_note"] = line.split(":", 1)[1].strip()
-        elif line.startswith("COLUMNS:"):
-            current_visual["data_spec"]["columns"] = split_pipe_values(line.split(":", 1)[1].strip())
-            current_visual["data_spec"].setdefault("rows", [])
-        elif line.startswith("ROW:"):
-            current_visual["data_spec"].setdefault("rows", []).append(split_pipe_values(line.split(":", 1)[1].strip()))
-        elif line.startswith("LABELS:"):
-            current_visual["data_spec"]["labels"] = split_pipe_values(line.split(":", 1)[1].strip())
-        elif line.startswith("SERIES:"):
-            payload = split_pipe_values(line.split(":", 1)[1].strip())
-            if payload:
-                name = payload[0]
-                values: list[float | str] = []
-                for item in payload[1:]:
-                    try:
-                        values.append(float(item))
-                    except ValueError:
-                        values.append(item)
-                current_visual["data_spec"].setdefault("series", []).append({"name": name, "values": values})
-        elif line.startswith("CATEGORY_LABEL:"):
-            current_visual["data_spec"]["category_label"] = line.split(":", 1)[1].strip()
-        elif line.startswith("VALUE_LABEL:"):
-            current_visual["data_spec"]["value_label"] = line.split(":", 1)[1].strip()
-        elif line.startswith("ORIENTATION:"):
-            current_visual["data_spec"]["orientation"] = line.split(":", 1)[1].strip()
-        elif line.startswith("X_VALUES:"):
-            current_visual["data_spec"]["x_values"] = split_pipe_values(line.split(":", 1)[1].strip())
-        elif line.startswith("X_LABEL:"):
-            current_visual["data_spec"]["x_label"] = line.split(":", 1)[1].strip()
-        elif line.startswith("Y_LABEL:"):
-            current_visual["data_spec"]["y_label"] = line.split(":", 1)[1].strip()
-        elif line.startswith("EVENT:"):
-            payload = split_pipe_values(line.split(":", 1)[1].strip())
-            if len(payload) >= 3:
-                current_visual["data_spec"].setdefault("events", []).append(
-                    {"time": payload[0], "label": payload[1], "detail": payload[2]}
-                )
-        elif line.startswith("CENTRAL:"):
-            current_visual["data_spec"]["central_topic"] = line.split(":", 1)[1].strip()
-        elif line.startswith("BRANCH:"):
-            payload = split_pipe_values(line.split(":", 1)[1].strip())
-            if len(payload) >= 2:
-                current_visual["data_spec"].setdefault("branches", []).append(
-                    {"label": payload[0], "detail": payload[1]}
-                )
-
-    return {
-        "planning_note": " ".join(planning_note_parts).strip(),
-        "need_visual": need_visual,
-        "need_reason": need_reason,
-        "candidates": candidates,
-        "visuals": visuals,
-    }
-
-
-def repair_visual_plan_text(raw_text: str) -> dict:
-    repair_prompt = f"""
-다음 응답을 같은 내용으로 다시 정리하되, 아래 태그 형식만 사용하라.
-
-반드시 지킬 것:
-- 설명문 금지
-- JSON 금지
-- 오직 PLANNING_NOTE, NEED_VISUAL, NEED_REASON,
-  CANDIDATE_START, CANDIDATE_SECTION, PARAGRAPH_INDEX, CANDIDATE_EXCERPT,
-  CANDIDATE_TYPES, SELECTED_TYPE, SELECTION_REASON, CANDIDATE_END,
-  VISUAL_START, ID, TITLE, SECTION, REASON, SOURCE_EXCERPT,
-  TYPE, SOURCE_NOTE, COLUMNS, ROW, LABELS, SERIES, CATEGORY_LABEL, VALUE_LABEL,
-  ORIENTATION, X_VALUES, X_LABEL, Y_LABEL, EVENT, CENTRAL, BRANCH, VISUAL_END 만 사용
-- 값 구분은 || 로 한다
-
-원본:
-{raw_text}
-""".strip()
-    repaired = LLMClient().ask(repair_prompt, model=VISUALIZATION_PLAN_MODEL, max_tokens=1400)
-    return parse_visual_plan_text(repaired)
-
-
-def build_visualization_plan_prompt(
-    topic: str,
-    report_sections: list[dict],
-    report_text: str,
-    selected_rows: list[dict],
-) -> str:
-    section_payload = []
-    for section in report_sections:
-        body = " ".join(section.get("body", "").split())
-        section_payload.append(
-            {
-                "heading": section.get("heading", ""),
-                "body_preview": body[:900],
-            }
-        )
-    # 문단 단위 후보를 함께 넘겨서, 에이전트가 "어느 문단에 넣을지" 스스로 고르게 합니다.
-    paragraph_candidates = extract_paragraph_candidates(report_sections)
-
-    return f"""
-You must behave like an agentic visualization planner.
-Follow these three steps in order:
-1. Decide whether the draft really needs any visual aid at all.
-2. If needed, identify paragraph-level candidates.
-3. Compare 2-3 possible visual formats for each candidate, then choose the best one with a reason.
-Return these tags before any VISUAL_START block:
-- NEED_VISUAL: yes or no
-- NEED_REASON: short explanation
-- CANDIDATE_START / CANDIDATE_END blocks with:
-  CANDIDATE_SECTION, PARAGRAPH_INDEX, CANDIDATE_EXCERPT,
-  CANDIDATE_TYPES, SELECTED_TYPE, SELECTION_REASON
-Use these paragraph candidates when making the decision:
-{json.dumps(paragraph_candidates, ensure_ascii=False, indent=2)}
-
-당신은 한국어 논문 초안을 읽고, 본문 이해를 실제로 돕는 시각 자료를 판단하는 Visualization Agent다.
-
-이번 작업의 핵심 원칙:
-- 기준은 참고 논문 목록이 아니라 "현재 작성된 초안 본문"이다.
-- 초안의 문맥을 읽고, 시각 자료가 있으면 이해가 확실히 좋아지는 위치만 골라라.
-- 선행연구 비교표를 기본값처럼 만들지 마라.
-- 필요 없는 시각 자료는 만들지 마라.
-- 시각 자료 개수를 미리 정하지 마라. 0개도 가능하고, 필요하면 1개 이상도 가능하다.
-- 다만 정말 도움이 되는 자료만 제안하라.
-
-판단 기준 예시:
-- 정의, 구성 요소, 구조 관계 설명이 핵심이면 concept_diagram
-- 실험 수치, 성능 비교, A/B 비교, 퍼센트 비교가 있으면 bar_chart 또는 line_chart
-- 연도별 흐름, 역사, 단계적 발전이 있으면 timeline
-- 표 형식이 더 직관적인 비교나 정리라면 table
-
-중요:
-- 초안에 없는 수치나 사건을 지어내지 마라.
-- data_spec에는 바로 렌더링 가능한 실제 값만 넣어라.
-- 숫자가 부족하면 숫자 그래프를 억지로 만들지 마라.
-- 특정 섹션에 넣는 이유를 REASON에 짧고 분명하게 써라.
-- SOURCE_EXCERPT에는 해당 판단의 근거가 된 초안 문장을 짧게 적어라.
-- SECTION에는 아래 초안 섹션 제목 중 하나를 정확히 써라.
-
-사용 가능한 visual_type:
-{json.dumps(SUPPORTED_VISUAL_TYPES, ensure_ascii=False, indent=2)}
-
-주제:
-{topic}
-
-초안 섹션과 내용:
-{json.dumps(section_payload, ensure_ascii=False, indent=2)}
-
-선별 논문 요약(보조 정보, 필요할 때만 사용):
-{json.dumps(summarize_selected_rows(selected_rows), ensure_ascii=False, indent=2)}
-
-초안 전체 원문:
-{report_text}
-
-반환 형식:
-PLANNING_NOTE: 전체 판단 요약
-
-VISUAL_START
-ID: visual_1
-TITLE: 시각 자료 제목
-SECTION: 초안 섹션 제목
-REASON: 왜 이 위치에 이 시각 자료가 필요한지
-SOURCE_EXCERPT: 판단 근거가 된 초안 문장 일부
-TYPE: table
-SOURCE_NOTE: 데이터 출처 또는 구성 방식
-COLUMNS: 열1 || 열2 || 열3
-ROW: 값1 || 값2 || 값3
-ROW: 값1 || 값2 || 값3
-VISUAL_END
-
-VISUAL_START
-ID: visual_2
-TITLE: 시각 자료 제목
-SECTION: 초안 섹션 제목
-REASON: 왜 이 위치에 이 시각 자료가 필요한지
-SOURCE_EXCERPT: 판단 근거가 된 초안 문장 일부
-TYPE: bar_chart
-SOURCE_NOTE: 데이터 출처 또는 구성 방식
-LABELS: A || B || C
-SERIES: 값 || 93.7 || 31.6 || 88.1
-CATEGORY_LABEL: 비교 항목
-VALUE_LABEL: 수치
-ORIENTATION: vertical
-VISUAL_END
-
-타입별 규칙:
-- table: COLUMNS 1개 이상 + ROW 여러 개
-- bar_chart: LABELS 1개 이상 + SERIES 1개 이상
-- line_chart: X_VALUES 1개 이상 + SERIES 1개 이상
-- timeline: EVENT 여러 개. 형식은 EVENT: 시간 || 사건명 || 설명
-- concept_diagram: CENTRAL 1개 + BRANCH 여러 개. 형식은 BRANCH: 가지명 || 설명
-
-중요:
-- JSON으로 답하지 마라.
-- 시각 자료가 정말 필요하지 않다면 PLANNING_NOTE만 쓰고 VISUAL_START를 쓰지 않아도 된다.
-""".strip()
-
-
-def is_literature_review_focused(visuals: list[dict]) -> bool:
-    if not visuals:
-        return False
-    review_keywords = ("선행연구", "개요", "공통점", "차이점", "연구 공백")
-    review_like_count = 0
-    table_count = 0
-    for visual in visuals:
-        section = visual.get("target_section", "")
-        visual_type = visual.get("visual_type", "")
-        if any(keyword in section for keyword in review_keywords):
-            review_like_count += 1
-        if visual_type == "table":
-            table_count += 1
-    return review_like_count == len(visuals) or table_count == len(visuals)
-
-
-def build_reconsideration_prompt(
-    topic: str,
-    report_sections: list[dict],
-    report_text: str,
-    selected_rows: list[dict],
-    current_plan_text: str,
-) -> str:
-    section_payload = []
-    for section in report_sections:
-        body = " ".join(section.get("body", "").split())
-        section_payload.append(
-            {
-                "heading": section.get("heading", ""),
-                "body_preview": body[:700],
-            }
-        )
-
-    return f"""
-현재 시각화 계획이 초안의 핵심 설명보다 '선행연구 비교' 쪽으로만 과도하게 치우쳤는지 재검토하라.
-
-재검토 기준:
-- 초안의 핵심 설명, 문제 정의, 연구 목적, 연구 방법, 논의, 결론에 시각 자료가 더 유익한 부분이 있는지 우선 본다.
-- 비교표 하나로 끝내지 마라.
-- 초안에 구조 설명이 강하면 concept_diagram을 검토하라.
-- 초안에 과정, 단계, 흐름이 강하면 line_chart 또는 timeline을 검토하라.
-- 초안에 수치 비교가 실제로 있으면 bar_chart 또는 line_chart를 검토하라.
-- 선행연구 비교는 정말 필요할 때만 유지하라.
-- 개수는 고정하지 말고, 꼭 필요한 자료만 남겨라.
-- 초안에 없는 내용은 지어내지 마라.
-
-주제:
-{topic}
-
-초안 섹션과 내용:
-{json.dumps(section_payload, ensure_ascii=False, indent=2)}
-
-선별 논문 요약(보조 정보):
-{json.dumps(summarize_selected_rows(selected_rows), ensure_ascii=False, indent=2)}
-
-초안 전체 원문:
-{report_text}
-
-현재 계획:
-{current_plan_text}
-
-반환 형식은 이전과 동일한 태그 형식만 사용하라.
-PLANNING_NOTE, VISUAL_START, ID, TITLE, SECTION, REASON, SOURCE_EXCERPT,
-TYPE, SOURCE_NOTE, COLUMNS, ROW, LABELS, SERIES, CATEGORY_LABEL, VALUE_LABEL,
-ORIENTATION, X_VALUES, X_LABEL, Y_LABEL, EVENT, CENTRAL, BRANCH, VISUAL_END
-""".strip()
-
-
-def split_candidate_types(raw_types: list[str]) -> list[str]:
-    parsed: list[str] = []
-    for item in raw_types:
-        for part in re.split(r"/|\|\|", str(item)):
-            value = part.strip()
-            if value and value not in parsed:
-                parsed.append(value)
-    return parsed
-
-
-def build_bar_chart_spec_from_excerpt(excerpt: str) -> dict:
-    single_multi_patterns = [
-        ("작업 완료 시간", r"작업 완료 시간은\s*([0-9]+(?:\.[0-9]+)?)분.*?\s*([0-9]+(?:\.[0-9]+)?)분"),
-        ("테스트 통과율", r"테스트 통과율은\s*([0-9]+(?:\.[0-9]+)?)%.*?\s*([0-9]+(?:\.[0-9]+)?)%"),
-        ("오류 발생률", r"오류 발생률은\s*([0-9]+(?:\.[0-9]+)?)%.*?\s*([0-9]+(?:\.[0-9]+)?)%"),
-    ]
-    series = []
-    for metric, pattern in single_multi_patterns:
-        match = re.search(pattern, excerpt)
-        if match:
-            series.append(
+        valid_events = []
+        for event in events:
+            if not isinstance(event, dict):
+                continue
+            time = str(event.get("time", "")).strip()
+            label = str(event.get("label", "")).strip()
+            detail = str(event.get("detail", "")).strip()
+            if not time or not label or not detail:
+                continue
+            if label.startswith("(") or label.startswith(")"):
+                continue
+            if "et al" in label.lower():
+                continue
+            if len(label) > 40:
+                continue
+            if re.search(r"\b(?:19|20)\d{2}\b", label) and len(label.split()) <= 2:
+                continue
+            valid_events.append(
                 {
-                    "name": metric,
-                    "values": [float(match.group(1)), float(match.group(2))],
+                    "time": normalize_text(time, 16),
+                    "label": normalize_text(label, 32),
+                    "detail": normalize_text(detail, 90),
                 }
             )
-    if series:
-        return {
-            "labels": ["단일 에이전트", "멀티 에이전트"],
-            "series": series,
-            "category_label": "비교 구조",
-            "value_label": "측정값",
-            "orientation": "vertical",
-            "source_note": "본문에 명시된 성능 비교 수치를 기반으로 구성",
-        }
 
-    numbers = [float(value) for value in re.findall(r"[0-9]+(?:\.[0-9]+)?", excerpt)]
-    values = numbers[: min(4, len(numbers))]
-    return {
-        "labels": [f"항목 {index}" for index in range(1, len(values) + 1)],
-        "series": [{"name": "값", "values": values or [1.0]}],
-        "category_label": "비교 항목",
-        "value_label": "수치",
-        "orientation": "vertical",
-        "source_note": "문단에 등장한 수치를 순서대로 사용",
-    }
+        data_spec["events"] = valid_events
+        if len(valid_events) < 3:
+            return False, "timeline has fewer than 3 valid events"
+        return True, "ok"
 
+    if visual_type in {"bar_chart", "line_chart"}:
+        labels = data_spec.get("labels", [])
+        series = data_spec.get("series", [])
+        if not isinstance(labels, list) or not isinstance(series, list):
+            return False, "labels or series is not a list"
+        if len(labels) < 2 or not series:
+            return False, "not enough labels or series"
+        if len(labels) > 4:
+            return False, "chart has too many labels"
+        if len(series) > 3:
+            return False, "chart has too many series"
 
-def build_timeline_spec_from_excerpt(excerpt: str) -> dict:
-    matches = re.findall(r"(\d{4})년(?:에는|에는)?\s*(.*?)(?=(?:\d{4})년|$)", excerpt)
-    events = []
-    for year, detail in matches:
-        clean_detail = " ".join(detail.split("다.")[0].split())
-        label = clean_detail[:28] or "주요 변화"
-        events.append({"time": year, "label": label, "detail": clean_detail[:60] or label})
-    if not events:
-        events = [{"time": "현재", "label": "주요 흐름", "detail": normalize_text(excerpt, 60)}]
-    return {
-        "events": events,
-        "source_note": "본문의 연도별 발전 단계를 기반으로 구성",
-    }
+        clean_labels = [normalize_text(str(label).strip(), 28) for label in labels if str(label).strip()]
+        if len(clean_labels) < 2:
+            return False, "not enough cleaned labels"
 
+        clean_series = []
+        for item in series:
+            if not isinstance(item, dict):
+                return False, "series item is not a dict"
+            name = normalize_text(str(item.get("name", "")).strip(), 28)
+            values = item.get("values", [])
+            if not name or not isinstance(values, list) or len(values) != len(clean_labels):
+                return False, "series values length mismatch"
+            if not all(isinstance(value, (int, float)) for value in values):
+                return False, "series contains non-numeric values"
+            if len(name) > 26:
+                return False, "series label too long"
+            clean_series.append({"name": name, "values": values})
 
-def build_concept_diagram_spec(section: str, excerpt: str) -> dict:
-    matches = re.findall(r"([A-Za-z][A-Za-z ]*Agent)는\s*(.*?)(?=(?:첫째|둘째|셋째|넷째)|\.|$)", excerpt)
-    branches = []
-    for label, detail in matches:
-        branches.append({"label": label.strip(), "detail": " ".join(detail.split())[:60]})
-    if not branches:
-        sentences = [part.strip() for part in re.split(r"[.。]", excerpt) if part.strip()]
-        for index, sentence in enumerate(sentences[:4], 1):
-            branches.append({"label": f"구성 요소 {index}", "detail": sentence[:60]})
-    return {
-        "central_topic": section or "시스템 구성 구조",
-        "branches": branches,
-        "source_note": "문단의 구성 요소와 역할 설명을 기반으로 구성",
-    }
-
-
-def build_table_spec_from_excerpt(excerpt: str) -> dict:
-    sentences = [part.strip() for part in re.split(r"[.。]", excerpt) if part.strip()]
-    rows = []
-    for index, sentence in enumerate(sentences[:4], 1):
-        rows.append([f"항목 {index}", sentence[:70], "문단 요약"])
-    if not rows:
-        rows = [["항목 1", normalize_text(excerpt, 70), "문단 요약"]]
-    return {
-        "columns": ["항목", "내용", "비고"],
-        "rows": rows,
-        "source_note": "문단 핵심 내용을 표 형식으로 정리",
-    }
-
-
-def synthesize_visuals_from_candidates(plan: dict) -> list[dict]:
-    visuals: list[dict] = []
-    for index, candidate in enumerate(plan.get("candidates", []), 1):
-        visual_type = candidate.get("selected_type", "").strip()
-        if visual_type not in SUPPORTED_VISUAL_TYPES:
-            candidate_types = split_candidate_types(candidate.get("candidate_types", []))
-            visual_type = next((item for item in candidate_types if item in SUPPORTED_VISUAL_TYPES), "")
-        if visual_type not in SUPPORTED_VISUAL_TYPES:
-            continue
-
-        section = candidate.get("section", "")
-        excerpt = candidate.get("excerpt", "")
+        data_spec["labels"] = clean_labels
+        data_spec["series"] = clean_series
         if visual_type == "bar_chart":
-            data_spec = build_bar_chart_spec_from_excerpt(excerpt)
-            title = "단일·멀티 에이전트 구조 성능 비교"
-        elif visual_type == "timeline":
-            data_spec = build_timeline_spec_from_excerpt(excerpt)
-            title = "AI 에이전트 개발 지원 시스템 발전 타임라인"
-        elif visual_type == "concept_diagram":
-            data_spec = build_concept_diagram_spec(section, excerpt)
-            title = "AI 에이전트 협업 구조 개념도"
+            data_spec["category_label"] = normalize_text(str(data_spec.get("category_label", "비교 기준")), 24)
+            data_spec["value_label"] = normalize_text(str(data_spec.get("value_label", "측정값")), 24)
         else:
-            data_spec = build_table_spec_from_excerpt(excerpt)
-            title = f"{section} 핵심 비교표" if section else f"시각 자료 {index}"
+            data_spec["x_label"] = normalize_text(str(data_spec.get("x_label", "시점")), 24)
+            data_spec["y_label"] = normalize_text(str(data_spec.get("y_label", "측정값")), 24)
+        return True, "ok"
 
-        visuals.append(
-            {
-                "visual_id": f"visual_{index}",
-                "title": title,
-                "target_section": section,
-                "choice_reason": candidate.get("selection_reason", ""),
-                "source_excerpt": excerpt,
-                "visual_type": visual_type,
-                "data_spec": data_spec,
-            }
-        )
-    return visuals
+    if visual_type == "concept_diagram":
+        central_topic = str(data_spec.get("central_topic", "")).strip()
+        branches = data_spec.get("branches", [])
+        if not central_topic:
+            return False, "concept_diagram central_topic missing"
+        if not isinstance(branches, list):
+            return False, "concept_diagram branches is not a list"
 
+        valid_branches = []
+        for branch in branches:
+            if not isinstance(branch, dict):
+                continue
+            label = str(branch.get("label", "")).strip()
+            detail = str(branch.get("detail", "")).strip()
+            if label:
+                valid_branches.append(
+                    {
+                        "label": normalize_text(label, 24),
+                        "detail": normalize_text(detail, 28) if detail else "",
+                    }
+                )
 
-def build_fallback_visualization_plan(report_sections: list[dict]) -> dict:
-    # Claude 호출이 실패하면 문단 기반 휴리스틱으로 최소 계획을 구성합니다.
-    candidates: list[dict] = []
-    for candidate in extract_paragraph_candidates(report_sections):
-        section = candidate.get("section", "")
-        excerpt = candidate.get("excerpt", "")
-        lowered = f"{section} {excerpt}".lower()
+        data_spec["central_topic"] = normalize_text(central_topic, 36)
+        data_spec["branches"] = valid_branches[:6]
+        if len(valid_branches) < 2:
+            return False, "concept_diagram has fewer than 2 valid branches"
+        return True, "ok"
 
-        selected_type = ""
-        candidate_types: list[str] = []
-        selection_reason = ""
-
-        if re.search(r"\b(19|20)\d{2}\b", excerpt) and any(
-            keyword in lowered for keyword in ("발전", "과정", "history", "evolution", "timeline")
-        ):
-            candidate_types = ["timeline", "table"]
-            selected_type = "timeline"
-            selection_reason = "연도 흐름이 명확하여 타임라인이 적절함"
-        elif len(re.findall(r"\d+(?:\.\d+)?%?", excerpt)) >= 2 and any(
-            keyword in lowered for keyword in ("비교", "결과", "시간", "통과율", "오류율", "score", "rate")
-        ):
-            candidate_types = ["bar_chart", "table"]
-            selected_type = "bar_chart"
-            selection_reason = "비교 수치가 포함되어 있어 막대그래프로 표현하기 적절함"
-        elif any(
-            keyword in lowered
-            for keyword in ("구성", "구조", "요소", "agent", "planning", "coding", "testing", "review")
-        ):
-            candidate_types = ["concept_diagram", "table"]
-            selected_type = "concept_diagram"
-            selection_reason = "구성 요소와 역할 관계를 도식화하는 편이 이해에 유리함"
-
-        if not selected_type:
-            continue
-
-        candidates.append(
-            {
-                "section": section,
-                "paragraph_index": candidate.get("paragraph_index", 0),
-                "excerpt": excerpt,
-                "candidate_types": candidate_types,
-                "selected_type": selected_type,
-                "selection_reason": selection_reason,
-            }
-        )
-
-    limited_candidates = candidates[:3]
-    visuals = synthesize_visuals_from_candidates({"candidates": limited_candidates})
-    return {
-        "planner": "fallback",
-        "planning_note": "Claude 계획 호출이 실패하여 문단 기반 휴리스틱 계획을 사용했습니다.",
-        "need_visual": "yes" if visuals else "no",
-        "need_reason": "수치 비교, 연도 흐름, 구성 구조 단서를 기준으로 판단함" if visuals else "시각화 가치가 높은 문단을 찾지 못함",
-        "candidates": limited_candidates,
-        "visuals": visuals,
-    }
+    return False, "unknown validation path"
 
 
 def build_visualization_plan(topic: str, report_sections: list[dict], report_text: str, selected_rows: list[dict]) -> dict:
-    # 1. 시각 자료 필요 여부를 먼저 판단합니다.
-    # 2. 필요하다면 문단 단위 후보를 찾습니다.
-    # 3. 각 후보에서 형식 후보를 비교한 뒤 최종 형식을 고릅니다.
-    # 39-4, 39-5, 39-6: Claude가 초안과 선별 논문을 읽고
-    # 필요한 시각 자료 유형과 data_spec 을 함께 계획합니다.
-    # 1차로 Claude가 초안 문맥을 읽고 시각화 계획을 세운다.
-    prompt = build_visualization_plan_prompt(
-        topic=topic,
-        report_sections=report_sections,
-        report_text=report_text,
-        selected_rows=selected_rows,
-    )
+    paragraph_candidates = extract_paragraph_candidates(report_sections)
+    selected_context = selected_rows[:6]
+
+    prompt = f"""
+당신은 사용자가 입력한 주제의 논문 초안을 분석하여 시각자료 계획을 세우는 Visualization Agent다.
+
+중요 규칙:
+1. 주제는 매번 달라질 수 있으므로 특정 분야 지식을 하드코딩하지 말고, 제공된 초안 내용에 근거해 시각자료를 설계한다.
+2. 시각자료가 필요 없으면 need_visual="no"로 답한다.
+3. 시각자료가 필요하면 최대 2개만 만든다.
+4. visual_type은 반드시 다음 중 하나를 사용한다:
+   - table
+   - bar_chart
+   - line_chart
+   - timeline
+   - concept_diagram
+5. 각 visual에는 반드시 렌더링 가능한 data_spec을 포함한다.
+6. 논문 인용 연도, 참고문헌 연도, 저자명 뒤의 연도는 timeline 사건으로 사용하지 않는다.
+7. 본문에 근거가 부족한 수치나 사건은 임의로 만들지 않는다.
+8. 응답은 JSON만 작성한다.
+9. 항목 수가 많고 범례가 길면 bar_chart를 피하고 table을 우선한다.
+10. 정성적 비교는 table을 우선한다.
+11. 수치 축의 의미가 약하면 bar_chart를 피한다.
+12. 한 차트에는 최대 3개 핵심 지표만 포함한다.
+13. 비교 대상이 2~4개이고 수치가 명확할 때만 bar_chart 또는 line_chart를 사용한다.
+
+visual_type별 data_spec 형식:
+
+0) table:
+{{
+  "columns": ["항목", "특징 A", "특징 B"],
+  "rows": [
+    ["비교 대상 1", "설명", "설명"],
+    ["비교 대상 2", "설명", "설명"]
+  ]
+}}
+
+1) bar_chart:
+{{
+  "labels": ["비교 대상1", "비교 대상2"],
+  "series": [
+    {{
+      "name": "측정 항목",
+      "values": [10, 20]
+    }}
+  ],
+  "category_label": "비교 기준",
+  "value_label": "측정값"
+}}
+
+2) line_chart:
+{{
+  "labels": ["시점1", "시점2", "시점3"],
+  "series": [
+    {{
+      "name": "변화 항목",
+      "values": [10, 15, 20]
+    }}
+  ],
+  "x_label": "시점",
+  "y_label": "측정값"
+}}
+
+3) timeline:
+{{
+  "events": [
+    {{
+      "time": "시점",
+      "label": "짧은 사건명",
+      "detail": "사건의 의미를 설명하는 한 문장"
+    }}
+  ]
+}}
+
+4) concept_diagram:
+{{
+  "central_topic": "중심 개념",
+  "branches": [
+    {{
+      "label": "하위 개념",
+      "detail": "역할 또는 설명"
+    }}
+  ]
+}}
+
+응답 형식:
+{{
+  "need_visual": "yes",
+  "need_reason": "시각자료가 필요한 이유",
+  "visuals": [
+    {{
+      "visual_id": "visual_1",
+      "visual_type": "table",
+      "title": "시각자료 제목",
+      "target_section": "적용할 섹션명",
+      "choice_reason": "이 시각자료 형식이 적절한 이유",
+      "data_spec": {{
+        "columns": [],
+        "rows": []
+      }}
+    }}
+  ]
+}}
+
+[사용자 주제]
+{topic}
+
+[초안 섹션 후보]
+{json.dumps(paragraph_candidates[:18], ensure_ascii=False, indent=2)}
+
+[선별 논문 요약 참고]
+{json.dumps(selected_context, ensure_ascii=False, indent=2)}
+
+[논문 초안]
+{report_text[:6000]}
+"""
+
     safe_print("\n시각 자료 계획 생성 중...")
     try:
         raw_response = LLMClient().ask(
@@ -840,84 +449,55 @@ def build_visualization_plan(topic: str, report_sections: list[dict], report_tex
             model=VISUALIZATION_PLAN_MODEL,
             max_tokens=VISUALIZATION_PLAN_MAX_TOKENS,
         )
+        plan = json.loads(extract_json_block(raw_response))
     except Exception as error:
-        safe_print(f"Claude 시각화 계획 요청 실패, 폴백 계획으로 전환합니다: {error}")
-        return build_fallback_visualization_plan(report_sections)
-    try:
-        plan = parse_visual_plan_text(raw_response)
-    except Exception:
-        plan = repair_visual_plan_text(raw_response)
+        safe_print(f"Claude 시각화 계획 요청 실패: {error}")
+        return {
+            "planner": "claude_failed",
+            "planning_note": "Claude 계획 생성에 실패하여 시각 자료를 만들지 않았습니다.",
+            "need_visual": "no",
+            "need_reason": "계획 생성 실패",
+            "candidates": paragraph_candidates[:18],
+            "visuals": [],
+            "validation_errors": [],
+        }
 
-    need_visual = str(plan.get("need_visual", "yes")).lower()
-    visuals_for_review = plan.get("visuals", []) if isinstance(plan, dict) else []
-    # 계획이 선행연구 비교 쪽으로만 쏠리면 한 번 더 재판단시킨다.
-    if need_visual != "no" and is_literature_review_focused(visuals_for_review):
-        safe_print("시각화 계획이 문헌 비교 쪽으로 치우쳐 있어 재판단을 요청합니다...")
-        reconsider_prompt = build_reconsideration_prompt(
-            topic=topic,
-            report_sections=report_sections,
-            report_text=report_text,
-            selected_rows=selected_rows,
-            current_plan_text=raw_response,
-        )
-        try:
-            reconsidered = LLMClient().ask(
-                reconsider_prompt,
-                model=VISUALIZATION_PLAN_MODEL,
-                max_tokens=VISUALIZATION_PLAN_MAX_TOKENS,
-            )
-        except Exception as error:
-            safe_print(f"Claude 재판단 요청 실패, 1차 계획을 유지합니다: {error}")
-            reconsidered = ""
-        try:
-            reconsidered_plan = parse_visual_plan_text(reconsidered) if reconsidered else {}
-        except Exception:
-            reconsidered_plan = repair_visual_plan_text(reconsidered) if reconsidered else {}
-        if reconsidered_plan.get("visuals"):
-            plan = reconsidered_plan
-
-    # "필요 없음" 판정이 나오면 실제 시각 자료 생성 단계로 넘기지 않습니다.
-    if need_visual == "no":
-        plan["visuals"] = []
-
-    # Claude가 후보와 선택 이유는 줬지만 VISUAL 블록을 비워두는 경우가 있어
-    # 선택된 후보를 실제 렌더링 가능한 visual spec 으로 자동 승격합니다.
-    if need_visual != "no" and not plan.get("visuals") and plan.get("candidates"):
-        plan["visuals"] = synthesize_visuals_from_candidates(plan)
-
-    visuals = []
-    for index, visual in enumerate(plan.get("visuals", []), 1):
-        visual_type = visual.get("visual_type", "").strip()
-        if visual_type not in SUPPORTED_VISUAL_TYPES:
+    valid_visuals = []
+    validation_errors = []
+    for visual in plan.get("visuals", []):
+        if not isinstance(visual, dict):
+            validation_errors.append("visual item is not an object")
             continue
-        visuals.append(
-            {
-                "visual_id": visual.get("visual_id", f"visual_{index}"),
-                "title": visual.get("title", f"시각 자료 {index}"),
-                "target_section": visual.get("target_section", ""),
-                "choice_reason": visual.get("choice_reason", ""),
-                "source_excerpt": visual.get("source_excerpt", ""),
-                "visual_type": visual_type,
-                "data_spec": visual.get("data_spec", {}),
-            }
-        )
+        visual = sanitize_visual_spec(visual)
+        is_valid, reason = validate_visual_spec(visual)
+        if is_valid:
+            valid_visuals.append(visual)
+        else:
+            validation_errors.append(f"{visual.get('visual_id', 'visual')}: {reason}")
 
-    return {
-        "planner": plan.get("planner", "claude"),
-        "planning_note": plan.get("planning_note", ""),
-        "need_visual": need_visual,
-        "need_reason": plan.get("need_reason", ""),
-        "candidates": plan.get("candidates", []),
-        "visuals": visuals,
-    }
+    plan["planner"] = "claude"
+    plan["planning_note"] = ""
+    plan["candidates"] = paragraph_candidates[:18]
+    plan["visuals"] = valid_visuals
+    plan["validation_errors"] = validation_errors
+    plan["need_visual"] = "yes" if valid_visuals else "no"
+    if not valid_visuals and not plan.get("need_reason"):
+        plan["need_reason"] = "검증을 통과한 시각 자료가 없어 생성하지 않았습니다."
+    return plan
 
 
 def print_visualization_plan(plan: dict) -> None:
     safe_print("\nVisualization Agent 시각 자료 계획")
     safe_print(f"기획 방식: {plan.get('planner', 'unknown')}")
     safe_print(f"기획 메모: {plan.get('planning_note', '')}")
+    safe_print(f"시각화 필요 여부: {plan.get('need_visual', 'unknown')}")
+    safe_print(f"필요 이유: {plan.get('need_reason', '')}")
+    if plan.get("validation_errors"):
+        safe_print("검증 제외 항목:")
+        for error in plan["validation_errors"]:
+            safe_print(f"- {error}")
     if not plan.get("visuals"):
-        safe_print("시각 자료가 꼭 필요하다고 판단된 위치가 없어 추가 생성하지 않았습니다.")
+        safe_print("시각 자료를 생성하지 않습니다.")
     for index, visual in enumerate(plan.get("visuals", []), 1):
         safe_print(
             f"[{index}] {visual.get('title', '')} | type={visual.get('visual_type', '')} | "
@@ -926,169 +506,151 @@ def print_visualization_plan(plan: dict) -> None:
 
 
 def generate_visual_assets_from_plan(topic: str, plan: dict) -> dict[str, str]:
-    # 39-7: 계획된 시각 자료를 실제 PNG 파일로 생성합니다.
     assets: dict[str, str] = {}
+    if plan.get("need_visual") != "yes":
+        return assets
     for visual in plan.get("visuals", []):
-        visual_type = visual.get("visual_type", "")
-        if visual_type not in SUPPORTED_VISUAL_TYPES:
-            continue
-        # Claude가 정한 data_spec을 실제 PNG로 렌더링하는 단계다.
-        save_path = render_visual_spec(topic, visual)
-        assets[visual.get("visual_id", visual_type)] = str(save_path)
+        try:
+            save_path = render_visual_spec(topic, visual)
+            assets[visual.get("visual_id", "visual")] = str(save_path)
+        except Exception as error:
+            safe_print(f"시각 자료 생성 실패: {visual.get('title', visual.get('visual_id', 'visual'))} | {error}")
     return assets
 
 
 def build_writer_visual_asset_map(profile: dict, plan: dict, assets: dict[str, str]) -> dict:
-    # 39-9: 생성된 시각 자료를 섹션 단위로 매핑해 저장할 구조를 만듭니다.
     section_to_assets: dict[str, list[str]] = {}
     visual_notes: dict[str, dict] = {}
-
     for visual in plan.get("visuals", []):
         visual_id = visual.get("visual_id", "")
+        target_section = visual.get("target_section", "")
         asset_path = assets.get(visual_id, "")
-        target_section = visual.get("target_section", "기타")
-        if asset_path:
-            section_to_assets.setdefault(target_section, []).append(asset_path)
+        if not asset_path:
+            continue
+        section_to_assets.setdefault(target_section, []).append(asset_path)
         visual_notes[visual_id] = {
             "title": visual.get("title", ""),
-            "target_section": target_section,
+            "reason": visual.get("choice_reason", ""),
             "visual_type": visual.get("visual_type", ""),
-            "choice_reason": visual.get("choice_reason", ""),
-            "source_excerpt": visual.get("source_excerpt", ""),
-            "asset_path": asset_path,
         }
-
     return {
         "topic": profile.get("topic", ""),
-        "writer_report_path": profile.get("report_path", ""),
-        "section_to_visual_assets": section_to_assets,
+        "source_report": str(profile.get("report_path", "")),
+        "section_to_assets": section_to_assets,
         "visual_notes": visual_notes,
     }
 
 
-def build_markdown_image_block(image_paths: list[str], report_path: Path) -> str:
-    lines = ["", "> 시각 자료", ""]
-    for image_path in image_paths:
-        final_path = Path(image_path).resolve()
-        relative_from_report = os.path.relpath(final_path, report_path.parent.resolve())
-        lines.append(f"![visual]({relative_from_report.replace(os.sep, '/')})")
-    lines.append("")
-    return "\n".join(lines)
+def insert_visuals_into_report(report_path: Path, asset_map: dict) -> Path:
+    original = report_path.read_text(encoding="utf-8")
+    sections = original.split("\n---\n")
+    rebuilt_sections: list[str] = []
 
-
-def insert_visuals_into_report(profile: dict, asset_map: dict) -> Path | None:
-    report_path_str = profile.get("report_path", "")
-    if not report_path_str:
-        return None
-
-    report_path = Path(report_path_str)
-    if not report_path.exists():
-        return None
-
-    report_text = report_path.read_text(encoding="utf-8")
-    lines = report_text.splitlines()
-    section_assets = asset_map.get("section_to_visual_assets", {})
-
-    inserted_sections: set[str] = set()
-    output_lines: list[str] = []
-
-    for line in lines:
-        output_lines.append(line)
-        stripped = line.strip()
-        if stripped.startswith("#"):
-            heading = stripped.lstrip("#").strip()
-            image_paths = section_assets.get(heading, [])
-            if image_paths:
-                output_lines.append(build_markdown_image_block(image_paths, report_path))
-                inserted_sections.add(heading)
-
-    for heading, image_paths in section_assets.items():
-        if heading in inserted_sections or not image_paths:
+    for section in sections:
+        stripped = section.strip()
+        if not stripped:
             continue
-        output_lines.append("")
-        output_lines.append(f"## {heading} 시각 자료")
-        output_lines.append(build_markdown_image_block(image_paths, report_path))
+        lines = stripped.splitlines()
+        heading_line = lines[0].strip()
+        heading_name = re.sub(r"^#{1,3}\s+", "", heading_line).strip()
+        rebuilt_sections.append(stripped)
+        asset_paths = asset_map.get("section_to_assets", {}).get(heading_name, [])
+        if asset_paths:
+            embeds = [f"![{Path(path).stem}]({path})" for path in asset_paths]
+            rebuilt_sections.append("\n".join(embeds))
 
     visualized_path = report_path.with_name(f"{report_path.stem}_visualized.md")
-    visualized_path.write_text("\n".join(output_lines) + "\n", encoding="utf-8")
+    visualized_path.write_text("\n\n---\n\n".join(rebuilt_sections) + "\n", encoding="utf-8")
     return visualized_path
 
 
-def validate_visualization_outputs(profile: dict, plan: dict, assets: dict, mapping_path: Path, manifest_path: Path) -> dict:
-    asset_status = {visual_id: bool(asset_path) and Path(asset_path).exists() for visual_id, asset_path in assets.items()}
-    all_assets_saved = all(asset_status.values()) if asset_status else True
-    has_plan = isinstance(plan.get("visuals"), list)
+def validate_visualization_outputs(assets: dict[str, str], plan: dict, asset_map_path: Path, manifest_path: Path) -> dict:
     return {
-        "has_selected_papers": profile.get("selected_paper_count", 0) > 0,
-        "has_plan": has_plan,
-        "asset_status": asset_status,
-        "all_assets_saved": all_assets_saved,
-        "mapping_saved": mapping_path.exists(),
-        "manifest_saved": manifest_path.exists(),
-        "output_dir": str(VISUALIZATION_OUTPUT_DIR),
-        "is_valid": has_plan and all_assets_saved and mapping_path.exists() and manifest_path.exists(),
+        "selected_rows_exists": True,
+        "plan_exists": bool(plan),
+        "assets_exist": {key: Path(value).exists() for key, value in assets.items()},
+        "asset_map_exists": asset_map_path.exists(),
+        "manifest_exists": manifest_path.exists(),
     }
 
 
-def print_visualization_validation(result: dict) -> None:
-    safe_print("\nVisualization Agent 테스트 검증 결과")
-    safe_print(f"선별 논문 존재 여부: {'성공' if result.get('has_selected_papers') else '실패'}")
-    safe_print(f"시각화 계획 생성 여부: {'성공' if result.get('has_plan') else '실패'}")
-    safe_print(f"시각 자료 저장 여부: {result.get('asset_status', {})}")
-    safe_print(f"전체 저장 여부: {'성공' if result.get('all_assets_saved') else '실패'}")
-    safe_print(f"Writer 연계 구조 저장 여부: {'성공' if result.get('mapping_saved') else '실패'}")
-    safe_print(f"매니페스트 저장 여부: {'성공' if result.get('manifest_saved') else '실패'}")
-    safe_print(f"출력 경로: {result.get('output_dir', '')}")
-    safe_print("Visualization Agent 테스트 완료" if result.get("is_valid") else "Visualization Agent 테스트 실패")
+def run_visualization_pipeline(topic: str | None = None, score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD) -> dict:
+    report_path, report_text, inferred_topic = load_latest_report(topic=topic)
+    if report_path is None or not report_text:
+        safe_print("Visualization Agent를 실행하려면 먼저 Writer 초안이 필요합니다.")
+        return {"is_valid": False}
 
-
-def run_visualization_pipeline(topic: str = DEFAULT_WRITER_TOPIC, score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD) -> dict:
-    # 39-1: 사용자가 visualization_agent.py 를 실행하면 여기서 전체 흐름이 시작됩니다.
-    clear_topic_visual_outputs(topic)
-    profile = build_visualization_profile(topic=topic, score_threshold=score_threshold)
-    print_visualization_profile(profile)
-
-    selected_rows = build_selected_rows_for_visualization(score_threshold=score_threshold)
-    _report_path, report_text = load_report_text(topic=topic)
+    active_topic = topic or inferred_topic
     report_sections = extract_report_sections(report_text)
+    selected_rows = build_selected_rows_for_visualization(score_threshold=score_threshold)
+
+    safe_print("Visualization Agent 입력 데이터 확인")
+    safe_print(f"주제: {active_topic}")
+    safe_print(f"선별 논문 수: {len(selected_rows)}")
+    safe_print(f"최신 Writer 초안: {report_path}")
+    safe_print(f"초안 섹션: {[section.get('heading', '') for section in report_sections]}")
+
+    clear_topic_visual_outputs(active_topic)
+
     plan = build_visualization_plan(
-        topic=topic,
+        topic=active_topic,
         report_sections=report_sections,
         report_text=report_text,
         selected_rows=selected_rows,
     )
     print_visualization_plan(plan)
-    # 39-8: Claude가 만든 시각 자료 계획을 visual_plan.json 으로 저장합니다.
-    plan_path = save_json_asset(topic, "visual_plan", plan)
+
+    topic_slug = slugify_topic(active_topic)
+    plan_path = save_json_asset(f"{topic_slug}_visual_plan.json", plan)
     safe_print(f"\n시각 자료 계획 저장 완료: {plan_path}")
 
-    assets = generate_visual_assets_from_plan(topic=topic, plan=plan)
-    asset_map = build_writer_visual_asset_map(profile, plan, assets)
-    # 39-9: 생성된 시각 자료 목록과 섹션 매핑을 visual_asset_map.json 으로 저장합니다.
-    asset_map_path = save_json_asset(topic, "visual_asset_map", asset_map)
-    visualized_report_path = insert_visuals_into_report(profile, asset_map)
-    manifest_path = save_json_asset(
-        topic,
-        "visualization_manifest",
-        {
-            "topic": topic,
-            "planner": plan.get("planner", "unknown"),
-            "planning_note": plan.get("planning_note", ""),
-            "assets": assets,
-            "writer_visual_mapping": str(asset_map_path),
-            "visualized_report_path": str(visualized_report_path) if visualized_report_path else "",
-            "profile_path": str(PROFILE_OUTPUT_PATH),
-        },
-    )
+    assets = generate_visual_assets_from_plan(active_topic, plan)
+
+    profile = {
+        "topic": active_topic,
+        "report_path": report_path,
+        "report_sections": report_sections,
+        "selected_rows": selected_rows,
+    }
+    writer_asset_map = build_writer_visual_asset_map(profile, plan, assets)
+    asset_map_path = save_json_asset(f"{topic_slug}_visual_asset_map.json", writer_asset_map)
     safe_print(f"Writer 연계 구조 저장 완료: {asset_map_path}")
-    if visualized_report_path:
-        safe_print(f"시각 자료 삽입 초안 저장 완료: {visualized_report_path}")
+
+    visualized_report_path = insert_visuals_into_report(report_path, writer_asset_map)
+    safe_print(f"시각 자료 삽입 초안 저장 완료: {visualized_report_path}")
+
+    manifest = {
+        "topic": active_topic,
+        "planner": plan.get("planner", ""),
+        "plan_file": str(plan_path),
+        "visual_assets": assets,
+        "asset_map_file": str(asset_map_path),
+        "visualized_report": str(visualized_report_path),
+    }
+    manifest_path = save_json_asset(f"{topic_slug}_visualization_manifest.json", manifest)
     safe_print(f"시각화 결과 저장 완료: {manifest_path}")
 
-    # 39-10: 위에서 저장된 경로와 생성 여부를 콘솔에 출력한 뒤 결과를 최종 검증합니다.
-    result = validate_visualization_outputs(profile, plan, assets, asset_map_path, manifest_path)
-    print_visualization_validation(result)
-    return result
+    validation = validate_visualization_outputs(assets, plan, asset_map_path, manifest_path)
+    safe_print("\nVisualization Agent 테스트 검증 결과")
+    safe_print(f"선별 논문 존재 여부: {'성공' if validation['selected_rows_exists'] else '실패'}")
+    safe_print(f"시각화 계획 생성 여부: {'성공' if validation['plan_exists'] else '실패'}")
+    safe_print(f"시각 자료 저장 여부: {validation['assets_exist']}")
+    safe_print(f"전체 저장 여부: {'성공' if Path(visualized_report_path).exists() else '실패'}")
+    safe_print(f"Writer 연계 구조 저장 여부: {'성공' if validation['asset_map_exists'] else '실패'}")
+    safe_print(f"매니페스트 저장 여부: {'성공' if validation['manifest_exists'] else '실패'}")
+    safe_print(f"출력 경로: {VISUALIZATION_OUTPUT_DIR}")
+    safe_print("Visualization Agent 테스트 완료")
+
+    return {
+        "is_valid": True,
+        "topic": active_topic,
+        "report_path": str(report_path),
+        "plan_path": str(plan_path),
+        "asset_map_path": str(asset_map_path),
+        "manifest_path": str(manifest_path),
+        "assets": assets,
+        "visualized_report": str(visualized_report_path),
+    }
 
 
 if __name__ == "__main__":

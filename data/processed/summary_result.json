@@ -1,82 +1,5 @@
 [
   {
-    "title": "Security Degradation in Iterative AI Code Generation: A Systematic Analysis of the Paradox",
-    "abstract": "The rapid adoption of Large Language Models (LLMs) for code generation has transformed software development, yet little attention has been given to how security vulnerabilities evolve through iterative LLM feedback. This paper analyzes security degradation in AI-generated code through a controlled experiment with 400 code samples across 40 rounds of \"improvements\" using four distinct prompting strategies. Our findings show a 37.6% increase in critical vulnerabilities after just five iterations, with distinct vulnerability patterns emerging across different prompting approaches. This evidence challenges the assumption that iterative LLM refinement improves code security and highlights the essential role of human expertise in the loop. We propose practical guidelines for developers to mitigate these risks, emphasizing the need for robust human validation between LLM iterations to prevent the paradoxical introduction of new security issues during supposedly beneficial code \"improvements.\"",
-    "authors": [
-      "Shivani Shukla",
-      "Himanshu Joshi",
-      "Romilla Syed"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/6c045fd800bf2fc5dd26e4f85cd90e5f781f93bf",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "이 논문은 LLM의 반복적 피드백을 통한 코드 생성 과정에서 보안 취약점이 어떻게 변화하는지를 분석하고, 반복적 LLM 개선이 코드 보안을 향상시킨다는 가정에 의문을 제기하는 것을 목적으로 한다.",
-    "method": "400개의 코드 샘플을 대상으로 4가지 서로 다른 프롬프팅 전략을 사용하여 40라운드의 '개선' 과정을 거치는 통제 실험을 수행하였다.",
-    "result": "단 5회의 반복 후 치명적 취약점이 37.6% 증가하였으며, 프롬프팅 접근 방식에 따라 서로 다른 취약점 패턴이 나타났다. 이는 반복적 LLM 개선이 오히려 새로운 보안 문제를 역설적으로 도입할 수 있음을 보여준다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "Instructor Perceptions of AI Code Generation Tools - A Multi-Institutional Interview Study",
-    "abstract": "Much of the recent work investigating large language models and AI Code Generation tools in computing education has focused on assessing their capabilities for solving typical programming problems and for generating resources such as code explanations and exercises. If progress is to be made toward the inevitable lasting pedagogical change, there is a need for research that explores the instructor voice, seeking to understand how instructors with a range of experiences plan to adapt. In this paper, we report the results of an interview study involving 12 instructors from Australia, Finland and New Zealand, in which we investigate educators' current practices, concerns, and planned adaptations relating to these tools. Through this empirical study, our goal is to prompt dialogue between researchers and educators to inform new pedagogical strategies in response to the rapidly evolving landscape of AI code generation tools.",
-    "authors": [
-      "Judithe Sheard",
-      "Paul Denny",
-      "Arto Hellas",
-      "Juho Leinonen",
-      "L. Malmi",
-      "Simon"
-    ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/1f7228550f2177c83d5fb06a7fef555fe83b9bfb",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "최근 AI 코드 생성 도구 관련 연구가 도구의 성능 평가에 집중된 가운데, 교수자의 관점에서 이들이 어떻게 교육적 변화에 적응할 계획인지를 탐구하는 것을 목적으로 한다. 연구자와 교육자 간의 대화를 촉진하여 AI 코드 생성 도구의 급변하는 환경에 대응하는 새로운 교육학적 전략을 수립하는 데 기여하고자 한다.",
-    "method": "호주, 핀란드, 뉴질랜드의 12명의 교수자를 대상으로 인터뷰 연구를 수행하였다. 이 경험적 연구를 통해 교육자들의 현재 실천 방식, 우려 사항, 그리고 AI 코드 생성 도구와 관련된 계획된 적응 방안을 조사하였다.",
-    "result": "초록에 명시되지 않음",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "Securing AI Code Generation Through Automated Pattern-Based Patching",
-    "abstract": "In an era where AI code generators are reshaping software development, the risk of introducing vulnerabilities is a growing concern. With the increasing reliance on machine learning-driven tools, it is essential to support developers with effective automated vulnerability patching while prioritizing the reliability and security of AI. However, current methods face significant challenges, including a high rate of false positives and difficulties in generating high-quality patches. This paper presents PatchitPy, a new patching solution that leverages a pattern-matching approach to detect and patch Python vulnerabilities. We generated 609 Python code using three popular AI code generators (i.e., GitHub Copilot, Claude-3.7-Sonnet, and DeepSeek- V3)and evaluated our solution's performance on these samples. The results demonstrate the effectiveness of PatchitPy, which outperforms state-of-the-art solutions in both detection and patching. PatchitPy achieved an F1 score of 93% and an Accuracy of 89% for vulnerability detection, and produced high-quality patches with a 80% repair rate for identified vulnerabilities. Furthermore, the patches preserve code quality with minimal impact on complexity, ensuring long-term code maintainability.",
-    "authors": [
-      "Francesco Altiero",
-      "D. Cotroneo",
-      "Roberta De Luca",
-      "Pietro Liguori"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/855dd1099375663bf9f2f60e6a9321685266c7f7",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "AI 코드 생성기의 확산으로 인해 증가하는 소프트웨어 취약점 도입 위험을 해결하고, 높은 오탐률 및 낮은 패치 품질 등 기존 자동화 취약점 패칭 방법의 한계를 극복하는 것을 목적으로 한다.",
-    "method": "패턴 매칭 기반 접근법을 활용한 새로운 패칭 솔루션 PatchitPy를 제안하며, GitHub Copilot, Claude-3.7-Sonnet, DeepSeek-V3 등 세 가지 AI 코드 생성기로 생성한 609개의 Python 코드 샘플을 대상으로 취약점 탐지 및 패칭 성능을 평가하였다.",
-    "result": "PatchitPy는 취약점 탐지에서 F1 점수 93%, 정확도 89%를 달성하였으며, 식별된 취약점에 대해 80%의 수정률을 기록하여 최신 솔루션보다 우수한 성능을 보였다. 또한 생성된 패치는 코드 복잡도에 미치는 영향이 최소화되어 장기적인 코드 유지보수성을 보장한다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "An Empirical Study of Code Clones from Commercial AI Code Generators",
-    "abstract": "Deep learning (DL) has revolutionized various software engineering tasks. Particularly, the emergence of AI code generators has pushed the boundaries of automatic programming to synthesize entire programs based on user-defined specifications in natural language. However, it remains a mystery if these AI code generators rely on the copy-and-paste programming practice, resulting in code clone concerns. In this work, to comprehensively study the code cloning behavior of AI code generators, we conduct an empirical study on three state-of-the-art commercial AI code generators to investigate the existence of all types of clones, which remains underexplored. Our experimental results show that the total Type-1 and Type-2 clone rates of the state-of-the-art commercial AI code generators can reach up to 7.50%, indicating marked code clone issues. Furthermore, it is observed that AI code generators risk infringing copyrights and propagating buggy and vulnerable code resulting from cloning code and show a certain degree of stability in generating code clones.",
-    "authors": [
-      "Weibin Wu",
-      "Haoxuan Hu",
-      "Zhaoji Fan",
-      "Yitong Qiao",
-      "Yizhan Huang",
-      "Yichen Li",
-      "Zibin Zheng",
-      "Michael R. Lyu"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/4dcfe19531fec21e4c2ff27bcd0fa4ccea578c3f",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "AI 코드 생성기가 복사-붙여넣기 프로그래밍 방식에 의존하는지 여부를 규명하고, 코드 클론 문제를 종합적으로 연구하는 것을 목적으로 한다.",
-    "method": "세 가지 최신 상용 AI 코드 생성기를 대상으로 모든 유형의 코드 클론 존재 여부를 조사하는 실증 연구를 수행하였다.",
-    "result": "최신 상용 AI 코드 생성기의 Type-1 및 Type-2 클론 비율 합계가 최대 7.50%에 달하며, 저작권 침해 위험 및 버그·취약 코드 전파 가능성이 확인되었다. 또한 AI 코드 생성기는 코드 클론 생성에 있어 일정 수준의 안정성을 보이는 것으로 관찰되었다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
     "title": "Does AI Code Review Lead to Code Changes? A Case Study of GitHub Actions",
     "abstract": "AI-based code review tools automatically review and comment on pull requests to improve code quality. Despite their growing presence, little is known about their actual impact. We present a large-scale empirical study of 16 popular AI-based code review actions for GitHub workflows, analyzing more than 22,000 review comments in 178 repositories. We investigate (1) how these tools are adopted and configured, (2) whether their comments lead to code changes, and (3) which factors influence their effectiveness. We develop a two-stage LLM-assisted framework to determine whether review comments are addressed, and use interpretable machine learning to identify influencing factors. Our findings show that, while adoption is growing, effectiveness varies widely. Comments that are concise, contain code snippets, and are manually triggered, particularly those from hunk-level review tools, are more likely to result in code changes. These results highlight the importance of careful tool design and suggest directions for improving AI-based code review systems.",
     "authors": [
@@ -94,192 +17,302 @@
     "url": "https://www.semanticscholar.org/paper/8bb17ddcf2781ea822e8cd7d625a02163f668551",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 기반 코드 리뷰 도구가 실제로 코드 변경에 미치는 영향을 분석하고, 이러한 도구의 채택 방식 및 효과에 영향을 미치는 요인을 파악하는 것을 목적으로 한다.",
-    "method": "GitHub 워크플로우용 16개의 인기 AI 기반 코드 리뷰 액션을 대상으로 178개 저장소에서 22,000개 이상의 리뷰 코멘트를 분석하였으며, 리뷰 코멘트의 반영 여부를 판단하기 위한 2단계 LLM 보조 프레임워크와 영향 요인 식별을 위한 해석 가능한 머신러닝을 활용하였다.",
-    "result": "AI 기반 코드 리뷰 도구의 채택은 증가하고 있으나 효과는 도구별로 크게 다르며, 간결하고 코드 스니펫을 포함하며 수동으로 트리거된 코멘트, 특히 hunk 수준 리뷰 도구의 코멘트가 코드 변경으로 이어질 가능성이 더 높은 것으로 나타났다.",
+    "purpose": "AI 기반 코드 리뷰 도구가 풀 리퀘스트에 미치는 실제 영향을 파악하기 위해, 해당 도구들의 채택 방식, 댓글이 실제 코드 변경으로 이어지는지 여부, 그리고 효과에 영향을 미치는 요인을 조사하는 것을 목적으로 한다.",
+    "method": "GitHub 워크플로우용 16개의 인기 AI 기반 코드 리뷰 액션을 대상으로 178개 저장소에서 22,000개 이상의 리뷰 댓글을 분석하는 대규모 실증 연구를 수행하였다. 리뷰 댓글이 반영되었는지 판단하기 위한 2단계 LLM 보조 프레임워크를 개발하고, 영향 요인 식별을 위해 해석 가능한 머신러닝을 활용하였다.",
+    "result": "AI 기반 코드 리뷰 도구의 채택은 증가하고 있으나 효과는 도구마다 크게 다르게 나타났다. 간결하고 코드 스니펫을 포함하며 수동으로 트리거된 댓글, 특히 hunk 수준 리뷰 도구의 댓글이 코드 변경으로 이어질 가능성이 더 높은 것으로 확인되었다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Examining the Use and Impact of an AI Code Assistant on Developer Productivity and Experience in the Enterprise",
-    "abstract": "AI assistants are being created to help software engineers conduct a variety of coding-related tasks, such as writing, documenting, and testing code. We describe the use of the watsonx Code Assistant (WCA), an LLM-powered coding assistant deployed internally within IBM. Through surveys of two user cohorts (N=669) and unmoderated usability testing (N=15), we examined developers’ experiences with WCA and its impact on their productivity. We learned about their motivations for using (or not using) WCA, we examined their expectations of its speed and quality, and we identified new considerations regarding ownership of and responsibility for generated code. Our case study characterizes the impact of an LLM-powered assistant on developers’ perceptions of productivity and it shows that although such tools do often provide net productivity increases, these benefits may not always be experienced by all users.",
+    "title": "AI-Code Wizard an AI Code Review & Generation Assistant",
+    "abstract": ": Designed to simplify and enhance the development of code, AI CodeWizard is a web-based application that employs artificial intelligence and provides dependable online code management for developers. By offering an intuitive interface for developers to write, edit, and manage code with AI assistance in recommending improvements/optimizations or identifying potential bugs. AI CodeWizard is built using React and TypeScript, with a TailwindCSS styled UI, to ensure user responsiveness. Integrated: With integrated user authentication and role- based access control via the Clerk it provides users with a protected workspace where they can log in to. It features a well-organized interface that allows users to navigate between the home page, code editor, and authentication screens. Only authenticated users are permitted to access the editor functionality, which ensures data security and personalized experiences.\n\nKEYWORDS: AI Code Review, Smart Code Editor, AI-Powered IDE, Online Code Editor, AI Code Optimization, Real-Time Bug Detection, Monaco Editor Integration, React TypeScript Project, Secure Code Collaboration, Role-Based Access Control (RBAC), Clerk Authentication, AI Code Suggestion Tool, TailwindCSS              Interface, OpenAI Integration, Developer Productivity Tool, Code Quality Enhancement, ML in Software Development, Cloud-Based IDE, Next-Gen Web Development.",
     "authors": [
-      "Justin D. Weisz",
-      "Shraddha Kumar",
-      "Michael J. Muller",
-      "Karen-Ellen Browne",
-      "Arielle Goldberg",
-      "Katrin Ellice Heintze",
-      "Shagun Bajpai"
-    ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/bf93f66fc99cb8788a0043e82175920ef6f5a51a",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "이 논문은 IBM 내부에 배포된 LLM 기반 코딩 어시스턴트인 watsonx Code Assistant(WCA)가 개발자 생산성과 경험에 미치는 영향을 조사하는 것을 목적으로 한다.",
-    "method": "두 개의 사용자 집단(N=669)을 대상으로 한 설문 조사와 비조율 사용성 테스트(N=15)를 통해 개발자들의 WCA 사용 경험, 사용 동기, 속도 및 품질에 대한 기대, 생성된 코드의 소유권 및 책임에 관한 사항을 분석하였다.",
-    "result": "LLM 기반 어시스턴트는 전반적으로 생산성 향상을 제공하는 경우가 많지만, 이러한 이점이 모든 사용자에게 동일하게 경험되지는 않는 것으로 나타났다. 또한 생성된 코드의 소유권 및 책임에 관한 새로운 고려 사항이 확인되었다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "“You’re on a bicycle with a little motor”: Benefits and Challenges of Using AI Code Assistants",
-    "abstract": "AI code assistants, such as Tabnine, GitHub CoPilot, and ChatGPT, employ Large Language Models (LLMs) trained on extensive source code and other documents. They receive prompts and generate code suggestions aimed to facilitate programming tasks. Previous research in this field has explored the correctness, complexity, quality, and security of the code suggestions. Software developers’ experiences have been studied in the context of controlled experiments. Based on 14 interviews with software developers, this paper describes the developers’ daily and continuous experiences with AI code assistants, presenting benefits and challenges grounded in actual development work, along with strategies to address these challenges.",
-    "authors": [
-      "Wendy Mendes",
-      "S. Souza",
-      "C. D. de Souza"
-    ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/9894760ed0d9f9fae564c32c5c50287a0e29f00d",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "이 논문은 소프트웨어 개발자들이 AI 코드 어시스턴트를 실제 개발 업무에서 일상적으로 사용할 때 경험하는 이점과 도전 과제를 파악하는 것을 목적으로 한다.",
-    "method": "소프트웨어 개발자 14명을 대상으로 인터뷰를 수행하여 AI 코드 어시스턴트의 실제 사용 경험을 수집하였다.",
-    "result": "실제 개발 업무에 기반한 AI 코드 어시스턴트 사용의 이점과 도전 과제, 그리고 이러한 도전 과제를 해결하기 위한 전략을 도출하였다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "Identifying the Factors That Influence Trust in AI Code Completion",
-    "abstract": "AI-powered software development tooling is changing the way that developers interact with tools and write code. However, the ability for AI to truly transform software development may depend on developers' levels of trust in these tools, which has consequences for tool adoption and repeated usage. In this work, we take a mixed-methods approach to measure the factors that influence developers' trust in AI-powered code completion. We found that characteristics about the AI suggestion itself (e.g., the quality of the suggestion), the developer interacting with the suggestion (e.g., their expertise in a language), and the context of the development work (e.g., was the suggestion in a test file) all influenced acceptance rates of AI-powered code suggestions. Based on these findings we propose a number of recommendations for the design of AI-powered development tools to improve trust.",
-    "authors": [
-      "Adam Brown",
-      "Sarah D’Angelo",
-      "Ambar Murillo",
-      "Ciera Jaspan",
-      "Collin Green"
-    ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/14b61b07109f6b8ca2e0d082e4b4c52a0ffaccb9",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "AI 기반 코드 완성 도구에 대한 개발자의 신뢰에 영향을 미치는 요인을 파악하는 것을 목적으로 한다. 개발자의 신뢰 수준은 도구 채택 및 반복 사용에 영향을 미치므로, AI가 소프트웨어 개발을 변화시키는 데 핵심적인 요소로 간주된다.",
-    "method": "혼합 연구 방법론(mixed-methods approach)을 사용하여 AI 기반 코드 완성에 대한 개발자의 신뢰에 영향을 미치는 요인을 측정하였다.",
-    "result": "AI 제안 자체의 특성(예: 제안의 품질), 제안과 상호작용하는 개발자의 특성(예: 언어에 대한 전문성), 개발 작업의 맥락(예: 테스트 파일 내 제안 여부)이 모두 AI 코드 제안 수용률에 영향을 미치는 것으로 나타났다. 이러한 결과를 바탕으로 신뢰를 향상시키기 위한 AI 기반 개발 도구 설계에 대한 여러 권고사항을 제안하였다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "Studying the effect of AI Code Generators on Supporting Novice Learners in Introductory Programming",
-    "abstract": "AI code generators like OpenAI Codex have the potential to assist novice programmers by generating code from natural language descriptions, however, over-reliance might negatively impact learning and retention. To explore the implications that AI code generators have on introductory programming, we conducted a controlled experiment with 69 novices (ages 10-17). Learners worked on 45 Python code-authoring tasks, for which half of the learners had access to Codex, each followed by a code-modification task. Our results show that using Codex significantly increased code-authoring performance (1.15x increased completion rate and 1.8x higher scores) while not decreasing performance on manual code-modification tasks. Additionally, learners with access to Codex during the training phase performed slightly better on the evaluation post-tests conducted one week later, although this difference did not reach statistical significance. Of interest, learners with higher Scratch pre-test scores performed significantly better on retention post-tests, if they had prior access to Codex.",
-    "authors": [
-      "Majeed Kazemitabaar",
-      "J. Chow",
-      "Carlsen Ma",
-      "B. Ericson",
-      "David Weintrop",
-      "Tovi Grossman"
-    ],
-    "year": "2023",
-    "url": "https://www.semanticscholar.org/paper/f03f39f735186c4359b719724be6e1c2eb912fef",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "AI 코드 생성기(OpenAI Codex)가 초보 프로그래머의 학습과 retention에 미치는 영향을 탐구하고, 과도한 의존이 학습에 부정적인 영향을 미칠 수 있는지를 조사하는 것을 목적으로 한다.",
-    "method": "10~17세의 초보 학습자 69명을 대상으로 통제 실험을 수행하였으며, 학습자들은 45개의 Python 코드 작성 과제를 수행하였고, 절반의 학습자에게는 Codex 접근 권한이 부여되었다. 각 과제 후에는 코드 수정 과제가 이어졌으며, 1주일 후 평가 사후 테스트가 실시되었다.",
-    "result": "Codex를 사용한 학습자들은 코드 작성 성능이 유의미하게 향상되었으며(완료율 1.15배, 점수 1.8배 증가), 수동 코드 수정 과제의 성능은 감소하지 않았다. 또한 Scratch 사전 테스트 점수가 높은 학습자들은 Codex에 사전 접근한 경우 retention 사후 테스트에서 유의미하게 더 좋은 성과를 보였다.",
-    "limitation": "Codex 접근 그룹이 훈련 단계 이후 평가 사후 테스트에서 약간 더 나은 성과를 보였으나, 이 차이는 통계적 유의성에 도달하지 못하였다."
-  },
-  {
-    "title": "Assessing the Effectiveness and Security Implications of AI Code Generators",
-    "abstract": "Students, especially those outside the field of cybersecurity, are increasingly turning to Large Language Model (LLM)-based generative AI tools for coding assistance. These AI code generators provide valuable support to developers by generating code based on provided input and instructions. However, the quality and accuracy of the generated code can vary, depending on factors such as task complexity, the clarity of instructions, and the model’s familiarity with the programming language. Additionally, these generated codes may inadvertently utilize vulnerable built-in functions, potentially leading to source code vulnerabilities and exploits. This research undertakes an in-depth analysis and comparison of code generation, code completion, and security suggestions offered by prominent AI models, including OpenAI CodeX, CodeBert, and ChatGPT. The research aims to evaluate the effectiveness and security aspects of these tools in terms of their code generation, code completion capabilities, and their ability to enhance security. This analysis serves as a valuable resource for developers, enabling them to proactively avoid introducing security vulnerabilities in their projects. By doing so, developers can significantly reduce the need for extensive revisions and resource allocation, whether in the short or long term.",
-    "authors": [
-      "Maryam Taeb",
-      "Hongmei Chi",
-      "Shonda Bernadin"
-    ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/35b7027421e64392bd54bf00356826515c4f1d6b",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "LLM 기반 AI 코드 생성 도구들이 생성하는 코드의 품질 및 보안 취약성 문제를 분석하고, 이러한 도구들의 효과성과 보안 측면을 평가하는 것을 목적으로 한다. 특히 개발자들이 프로젝트에서 보안 취약점을 사전에 방지할 수 있도록 지원하는 것을 목표로 한다.",
-    "method": "OpenAI CodeX, CodeBert, ChatGPT 등 주요 AI 모델들을 대상으로 코드 생성, 코드 완성, 보안 제안 기능을 심층 분석 및 비교하는 방법을 사용하였다.",
-    "result": "초록에 명시되지 않음",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "AIDE: AI-Driven Exploration in the Space of Code",
-    "abstract": "Machine learning, the foundation of modern artificial intelligence, has driven innovations that have fundamentally transformed the world. Yet, behind advancements lies a complex and often tedious process requiring labor and compute intensive iteration and experimentation. Engineers and scientists developing machine learning models spend much of their time on trial-and-error tasks instead of conceptualizing innovative solutions or research hypotheses. To address this challenge, we introduce AI-Driven Exploration (AIDE), a machine learning engineering agent powered by large language models (LLMs). AIDE frames machine learning engineering as a code optimization problem, and formulates trial-and-error as a tree search in the space of potential solutions. By strategically reusing and refining promising solutions, AIDE effectively trades computational resources for enhanced performance, achieving state-of-the-art results on multiple machine learning engineering benchmarks, including our Kaggle evaluations, OpenAI MLE-Bench and METRs RE-Bench.",
-    "authors": [
-      "Z. Jiang",
-      "Dominik Schmidt",
-      "Dhruv Srikanth",
-      "Dixing Xu",
-      "Ian Kaplan",
-      "Deniss Jacenko",
-      "Yuxiang Wu"
+      "Chandnani Lucky"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/6eeaf1e7b3be81eb1f44f80906757964e6183fec",
+    "url": "https://www.semanticscholar.org/paper/0c4221f5fd9cb1f84fb8aa123633dd86b8a34e30",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "머신러닝 엔지니어링 과정에서 발생하는 반복적이고 노동 집약적인 시행착오 작업을 자동화하여, 연구자들이 혁신적인 솔루션과 연구 가설 수립에 집중할 수 있도록 지원하는 것을 목적으로 한다.",
-    "method": "대형 언어 모델(LLM)을 기반으로 한 머신러닝 엔지니어링 에이전트 AIDE를 제안하며, 머신러닝 엔지니어링을 코드 최적화 문제로 정의하고 시행착오를 잠재적 솔루션 공간에서의 트리 탐색으로 공식화한다. 유망한 솔루션을 전략적으로 재사용하고 개선함으로써 계산 자원을 성능 향상과 교환하는 방식을 채택한다.",
-    "result": "Kaggle 평가, OpenAI MLE-Bench, METR의 RE-Bench를 포함한 다수의 머신러닝 엔지니어링 벤치마크에서 최첨단(state-of-the-art) 성과를 달성하였다.",
+    "purpose": "개발자들이 코드를 작성, 편집, 관리하는 과정을 단순화하고 향상시키기 위해 AI 기반의 웹 애플리케이션을 개발하는 것을 목적으로 한다. 코드 개선 및 최적화 추천, 잠재적 버그 식별 등의 AI 지원 기능을 제공하는 신뢰할 수 있는 온라인 코드 관리 환경을 구축하고자 한다.",
+    "method": "React와 TypeScript를 기반으로 구축되었으며, TailwindCSS로 스타일링된 UI를 통해 사용자 반응성을 보장한다. Clerk를 통한 사용자 인증 및 역할 기반 접근 제어(RBAC)를 통합하여 보호된 작업 공간을 제공하며, 인증된 사용자만 에디터 기능에 접근할 수 있도록 설계되었다.",
+    "result": "홈 페이지, 코드 에디터, 인증 화면 간 탐색이 가능한 체계적인 인터페이스를 구현하였으며, 인증 기반의 접근 제어를 통해 데이터 보안과 개인화된 경험을 보장하는 웹 기반 코드 관리 플랫폼을 완성하였다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Comparative Study of AI Code Generation Tools: Quality Assessment and Performance Analysis",
-    "abstract": "Artificial intelligence (AI) code generation tools are crucial in software development, processing natural language to improve programming efficiency. Their increasing integration in various industries highlights their potential to transform the way programmers approach and execute software projects. The present research was conducted with the purpose of determining the accuracy and quality of code generated by artificial intelligence (AI) tools. The study began with a systematic mapping of the literature to identify applicable AI tools. Databases such as ACM, Engineering Source, Academic Search Ultimate, IEEE Xplore and Scopus were consulted, from which 621 papers were initially extracted. After applying inclusion criteria, such as English-language papers in computing areas published between 2020 and 2024, 113 resources were selected. A further screening process reduced this number to 44 papers, which identified 11 AI tools for code generation. The method used was a comparative study in which ten programming exercises of varying levels of difficulty were designed and the results obtained from 4 of them are presented. The identified tools generated code for these exercises in different programming languages. The quality of the generated code was evaluated using the SonarQube static analyzer, considering aspects such as safety, reliability and maintainability. The results showed significant variations in code quality among the AI tools. Bing as a code generation tool showed slightly superior performance compared to others, although none stood out as a noticeably superior AI. In conclusion, the research evidenced that, although AI tools for code generation are promising, they still require a pilot to reach their full potential, giving evidence that there is still a long way to go.",
+    "title": "AI Code Review Assistant: A Modern Web Based Solution for Automated Code Analysis and Developer Productivity Enhancement",
+    "abstract": "This paper presents the development and implementation of an AI Code Review Assistant, a comprehensive web-based\napplication designed to enhance developer productivity through automated code analysis and intelligent feedback. Built using\nNext.js framework with Firebase integration and Groq AI API, the system provides real-time code review capabilities, interactive\nchat functionality, and comprehensive progress tracking. The application incorporates modern web technologies including\nReact.js, Tailwind CSS, and Firebase Firestore for scalable data management. Key features include multi-language code\nanalysis, AI-powered suggestions, user authentication, thread-based conversation management, and responsive design for crossplatform compatibility. Performance evaluation demonstrates 92% accuracy in code issue detection and 85% user satisfaction in\nautomated feedback quality. The system successfully addresses the growing need for efficient code review processes in modern\nsoftware development environments, providing developers with instant, intelligent feedback to improve code quality and\naccelerate development cycles.",
     "authors": [
-      "Michael Alexander Florez Muñoz",
-      "Juan Camilo Jaramillo De La Torre",
-      "Stefany Pareja López",
-      "Stiven Herrera",
-      "Christian Andrés Candela Uribe"
+      "Mohanakshi K M"
     ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/5c74b818e952e791434cfdca1fb64d81ad20edba",
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/44db013478c14060d9af290bc97e8069bab04773",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 코드 생성 도구가 생성한 코드의 정확성과 품질을 평가하는 것을 목적으로 한다. AI 도구의 소프트웨어 개발 분야 통합이 증가함에 따라 그 잠재력과 실제 성능을 비교 분석하고자 하였다.",
-    "method": "ACM, IEEE Xplore, Scopus 등 주요 데이터베이스에서 체계적 문헌 매핑을 통해 11개의 AI 코드 생성 도구를 식별하였다. 난이도가 다양한 10개의 프로그래밍 과제를 설계하여 비교 연구를 수행하였으며, 생성된 코드의 품질은 SonarQube 정적 분석기를 사용하여 안전성, 신뢰성, 유지보수성 측면에서 평가하였다.",
-    "result": "AI 도구들 간 코드 품질에서 유의미한 차이가 나타났으며, Bing이 코드 생성 도구로서 다른 도구들에 비해 약간 우수한 성능을 보였다. 다만 어느 도구도 눈에 띄게 우월한 AI로 두드러지지는 않았다.",
-    "limitation": "AI 코드 생성 도구들은 가능성을 보여주지만, 완전한 잠재력 발휘를 위해서는 여전히 사람의 개입(파일럿)이 필요하며, 아직 갈 길이 멀다는 점이 확인되었다. 또한 10개의 프로그래밍 과제 중 4개의 결과만 제시되었다."
-  },
-  {
-    "title": "From \"Ban It Till We Understand It\" to \"Resistance is Futile\": How University Programming Instructors Plan to Adapt as More Students Use AI Code Generation and Explanation Tools such as ChatGPT and GitHub Copilot",
-    "abstract": "Over the past year (2022–2023), recently-released AI tools such as ChatGPT and GitHub Copilot have gained significant attention from computing educators. Both researchers and practitioners have discovered that these tools can generate correct solutions to a variety of introductory programming assignments and accurately explain the contents of code. Given their current capabilities and likely advances in the coming years, how do university instructors plan to adapt their courses to ensure that students still learn well? To gather a diverse sample of perspectives, we interviewed 20 introductory programming instructors (9 women + 11 men) across 9 countries (Australia, Botswana, Canada, Chile, China, Rwanda, Spain, Switzerland, United States) spanning all 6 populated continents. To our knowledge, this is the first empirical study to gather instructor perspectives about how they plan to adapt to these AI coding tools that more students will likely have access to in the future. We found that, in the short-term, many planned to take immediate measures to discourage AI-assisted cheating. Then opinions diverged about how to work with AI coding tools longer-term, with one side wanting to ban them and continue teaching programming fundamentals, and the other side wanting to integrate them into courses to prepare students for future jobs. Our study findings capture a rare snapshot in time in early 2023 as computing instructors are just starting to form opinions about this fast-growing phenomenon but have not yet converged to any consensus about best practices. Using these findings as inspiration, we synthesized a diverse set of open research questions regarding how to develop, deploy, and evaluate AI coding tools for computing education.",
-    "authors": [
-      "Sam Lau",
-      "Philip J. Guo"
-    ],
-    "year": "2023",
-    "url": "https://www.semanticscholar.org/paper/a1f3a5f16faf9670f948f1e4e84d12f08dfe353b",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "ChatGPT 및 GitHub Copilot과 같은 AI 코드 생성 도구가 확산됨에 따라, 대학 프로그래밍 강사들이 학생들의 학습을 보장하기 위해 강의를 어떻게 적응시킬 계획인지를 파악하는 것을 목적으로 한다.",
-    "method": "9개국(호주, 보츠와나, 캐나다, 칠레, 중국, 르완다, 스페인, 스위스, 미국)의 20명의 입문 프로그래밍 강사(여성 9명, 남성 11명)를 대상으로 인터뷰를 진행하여 다양한 관점을 수집하였다.",
-    "result": "단기적으로 많은 강사들이 AI를 이용한 부정행위를 억제하기 위한 즉각적인 조치를 취할 계획이었으며, 장기적으로는 AI 도구를 금지하고 프로그래밍 기초 교육을 유지하려는 입장과 미래 직업 준비를 위해 AI 도구를 수업에 통합하려는 입장으로 의견이 나뉘었다. 또한 2023년 초 현재 강사들 사이에 모범 사례에 대한 합의가 아직 형성되지 않은 초기 단계임이 포착되었다.",
+    "purpose": "현대 소프트웨어 개발 환경에서 효율적인 코드 리뷰 프로세스에 대한 필요성을 해결하고, 자동화된 코드 분석과 지능형 피드백을 통해 개발자 생산성을 향상시키는 것을 목적으로 한다.",
+    "method": "Next.js 프레임워크, Firebase 통합, Groq AI API를 활용하여 웹 기반 애플리케이션을 구축하였으며, React.js, Tailwind CSS, Firebase Firestore를 포함한 현대적 웹 기술을 적용하였다. 다중 언어 코드 분석, AI 기반 제안, 사용자 인증, 스레드 기반 대화 관리, 반응형 디자인 등의 기능을 구현하였다.",
+    "result": "코드 문제 감지에서 92%의 정확도를 달성하였으며, 자동화된 피드백 품질에 대한 사용자 만족도는 85%로 나타났다. 개발자에게 즉각적이고 지능적인 피드백을 제공하여 코드 품질 개선 및 개발 주기 가속화에 성공적으로 기여하였다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Performance, Workload, Emotion, and Self-Efficacy of Novice Programmers Using AI Code Generation",
-    "abstract": "Artificial Intelligence-driven Development Environments (AIDEs) offer developers revolutionary computer programming assistance. There is great potential in incorporating AIDEs into Computer Science education; however, the effects of these tools should be fully examined before doing so. Here, a within-subjects study was conducted to compare the programming performance, workload, emotion, and self-efficacy of seventeen novices coding with and without use of the GitHub Copilot AIDE under time pressure. Results showed that using the AIDE significantly increased programming efficiency and reduced effort and mental workload but did not significantly impact emotion or self-efficacy. However, participants' performance improved with more experience using the AI, and their self-efficacy followed. The results suggest that students who try AIDEs will likely be tempted to use them for time-sensitive work. There is no evidence that providing AIDEs will aid struggling students, but there is a clear need for students to practice with AI to become competent and confident using it.",
+    "title": "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents",
+    "abstract": "Recent advances in frontier large language models have enabled code review agents that operate in open-ended, reasoning-intensive settings. However, the lack of standardized benchmarks and granular evaluation protocols makes it difficult to assess behavior of code review agents beyond coarse success metrics, particularly for tasks where false positives are costly. To address this gap, we introduce CR-Bench, a benchmarking dataset, and CR-Evaluator, a fine-grained evaluation pipeline for code review agents. Using these tools, we conduct a preliminary study evaluating both a single-shot agent and a Reflexion-based agent across two frontier models. We find that code review agents can exhibit a low signal-to-noise ratio when designed to identify all hidden issues, obscuring true progress and developer productivity when measured solely by resolution rates. Our analysis identifies the hidden trade-off between issue resolution and spurious findings, revealing a frontier that constrains effective agent design. Together, CR-Bench and CR-Evaluator provide a timely foundation for studying and developing code review agents as LLM-based systems transition from controlled benchmarks to real-world software engineering workflows.",
     "authors": [
-      "Nicholas Gardella",
-      "Raymond Pettit",
-      "S. Riggs"
+      "K. Pereira",
+      "Neelabh Sinha",
+      "Rajat Ghosh",
+      "Debojyoti Dutta"
     ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/45562c652d388f2f89805c9e4ae2b77c20d48ff4",
+    "year": "2026",
+    "url": "https://www.semanticscholar.org/paper/4a605befd58e4301117bb21dd99a4b1da1cbe827",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 기반 개발 환경(AIDE)을 컴퓨터 과학 교육에 도입하기 전에, 해당 도구가 초보 프로그래머의 성능, 작업 부하, 감정, 자기효능감에 미치는 영향을 충분히 검토하는 것을 목적으로 한다.",
-    "method": "17명의 초보자를 대상으로 피험자 내 설계(within-subjects study)를 사용하여, 시간 압박 조건에서 GitHub Copilot AIDE를 사용한 경우와 사용하지 않은 경우의 프로그래밍 성능, 작업 부하, 감정, 자기효능감을 비교하였다.",
-    "result": "AIDE 사용은 프로그래밍 효율성을 유의미하게 향상시키고 노력 및 정신적 작업 부하를 감소시켰으나, 감정이나 자기효능감에는 유의미한 영향을 미치지 않았다. 다만 AI 사용 경험이 증가할수록 참가자들의 성능과 자기효능감이 함께 향상되었다.",
-    "limitation": "AIDE가 어려움을 겪는 학생들에게 도움이 된다는 증거는 없으며, 학생들이 AI를 능숙하고 자신 있게 사용하기 위해서는 AI와 함께 연습할 필요가 있음이 시사된다."
+    "purpose": "표준화된 벤치마크와 세분화된 평가 프로토콜의 부재로 인해 코드 리뷰 에이전트의 행동을 평가하기 어려운 문제를 해결하고자 하며, 특히 거짓 양성(false positive)이 비용이 큰 작업에서의 평가 한계를 극복하는 것을 목적으로 한다.",
+    "method": "벤치마킹 데이터셋인 CR-Bench와 세분화된 평가 파이프라인인 CR-Evaluator를 도입하였으며, 두 가지 프론티어 모델에 걸쳐 단일 샷 에이전트와 Reflexion 기반 에이전트를 평가하는 예비 연구를 수행하였다.",
+    "result": "코드 리뷰 에이전트가 모든 숨겨진 문제를 식별하도록 설계될 경우 낮은 신호 대 잡음비를 보일 수 있으며, 해결률만으로 측정 시 실제 진전과 개발자 생산성이 불명확해질 수 있음을 발견하였다. 또한 문제 해결과 허위 발견 사이의 숨겨진 트레이드오프를 확인하여 효과적인 에이전트 설계를 제약하는 프론티어를 밝혀냈다.",
+    "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Exploring Security Risks and Mitigation Strategies in AI Code Helpers",
-    "abstract": "We aim to tackle the urgent concern of security vulnerabilities linked to the utilization of AI code assistants, with a focus on the unintended disclosure of sensitive data such as secret credentials, intellectual property, and other confidential information. With developers increasingly depending on emerging technologies akin to Copilots, Codeium, CodeGeeX, and similar popular AI code assistants, the peril of information exposure emerges as a significant apprehension. This paper delves into the obstacles encountered and potential remedies to alleviate the security risks entwined with these AI code assistants.",
+    "title": "AI Code Review System",
+    "abstract": "Abstract:\n\nThe world of software development moves fast, and keeping code clean and reliable is more important than ever. Manual code reviews help, but they're slow, often inconsistent, and depend too much on the reviewer’s experience. That’s where our AI Code Review System (ACRS) comes in. It uses advanced AI and machine learning to automatically analyze code, using large language models trained on massive datasets. These models don’t just spot simple errors—they actually understand how code is written, how it’s structured, and how it should work.\n\n\nSo what does this system actually do for developers? It scans through code and gives instant feedback: points out mistakes, suggests ways to make things run smoother, and explains its reasoning. This makes the code easier to read, maintain, and upgrade. On top of that, it generates an overall “code quality score” based on how correct, efficient, and clean the code is.\n\n\nThe best part is, the interface is designed to be simple and helpful. Developers don’t have to rely on lengthy manual reviews, which means projects move faster.\n\n\nThe research also digs into how AI code reviews stack up against classic static analysis tools. Basically, AI systems have an edge when it comes to understanding context and offering smarter recommendations. The ACRS isn’t just for veteran coders, either—it’s a teaching tool for students and beginners, too. All in all, this system is a big leap forward for automated, intelligent, and scalable code reviews in today’s fast-paced software industry.\n\n\nKeywords: Artificial Intelligence, Code Review, Machine Learning, Code Quality, Bug Detection, Automated Feedback, Programming, Software Development",
     "authors": [
-      "Harshith Sheggam",
-      "Xiaowen Zhang"
+      "Shakila Siddavatam",
+      "Adil Abid , Jamadar"
     ],
-    "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/d56afd294e4511fe174adcf7f8ade7757169548d",
+    "year": "2026",
+    "url": "https://www.semanticscholar.org/paper/465bf2a67221415b63bcbeacc1bffe28cc07eeda",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 코드 어시스턴트 사용과 관련된 보안 취약점, 특히 비밀 자격증명, 지적 재산, 기타 기밀 정보 등 민감한 데이터의 의도치 않은 노출 문제를 해결하는 것을 목적으로 한다.",
-    "method": "Copilots, Codeium, CodeGeeX 등 널리 사용되는 AI 코드 어시스턴트를 중심으로 이러한 도구들과 연관된 보안 위험 및 잠재적 해결책을 탐구하는 방식으로 접근한다.",
-    "result": "초록에 명시되지 않음",
+    "purpose": "수동 코드 리뷰의 느린 속도, 비일관성, 리뷰어 경험 의존성 문제를 해결하기 위해 자동화된 AI 기반 코드 리뷰 시스템(ACRS)을 개발하는 것을 목적으로 한다.",
+    "method": "대규모 데이터셋으로 학습된 대형 언어 모델(LLM)을 포함한 AI 및 머신러닝 기술을 활용하여 코드를 자동으로 분석하며, 코드의 작성 방식, 구조, 동작 방식을 이해하여 즉각적인 피드백을 제공한다.",
+    "result": "ACRS는 코드의 오류 지적, 성능 개선 제안, 근거 설명 등의 즉각적인 피드백을 제공하며, 정확성·효율성·가독성을 기반으로 전반적인 코드 품질 점수를 생성한다. 또한 기존 정적 분석 도구 대비 문맥 이해 및 스마트 추천에서 우위를 보이는 것으로 나타났다.",
     "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "SWE-PRBench: Benchmarking AI Code Review Quality Against Pull Request Feedback",
+    "abstract": "We introduce SWE-PRBench, a benchmark of 350 pull requests with human-annotated ground truth for evaluating AI code review quality. Evaluated against an LLM-as-judge framework validated at kappa=0.75, 8 frontier models detect only 15-31% of human-flagged issues on the diff-only configuration, demonstrating that AI code review remains far below human expert performance despite strong results on code generation benchmarks. Pull requests are drawn from active open-source repositories, filtered from 700 candidates using a Repository Quality Score, and evaluated under three frozen context configurations: diff only (config_A), diff with file content (config_B), and full context (config_C), enabling systematic ablation of context provision strategies. All 8 models degrade monotonically from config_A to config_C, even when context is provided via structured semantic layers including AST-extracted function context and import graph resolution. The dominant mechanism is a collapse of Type2_Contextual issue detection at config_B, consistent with attention dilution in long contexts: a structured 2,000-token diff-with-summary prompt outperforms a 2,500-token full-context prompt enriched with execution context, behaviour mapping, and test signatures across all 8 models. The top four models are statistically indistinguishable (mean score 0.147-0.153) while a clear tier gap separates them from the remaining four (mean score<= 0.113). Dataset, contexts, annotations, and evaluation harness are released publicly.",
+    "authors": [
+      "Deepak Kumar"
+    ],
+    "year": "2026",
+    "url": "https://www.semanticscholar.org/paper/34c714b2b5a388beb5658302fc25c745176056b5",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "AI 코드 리뷰 품질을 평가하기 위한 벤치마크가 부재한 문제를 해결하고자, 인간 주석 기반의 정답 데이터를 포함한 350개의 풀 리퀘스트로 구성된 SWE-PRBench를 도입하였다.",
+    "method": "활성 오픈소스 저장소에서 700개의 후보 풀 리퀘스트를 Repository Quality Score로 필터링하여 350개를 선정하고, kappa=0.75로 검증된 LLM-as-judge 프레임워크를 활용해 diff only, diff with file content, full context의 세 가지 컨텍스트 구성에서 8개의 최신 모델을 평가하였다. 컨텍스트 제공 시에는 AST 기반 함수 컨텍스트 및 임포트 그래프 해석을 포함한 구조화된 의미론적 레이어가 활용되었다.",
+    "result": "8개의 최신 모델은 diff-only 구성에서 인간이 지적한 이슈의 15~31%만 탐지하였으며, 모든 모델이 config_A에서 config_C로 갈수록 단조롭게 성능이 저하되었다. 상위 4개 모델은 평균 점수 0.147~0.153으로 통계적으로 구별되지 않았으며, 나머지 4개 모델과는 명확한 성능 격차가 존재하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "AI-powered Code Review with LLMs: Early Results",
+    "abstract": "In this paper, we present a novel approach to improving software quality and efficiency through a Large Language Model (LLM)-based model designed to review code and identify potential issues. Our proposed LLM-based AI agent model is trained on large code repositories. This training includes code reviews, bug reports, and documentation of best practices. It aims to detect code smells, identify potential bugs, provide suggestions for improvement, and optimize the code. Unlike traditional static code analysis tools, our LLM-based AI agent has the ability to predict future potential risks in the code. This supports a dual goal of improving code quality and enhancing developer education by encouraging a deeper understanding of best practices and efficient coding techniques. Furthermore, we explore the model's effectiveness in suggesting improvements that significantly reduce post-release bugs and enhance code review processes, as evidenced by an analysis of developer sentiment toward LLM feedback. For future work, we aim to assess the accuracy and efficiency of LLM-generated documentation updates in comparison to manual methods. This will involve an empirical study focusing on manually conducted code reviews to identify code smells and bugs, alongside an evaluation of best practice documentation, augmented by insights from developer discussions and code reviews. Our goal is to not only refine the accuracy of our LLM-based tool but also to underscore its potential in streamlining the software development lifecycle through proactive code improvement and education.",
+    "authors": [
+      "Zeeshan Rasheed",
+      "Malik Abdul Sami",
+      "Muhammad Waseem",
+      "Kai-Kristian Kemell",
+      "Xiaofeng Wang",
+      "Anh Nguyen",
+      "Kari Systä",
+      "Pekka Abrahamsson"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/db56fcaccb77418cae5ee2c439f8821a99a64815",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "소프트웨어 품질 및 개발 효율성을 향상시키기 위해 코드 리뷰 및 잠재적 문제 식별을 수행하는 LLM 기반 모델을 제안하는 것을 목적으로 한다. 코드 스멜 감지, 잠재적 버그 식별, 개선 제안 및 코드 최적화를 통해 코드 품질 향상과 개발자 교육을 동시에 지원하고자 한다.",
+    "method": "대규모 코드 저장소에서 코드 리뷰, 버그 리포트, 모범 사례 문서를 학습 데이터로 사용하여 LLM 기반 AI 에이전트 모델을 훈련하였다. 이 모델은 기존 정적 코드 분석 도구와 달리 코드의 미래 잠재적 위험을 예측하는 능력을 갖추도록 설계되었다.",
+    "result": "LLM 기반 모델이 릴리스 후 버그를 상당히 줄이고 코드 리뷰 프로세스를 향상시키는 개선 사항을 제안하는 데 효과적임을 확인하였다. 이는 LLM 피드백에 대한 개발자 감성 분석을 통해 입증되었다.",
+    "limitation": "향후 연구로 LLM이 생성한 문서 업데이트의 정확성과 효율성을 수동 방법과 비교 평가할 계획이다. 코드 스멜 및 버그를 식별하기 위한 수동 코드 리뷰 중심의 실증 연구와 모범 사례 문서 평가를 포함한 추가 연구가 필요하다."
+  },
+  {
+    "title": "Bugdar: AI-Augmented Secure Code Review for GitHub Pull Requests",
+    "abstract": "As software systems grow increasingly complex, ensuring security during development poses significant challenges. Traditional manual code audits are often expensive, time-intensive, and ill-suited for fast-paced workflows, while automated tools frequently suffer from high false-positive rates, limiting their reliability. To address these issues, we introduce Bugdar, an AI-augmented code review system that integrates seamlessly into GitHub pull requests, providing near real-time, context-aware vulnerability analysis. Bugdar leverages fine-tunable Large Language Models (LLMs) and Retrieval Augmented Generation (RAGs) to deliver project-specific, actionable feedback that aligns with each codebase's unique requirements and developer practices. Supporting multiple programming languages, including Solidity, Move, Rust, and Python, Bugdar demonstrates exceptional efficiency, processing an average of 56.4 seconds per pull request or 30 lines of code per second. This is significantly faster than manual reviews, which could take hours per pull request. By facilitating a proactive approach to secure coding, Bugdar reduces the reliance on manual reviews, accelerates development cycles, and enhances the security posture of software systems without compromising productivity.",
+    "authors": [
+      "John Naulty",
+      "Eason Chen",
+      "Joy Wang",
+      "George Digkas",
+      "K. Chalkias"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/2cba2788548c4dfa37b7974babbe93c929b89c45",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "소프트웨어 개발 과정에서 보안을 보장하는 문제를 해결하기 위해, 비용이 많이 들고 시간 집약적인 전통적인 수동 코드 감사와 높은 오탐률로 신뢰성이 낮은 자동화 도구의 한계를 극복하는 것을 목적으로 한다.",
+    "method": "GitHub 풀 리퀘스트에 통합되는 AI 기반 코드 리뷰 시스템 Bugdar를 개발하였으며, 미세 조정 가능한 대형 언어 모델(LLM)과 검색 증강 생성(RAG)을 활용하여 프로젝트별 맥락 인식 취약점 분석을 제공한다. Solidity, Move, Rust, Python을 포함한 다양한 프로그래밍 언어를 지원한다.",
+    "result": "Bugdar는 풀 리퀘스트당 평균 56.4초 또는 초당 30줄의 코드를 처리하는 높은 효율성을 보여주며, 이는 풀 리퀘스트당 수 시간이 걸릴 수 있는 수동 리뷰보다 현저히 빠르다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Integrating AI-Driven Automated Code Review in Agile Development: Benefits, Challenges, and Best Practices",
+    "abstract": "The integration of AI-powered automated code review tools has significantly transformed Agile software development by improving efficiency, maintaining coding standards, and enhancing developer productivity. These tools streamline repetitive tasks, identify potential issues early, and enforce consistency in code quality. However, their adoption comes with challenges such as accuracy constraints, difficulties in integrating with legacy systems, and hesitation among developers. This research employs a mixed-methods approach, combining qualitative and quantitative techniques to examine the benefits, challenges, and best practices associated with AI-driven code reviews. To gather insights, surveys and interviews were conducted with software engineers, DevOps professionals, and Agile practitioners. Additionally, real-world case studies analyzed how organizations have implemented AI-based code reviews, while an experimental study measured performance indicators such as error detection rates, review efficiency, and developer workflow improvements. The findings suggest that AI tools significantly reduce code review time, enhance consistency, and allow developers to concentrate on complex problem-solving rather than manual review processes. However, AI's inability to fully grasp context-sensitive issues, challenges in analyzing complex code logic, and resistance from developers remain notable barriers. Concerns about job security and loss of control over decision-making further contribute to adoption challenges. To overcome these issues, this study emphasizes the importance of a balanced approach where AI tools assist rather than replace human reviewers. Regular training and updates are crucial to improving AI accuracy and keeping pace with evolving coding practices. Gradual integration with existing systems can mitigate compatibility challenges, while transparent communication can help alleviate developer concerns. Additionally, establishing a validation mechanism, where human reviewers verify AI-generated recommendations, can enhance reliability and trust in these tools. In conclusion, while AI-driven automated code reviews offer substantial benefits for Agile teams, their successful implementation depends on strategic deployment, ongoing refinements, and a well-balanced collaboration between AI and human expertise. By following best practices, organizations can optimize AI-assisted code reviews, ultimately improving software quality and streamlining development workflows.",
+    "authors": [
+      "Saad Ahmed"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/40c194c1e15bbf7103ced189f6a37826d8e706e0",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 애자일 소프트웨어 개발에서 AI 기반 자동화 코드 리뷰 도구의 통합과 관련된 이점, 도전 과제, 그리고 모범 사례를 체계적으로 분석하는 것을 목적으로 한다.",
+    "method": "혼합 연구 방법론을 활용하여 소프트웨어 엔지니어, DevOps 전문가, 애자일 실무자를 대상으로 설문 조사와 인터뷰를 실시하였다. 또한 실제 조직의 AI 코드 리뷰 도입 사례를 분석하고, 오류 탐지율, 리뷰 효율성, 개발자 워크플로우 개선 등의 성과 지표를 측정하는 실험 연구를 병행하였다.",
+    "result": "AI 도구는 코드 리뷰 시간을 크게 단축하고 일관성을 향상시키며, 개발자가 수동 리뷰 대신 복잡한 문제 해결에 집중할 수 있도록 돕는 것으로 나타났다. AI와 인간 검토자의 균형 잡힌 협업, 정기적인 훈련 및 업데이트, 점진적 시스템 통합, 검증 메커니즘 도입이 성공적인 구현을 위한 모범 사례로 제시되었다.",
+    "limitation": "AI는 맥락에 민감한 문제를 완전히 이해하지 못하고 복잡한 코드 로직 분석에 어려움이 있으며, 개발자들의 저항과 직업 안정성에 대한 우려가 도입의 주요 장벽으로 남아 있다. 레거시 시스템과의 통합 어려움 및 의사결정 통제권 상실에 대한 우려도 채택 과제로 지적되었다."
+  },
+  {
+    "title": "Support, Not Automation: Towards AI-supported Code Review For Code Quality and Beyond",
+    "abstract": "Code review is a well-established and valuable software development practice associated with code quality, interpersonal, and team benefits. However, it is also time-consuming, with developers spending 10–20% of their working time doing code reviews. With recent advances in AI capabilities, there are more and more initiatives aimed at fully automating code reviews to save time and streamline software developer workflows. However, while automated tools might succeed in maintaining the code quality, we risk losing interpersonal and team benefits such as knowledge transfer, shared code ownership, and team awareness. Instead of automating code review and losing these important benefits, we envision a code review platform where AI is used to support code review to increase benefits for both code quality and the development team. We propose an AI agent-based architecture that collects and combines information to support the user throughout the code review and adapt the workflow to their needs. We analyze this design in relation to the benefits of code review and outline a research agenda aimed at realizing the proposed design.",
+    "authors": [
+      "Lo Heander",
+      "Emma Söderberg",
+      "Christofer Rydenfält"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/2ca14a84b5eda86bc4327cb0d6d7faf59e78f15c",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "코드 리뷰를 완전히 자동화할 경우 코드 품질 유지는 가능하지만 지식 전달, 공유 코드 소유권, 팀 인식 등 대인 관계 및 팀 차원의 이점이 손실될 수 있다는 문제를 해결하고자 한다. 자동화 대신 AI가 코드 리뷰를 지원하여 코드 품질과 팀 협업 모두의 이점을 극대화하는 방향을 제안한다.",
+    "method": "AI 에이전트 기반 아키텍처를 제안하며, 이 아키텍처는 정보를 수집하고 결합하여 코드 리뷰 전반에 걸쳐 사용자를 지원하고 워크플로우를 사용자 필요에 맞게 적응시킨다. 제안된 설계를 코드 리뷰의 이점과 연관지어 분석한다.",
+    "result": "코드 리뷰의 이점을 코드 품질 및 팀 협업 측면 모두에서 보존하고 강화할 수 있는 AI 지원 코드 리뷰 플랫폼의 비전과 설계를 제시하였다. 또한 제안된 설계를 실현하기 위한 연구 어젠다를 제시하였다.",
+    "limitation": "제안된 AI 에이전트 기반 아키텍처는 설계 수준에 머물러 있으며, 실제 구현 및 검증은 향후 연구 과제로 남아 있다. 제안된 설계를 실현하기 위한 연구 어젠다가 제시되었으나 구체적인 실험 결과나 평가는 초록에 명시되지 않음."
+  },
+  {
+    "title": "CRScore++: Reinforcement Learning with Verifiable Tool and AI Feedback for Code Review",
+    "abstract": "Reinforcement learning (RL) to improve code review comment generation requires handling unstructured outputs, making reinforcement learning (RL) feedback challenging. The two main RL approaches, namely RL with Verifiable Feedback (RLVR) and RL with AI Feedback (RLAIF), offer trade-offs: RLVR provides reliable feedback for structured tasks like code generation, while RLAIF works for unstructured outputs but is subjective. We bridge this gap with CRScore++, an RL framework that leverages both LLM-based subjective feedback and verifiable signals for training. Extending CRScore, a code review evaluation metric integrating LLMs with verifiers like linters and code smell detectors, CRScore++ transforms these signals into training rewards. We show that CRScore++ improves a weaker student model through a combination of supervised fine-tuning and RL critique from a stronger teacher model, thus enabling generalization to novel programming languages.",
+    "authors": [
+      "M. Kapadnis",
+      "Atharva Naik",
+      "Carolyn P. Rosé"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/14f409c6c3661c7dd487a859a98b94c8f0b15a99",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "코드 리뷰 코멘트 생성을 개선하기 위한 강화학습 적용 시, 비구조적 출력으로 인해 피드백 제공이 어렵다는 문제를 해결하고자 한다. RLVR과 RLAIF 각각의 한계를 극복하여 신뢰할 수 있는 피드백과 주관적 피드백을 통합하는 것이 목적이다.",
+    "method": "LLM 기반 주관적 피드백과 검증 가능한 신호를 모두 활용하는 RL 프레임워크인 CRScore++를 제안한다. 린터 및 코드 스멜 탐지기와 같은 검증 도구를 LLM과 통합한 코드 리뷰 평가 메트릭인 CRScore를 확장하여, 이러한 신호들을 학습 보상으로 변환한다. 강력한 교사 모델의 RL 비평과 지도 미세 조정을 결합하여 약한 학생 모델을 개선한다.",
+    "result": "CRScore++는 지도 미세 조정과 강력한 교사 모델의 RL 비평을 결합함으로써 약한 학생 모델의 성능을 향상시키며, 새로운 프로그래밍 언어에 대한 일반화를 가능하게 한다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "AI-Assisted Assessment of Coding Practices in Modern Code Review",
+    "abstract": "Modern code review is a process in which an incremental code contribution made by a code author is reviewed by one or more peers before it is committed to the version control system. An important element of modern code review is verifying that code contributions adhere to best practices. While some of these best practices can be automatically verified, verifying others is commonly left to human reviewers. This paper reports on the development, deployment, and evaluation of AutoCommenter, a system backed by a large language model that automatically learns and enforces coding best practices. We implemented AutoCommenter for four programming languages (C++, Java, Python, and Go) and evaluated its performance and adoption in a large industrial setting. Our evaluation shows that an end-to-end system for learning and enforcing coding best practices is feasible and has a positive impact on the developer workflow. Additionally, this paper reports on the challenges associated with deploying such a system to tens of thousands of developers and the corresponding lessons learned.",
+    "authors": [
+      "Manushree Vijayvergiya",
+      "M. Salawa",
+      "Ivan Budiselić",
+      "Dan Zheng",
+      "Pascal Lamblin",
+      "Marko Ivanković",
+      "Juanjo Carin",
+      "Mateusz Lewko",
+      "Jovan Andonov",
+      "Goran Petrović",
+      "Daniel Tarlow",
+      "Petros Maniatis",
+      "René Just"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/0f1ffabf3841a29ad675afcc4815c48b94caf08a",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "현대 코드 리뷰 과정에서 코드 기여물이 모범 사례를 준수하는지 검증하는 작업은 주로 인간 리뷰어에게 의존하는데, 이 논문은 이러한 코딩 모범 사례를 자동으로 학습하고 적용하는 시스템 개발을 목적으로 한다.",
+    "method": "대형 언어 모델(LLM)을 기반으로 코딩 모범 사례를 자동으로 학습하고 강제하는 AutoCommenter 시스템을 개발하였으며, C++, Java, Python, Go 4가지 프로그래밍 언어에 대해 구현하고 대규모 산업 환경에서 성능 및 도입 효과를 평가하였다.",
+    "result": "평가 결과, 코딩 모범 사례를 학습하고 적용하는 엔드투엔드 시스템이 실현 가능하며 개발자 워크플로우에 긍정적인 영향을 미치는 것으로 나타났다.",
+    "limitation": "수만 명의 개발자에게 해당 시스템을 배포하는 과정에서 여러 도전 과제가 존재하였으며, 이에 대한 교훈이 논문에서 보고되었으나 구체적인 향후 과제는 초록에 명시되지 않음."
+  },
+  {
+    "title": "GitHub's Copilot Code Review: Can AI Spot Security Flaws Before You Commit?",
+    "abstract": "As software development practices increasingly adopt AI-powered tools, ensuring that such tools can support secure coding has become critical. This study evaluates the effectiveness of GitHub Copilot's recently introduced code review feature in detecting security vulnerabilities. Using a curated set of labeled vulnerable code samples drawn from diverse open-source projects spanning multiple programming languages and application domains, we systematically assessed Copilot's ability to identify and provide feedback on common security flaws. Contrary to expectations, our results reveal that Copilot's code review frequently fails to detect critical vulnerabilities such as SQL injection, cross-site scripting (XSS), and insecure deserialization. Instead, its feedback primarily addresses low-severity issues, such as coding style and typographical errors. These findings expose a significant gap between the perceived capabilities of AI-assisted code review and its actual effectiveness in supporting secure development practices. Our results highlight the continued necessity of dedicated security tools and manual code audits to ensure robust software security.",
+    "authors": [
+      "Amena Amro",
+      "Manar H. Alalfi"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/9943872c59ab3ce71b809b262233d6566059eb72",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "AI 기반 개발 도구의 보안 코딩 지원 가능성이 중요해짐에 따라, GitHub Copilot의 코드 리뷰 기능이 보안 취약점을 탐지하는 데 얼마나 효과적인지를 평가하는 것을 목적으로 한다.",
+    "method": "다양한 프로그래밍 언어와 애플리케이션 도메인에 걸친 오픈소스 프로젝트에서 수집한 레이블이 붙은 취약 코드 샘플 세트를 활용하여, Copilot의 코드 리뷰 기능이 일반적인 보안 결함을 식별하고 피드백을 제공하는 능력을 체계적으로 평가하였다.",
+    "result": "Copilot의 코드 리뷰는 SQL 인젝션, XSS, 안전하지 않은 역직렬화 등 심각한 취약점을 자주 탐지하지 못하였으며, 대신 코딩 스타일이나 오타와 같은 낮은 심각도의 문제에 주로 피드백을 제공하는 것으로 나타났다.",
+    "limitation": "AI 기반 코드 리뷰의 실제 보안 효과성과 인식된 능력 사이에 상당한 격차가 존재하며, 견고한 소프트웨어 보안을 보장하기 위해 전용 보안 도구와 수동 코드 감사의 지속적인 필요성이 강조된다."
+  },
+  {
+    "title": "AI-Assisted Fixes to Code Review Comments at Scale",
+    "abstract": "Aim. There are 10s of thousands of code review comments each week at Meta. We developed Metamate for Code Review (MetaMateCR) that provides AI-assisted fixes for reviewer comments in production at scale. Method. We developed an internal benchmark of 64kdata points to fine-tune Llama models. Once our models achieve reasonable offline results, we roll them into production. To ensure that our AI-assisted fixes do not negatively impact the time it takes to do code reviews, we conduct randomized controlled safety trials as well as full production experiments. Offline Results. As a baseline, we compare GPT-4o to our small and large Llama models. In offline results, our LargeLSFT model creates an exact match patch 68% of the time outperforming GPT-4o by 9 percentage points (pp). The internal models also use more modern Hack functions when compared to the PHP functions suggested by GPT-4o. Safety Trial. When we roll MetaMateCR into production in a safety trial that compares no AI patches with AI patch suggestions, we see a large regression with reviewers taking over 5% longer to conduct reviews. After investigation, we modify the UX to only show authors the AI patches, and see no regressions in the time for reviews. Production. When we roll LargeLSFT into production, we see an ActionableToApplied rate of 19.7%, which is a 9.2pp improvement over GPT-4o. Our results illustrate the importance of safety trials in ensuring that AI does not inadvertently slow down engineers, and a successful review comment to AI patch product running at scale.",
+    "authors": [
+      "C. Maddila",
+      "Negar Ghorbani",
+      "James Saindon",
+      "Parth Thakkar",
+      "V. Murali",
+      "Rui Abreu",
+      "Jingyue Shen",
+      "Brian Zhou",
+      "N. Nagappan",
+      "Peter C. Rigby"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/2520a844ff53ddc3d5be6563ddef8406626848a6",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "Meta에서 매주 수만 건의 코드 리뷰 댓글이 발생하는 환경에서, 리뷰어 댓글에 대한 AI 기반 수정 제안을 대규모로 제공하는 MetaMateCR 시스템을 개발하는 것을 목적으로 한다.",
+    "method": "64,000개의 데이터 포인트로 구성된 내부 벤치마크를 사용해 Llama 모델을 파인튜닝하였으며, 오프라인 성능 검증 후 무작위 대조 안전성 실험 및 전체 프로덕션 실험을 통해 AI 수정 제안이 코드 리뷰 시간에 미치는 영향을 평가하였다.",
+    "result": "오프라인 실험에서 LargeLSFT 모델은 68%의 정확한 패치 일치율로 GPT-4o를 9%p 상회하였으며, 프로덕션 환경에서는 ActionableToApplied 비율 19.7%를 달성하여 GPT-4o 대비 9.2%p 향상되었다. 또한 안전성 실험을 통해 AI 패치를 리뷰어가 아닌 작성자에게만 노출하도록 UX를 수정함으로써 리뷰 시간 지연 문제를 해결하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "DeputyDev - AI Powered Developer Assistant: Breaking the Code Review Logjam through Contextual AI to Boost Developer Productivity",
+    "abstract": "This study investigates the implementation and efficacy of DeputyDev, an AI-powered code review assistant developed to address inefficiencies in the software development process. The process of code review is highly inefficient for several reasons, such as it being a time-consuming process, inconsistent feedback, and review quality not being at par most of the time. Using our telemetry data, we observed that at TATA 1mg, pull request (PR) processing exhibits significant inefficiencies, with average pick-up and review times of 73 and 82 hours, respectively, resulting in a 6.2 day closure cycle. The review cycle was marked by prolonged iterative communication between the reviewing and submitting parties. Research from the University of California, Irvine indicates that interruptions can lead to an average of 23 minutes of lost focus, critically affecting code quality and timely delivery. To address these challenges, we developed DeputyDev's PR review capabilities by providing automated, contextual code reviews. We conducted a rigorous double-controlled A/B experiment involving over 200 engineers to evaluate DeputyDev's impact on review times. The results demonstrated a statistically significant reduction in both average per PR (23.09%) and average per-line-of-code (40.13%) review durations. After implementing safeguards to exclude outliers, DeputyDev has been effectively rolled out across the entire organisation. Additionally, it has been made available to external companies as a Software-as-a-Service (SaaS) solution, currently supporting the daily work of numerous engineering professionals. This study explores the implementation and effectiveness of AI-assisted code reviews in improving development workflow timelines and code.",
+    "authors": [
+      "Vishal Khare",
+      "V. Saini",
+      "Deepak Sharma",
+      "Anand Kumar",
+      "Ankit Rana",
+      "Anshul Yadav"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/54fcf4e17c46cbcbb202b76f315c48deffeccf07",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "소프트웨어 개발 과정에서 코드 리뷰의 비효율성, 즉 시간 소모, 일관성 없는 피드백, 낮은 리뷰 품질 문제를 해결하고자 한다. TATA 1mg에서 PR 처리에 평균 픽업 73시간, 리뷰 82시간이 소요되어 6.2일의 종료 사이클이 발생하는 문제를 개선하는 것이 목적이다.",
+    "method": "자동화된 맥락 기반 코드 리뷰를 제공하는 AI 기반 코드 리뷰 어시스턴트 DeputyDev를 개발하였다. 200명 이상의 엔지니어를 대상으로 엄격한 이중 통제 A/B 실험을 수행하여 DeputyDev의 리뷰 시간 단축 효과를 평가하였다.",
+    "result": "PR당 평균 리뷰 시간이 23.09%, 코드 라인당 평균 리뷰 시간이 40.13% 통계적으로 유의미하게 감소하였다. 이상치 제외 안전장치 적용 후 전사적으로 배포되었으며, SaaS 솔루션으로도 외부 기업에 제공되어 다수의 엔지니어링 전문가들이 일상 업무에 활용하고 있다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "AI-Driven Continuous Integration: Automating Code Review and Deployment with LLMs",
+    "abstract": "The integration of a Large Language Models (LLMs) into Continuous Integration (CI) pipelines greatly enhances the efficiency of the software development process. AI-based CI improves code quality by decreasing integration failure rates by 30 % and deployment time by 40 %. These models help in identifying bugs, enforcing coding standards, writing unit tests, and optimizing release management. But AIdriven CI comes with risks of security vulnerabilities, model bias and the need for human supervision. This paper uses case studies, surveys, and interviews to explore the effects of AI on CI/CD pipelines and identifies the pros and cons. The results of this search show that the use of AI in CI improves effectiveness, but it needs better oversight to avoid risks and improve model performance.",
+    "authors": [
+      "D. Salem",
+      "Yazan Alahmed",
+      "Ragad Fnich",
+      "Meryem Mazroub",
+      "Mohammad Fnich"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/151cbcb1ad3cc421285322b762eb3cc338b66296",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 대형 언어 모델(LLM)을 지속적 통합(CI) 파이프라인에 통합함으로써 소프트웨어 개발 프로세스의 효율성을 향상시키는 방법을 탐구하는 것을 목적으로 한다.",
+    "method": "사례 연구, 설문조사, 인터뷰를 활용하여 AI가 CI/CD 파이프라인에 미치는 영향을 분석하고 장단점을 식별하였다.",
+    "result": "AI 기반 CI는 통합 실패율을 30% 감소시키고 배포 시간을 40% 단축시키며, 버그 식별, 코딩 표준 적용, 단위 테스트 작성, 릴리스 관리 최적화에 기여하는 것으로 나타났다.",
+    "limitation": "AI 기반 CI는 보안 취약성, 모델 편향, 인간 감독 필요성 등의 위험을 수반하며, 위험 방지와 모델 성능 향상을 위해 더 나은 감독 체계가 필요하다."
+  },
+  {
+    "title": "AI-Powered Code Review Assistant for Streamlining Pull Request Merging",
+    "abstract": "WatsonX, a comprehensive data and AI platform, adeptly addresses contemporary challenges by meticulously training, validating, tuning, and deploying data to drive impactful business outcomes. The intricate task of timely merging Pull Requests (PRs) poses a significant challenge for software development teams, directly influencing business operations. This paper introduces an innovative solution leveraging AI, particularly harnessing generative AI techniques with the Falcon40-B model through the platform. The AI bot facilitates an initial PR review, offering insightful feedback on code formatting, best practices, and minor issues and streamlines collaboration by automatically assigning and notifying PR reviewers. The overarching goal is the continuous evolution of this AI bot into an intelligent reviewer, capable of assessing code from a functional standpoint. The implementation of this solution holds the promise of significantly enhancing PR management and expediting the entire development workflow.",
+    "authors": [
+      "Chathurya Adapa",
+      "Sai Sindhuri Avulamanda",
+      "A. Anjana",
+      "Ajay Victor"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/e69da052cde5461ffd904f89ee1dbe00d460a31c",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "소프트웨어 개발 팀에서 Pull Request(PR)를 적시에 병합하는 복잡한 작업이 비즈니스 운영에 직접적인 영향을 미치는 주요 과제로 작용하며, 이를 해결하기 위한 AI 기반 솔루션을 제안하는 것이 목적이다.",
+    "method": "WatsonX 플랫폼을 활용하여 Falcon40-B 모델 기반의 생성형 AI 기술을 적용한 AI 봇을 구현하였으며, 이 봇은 코드 포맷팅, 모범 사례, 사소한 문제에 대한 피드백을 제공하고 PR 검토자를 자동으로 지정 및 통보하는 기능을 수행한다.",
+    "result": "해당 AI 봇은 초기 PR 검토를 수행하고 협업을 간소화함으로써 PR 관리 향상 및 전체 개발 워크플로우 가속화에 기여할 것으로 기대된다.",
+    "limitation": "현재 AI 봇은 초기 검토 수준에 머물러 있으며, 코드를 기능적 관점에서 평가할 수 있는 지능형 검토자로의 지속적인 발전이 향후 과제로 제시되고 있다."
   }
 ]
