@@ -160,27 +160,39 @@ def render_table(topic: str, visual_id: str, title: str, data_spec: dict) -> Pat
     width = CANVAS_WIDTH - 180
     col_count = len(columns)
     col_width = width / col_count
-    row_height = 78
+    min_row_height = 88
+    header_height = 88
 
     for index, column in enumerate(columns):
         x0 = left + col_width * index
         x1 = x0 + col_width
-        draw.rounded_rectangle((x0, top, x1, top + row_height), radius=10, fill="#e8eef9", outline=BORDER, width=2)
+        draw.rounded_rectangle((x0, top, x1, top + header_height), radius=10, fill="#e8eef9", outline=BORDER, width=2)
         wrapped = _wrap(column, 14)
         tw, th = _text_box(draw, wrapped, header_font)
-        draw.multiline_text((x0 + (col_width - tw) / 2, top + (row_height - th) / 2), wrapped, font=header_font, fill=TEXT, spacing=6)
+        draw.multiline_text((x0 + (col_width - tw) / 2, top + (header_height - th) / 2), wrapped, font=header_font, fill=TEXT, spacing=6)
 
+    current_y = top + header_height
     for row_index, row in enumerate(rows):
-        y0 = top + row_height + row_index * row_height
+        wrapped_cells: list[str] = []
+        cell_heights: list[int] = []
+        for col_index, cell in enumerate(row):
+            wrap_limit = 14 if col_index == 0 else 16
+            wrapped = _wrap(str(cell), wrap_limit)
+            wrapped_cells.append(wrapped)
+            _cw, ch = _text_box(draw, wrapped, body_font)
+            cell_heights.append(ch)
+
+        row_height = max(min_row_height, max(cell_heights) + 34)
+        y0 = current_y
         y1 = y0 + row_height
         fill = "#ffffff" if row_index % 2 == 0 else "#f8fafc"
-        for col_index, cell in enumerate(row):
+        for col_index, wrapped in enumerate(wrapped_cells):
             x0 = left + col_width * col_index
             x1 = x0 + col_width
             draw.rectangle((x0, y0, x1, y1), fill=fill, outline=BORDER, width=1)
-            wrapped = _wrap(str(cell), 18 if col_index else 12)
             tw, th = _text_box(draw, wrapped, body_font)
             draw.multiline_text((x0 + 18, y0 + (row_height - th) / 2), wrapped, font=body_font, fill=TEXT, spacing=5)
+        current_y = y1
 
     return _save(image, topic, visual_id)
 
@@ -306,7 +318,7 @@ def render_timeline(topic: str, visual_id: str, title: str, data_spec: dict) -> 
     image, draw = _create_canvas()
     _draw_title(draw, title, data_spec.get("source_note", ""))
 
-    line_y = 460
+    line_y = 500
     left = 140
     right = CANVAS_WIDTH - 140
     draw.line((left, line_y, right, line_y), fill=ACCENT, width=6)
@@ -317,23 +329,24 @@ def render_timeline(topic: str, visual_id: str, title: str, data_spec: dict) -> 
         top = index % 2 == 0
         draw.ellipse((x - 16, line_y - 16, x + 16, line_y + 16), fill=ACCENT, outline="#ffffff", width=4)
         year = normalize_text(event.get("time", ""), 16)
-        label = _wrap(event.get("label", ""), 12)
-        detail = _wrap(event.get("detail", ""), 26)
+        label = _wrap(event.get("label", ""), 14)
 
         year_font = _font(22, bold=True)
-        card_font = _font(19)
+        label_font = _font(22, bold=True)
         if top:
             draw.text((x - 28, line_y - 70), year, font=year_font, fill=TEXT)
-            card_top = line_y - 240
-            draw.rounded_rectangle((x - 180, card_top, x + 180, card_top + 120), radius=18, fill="#eef4ff", outline=BORDER, width=2)
-            draw.multiline_text((x - 160, card_top + 18), label, font=_font(21, bold=True), fill=TEXT, spacing=4)
-            draw.multiline_text((x - 160, card_top + 58), detail, font=card_font, fill=SUBTEXT, spacing=4)
+            card_top = line_y - 165
+            card_bottom = card_top + 70
+            draw.rounded_rectangle((x - 180, card_top, x + 180, card_bottom), radius=18, fill="#eef4ff", outline=BORDER, width=2)
+            tw, th = _text_box(draw, label, label_font)
+            draw.multiline_text((x - tw / 2, card_top + (70 - th) / 2), label, font=label_font, fill=TEXT, spacing=4, align="center")
         else:
             draw.text((x - 28, line_y + 30), year, font=year_font, fill=TEXT)
-            card_top = line_y + 80
-            draw.rounded_rectangle((x - 180, card_top, x + 180, card_top + 120), radius=18, fill="#f8fafc", outline=BORDER, width=2)
-            draw.multiline_text((x - 160, card_top + 18), label, font=_font(21, bold=True), fill=TEXT, spacing=4)
-            draw.multiline_text((x - 160, card_top + 58), detail, font=card_font, fill=SUBTEXT, spacing=4)
+            card_top = line_y + 85
+            card_bottom = card_top + 70
+            draw.rounded_rectangle((x - 180, card_top, x + 180, card_bottom), radius=18, fill="#f8fafc", outline=BORDER, width=2)
+            tw, th = _text_box(draw, label, label_font)
+            draw.multiline_text((x - tw / 2, card_top + (70 - th) / 2), label, font=label_font, fill=TEXT, spacing=4, align="center")
 
     return _save(image, topic, visual_id)
 

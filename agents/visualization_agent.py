@@ -212,7 +212,7 @@ def validate_visual_spec(visual: dict) -> tuple[bool, str]:
         for row in rows[:8]:
             if not isinstance(row, list) or len(row) != len(columns):
                 return False, "table row length mismatch"
-            clean_rows.append([normalize_text(str(cell).strip(), 36) for cell in row])
+            clean_rows.append([normalize_text(str(cell).strip(), 28) for cell in row])
 
         data_spec["columns"] = clean_columns
         data_spec["rows"] = clean_rows
@@ -230,7 +230,7 @@ def validate_visual_spec(visual: dict) -> tuple[bool, str]:
             time = str(event.get("time", "")).strip()
             label = str(event.get("label", "")).strip()
             detail = str(event.get("detail", "")).strip()
-            if not time or not label or not detail:
+            if not time or not label:
                 continue
             if label.startswith("(") or label.startswith(")"):
                 continue
@@ -243,8 +243,8 @@ def validate_visual_spec(visual: dict) -> tuple[bool, str]:
             valid_events.append(
                 {
                     "time": normalize_text(time, 16),
-                    "label": normalize_text(label, 32),
-                    "detail": normalize_text(detail, 90),
+                    "label": normalize_text(label, 22),
+                    "detail": "",
                 }
             )
 
@@ -310,8 +310,8 @@ def validate_visual_spec(visual: dict) -> tuple[bool, str]:
             if label:
                 valid_branches.append(
                     {
-                        "label": normalize_text(label, 24),
-                        "detail": normalize_text(detail, 28) if detail else "",
+                        "label": normalize_text(label, 22),
+                        "detail": "",
                     }
                 )
 

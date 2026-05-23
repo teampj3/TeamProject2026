@@ -249,12 +249,12 @@ def print_feedback(review: ReviewResult) -> None:
     safe_print(f"피드백: {review.feedback_summary}")
 
 
-def run_review_pipeline() -> dict:
+def run_review_pipeline(draft_path: Path | None = None) -> dict:
     safe_print("=" * 60)
     safe_print("Review Agent 시작 - 논문 초안 품질 검토")
     safe_print("=" * 60)
 
-    draft_path = find_latest_draft(REPORTS_DIR)
+    draft_path = draft_path or find_latest_draft(REPORTS_DIR)
     if draft_path is None:
         safe_print(f"[오류] {REPORTS_DIR} 에 초안 파일(.md)이 없습니다.")
         safe_print("먼저 write_agent를 실행하여 초안을 생성해주세요.")
@@ -290,6 +290,7 @@ def run_review_pipeline() -> dict:
         "review_path": str(OUTPUT_PATH),
         "verdict": review.overall_verdict,
         "source_file": review.source_file,
+        "review": asdict(review),
     }
 
 

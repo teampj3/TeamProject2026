@@ -1,318 +1,337 @@
 [
   {
-    "title": "Does AI Code Review Lead to Code Changes? A Case Study of GitHub Actions",
-    "abstract": "AI-based code review tools automatically review and comment on pull requests to improve code quality. Despite their growing presence, little is known about their actual impact. We present a large-scale empirical study of 16 popular AI-based code review actions for GitHub workflows, analyzing more than 22,000 review comments in 178 repositories. We investigate (1) how these tools are adopted and configured, (2) whether their comments lead to code changes, and (3) which factors influence their effectiveness. We develop a two-stage LLM-assisted framework to determine whether review comments are addressed, and use interpretable machine learning to identify influencing factors. Our findings show that, while adoption is growing, effectiveness varies widely. Comments that are concise, contain code snippets, and are manually triggered, particularly those from hunk-level review tools, are more likely to result in code changes. These results highlight the importance of careful tool design and suggest directions for improving AI-based code review systems.",
+    "title": "How AI Agents Follow the Herd of AI? Network Effects, History, and Machine Optimism",
+    "abstract": "Understanding decision-making in multi-AI-agent frameworks is crucial for analyzing strategic interactions in network-effect-driven contexts. This study investigates how AI agents navigate network-effect games, where individual payoffs depend on peer participatio--a context underexplored in multi-agent systems despite its real-world prevalence. We introduce a novel workflow design using large language model (LLM)-based agents in repeated decision-making scenarios, systematically manipulating price trajectories (fixed, ascending, descending, random) and network-effect strength. Our key findings include: First, without historical data, agents fail to infer equilibrium. Second, ordered historical sequences (e.g., escalating prices) enable partial convergence under weak network effects but strong effects trigger persistent\"AI optimism\"--agents overestimate participation despite contradictory evidence. Third, randomized history disrupts convergence entirely, demonstrating that temporal coherence in data shapes LLMs'reasoning, unlike humans. These results highlight a paradigm shift: in AI-mediated systems, equilibrium outcomes depend not just on incentives, but on how history is curated, which is impossible for human.",
     "authors": [
-      "Kexin Sun",
-      "Hongyu Kuang",
-      "Sebastian Baltes",
-      "Xin Zhou",
-      "He Zhang",
-      "Xiaoxing Ma",
-      "Guoping Rong",
-      "Dong Shao",
-      "Christoph Treude"
+      "Yu Liu",
+      "Wenwen Li",
+      "Yifan Dou",
+      "Guangnan Ye"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/8bb17ddcf2781ea822e8cd7d625a02163f668551",
+    "url": "https://www.semanticscholar.org/paper/a60bafb63e0022b9e04042d27361282e90a3df01",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 기반 코드 리뷰 도구가 풀 리퀘스트에 미치는 실제 영향을 파악하기 위해, 해당 도구들의 채택 방식, 댓글이 실제 코드 변경으로 이어지는지 여부, 그리고 효과에 영향을 미치는 요인을 조사하는 것을 목적으로 한다.",
-    "method": "GitHub 워크플로우용 16개의 인기 AI 기반 코드 리뷰 액션을 대상으로 178개 저장소에서 22,000개 이상의 리뷰 댓글을 분석하는 대규모 실증 연구를 수행하였다. 리뷰 댓글이 반영되었는지 판단하기 위한 2단계 LLM 보조 프레임워크를 개발하고, 영향 요인 식별을 위해 해석 가능한 머신러닝을 활용하였다.",
-    "result": "AI 기반 코드 리뷰 도구의 채택은 증가하고 있으나 효과는 도구마다 크게 다르게 나타났다. 간결하고 코드 스니펫을 포함하며 수동으로 트리거된 댓글, 특히 hunk 수준 리뷰 도구의 댓글이 코드 변경으로 이어질 가능성이 더 높은 것으로 확인되었다.",
+    "purpose": "이 논문은 네트워크 효과가 작용하는 게임 환경에서 다중 AI 에이전트가 어떻게 의사결정을 내리는지를 분석하는 것을 목적으로 한다. 개인의 보상이 다른 참여자의 행동에 의존하는 네트워크 효과 게임은 현실에서 널리 나타나지만 다중 에이전트 시스템 연구에서는 충분히 탐구되지 않았다.",
+    "method": "대규모 언어 모델(LLM) 기반 에이전트를 활용한 반복적 의사결정 시나리오를 위한 새로운 워크플로우를 설계하였다. 가격 궤적(고정, 상승, 하강, 무작위)과 네트워크 효과 강도를 체계적으로 조작하여 실험을 수행하였다.",
+    "result": "역사적 데이터 없이는 에이전트가 균형을 추론하지 못하며, 순서가 있는 역사적 데이터는 약한 네트워크 효과 하에서 부분적 수렴을 가능하게 하지만 강한 네트워크 효과에서는 에이전트가 모순된 증거에도 참여를 과대평가하는 'AI 낙관주의'가 지속된다. 무작위 역사 데이터는 수렴을 완전히 방해하며, 이는 인간과 달리 LLM의 추론이 데이터의 시간적 일관성에 의해 크게 영향을 받음을 보여준다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "AI-Code Wizard an AI Code Review & Generation Assistant",
-    "abstract": ": Designed to simplify and enhance the development of code, AI CodeWizard is a web-based application that employs artificial intelligence and provides dependable online code management for developers. By offering an intuitive interface for developers to write, edit, and manage code with AI assistance in recommending improvements/optimizations or identifying potential bugs. AI CodeWizard is built using React and TypeScript, with a TailwindCSS styled UI, to ensure user responsiveness. Integrated: With integrated user authentication and role- based access control via the Clerk it provides users with a protected workspace where they can log in to. It features a well-organized interface that allows users to navigate between the home page, code editor, and authentication screens. Only authenticated users are permitted to access the editor functionality, which ensures data security and personalized experiences.\n\nKEYWORDS: AI Code Review, Smart Code Editor, AI-Powered IDE, Online Code Editor, AI Code Optimization, Real-Time Bug Detection, Monaco Editor Integration, React TypeScript Project, Secure Code Collaboration, Role-Based Access Control (RBAC), Clerk Authentication, AI Code Suggestion Tool, TailwindCSS              Interface, OpenAI Integration, Developer Productivity Tool, Code Quality Enhancement, ML in Software Development, Cloud-Based IDE, Next-Gen Web Development.",
+    "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+    "abstract": "Large Language Models (LLMs) have demonstrated remarkable prowess in generating contextually coherent responses, yet their fixed context windows pose fundamental challenges for maintaining consistency over prolonged multi-session dialogues. We introduce Mem0, a scalable memory-centric architecture that addresses this issue by dynamically extracting, consolidating, and retrieving salient information from ongoing conversations. Building on this foundation, we further propose an enhanced variant that leverages graph-based memory representations to capture complex relational structures among conversational elements. Through comprehensive evaluations on LOCOMO benchmark, we systematically compare our approaches against six baseline categories: (i) established memory-augmented systems, (ii) retrieval-augmented generation (RAG) with varying chunk sizes and k-values, (iii) a full-context approach that processes the entire conversation history, (iv) an open-source memory solution, (v) a proprietary model system, and (vi) a dedicated memory management platform. Empirical results show that our methods consistently outperform all existing memory systems across four question categories: single-hop, temporal, multi-hop, and open-domain. Notably, Mem0 achieves 26% relative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with graph memory achieves around 2% higher overall score than the base configuration. Beyond accuracy gains, we also markedly reduce computational overhead compared to full-context method. In particular, Mem0 attains a 91% lower p95 latency and saves more than 90% token cost, offering a compelling balance between advanced reasoning capabilities and practical deployment constraints. Our findings highlight critical role of structured, persistent memory mechanisms for long-term conversational coherence, paving the way for more reliable and efficient LLM-driven AI agents.",
     "authors": [
-      "Chandnani Lucky"
+      "P. Chhikara",
+      "Dev Khant",
+      "Saket Aryan",
+      "Taranjeet Singh",
+      "Deshraj Yadav"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/0c4221f5fd9cb1f84fb8aa123633dd86b8a34e30",
+    "url": "https://www.semanticscholar.org/paper/1d9c21a0fdb1cc16a32c5d490ebaf98436a23382",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "개발자들이 코드를 작성, 편집, 관리하는 과정을 단순화하고 향상시키기 위해 AI 기반의 웹 애플리케이션을 개발하는 것을 목적으로 한다. 코드 개선 및 최적화 추천, 잠재적 버그 식별 등의 AI 지원 기능을 제공하는 신뢰할 수 있는 온라인 코드 관리 환경을 구축하고자 한다.",
-    "method": "React와 TypeScript를 기반으로 구축되었으며, TailwindCSS로 스타일링된 UI를 통해 사용자 반응성을 보장한다. Clerk를 통한 사용자 인증 및 역할 기반 접근 제어(RBAC)를 통합하여 보호된 작업 공간을 제공하며, 인증된 사용자만 에디터 기능에 접근할 수 있도록 설계되었다.",
-    "result": "홈 페이지, 코드 에디터, 인증 화면 간 탐색이 가능한 체계적인 인터페이스를 구현하였으며, 인증 기반의 접근 제어를 통해 데이터 보안과 개인화된 경험을 보장하는 웹 기반 코드 관리 플랫폼을 완성하였다.",
+    "purpose": "LLM의 고정된 컨텍스트 윈도우로 인해 장기 다중 세션 대화에서 일관성을 유지하기 어려운 문제를 해결하고자 한다. 대화에서 중요한 정보를 동적으로 추출, 통합, 검색할 수 있는 확장 가능한 메모리 중심 아키텍처를 제안하는 것이 목적이다.",
+    "method": "Mem0라는 확장 가능한 메모리 중심 아키텍처를 제안하며, 대화에서 중요한 정보를 동적으로 추출·통합·검색한다. 또한 그래프 기반 메모리 표현을 활용하여 대화 요소 간의 복잡한 관계 구조를 포착하는 향상된 변형 모델도 함께 제안한다. LOCOMO 벤치마크에서 6가지 기준 범주와 체계적으로 비교 평가하였다.",
+    "result": "Mem0는 단일 홉, 시간적, 다중 홉, 오픈 도메인 등 네 가지 질문 유형 전반에 걸쳐 모든 기존 메모리 시스템을 능가하였으며, LLM-as-a-Judge 지표에서 OpenAI 대비 26%의 상대적 성능 향상을 달성하였다. 그래프 메모리를 적용한 Mem0는 기본 구성 대비 전체 점수에서 약 2% 더 높은 성능을 보였다. 또한 풀 컨텍스트 방법 대비 p95 지연 시간을 91% 낮추고 토큰 비용을 90% 이상 절감하였다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "AI Code Review Assistant: A Modern Web Based Solution for Automated Code Analysis and Developer Productivity Enhancement",
-    "abstract": "This paper presents the development and implementation of an AI Code Review Assistant, a comprehensive web-based\napplication designed to enhance developer productivity through automated code analysis and intelligent feedback. Built using\nNext.js framework with Firebase integration and Groq AI API, the system provides real-time code review capabilities, interactive\nchat functionality, and comprehensive progress tracking. The application incorporates modern web technologies including\nReact.js, Tailwind CSS, and Firebase Firestore for scalable data management. Key features include multi-language code\nanalysis, AI-powered suggestions, user authentication, thread-based conversation management, and responsive design for crossplatform compatibility. Performance evaluation demonstrates 92% accuracy in code issue detection and 85% user satisfaction in\nautomated feedback quality. The system successfully addresses the growing need for efficient code review processes in modern\nsoftware development environments, providing developers with instant, intelligent feedback to improve code quality and\naccelerate development cycles.",
+    "title": "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
+    "abstract": "AI agents negotiate and transact in natural language with unfamiliar counterparts: a buyer bot facing an unknown seller, or a procurement assistant negotiating with a supplier. In such interactions, the counterpart's LLM, prompts, control logic, and rule-based fallbacks are hidden, while each decision can have monetary consequences. We ask whether an agent can predict an unfamiliar counterpart's next decision from a few interactions. To avoid real-world logging confounds, we study this problem in controlled bargaining and negotiation games, formulating it as target-adaptive text-tabular prediction: each decision point is a table row combining structured game state, offer history, and dialogue, while $K$ previous games of the same target agent, i.e., the counterpart being modeled, are provided in the prompt as labeled adaptation examples. Our model is built on a tabular foundation model that represents rows using game-state features and LLM-based text representations, and adds LLM-as-Observer as an additional representation: a small frozen LLM reads the decision-time state and dialogue; its answer is discarded, and its hidden state becomes a decision-oriented feature, making the LLM an encoder rather than a direct few-shot predictor. Training on 13 frontier-LLM agents and testing on 91 held-out scaffolded agents, the full model outperforms direct LLM-as-Predictor prompting and game+text features baselines. Within this tabular model, Observer features contribute beyond the other feature schemes: at $K=16$, they improve response-prediction AUC by about 4 points across both tasks and reduce bargaining offer-prediction error by 14%. These results show that formulating counterpart prediction as a target-adaptive text-tabular task enables effective adaptation, and that hidden LLM representations expose decision-relevant signals that direct prompting does not surface.",
     "authors": [
-      "Mohanakshi K M"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/44db013478c14060d9af290bc97e8069bab04773",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "현대 소프트웨어 개발 환경에서 효율적인 코드 리뷰 프로세스에 대한 필요성을 해결하고, 자동화된 코드 분석과 지능형 피드백을 통해 개발자 생산성을 향상시키는 것을 목적으로 한다.",
-    "method": "Next.js 프레임워크, Firebase 통합, Groq AI API를 활용하여 웹 기반 애플리케이션을 구축하였으며, React.js, Tailwind CSS, Firebase Firestore를 포함한 현대적 웹 기술을 적용하였다. 다중 언어 코드 분석, AI 기반 제안, 사용자 인증, 스레드 기반 대화 관리, 반응형 디자인 등의 기능을 구현하였다.",
-    "result": "코드 문제 감지에서 92%의 정확도를 달성하였으며, 자동화된 피드백 품질에 대한 사용자 만족도는 85%로 나타났다. 개발자에게 즉각적이고 지능적인 피드백을 제공하여 코드 품질 개선 및 개발 주기 가속화에 성공적으로 기여하였다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "CR-Bench: Evaluating the Real-World Utility of AI Code Review Agents",
-    "abstract": "Recent advances in frontier large language models have enabled code review agents that operate in open-ended, reasoning-intensive settings. However, the lack of standardized benchmarks and granular evaluation protocols makes it difficult to assess behavior of code review agents beyond coarse success metrics, particularly for tasks where false positives are costly. To address this gap, we introduce CR-Bench, a benchmarking dataset, and CR-Evaluator, a fine-grained evaluation pipeline for code review agents. Using these tools, we conduct a preliminary study evaluating both a single-shot agent and a Reflexion-based agent across two frontier models. We find that code review agents can exhibit a low signal-to-noise ratio when designed to identify all hidden issues, obscuring true progress and developer productivity when measured solely by resolution rates. Our analysis identifies the hidden trade-off between issue resolution and spurious findings, revealing a frontier that constrains effective agent design. Together, CR-Bench and CR-Evaluator provide a timely foundation for studying and developing code review agents as LLM-based systems transition from controlled benchmarks to real-world software engineering workflows.",
-    "authors": [
-      "K. Pereira",
-      "Neelabh Sinha",
-      "Rajat Ghosh",
-      "Debojyoti Dutta"
+      "Eilam Shapira",
+      "Moshe Tennenholtz",
+      "Roi Reichart"
     ],
     "year": "2026",
-    "url": "https://www.semanticscholar.org/paper/4a605befd58e4301117bb21dd99a4b1da1cbe827",
+    "url": "https://www.semanticscholar.org/paper/3978ef8da2779dd2684829bd27628f68357b64dc",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "표준화된 벤치마크와 세분화된 평가 프로토콜의 부재로 인해 코드 리뷰 에이전트의 행동을 평가하기 어려운 문제를 해결하고자 하며, 특히 거짓 양성(false positive)이 비용이 큰 작업에서의 평가 한계를 극복하는 것을 목적으로 한다.",
-    "method": "벤치마킹 데이터셋인 CR-Bench와 세분화된 평가 파이프라인인 CR-Evaluator를 도입하였으며, 두 가지 프론티어 모델에 걸쳐 단일 샷 에이전트와 Reflexion 기반 에이전트를 평가하는 예비 연구를 수행하였다.",
-    "result": "코드 리뷰 에이전트가 모든 숨겨진 문제를 식별하도록 설계될 경우 낮은 신호 대 잡음비를 보일 수 있으며, 해결률만으로 측정 시 실제 진전과 개발자 생산성이 불명확해질 수 있음을 발견하였다. 또한 문제 해결과 허위 발견 사이의 숨겨진 트레이드오프를 확인하여 효과적인 에이전트 설계를 제약하는 프론티어를 밝혀냈다.",
+    "purpose": "AI 에이전트가 제한된 상호작용만으로 미지의 상대방 에이전트의 다음 결정을 예측할 수 있는지를 연구하며, 상대방의 LLM, 프롬프트, 제어 로직 등이 숨겨진 상황에서의 상대방 모델링 문제를 해결하고자 한다.",
+    "method": "협상 및 거래 게임 환경에서 target-adaptive text-tabular prediction 방식을 사용하며, 구조화된 게임 상태, 제안 이력, 대화를 결합한 테이블 행과 동일 상대 에이전트의 K개 이전 게임을 적응 예시로 활용한다. 또한 소형 동결 LLM의 숨겨진 상태를 결정 지향적 특징으로 활용하는 LLM-as-Observer 표현을 추가하여 LLM을 직접 예측기가 아닌 인코더로 사용한다.",
+    "result": "13개의 프론티어 LLM 에이전트로 학습하고 91개의 held-out 스캐폴드 에이전트로 테스트한 결과, 전체 모델은 직접 LLM-as-Predictor 프롬프팅 및 게임+텍스트 특징 기반선을 능가하였다. K=16 조건에서 Observer 특징은 두 태스크 전반에 걸쳐 응답 예측 AUC를 약 4포인트 향상시키고 협상 제안 예측 오류를 14% 감소시켰다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "AI Code Review System",
-    "abstract": "Abstract:\n\nThe world of software development moves fast, and keeping code clean and reliable is more important than ever. Manual code reviews help, but they're slow, often inconsistent, and depend too much on the reviewer’s experience. That’s where our AI Code Review System (ACRS) comes in. It uses advanced AI and machine learning to automatically analyze code, using large language models trained on massive datasets. These models don’t just spot simple errors—they actually understand how code is written, how it’s structured, and how it should work.\n\n\nSo what does this system actually do for developers? It scans through code and gives instant feedback: points out mistakes, suggests ways to make things run smoother, and explains its reasoning. This makes the code easier to read, maintain, and upgrade. On top of that, it generates an overall “code quality score” based on how correct, efficient, and clean the code is.\n\n\nThe best part is, the interface is designed to be simple and helpful. Developers don’t have to rely on lengthy manual reviews, which means projects move faster.\n\n\nThe research also digs into how AI code reviews stack up against classic static analysis tools. Basically, AI systems have an edge when it comes to understanding context and offering smarter recommendations. The ACRS isn’t just for veteran coders, either—it’s a teaching tool for students and beginners, too. All in all, this system is a big leap forward for automated, intelligent, and scalable code reviews in today’s fast-paced software industry.\n\n\nKeywords: Artificial Intelligence, Code Review, Machine Learning, Code Quality, Bug Detection, Automated Feedback, Programming, Software Development",
+    "title": "Towards Automating Data Access Permissions in AI Agents",
+    "abstract": "As AI agents attempt to autonomously act on users'behalf, they raise transparency and control issues. We argue that permission-based access control is indispensable in providing meaningful control to the users, but conventional permission models are inadequate for the automated agentic execution paradigm. We therefore propose automated permission management for AI agents. Our key idea is to conduct a user study to identify the factors influencing users'permission decisions and to encode these factors into an ML-based permission management assistant capable of predicting users'future decisions. We find that participants'permission decisions are influenced by communication context but importantly individual preferences tend to remain consistent within contexts, and align with those of other participants. Leveraging these insights, we develop a permission prediction model achieving 85.1% accuracy overall and 94.4% for high-confidence predictions. We find that even without using permission history, our model achieves an accuracy of 66.9%, and a slight increase of training samples (i.e., 1-4) can substantially increase the accuracy by 10.8%.",
     "authors": [
-      "Shakila Siddavatam",
-      "Adil Abid , Jamadar"
+      "Yuhao Wu",
+      "Ke Yang",
+      "Franziska Roesner",
+      "Tadayoshi Kohno",
+      "Ning Zhang",
+      "Umar Iqbal"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/ab53a035ebac356dd532c3dd5886d2317f6f126e",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "AI 에이전트가 사용자를 대신해 자율적으로 행동할 때 발생하는 투명성 및 제어 문제를 해결하고자 한다. 기존의 권한 모델이 자동화된 에이전트 실행 패러다임에 적합하지 않다는 문제를 제기하며, AI 에이전트를 위한 자동화된 권한 관리 시스템을 제안한다.",
+    "method": "사용자 연구를 통해 권한 결정에 영향을 미치는 요인을 파악하고, 이를 ML 기반 권한 관리 보조 시스템에 인코딩하여 사용자의 미래 권한 결정을 예측하는 모델을 개발하였다.",
+    "result": "개발된 권한 예측 모델은 전체적으로 85.1%의 정확도를 달성하였으며, 고신뢰도 예측의 경우 94.4%의 정확도를 기록하였다. 권한 이력 없이도 66.9%의 정확도를 달성하였으며, 소수의 학습 샘플(1~4개) 추가만으로 정확도가 10.8% 향상될 수 있음을 확인하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Incident Analysis for AI Agents",
+    "abstract": "As AI agents become more widely deployed, we are likely to see an increasing number of incidents: events involving AI agent use that directly or indirectly cause harm. For example, agents could be prompt-injected to exfiltrate private information or make unauthorized purchases. Structured information about such incidents (e.g., user prompts) can help us understand their causes and prevent future occurrences. However, existing incident reporting processes are not sufficient for understanding agent incidents. In particular, such processes are largely based on publicly available data, which excludes useful, but potentially sensitive, information such as an agent’s chain of thought or browser history. To inform the development of new, emerging incident reporting processes, we propose an incident analysis framework for agents. Drawing on systems safety approaches, our framework proposes three types of factors that can cause incidents: system-related (e.g., CBRN training data), contextual (e.g., prompt injections), and cognitive (e.g., misunderstanding a user request). We also identify specific information that could help clarify which factors are relevant to a given incident: activity logs, system documentation and access, and information about the tools an agent uses. We provide recommendations for 1) what information incident reports should include and 2) what information developers and deployers should retain and make available to incident investigators upon request. As we transition to a world with more agents, understanding agent incidents will become increasingly crucial for managing risks.",
+    "authors": [
+      "Carson Ezell",
+      "Xavier Roberts-Gaal",
+      "Alan Chan"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/5403bb51a90e8d1b24dc9064ae8b10a70c3112cb",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "AI 에이전트 배포 증가에 따라 발생하는 사고(incidents)를 분석하고 이해하기 위한 체계적인 프레임워크를 제안하며, 기존 사고 보고 프로세스가 에이전트 사고를 이해하는 데 충분하지 않다는 문제를 해결하고자 한다.",
+    "method": "시스템 안전(systems safety) 접근법을 기반으로 사고를 유발하는 세 가지 요인(시스템 관련, 맥락적, 인지적)을 포함하는 사고 분석 프레임워크를 개발하였으며, 활동 로그, 시스템 문서 및 접근 권한, 에이전트가 사용하는 도구 관련 정보 등 사고 분석에 유용한 구체적인 정보를 식별하였다.",
+    "result": "사고 보고서에 포함되어야 할 정보와 개발자 및 배포자가 보관하여 사고 조사자에게 제공해야 할 정보에 대한 권고안을 제시하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Truthful and Trustworthy IoT AI Agents via Immediate-Penalty Enforcement under Approximate VCG Mechanisms",
+    "abstract": "The deployment of autonomous AI agents in Internet of Things (IoT) energy systems requires decision-making mechanisms that remain robust, efficient, and trustworthy under real-time constraints and imperfect monitoring. While reinforcement learning enables adaptive prosumer behaviors, ensuring economic consistency and preventing strategic manipulation remain open challenges, particularly when sensing noise or partial observability reduces the operator's ability to verify actions. This paper introduces a trust-enforcement framework for IoT energy trading that combines an approximate Vickrey-Clarke-Groves (VCG) double auction with an immediate one-shot penalty. Unlike reputation- or history-based approaches, the proposed mechanism restores truthful reporting within a single round, even when allocation accuracy is approximate and monitoring is noisy. We theoretically characterize the incentive gap induced by approximation and derive a penalty threshold that guarantees truthful bidding under bounded sensing errors. To evaluate learning-enabled prosumers, we embed the mechanism into a multi-agent reinforcement learning environment reflecting stochastic generation, dynamic loads, and heterogeneous trading opportunities. Experiments show that improved allocation accuracy reduces deviation incentives, the required penalty matches analytical predictions, and learned bidding behaviors remain stable and interpretable despite imperfect monitoring. These results demonstrate that lightweight penalty designs can reliably align strategic IoT agents with socially efficient energy-trading outcomes.",
+    "authors": [
+      "Xun Shao",
+      "Ryuuto Shimizu",
+      "Zhi Liu",
+      "K. Ota",
+      "M. Dong"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/8fab0995de3b054ccf29abe0b75729a37eda038f",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "IoT 에너지 시스템에서 자율 AI 에이전트가 실시간 제약과 불완전한 모니터링 환경에서도 경제적 일관성을 유지하고 전략적 조작을 방지하는 신뢰 가능한 의사결정 메커니즘을 구현하는 것을 목적으로 한다.",
+    "method": "근사 VCG(Vickrey-Clarke-Groves) 이중 경매와 즉각적인 일회성 패널티를 결합한 신뢰 강화 프레임워크를 제안하며, 이를 확률적 발전, 동적 부하, 이질적 거래 기회를 반영한 다중 에이전트 강화학습 환경에 적용하였다. 또한 근사화로 인한 인센티브 격차를 이론적으로 분석하고, 제한된 센싱 오류 하에서 진실한 입찰을 보장하는 패널티 임계값을 도출하였다.",
+    "result": "할당 정확도가 향상될수록 이탈 인센티브가 감소하고, 요구되는 패널티가 분석적 예측과 일치하며, 불완전한 모니터링에도 불구하고 학습된 입찰 행동이 안정적이고 해석 가능한 상태를 유지함을 실험적으로 확인하였다. 이를 통해 경량 패널티 설계가 전략적 IoT 에이전트를 사회적으로 효율적인 에너지 거래 결과에 신뢰성 있게 정렬시킬 수 있음을 입증하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Research on Establishing a Digital Conservation System for Architectural cultural heritage Using AI Agents on the “Coze” Platform",
+    "abstract": "As a living fossil bearing history and culture, the protection of heritage buildings faces many threats, including multiple challenges at the level of ontology, such as natural disasters, man-made destruction and time erosion. At the same time, with the rapid development of tourism, the public perception of Tibetan architecture presents superficial cultural distortion and other problems. Although traditional digital protection methods rely on manual measurement and computer mapping, they can retain static data, but lack intelligent interaction ability, which makes it difficult to cope with the dual challenges of continuous protection of ontology and accurate dissemination of historical and cultural values. This paper explores a new way to carry out architectural cultural heritage education and publicity, and deepen public cultural cognition under the condition of a low technology threshold, focusing on the protection of Tibetan cultural relics. It proposes to construct high-efficiency AI agents based on a low-code “Coze” platform, thus forming an AI system for the digital protection of cultural relics. By integrating multi-source data such as text, images and 3D models, the agent builds a multi-modal knowledge graph and generates interactive websites that support VR roaming, which will provide multi-faceted services for teachers, students and the public.",
+    "authors": [
+      "Yating Zhang",
+      "Xiaolian Zhao",
+      "Qin Wei"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/97091b09add03421ca79423408a358580cb6ccbf",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 자연재해, 인위적 파괴, 시간적 침식 등으로 위협받는 건축 문화유산, 특히 티베트 건축물의 보호 문제를 다룬다. 전통적인 디지털 보호 방법이 정적 데이터만 보존하고 지능적 상호작용 능력이 부족한 한계를 극복하고자 하며, 낮은 기술 진입 장벽 조건에서 건축 문화유산 교육 및 홍보와 공공 문화 인식 심화를 위한 새로운 방법을 탐색하는 것을 목적으로 한다.",
+    "method": "저코드 'Coze' 플랫폼을 기반으로 고효율 AI 에이전트를 구축하여 문화재 디지털 보호를 위한 AI 시스템을 형성하는 방법을 제안한다. 텍스트, 이미지, 3D 모델 등 다중 소스 데이터를 통합하여 멀티모달 지식 그래프를 구축하고, VR 로밍을 지원하는 인터랙티브 웹사이트를 생성한다.",
+    "result": "구축된 AI 시스템은 교사, 학생, 일반 대중을 위한 다방면의 서비스를 제공하며, VR 로밍을 지원하는 인터랙티브 웹사이트를 통해 문화유산의 지능적 상호작용 기반 디지털 보호 및 문화적 가치 전달이 가능해진다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Intelligent Product 3.0: Decentralised AI Agents and Web3 Intelligence Standards",
+    "abstract": "Twenty-five years ago, the specification of the Intelligent Product was established, envisaging real-time connectivity that not only enables products to gather accurate data about themselves but also allows them to assess and influence their own destiny. Early work by the Auto-ID project focused on creating a single, open-standard repository for storing and retrieving product information, laying a foundation for scalable connectivity. A decade later, the approach was revisited in light of low-cost RFID systems that promised a low-cost link between physical goods and networked information environments. Since then, advances in blockchain, Web3, and artificial intelligence have introduced unprecedented levels of resilience, consensus, and autonomy. By leveraging decentralised identity, blockchain-based product information and history, and intelligent AI-to-AI collaboration, this paper examines these developments and outlines a new specification for the Intelligent Product 3.0, illustrating how decentralised and AI-driven capabilities facilitate seamless interaction between physical AI and everyday products.",
+    "authors": [
+      "A. Wong",
+      "D. McFarlane",
+      "C. Ellarby",
+      "M. Lee",
+      "M. Kuok"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/e9e8f8458095d36c4010ddea18fa5bfaf4f2b151",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 25년 전 수립된 지능형 제품(Intelligent Product) 명세를 블록체인, Web3, 인공지능 기술의 발전에 맞추어 재정의하는 것을 목적으로 한다. 분산형 정체성, 블록체인 기반 제품 정보, AI 간 협업을 통해 물리적 제품과 네트워크 환경 간의 연결성을 향상시키는 새로운 명세를 제시하고자 한다.",
+    "method": "분산형 정체성(decentralised identity), 블록체인 기반 제품 정보 및 이력 관리, 지능형 AI 간 협업(AI-to-AI collaboration)을 활용하는 접근법을 사용하였다. 기존 Auto-ID 프로젝트와 RFID 시스템 기반의 선행 연구를 검토하고, 이를 Web3 및 AI 기술 발전과 연계하여 새로운 명세를 도출하였다.",
+    "result": "블록체인, Web3, AI 기술을 통합한 Intelligent Product 3.0 명세를 제안하였으며, 분산화 및 AI 기반 기능이 물리적 AI와 일상 제품 간의 원활한 상호작용을 가능하게 함을 제시하였다. 이 명세는 제품의 복원력, 합의, 자율성 측면에서 전례 없는 수준의 향상을 제공하는 것으로 설명된다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "A Social Group Chatbot System by Multiple Topics Tracking and Atkinson‐Shiffrin Memory Model Using AI Agents Collaboration",
+    "abstract": "The widespread use of Internet has accelerated the explosive growth of data, which in turn leads to information overload and information confusion. This makes it difficult for us to communicate effectively in social groups, thereby intensifying the demands for emotional companionship. Therefore, we propose a novel social group chatting framework based on Large Language Model (LLM) powered multiple autonomous agents collaboration in this article. Specifically, BERTopic is used to extract topics from history chatting content for each social group everyday, and then multiple topics tracking is realised through multi‐level association by adaptive time sliding‐window mechanism and optimal matching. Furthermore, we use topic tracking architecture and prompts to design and implement an AI Chatbot system with different characters that can conduct natural language conversations with users in online social group. LLM, as the controller and coordinator of the whole AI Chatbot for sub‐tasks, allows different AI Agents to autonomously decide whether to participate in current topic, how to generate response, and whether to propose a new topic. Each AI Agent has their own multi‐store memory system based on the Atkinson‐Shiffrin model. Finally, we construct a verification environment based on online game that is consistent with real society. Subjective and objective evaluation methods were deployed to perform qualitative and quantitative analyses to demonstrate the performance of our AI Chatbot system.",
+    "authors": [
+      "Guoshuai Zhang",
+      "Jiajing Wu",
+      "Gwanggil Jeon",
+      "Penghui Wang"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/077861f4f392f847d1e28f4a903c3b2e978563f2",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "인터넷의 광범위한 사용으로 인한 정보 과부하와 정보 혼란 문제를 해결하고, 소셜 그룹 내 효과적인 소통과 감정적 동반자 수요를 충족하기 위한 새로운 소셜 그룹 채팅 프레임워크를 제안하는 것을 목적으로 한다.",
+    "method": "BERTopic을 활용하여 소셜 그룹의 채팅 기록에서 주제를 추출하고, 적응형 시간 슬라이딩 윈도우 메커니즘과 최적 매칭을 통해 다중 주제 추적을 구현하였다. 또한 LLM을 전체 AI 챗봇의 컨트롤러 및 조정자로 활용하고, Atkinson-Shiffrin 모델 기반의 다중 저장 메모리 시스템을 각 AI 에이전트에 적용하여 자연어 대화를 수행하는 챗봇 시스템을 설계 및 구현하였다.",
+    "result": "온라인 게임 기반의 검증 환경을 구축하여 주관적 및 객관적 평가 방법을 통해 정성적·정량적 분석을 수행함으로써 AI 챗봇 시스템의 성능을 입증하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "The Most Disruptive Near-Term Use of AI in Cancer Care: Patient Empowerment Through Software Agents",
+    "abstract": "Cancer care often involves making complex medical decisions within a challenging environment: a balkanized medical system of many specialists, information overload and obsolescence, limited time with doctors, and siloed data. New AI tools can enable patients and caregivers to more actively participate in treatment decisions. For example, consider receiving a complex scan report in a patient portal. While today, a patient may face confusion in interpreting a complex diagnostic report, a personalized generative AI agent could help by translating the scan report into language a patient can understand, and even contextualizing it within a patient’s personal health history and clinical evidence/guidelines. By providing an understandable version of the report and the clinical context of their test results, patients and their caregivers can engage more fully in decision-making with their oncology team. As described by Clayton Christensen’s “The Innovator’s Dilemma,” industry incumbents typically do not adopt disruptive technologies for fear of cannibalizing existing revenue streams (such as the case of Kodak and digital photography). This leads incumbents to serve their existing customers with the same value proposition, while ignoring “disruptive innovations” that offer a new value proposition to underserved customers (such as the transistor radio, which enabled teenagers to take their music with them). This theory predicts that institutional health care will focus on adopting AI for incremental operational improvements (e.g., patient scheduling, scan interpretation, claims processing). In this review, we argue that a positive disruptive impact of AI in oncology can come if AI-enabled software agents are used to support patients and caregivers in seeking better outcomes through personalized care. We review existing gaps and challenges that patients face as they go through receiving a cancer diagnosis, selecting a treatment plan, and then living with cancer. We use this process view to map uses of novel AI technologies that can assist patients and caregivers. This allows us to describe how current AI technologies/research and policies need to evolve to support patients and caregivers.",
+    "authors": [
+      "Frank E. Nothaft",
+      "Brad Power"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/291388f45055f0fb4f4f910add51890939c104bd",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 암 치료 환경에서 환자와 보호자가 직면하는 복잡한 의료 결정, 정보 과부하, 제한된 의사 접촉 시간 등의 문제를 해결하기 위해 AI 소프트웨어 에이전트가 어떻게 환자 역량 강화에 기여할 수 있는지를 논의하는 것을 목적으로 한다.",
+    "method": "암 진단 수령, 치료 계획 선택, 암과 함께 생활하는 과정에서 환자가 직면하는 기존 격차와 도전을 검토하고, 이 프로세스 관점을 활용하여 환자와 보호자를 지원할 수 있는 새로운 AI 기술의 활용 방안을 매핑하는 리뷰 방식을 사용하였다.",
+    "result": "AI 기반 소프트웨어 에이전트가 복잡한 진단 보고서를 환자가 이해할 수 있는 언어로 번역하고 개인 건강 이력 및 임상 근거와 연계함으로써 환자와 보호자가 종양 팀과의 의사결정에 더 적극적으로 참여할 수 있음을 제시하였다. 또한 클레이튼 크리스텐슨의 혁신자의 딜레마 이론을 바탕으로, AI의 가장 파괴적인 긍정적 영향은 기관 중심의 점진적 운영 개선이 아닌 환자와 보호자 지원을 통한 개인화된 치료에서 나올 것이라고 주장하였다.",
+    "limitation": "현재 AI 기술과 연구 및 정책이 환자와 보호자를 지원하는 방향으로 발전해야 할 필요성을 제시하고 있으며, 이를 위해 어떤 방향으로 진화해야 하는지를 기술하고 있다."
+  },
+  {
+    "title": "History of generative Artificial Intelligence (AI) chatbots: past, present, and future development",
+    "abstract": "This research provides an in-depth comprehensive review of the progress of chatbot technology over time, from the initial basic systems relying on rules to today's advanced conversational bots powered by artificial intelligence. Spanning many decades, the paper explores the major milestones, innovations, and paradigm shifts that have driven the evolution of chatbots. Looking back at the very basic statistical model in 1906 via the early chatbots, such as ELIZA and ALICE in the 1960s and 1970s, the study traces key innovations leading to today's advanced conversational agents, such as ChatGPT and Google Bard. The study synthesizes insights from academic literature and industry sources to highlight crucial milestones, including the introduction of Turing tests, influential projects such as CALO, and recent transformer-based models. Tracing the path forward, the paper highlights how natural language processing and machine learning have been integrated into modern chatbots for more sophisticated capabilities. This chronological survey of the chatbot landscape provides a holistic reference to understand the technological and historical factors propelling conversational AI. By synthesizing learnings from this historical analysis, the research offers important context about the developmental trajectory of chatbots and their immense future potential across various field of application which could be the potential take ways for the respective research community and stakeholders.",
+    "authors": [
+      "Md. Al-Amin",
+      "Mohammad Ali",
+      "Abdus Salam",
+      "Arif Khan",
+      "Ashraf Ali",
+      "Ahsan Ullah",
+      "Md. Nur Alam",
+      "S. Chowdhury"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/da21fe0e1f6c10f0f5c8b7990ba0e344d5f670c8",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 규칙 기반의 초기 시스템부터 현재의 AI 기반 고급 대화형 챗봇에 이르기까지 챗봇 기술의 발전 과정을 종합적으로 검토하는 것을 목적으로 한다. 챗봇 기술의 주요 이정표, 혁신, 패러다임 전환을 탐구하여 대화형 AI의 기술적·역사적 발전 궤적을 이해하는 데 기여하고자 한다.",
+    "method": "학술 문헌과 산업 자료를 종합하여 챗봇의 역사적 발전을 연대순으로 검토하는 방식을 사용하였다. 1906년 초기 통계 모델부터 ELIZA, ALICE, CALO 프로젝트, 튜링 테스트 도입, 트랜스포머 기반 모델까지의 주요 혁신 사례를 분석하였다.",
+    "result": "자연어 처리와 머신러닝이 현대 챗봇에 통합되어 보다 정교한 기능을 갖춘 ChatGPT, Google Bard와 같은 고급 대화형 에이전트로 발전하는 과정을 체계적으로 정리하였다. 챗봇 기술의 발전 궤적과 다양한 응용 분야에서의 미래 잠재력에 대한 중요한 맥락을 제공하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Cognis: Context-Aware Memory for Conversational AI Agents",
+    "abstract": "LLM agents lack persistent memory, causing conversations to reset each session and preventing personalization over time. We present Lyzr Cognis, a unified memory architecture for conversational AI agents that addresses this limitation through a multi-stage retrieval pipeline. Cognis combines a dual-store backend pairing OpenSearch BM25 keyword matching with Matryoshka vector similarity search, fused via Reciprocal Rank Fusion. Its context-aware ingestion pipeline retrieves existing memories before extraction, enabling intelligent version tracking that preserves full memory history while keeping the store consistent. Temporal boosting enhances time-sensitive queries, and a BGE-2 cross-encoder reranker refines final result quality. We evaluate Cognis on two independent benchmarks -- LoCoMo and LongMemEval -- across eight answer generation models, demonstrating state-of-the-art performance on both. The system is open-source and deployed in production serving conversational AI applications.",
+    "authors": [
+      "Parshva Daftari",
+      "Khush A. Patel",
+      "Shreyas Kapale",
+      "J. George",
+      "Siva Surendira"
     ],
     "year": "2026",
-    "url": "https://www.semanticscholar.org/paper/465bf2a67221415b63bcbeacc1bffe28cc07eeda",
+    "url": "https://www.semanticscholar.org/paper/0a5d419200fb6bcaa07827ea917fa721a02574e2",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "수동 코드 리뷰의 느린 속도, 비일관성, 리뷰어 경험 의존성 문제를 해결하기 위해 자동화된 AI 기반 코드 리뷰 시스템(ACRS)을 개발하는 것을 목적으로 한다.",
-    "method": "대규모 데이터셋으로 학습된 대형 언어 모델(LLM)을 포함한 AI 및 머신러닝 기술을 활용하여 코드를 자동으로 분석하며, 코드의 작성 방식, 구조, 동작 방식을 이해하여 즉각적인 피드백을 제공한다.",
-    "result": "ACRS는 코드의 오류 지적, 성능 개선 제안, 근거 설명 등의 즉각적인 피드백을 제공하며, 정확성·효율성·가독성을 기반으로 전반적인 코드 품질 점수를 생성한다. 또한 기존 정적 분석 도구 대비 문맥 이해 및 스마트 추천에서 우위를 보이는 것으로 나타났다.",
+    "purpose": "LLM 에이전트가 지속적인 메모리를 갖지 못해 매 세션마다 대화가 초기화되고 시간이 지남에 따라 개인화가 불가능한 문제를 해결하고자 한다.",
+    "method": "OpenSearch BM25 키워드 매칭과 Matryoshka 벡터 유사도 검색을 Reciprocal Rank Fusion으로 결합한 듀얼 스토어 백엔드를 사용하며, 문맥 인식 수집 파이프라인을 통해 기존 메모리를 추출 전에 검색하여 지능적인 버전 추적을 가능하게 한다. 또한 시간 민감 쿼리를 위한 Temporal Boosting과 BGE-2 크로스 인코더 리랭커를 활용하여 최종 결과 품질을 개선한다.",
+    "result": "LoCoMo와 LongMemEval 두 독립 벤치마크에서 8개의 답변 생성 모델을 대상으로 평가하여 두 벤치마크 모두에서 최첨단 성능을 달성하였다. 해당 시스템은 오픈소스로 공개되었으며 대화형 AI 애플리케이션을 위한 프로덕션 환경에 배포되어 있다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "SWE-PRBench: Benchmarking AI Code Review Quality Against Pull Request Feedback",
-    "abstract": "We introduce SWE-PRBench, a benchmark of 350 pull requests with human-annotated ground truth for evaluating AI code review quality. Evaluated against an LLM-as-judge framework validated at kappa=0.75, 8 frontier models detect only 15-31% of human-flagged issues on the diff-only configuration, demonstrating that AI code review remains far below human expert performance despite strong results on code generation benchmarks. Pull requests are drawn from active open-source repositories, filtered from 700 candidates using a Repository Quality Score, and evaluated under three frozen context configurations: diff only (config_A), diff with file content (config_B), and full context (config_C), enabling systematic ablation of context provision strategies. All 8 models degrade monotonically from config_A to config_C, even when context is provided via structured semantic layers including AST-extracted function context and import graph resolution. The dominant mechanism is a collapse of Type2_Contextual issue detection at config_B, consistent with attention dilution in long contexts: a structured 2,000-token diff-with-summary prompt outperforms a 2,500-token full-context prompt enriched with execution context, behaviour mapping, and test signatures across all 8 models. The top four models are statistically indistinguishable (mean score 0.147-0.153) while a clear tier gap separates them from the remaining four (mean score<= 0.113). Dataset, contexts, annotations, and evaluation harness are released publicly.",
+    "title": "Commonsense AI in the History of the Web",
+    "abstract": "Machine common sense (MCS)-the challenge of enabling computers to grasp everyday human knowledge-has been a grand challenge in Artificial Intelligence (AI) since the 1950s. While recent advances in large language models have led to impressive progress, there is still no consensus on how much common sense today's AI actually possesses. In this brief review, we revisit the historical development of MCS in the context of the Web, examining how the Web's evolution-from early knowledge representation efforts to knowledge graphs, the Semantic Web, and crowdsourcing-has shaped MCS research. We argue that key breakthroughs in Web technologies were instrumental in addressing longstanding challenges of scale and coverage in commonsense reasoning. At the same time, MCS research has influenced the development of core Web applications, including intelligent agents, plausibility-based reasoning, and robust evaluation of black-box AI systems.",
     "authors": [
-      "Deepak Kumar"
+      "M. Kejriwal",
+      "Deborah L. McGuinness",
+      "Henry Lieberman"
     ],
-    "year": "2026",
-    "url": "https://www.semanticscholar.org/paper/34c714b2b5a388beb5658302fc25c745176056b5",
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/fb384f8d4c33d9e6db861bcf4236b18a2d394f5b",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 코드 리뷰 품질을 평가하기 위한 벤치마크가 부재한 문제를 해결하고자, 인간 주석 기반의 정답 데이터를 포함한 350개의 풀 리퀘스트로 구성된 SWE-PRBench를 도입하였다.",
-    "method": "활성 오픈소스 저장소에서 700개의 후보 풀 리퀘스트를 Repository Quality Score로 필터링하여 350개를 선정하고, kappa=0.75로 검증된 LLM-as-judge 프레임워크를 활용해 diff only, diff with file content, full context의 세 가지 컨텍스트 구성에서 8개의 최신 모델을 평가하였다. 컨텍스트 제공 시에는 AST 기반 함수 컨텍스트 및 임포트 그래프 해석을 포함한 구조화된 의미론적 레이어가 활용되었다.",
-    "result": "8개의 최신 모델은 diff-only 구성에서 인간이 지적한 이슈의 15~31%만 탐지하였으며, 모든 모델이 config_A에서 config_C로 갈수록 단조롭게 성능이 저하되었다. 상위 4개 모델은 평균 점수 0.147~0.153으로 통계적으로 구별되지 않았으며, 나머지 4개 모델과는 명확한 성능 격차가 존재하였다.",
-    "limitation": "초록에 명시되지 않음"
+    "purpose": "이 논문은 1950년대부터 이어져 온 AI의 핵심 난제인 기계 상식(MCS) 연구의 역사적 발전을 웹의 맥락에서 재조명하고, 웹 기술의 진화가 MCS 연구에 미친 영향을 살펴보는 것을 목적으로 한다.",
+    "method": "웹의 발전 과정—초기 지식 표현 연구, 지식 그래프, 시맨틱 웹, 크라우드소싱—을 중심으로 MCS 연구의 역사적 흐름을 검토하는 문헌 리뷰 방식을 사용한다.",
+    "result": "웹 기술의 주요 혁신이 상식 추론에서의 규모 및 커버리지 문제를 해결하는 데 핵심적인 역할을 했으며, 동시에 MCS 연구는 지능형 에이전트, 개연성 기반 추론, 블랙박스 AI 시스템의 평가 등 핵심 웹 애플리케이션 발전에도 영향을 미쳤다.",
+    "limitation": "현재의 대형 언어 모델이 실제로 얼마나 많은 상식을 보유하고 있는지에 대한 합의가 아직 이루어지지 않았으며, 오늘날 AI의 상식 수준에 관한 명확한 결론은 초록에 명시되지 않음."
   },
   {
-    "title": "AI-powered Code Review with LLMs: Early Results",
-    "abstract": "In this paper, we present a novel approach to improving software quality and efficiency through a Large Language Model (LLM)-based model designed to review code and identify potential issues. Our proposed LLM-based AI agent model is trained on large code repositories. This training includes code reviews, bug reports, and documentation of best practices. It aims to detect code smells, identify potential bugs, provide suggestions for improvement, and optimize the code. Unlike traditional static code analysis tools, our LLM-based AI agent has the ability to predict future potential risks in the code. This supports a dual goal of improving code quality and enhancing developer education by encouraging a deeper understanding of best practices and efficient coding techniques. Furthermore, we explore the model's effectiveness in suggesting improvements that significantly reduce post-release bugs and enhance code review processes, as evidenced by an analysis of developer sentiment toward LLM feedback. For future work, we aim to assess the accuracy and efficiency of LLM-generated documentation updates in comparison to manual methods. This will involve an empirical study focusing on manually conducted code reviews to identify code smells and bugs, alongside an evaluation of best practice documentation, augmented by insights from developer discussions and code reviews. Our goal is to not only refine the accuracy of our LLM-based tool but also to underscore its potential in streamlining the software development lifecycle through proactive code improvement and education.",
+    "title": "Generative Ghosts: Anticipating Benefits and Risks of AI Afterlives",
+    "abstract": "As AI systems quickly improve in both breadth and depth of performance, they lend themselves to creating increasingly powerful and realistic agents, including the possibility of agents modeled on specific people. We anticipate that within our lifetimes it may become common practice for people to create custom AI agents to interact with loved ones and/or the broader world after death; indeed, the past year has seen a boom in startups purporting to offer such services. We call these generative ghosts since such agents will be capable of generating novel content rather than merely parroting content produced by their creator while living. In this paper, we reflect on the history of technologies for AI afterlives, including current early attempts by individual enthusiasts and startup companies to create generative ghosts. We then introduce a novel design space detailing potential implementations of generative ghosts. We use this analytic framework to ground a discussion of the practical and ethical implications of various approaches to designing generative ghosts, including potential positive and negative impacts on individuals and society. Based on these considerations, we lay out a research agenda for the AI and HCI research communities to better understand the risk/benefit landscape of this novel technology to ultimately empower people who wish to create and interact with AI afterlives to do so in a beneficial manner.",
     "authors": [
-      "Zeeshan Rasheed",
-      "Malik Abdul Sami",
-      "Muhammad Waseem",
-      "Kai-Kristian Kemell",
-      "Xiaofeng Wang",
-      "Anh Nguyen",
-      "Kari Systä",
-      "Pekka Abrahamsson"
+      "Meredith Ringel Morris",
+      "Jed R. Brubaker"
     ],
     "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/db56fcaccb77418cae5ee2c439f8821a99a64815",
+    "url": "https://www.semanticscholar.org/paper/49a1907070bde86352361fbe6856d5f949ca2201",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "소프트웨어 품질 및 개발 효율성을 향상시키기 위해 코드 리뷰 및 잠재적 문제 식별을 수행하는 LLM 기반 모델을 제안하는 것을 목적으로 한다. 코드 스멜 감지, 잠재적 버그 식별, 개선 제안 및 코드 최적화를 통해 코드 품질 향상과 개발자 교육을 동시에 지원하고자 한다.",
-    "method": "대규모 코드 저장소에서 코드 리뷰, 버그 리포트, 모범 사례 문서를 학습 데이터로 사용하여 LLM 기반 AI 에이전트 모델을 훈련하였다. 이 모델은 기존 정적 코드 분석 도구와 달리 코드의 미래 잠재적 위험을 예측하는 능력을 갖추도록 설계되었다.",
-    "result": "LLM 기반 모델이 릴리스 후 버그를 상당히 줄이고 코드 리뷰 프로세스를 향상시키는 개선 사항을 제안하는 데 효과적임을 확인하였다. 이는 LLM 피드백에 대한 개발자 감성 분석을 통해 입증되었다.",
-    "limitation": "향후 연구로 LLM이 생성한 문서 업데이트의 정확성과 효율성을 수동 방법과 비교 평가할 계획이다. 코드 스멜 및 버그를 식별하기 위한 수동 코드 리뷰 중심의 실증 연구와 모범 사례 문서 평가를 포함한 추가 연구가 필요하다."
+    "purpose": "이 논문은 사망 후 특정 인물을 모델로 한 AI 에이전트, 즉 '생성적 유령(generative ghosts)'의 등장을 예측하고, 이러한 AI 사후 존재 기술의 잠재적 이점과 위험을 탐구하는 것을 목적으로 한다.",
+    "method": "AI 사후 존재 기술의 역사와 현재 초기 시도들을 검토하고, 생성적 유령의 잠재적 구현 방식을 상세히 설명하는 새로운 설계 공간(design space)을 도입하여 분석 프레임워크로 활용하였다.",
+    "result": "도입된 분석 프레임워크를 바탕으로 생성적 유령 설계의 다양한 접근 방식에 대한 실용적·윤리적 함의를 논의하였으며, 개인과 사회에 미치는 긍정적·부정적 영향을 도출하였다.",
+    "limitation": "이 논문은 AI 및 HCI 연구 커뮤니티를 위한 연구 의제를 제시하는 데 그치며, 이 새로운 기술의 위험/이익 전반을 더 잘 이해하기 위한 추가 연구가 필요함을 향후 과제로 제시하고 있다."
   },
   {
-    "title": "Bugdar: AI-Augmented Secure Code Review for GitHub Pull Requests",
-    "abstract": "As software systems grow increasingly complex, ensuring security during development poses significant challenges. Traditional manual code audits are often expensive, time-intensive, and ill-suited for fast-paced workflows, while automated tools frequently suffer from high false-positive rates, limiting their reliability. To address these issues, we introduce Bugdar, an AI-augmented code review system that integrates seamlessly into GitHub pull requests, providing near real-time, context-aware vulnerability analysis. Bugdar leverages fine-tunable Large Language Models (LLMs) and Retrieval Augmented Generation (RAGs) to deliver project-specific, actionable feedback that aligns with each codebase's unique requirements and developer practices. Supporting multiple programming languages, including Solidity, Move, Rust, and Python, Bugdar demonstrates exceptional efficiency, processing an average of 56.4 seconds per pull request or 30 lines of code per second. This is significantly faster than manual reviews, which could take hours per pull request. By facilitating a proactive approach to secure coding, Bugdar reduces the reliance on manual reviews, accelerates development cycles, and enhances the security posture of software systems without compromising productivity.",
+    "title": "Zero, Finite, and Infinite Belief History of Theory of Mind Reasoning in Large Language Models",
+    "abstract": "Large Language Models (LLMs) have recently shown a promise and emergence of Theory of Mind (ToM) ability and even outperform humans in certain ToM tasks. To evaluate and extend the boundaries of the ToM reasoning ability of LLMs, we propose a novel concept, taxonomy, and framework, the ToM reasoning with Zero, Finite, and Infinite Belief History and develop a multi-round text-based game, called $\\textit{Pick the Right Stuff}$, as a benchmark. We have evaluated six LLMs with this game and found their performance on Zero Belief History is consistently better than on Finite Belief History. In addition, we have found two of the models with small parameter sizes outperform all the evaluated models with large parameter sizes. We expect this work to pave the way for future ToM benchmark development and also for the promotion and development of more complex AI agents or systems which are required to be equipped with more complex ToM reasoning ability.",
     "authors": [
-      "John Naulty",
-      "Eason Chen",
-      "Joy Wang",
-      "George Digkas",
-      "K. Chalkias"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/2cba2788548c4dfa37b7974babbe93c929b89c45",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "소프트웨어 개발 과정에서 보안을 보장하는 문제를 해결하기 위해, 비용이 많이 들고 시간 집약적인 전통적인 수동 코드 감사와 높은 오탐률로 신뢰성이 낮은 자동화 도구의 한계를 극복하는 것을 목적으로 한다.",
-    "method": "GitHub 풀 리퀘스트에 통합되는 AI 기반 코드 리뷰 시스템 Bugdar를 개발하였으며, 미세 조정 가능한 대형 언어 모델(LLM)과 검색 증강 생성(RAG)을 활용하여 프로젝트별 맥락 인식 취약점 분석을 제공한다. Solidity, Move, Rust, Python을 포함한 다양한 프로그래밍 언어를 지원한다.",
-    "result": "Bugdar는 풀 리퀘스트당 평균 56.4초 또는 초당 30줄의 코드를 처리하는 높은 효율성을 보여주며, 이는 풀 리퀘스트당 수 시간이 걸릴 수 있는 수동 리뷰보다 현저히 빠르다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "Integrating AI-Driven Automated Code Review in Agile Development: Benefits, Challenges, and Best Practices",
-    "abstract": "The integration of AI-powered automated code review tools has significantly transformed Agile software development by improving efficiency, maintaining coding standards, and enhancing developer productivity. These tools streamline repetitive tasks, identify potential issues early, and enforce consistency in code quality. However, their adoption comes with challenges such as accuracy constraints, difficulties in integrating with legacy systems, and hesitation among developers. This research employs a mixed-methods approach, combining qualitative and quantitative techniques to examine the benefits, challenges, and best practices associated with AI-driven code reviews. To gather insights, surveys and interviews were conducted with software engineers, DevOps professionals, and Agile practitioners. Additionally, real-world case studies analyzed how organizations have implemented AI-based code reviews, while an experimental study measured performance indicators such as error detection rates, review efficiency, and developer workflow improvements. The findings suggest that AI tools significantly reduce code review time, enhance consistency, and allow developers to concentrate on complex problem-solving rather than manual review processes. However, AI's inability to fully grasp context-sensitive issues, challenges in analyzing complex code logic, and resistance from developers remain notable barriers. Concerns about job security and loss of control over decision-making further contribute to adoption challenges. To overcome these issues, this study emphasizes the importance of a balanced approach where AI tools assist rather than replace human reviewers. Regular training and updates are crucial to improving AI accuracy and keeping pace with evolving coding practices. Gradual integration with existing systems can mitigate compatibility challenges, while transparent communication can help alleviate developer concerns. Additionally, establishing a validation mechanism, where human reviewers verify AI-generated recommendations, can enhance reliability and trust in these tools. In conclusion, while AI-driven automated code reviews offer substantial benefits for Agile teams, their successful implementation depends on strategic deployment, ongoing refinements, and a well-balanced collaboration between AI and human expertise. By following best practices, organizations can optimize AI-assisted code reviews, ultimately improving software quality and streamlining development workflows.",
-    "authors": [
-      "Saad Ahmed"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/40c194c1e15bbf7103ced189f6a37826d8e706e0",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "이 논문은 애자일 소프트웨어 개발에서 AI 기반 자동화 코드 리뷰 도구의 통합과 관련된 이점, 도전 과제, 그리고 모범 사례를 체계적으로 분석하는 것을 목적으로 한다.",
-    "method": "혼합 연구 방법론을 활용하여 소프트웨어 엔지니어, DevOps 전문가, 애자일 실무자를 대상으로 설문 조사와 인터뷰를 실시하였다. 또한 실제 조직의 AI 코드 리뷰 도입 사례를 분석하고, 오류 탐지율, 리뷰 효율성, 개발자 워크플로우 개선 등의 성과 지표를 측정하는 실험 연구를 병행하였다.",
-    "result": "AI 도구는 코드 리뷰 시간을 크게 단축하고 일관성을 향상시키며, 개발자가 수동 리뷰 대신 복잡한 문제 해결에 집중할 수 있도록 돕는 것으로 나타났다. AI와 인간 검토자의 균형 잡힌 협업, 정기적인 훈련 및 업데이트, 점진적 시스템 통합, 검증 메커니즘 도입이 성공적인 구현을 위한 모범 사례로 제시되었다.",
-    "limitation": "AI는 맥락에 민감한 문제를 완전히 이해하지 못하고 복잡한 코드 로직 분석에 어려움이 있으며, 개발자들의 저항과 직업 안정성에 대한 우려가 도입의 주요 장벽으로 남아 있다. 레거시 시스템과의 통합 어려움 및 의사결정 통제권 상실에 대한 우려도 채택 과제로 지적되었다."
-  },
-  {
-    "title": "Support, Not Automation: Towards AI-supported Code Review For Code Quality and Beyond",
-    "abstract": "Code review is a well-established and valuable software development practice associated with code quality, interpersonal, and team benefits. However, it is also time-consuming, with developers spending 10–20% of their working time doing code reviews. With recent advances in AI capabilities, there are more and more initiatives aimed at fully automating code reviews to save time and streamline software developer workflows. However, while automated tools might succeed in maintaining the code quality, we risk losing interpersonal and team benefits such as knowledge transfer, shared code ownership, and team awareness. Instead of automating code review and losing these important benefits, we envision a code review platform where AI is used to support code review to increase benefits for both code quality and the development team. We propose an AI agent-based architecture that collects and combines information to support the user throughout the code review and adapt the workflow to their needs. We analyze this design in relation to the benefits of code review and outline a research agenda aimed at realizing the proposed design.",
-    "authors": [
-      "Lo Heander",
-      "Emma Söderberg",
-      "Christofer Rydenfält"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/2ca14a84b5eda86bc4327cb0d6d7faf59e78f15c",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "코드 리뷰를 완전히 자동화할 경우 코드 품질 유지는 가능하지만 지식 전달, 공유 코드 소유권, 팀 인식 등 대인 관계 및 팀 차원의 이점이 손실될 수 있다는 문제를 해결하고자 한다. 자동화 대신 AI가 코드 리뷰를 지원하여 코드 품질과 팀 협업 모두의 이점을 극대화하는 방향을 제안한다.",
-    "method": "AI 에이전트 기반 아키텍처를 제안하며, 이 아키텍처는 정보를 수집하고 결합하여 코드 리뷰 전반에 걸쳐 사용자를 지원하고 워크플로우를 사용자 필요에 맞게 적응시킨다. 제안된 설계를 코드 리뷰의 이점과 연관지어 분석한다.",
-    "result": "코드 리뷰의 이점을 코드 품질 및 팀 협업 측면 모두에서 보존하고 강화할 수 있는 AI 지원 코드 리뷰 플랫폼의 비전과 설계를 제시하였다. 또한 제안된 설계를 실현하기 위한 연구 어젠다를 제시하였다.",
-    "limitation": "제안된 AI 에이전트 기반 아키텍처는 설계 수준에 머물러 있으며, 실제 구현 및 검증은 향후 연구 과제로 남아 있다. 제안된 설계를 실현하기 위한 연구 어젠다가 제시되었으나 구체적인 실험 결과나 평가는 초록에 명시되지 않음."
-  },
-  {
-    "title": "CRScore++: Reinforcement Learning with Verifiable Tool and AI Feedback for Code Review",
-    "abstract": "Reinforcement learning (RL) to improve code review comment generation requires handling unstructured outputs, making reinforcement learning (RL) feedback challenging. The two main RL approaches, namely RL with Verifiable Feedback (RLVR) and RL with AI Feedback (RLAIF), offer trade-offs: RLVR provides reliable feedback for structured tasks like code generation, while RLAIF works for unstructured outputs but is subjective. We bridge this gap with CRScore++, an RL framework that leverages both LLM-based subjective feedback and verifiable signals for training. Extending CRScore, a code review evaluation metric integrating LLMs with verifiers like linters and code smell detectors, CRScore++ transforms these signals into training rewards. We show that CRScore++ improves a weaker student model through a combination of supervised fine-tuning and RL critique from a stronger teacher model, thus enabling generalization to novel programming languages.",
-    "authors": [
-      "M. Kapadnis",
-      "Atharva Naik",
-      "Carolyn P. Rosé"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/14f409c6c3661c7dd487a859a98b94c8f0b15a99",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "코드 리뷰 코멘트 생성을 개선하기 위한 강화학습 적용 시, 비구조적 출력으로 인해 피드백 제공이 어렵다는 문제를 해결하고자 한다. RLVR과 RLAIF 각각의 한계를 극복하여 신뢰할 수 있는 피드백과 주관적 피드백을 통합하는 것이 목적이다.",
-    "method": "LLM 기반 주관적 피드백과 검증 가능한 신호를 모두 활용하는 RL 프레임워크인 CRScore++를 제안한다. 린터 및 코드 스멜 탐지기와 같은 검증 도구를 LLM과 통합한 코드 리뷰 평가 메트릭인 CRScore를 확장하여, 이러한 신호들을 학습 보상으로 변환한다. 강력한 교사 모델의 RL 비평과 지도 미세 조정을 결합하여 약한 학생 모델을 개선한다.",
-    "result": "CRScore++는 지도 미세 조정과 강력한 교사 모델의 RL 비평을 결합함으로써 약한 학생 모델의 성능을 향상시키며, 새로운 프로그래밍 언어에 대한 일반화를 가능하게 한다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "AI-Assisted Assessment of Coding Practices in Modern Code Review",
-    "abstract": "Modern code review is a process in which an incremental code contribution made by a code author is reviewed by one or more peers before it is committed to the version control system. An important element of modern code review is verifying that code contributions adhere to best practices. While some of these best practices can be automatically verified, verifying others is commonly left to human reviewers. This paper reports on the development, deployment, and evaluation of AutoCommenter, a system backed by a large language model that automatically learns and enforces coding best practices. We implemented AutoCommenter for four programming languages (C++, Java, Python, and Go) and evaluated its performance and adoption in a large industrial setting. Our evaluation shows that an end-to-end system for learning and enforcing coding best practices is feasible and has a positive impact on the developer workflow. Additionally, this paper reports on the challenges associated with deploying such a system to tens of thousands of developers and the corresponding lessons learned.",
-    "authors": [
-      "Manushree Vijayvergiya",
-      "M. Salawa",
-      "Ivan Budiselić",
-      "Dan Zheng",
-      "Pascal Lamblin",
-      "Marko Ivanković",
-      "Juanjo Carin",
-      "Mateusz Lewko",
-      "Jovan Andonov",
-      "Goran Petrović",
-      "Daniel Tarlow",
-      "Petros Maniatis",
-      "René Just"
+      "Weizhi Tang",
+      "Vaishak Belle"
     ],
     "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/0f1ffabf3841a29ad675afcc4815c48b94caf08a",
+    "url": "https://www.semanticscholar.org/paper/ea983bce3002ba3586daaf4fdbb18b79a5f38f68",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "현대 코드 리뷰 과정에서 코드 기여물이 모범 사례를 준수하는지 검증하는 작업은 주로 인간 리뷰어에게 의존하는데, 이 논문은 이러한 코딩 모범 사례를 자동으로 학습하고 적용하는 시스템 개발을 목적으로 한다.",
-    "method": "대형 언어 모델(LLM)을 기반으로 코딩 모범 사례를 자동으로 학습하고 강제하는 AutoCommenter 시스템을 개발하였으며, C++, Java, Python, Go 4가지 프로그래밍 언어에 대해 구현하고 대규모 산업 환경에서 성능 및 도입 효과를 평가하였다.",
-    "result": "평가 결과, 코딩 모범 사례를 학습하고 적용하는 엔드투엔드 시스템이 실현 가능하며 개발자 워크플로우에 긍정적인 영향을 미치는 것으로 나타났다.",
-    "limitation": "수만 명의 개발자에게 해당 시스템을 배포하는 과정에서 여러 도전 과제가 존재하였으며, 이에 대한 교훈이 논문에서 보고되었으나 구체적인 향후 과제는 초록에 명시되지 않음."
-  },
-  {
-    "title": "GitHub's Copilot Code Review: Can AI Spot Security Flaws Before You Commit?",
-    "abstract": "As software development practices increasingly adopt AI-powered tools, ensuring that such tools can support secure coding has become critical. This study evaluates the effectiveness of GitHub Copilot's recently introduced code review feature in detecting security vulnerabilities. Using a curated set of labeled vulnerable code samples drawn from diverse open-source projects spanning multiple programming languages and application domains, we systematically assessed Copilot's ability to identify and provide feedback on common security flaws. Contrary to expectations, our results reveal that Copilot's code review frequently fails to detect critical vulnerabilities such as SQL injection, cross-site scripting (XSS), and insecure deserialization. Instead, its feedback primarily addresses low-severity issues, such as coding style and typographical errors. These findings expose a significant gap between the perceived capabilities of AI-assisted code review and its actual effectiveness in supporting secure development practices. Our results highlight the continued necessity of dedicated security tools and manual code audits to ensure robust software security.",
-    "authors": [
-      "Amena Amro",
-      "Manar H. Alalfi"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/9943872c59ab3ce71b809b262233d6566059eb72",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "AI 기반 개발 도구의 보안 코딩 지원 가능성이 중요해짐에 따라, GitHub Copilot의 코드 리뷰 기능이 보안 취약점을 탐지하는 데 얼마나 효과적인지를 평가하는 것을 목적으로 한다.",
-    "method": "다양한 프로그래밍 언어와 애플리케이션 도메인에 걸친 오픈소스 프로젝트에서 수집한 레이블이 붙은 취약 코드 샘플 세트를 활용하여, Copilot의 코드 리뷰 기능이 일반적인 보안 결함을 식별하고 피드백을 제공하는 능력을 체계적으로 평가하였다.",
-    "result": "Copilot의 코드 리뷰는 SQL 인젝션, XSS, 안전하지 않은 역직렬화 등 심각한 취약점을 자주 탐지하지 못하였으며, 대신 코딩 스타일이나 오타와 같은 낮은 심각도의 문제에 주로 피드백을 제공하는 것으로 나타났다.",
-    "limitation": "AI 기반 코드 리뷰의 실제 보안 효과성과 인식된 능력 사이에 상당한 격차가 존재하며, 견고한 소프트웨어 보안을 보장하기 위해 전용 보안 도구와 수동 코드 감사의 지속적인 필요성이 강조된다."
-  },
-  {
-    "title": "AI-Assisted Fixes to Code Review Comments at Scale",
-    "abstract": "Aim. There are 10s of thousands of code review comments each week at Meta. We developed Metamate for Code Review (MetaMateCR) that provides AI-assisted fixes for reviewer comments in production at scale. Method. We developed an internal benchmark of 64kdata points to fine-tune Llama models. Once our models achieve reasonable offline results, we roll them into production. To ensure that our AI-assisted fixes do not negatively impact the time it takes to do code reviews, we conduct randomized controlled safety trials as well as full production experiments. Offline Results. As a baseline, we compare GPT-4o to our small and large Llama models. In offline results, our LargeLSFT model creates an exact match patch 68% of the time outperforming GPT-4o by 9 percentage points (pp). The internal models also use more modern Hack functions when compared to the PHP functions suggested by GPT-4o. Safety Trial. When we roll MetaMateCR into production in a safety trial that compares no AI patches with AI patch suggestions, we see a large regression with reviewers taking over 5% longer to conduct reviews. After investigation, we modify the UX to only show authors the AI patches, and see no regressions in the time for reviews. Production. When we roll LargeLSFT into production, we see an ActionableToApplied rate of 19.7%, which is a 9.2pp improvement over GPT-4o. Our results illustrate the importance of safety trials in ensuring that AI does not inadvertently slow down engineers, and a successful review comment to AI patch product running at scale.",
-    "authors": [
-      "C. Maddila",
-      "Negar Ghorbani",
-      "James Saindon",
-      "Parth Thakkar",
-      "V. Murali",
-      "Rui Abreu",
-      "Jingyue Shen",
-      "Brian Zhou",
-      "N. Nagappan",
-      "Peter C. Rigby"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/2520a844ff53ddc3d5be6563ddef8406626848a6",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "Meta에서 매주 수만 건의 코드 리뷰 댓글이 발생하는 환경에서, 리뷰어 댓글에 대한 AI 기반 수정 제안을 대규모로 제공하는 MetaMateCR 시스템을 개발하는 것을 목적으로 한다.",
-    "method": "64,000개의 데이터 포인트로 구성된 내부 벤치마크를 사용해 Llama 모델을 파인튜닝하였으며, 오프라인 성능 검증 후 무작위 대조 안전성 실험 및 전체 프로덕션 실험을 통해 AI 수정 제안이 코드 리뷰 시간에 미치는 영향을 평가하였다.",
-    "result": "오프라인 실험에서 LargeLSFT 모델은 68%의 정확한 패치 일치율로 GPT-4o를 9%p 상회하였으며, 프로덕션 환경에서는 ActionableToApplied 비율 19.7%를 달성하여 GPT-4o 대비 9.2%p 향상되었다. 또한 안전성 실험을 통해 AI 패치를 리뷰어가 아닌 작성자에게만 노출하도록 UX를 수정함으로써 리뷰 시간 지연 문제를 해결하였다.",
+    "purpose": "LLM의 마음 이론(ToM) 추론 능력의 한계를 평가하고 확장하기 위해, Zero, Finite, Infinite Belief History라는 새로운 개념, 분류 체계 및 프레임워크를 제안하는 것을 목적으로 한다.",
+    "method": "ToM 추론을 위한 새로운 분류 체계와 프레임워크를 제안하고, 'Pick the Right Stuff'라는 다중 라운드 텍스트 기반 게임을 벤치마크로 개발하여 6개의 LLM을 평가하였다.",
+    "result": "평가 결과, 모든 모델에서 Zero Belief History에 대한 성능이 Finite Belief History보다 일관되게 높게 나타났다. 또한, 소규모 파라미터를 가진 두 모델이 대규모 파라미터를 가진 모든 모델보다 높은 성능을 보였다.",
     "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "DeputyDev - AI Powered Developer Assistant: Breaking the Code Review Logjam through Contextual AI to Boost Developer Productivity",
-    "abstract": "This study investigates the implementation and efficacy of DeputyDev, an AI-powered code review assistant developed to address inefficiencies in the software development process. The process of code review is highly inefficient for several reasons, such as it being a time-consuming process, inconsistent feedback, and review quality not being at par most of the time. Using our telemetry data, we observed that at TATA 1mg, pull request (PR) processing exhibits significant inefficiencies, with average pick-up and review times of 73 and 82 hours, respectively, resulting in a 6.2 day closure cycle. The review cycle was marked by prolonged iterative communication between the reviewing and submitting parties. Research from the University of California, Irvine indicates that interruptions can lead to an average of 23 minutes of lost focus, critically affecting code quality and timely delivery. To address these challenges, we developed DeputyDev's PR review capabilities by providing automated, contextual code reviews. We conducted a rigorous double-controlled A/B experiment involving over 200 engineers to evaluate DeputyDev's impact on review times. The results demonstrated a statistically significant reduction in both average per PR (23.09%) and average per-line-of-code (40.13%) review durations. After implementing safeguards to exclude outliers, DeputyDev has been effectively rolled out across the entire organisation. Additionally, it has been made available to external companies as a Software-as-a-Service (SaaS) solution, currently supporting the daily work of numerous engineering professionals. This study explores the implementation and effectiveness of AI-assisted code reviews in improving development workflow timelines and code.",
+    "title": "The coevolution of technology, markets, and culture: the challenging case of AI",
+    "abstract": "Artificial intelligence (AI) is at the center of economic, social, political, and ethical debate. For the first time in human history, since the appearance of writing, a new type of “intelligence” is impacting the very nature of social relationships. New technologies are not only changing the operating model of markets and value chains in an accelerated way but also in how information is generated and processed, how labor, social relations, and culture evolve, etc. In this paper, we pursue two main goals. First, to set up an analytical framework in which cognitive, technical, and cultural dynamics are intertwined with the processes of deployment of economic action. Secondly, we utilize this framework to explore some key features and challenges of AI and its impact on coevolutionary processes at the cognitive, market, and cultural levels. We devote special attention to the consequences that AI may have for the concept of (economic) rationality and the formation of action plans. We conclude that AI will massively enhance agents’ spaces of action by improving efficiency and exploring new possibilities. However, AI will not change the nature of human action and the structure of the evolution of the economic system.",
     "authors": [
-      "Vishal Khare",
-      "V. Saini",
-      "Deepak Sharma",
-      "Anand Kumar",
-      "Ankit Rana",
-      "Anshul Yadav"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/54fcf4e17c46cbcbb202b76f315c48deffeccf07",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "소프트웨어 개발 과정에서 코드 리뷰의 비효율성, 즉 시간 소모, 일관성 없는 피드백, 낮은 리뷰 품질 문제를 해결하고자 한다. TATA 1mg에서 PR 처리에 평균 픽업 73시간, 리뷰 82시간이 소요되어 6.2일의 종료 사이클이 발생하는 문제를 개선하는 것이 목적이다.",
-    "method": "자동화된 맥락 기반 코드 리뷰를 제공하는 AI 기반 코드 리뷰 어시스턴트 DeputyDev를 개발하였다. 200명 이상의 엔지니어를 대상으로 엄격한 이중 통제 A/B 실험을 수행하여 DeputyDev의 리뷰 시간 단축 효과를 평가하였다.",
-    "result": "PR당 평균 리뷰 시간이 23.09%, 코드 라인당 평균 리뷰 시간이 40.13% 통계적으로 유의미하게 감소하였다. 이상치 제외 안전장치 적용 후 전사적으로 배포되었으며, SaaS 솔루션으로도 외부 기업에 제공되어 다수의 엔지니어링 전문가들이 일상 업무에 활용하고 있다.",
-    "limitation": "초록에 명시되지 않음"
-  },
-  {
-    "title": "AI-Driven Continuous Integration: Automating Code Review and Deployment with LLMs",
-    "abstract": "The integration of a Large Language Models (LLMs) into Continuous Integration (CI) pipelines greatly enhances the efficiency of the software development process. AI-based CI improves code quality by decreasing integration failure rates by 30 % and deployment time by 40 %. These models help in identifying bugs, enforcing coding standards, writing unit tests, and optimizing release management. But AIdriven CI comes with risks of security vulnerabilities, model bias and the need for human supervision. This paper uses case studies, surveys, and interviews to explore the effects of AI on CI/CD pipelines and identifies the pros and cons. The results of this search show that the use of AI in CI improves effectiveness, but it needs better oversight to avoid risks and improve model performance.",
-    "authors": [
-      "D. Salem",
-      "Yazan Alahmed",
-      "Ragad Fnich",
-      "Meryem Mazroub",
-      "Mohammad Fnich"
-    ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/151cbcb1ad3cc421285322b762eb3cc338b66296",
-    "source": "Semantic Scholar",
-    "categories": [],
-    "purpose": "이 논문은 대형 언어 모델(LLM)을 지속적 통합(CI) 파이프라인에 통합함으로써 소프트웨어 개발 프로세스의 효율성을 향상시키는 방법을 탐구하는 것을 목적으로 한다.",
-    "method": "사례 연구, 설문조사, 인터뷰를 활용하여 AI가 CI/CD 파이프라인에 미치는 영향을 분석하고 장단점을 식별하였다.",
-    "result": "AI 기반 CI는 통합 실패율을 30% 감소시키고 배포 시간을 40% 단축시키며, 버그 식별, 코딩 표준 적용, 단위 테스트 작성, 릴리스 관리 최적화에 기여하는 것으로 나타났다.",
-    "limitation": "AI 기반 CI는 보안 취약성, 모델 편향, 인간 감독 필요성 등의 위험을 수반하며, 위험 방지와 모델 성능 향상을 위해 더 나은 감독 체계가 필요하다."
-  },
-  {
-    "title": "AI-Powered Code Review Assistant for Streamlining Pull Request Merging",
-    "abstract": "WatsonX, a comprehensive data and AI platform, adeptly addresses contemporary challenges by meticulously training, validating, tuning, and deploying data to drive impactful business outcomes. The intricate task of timely merging Pull Requests (PRs) poses a significant challenge for software development teams, directly influencing business operations. This paper introduces an innovative solution leveraging AI, particularly harnessing generative AI techniques with the Falcon40-B model through the platform. The AI bot facilitates an initial PR review, offering insightful feedback on code formatting, best practices, and minor issues and streamlines collaboration by automatically assigning and notifying PR reviewers. The overarching goal is the continuous evolution of this AI bot into an intelligent reviewer, capable of assessing code from a functional standpoint. The implementation of this solution holds the promise of significantly enhancing PR management and expediting the entire development workflow.",
-    "authors": [
-      "Chathurya Adapa",
-      "Sai Sindhuri Avulamanda",
-      "A. Anjana",
-      "Ajay Victor"
+      "Félix-Fernando Muñoz"
     ],
     "year": "2024",
-    "url": "https://www.semanticscholar.org/paper/e69da052cde5461ffd904f89ee1dbe00d460a31c",
+    "url": "https://www.semanticscholar.org/paper/cee08f74cf82948b51f61136217423164e2b12bb",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "소프트웨어 개발 팀에서 Pull Request(PR)를 적시에 병합하는 복잡한 작업이 비즈니스 운영에 직접적인 영향을 미치는 주요 과제로 작용하며, 이를 해결하기 위한 AI 기반 솔루션을 제안하는 것이 목적이다.",
-    "method": "WatsonX 플랫폼을 활용하여 Falcon40-B 모델 기반의 생성형 AI 기술을 적용한 AI 봇을 구현하였으며, 이 봇은 코드 포맷팅, 모범 사례, 사소한 문제에 대한 피드백을 제공하고 PR 검토자를 자동으로 지정 및 통보하는 기능을 수행한다.",
-    "result": "해당 AI 봇은 초기 PR 검토를 수행하고 협업을 간소화함으로써 PR 관리 향상 및 전체 개발 워크플로우 가속화에 기여할 것으로 기대된다.",
-    "limitation": "현재 AI 봇은 초기 검토 수준에 머물러 있으며, 코드를 기능적 관점에서 평가할 수 있는 지능형 검토자로의 지속적인 발전이 향후 과제로 제시되고 있다."
+    "purpose": "이 논문은 AI가 인지적, 기술적, 문화적 역학과 경제적 행동 전개 과정이 상호 얽혀 있는 분석 프레임워크를 구축하고, AI가 인지적·시장·문화적 수준의 공진화 과정에 미치는 주요 특징과 도전을 탐구하는 것을 목적으로 한다.",
+    "method": "인지적, 기술적, 문화적 역학이 경제적 행동의 전개 과정과 상호 연결된 분석 프레임워크를 설정하고, 이를 활용하여 AI의 영향을 (경제적) 합리성 개념과 행동 계획 형성에 대한 결과를 중심으로 탐구하는 이론적 접근법을 사용하였다.",
+    "result": "AI는 효율성 향상과 새로운 가능성 탐색을 통해 행위자의 행동 공간을 대폭 확장시킬 것으로 결론지어졌다. 그러나 AI는 인간 행동의 본질과 경제 시스템 진화의 구조 자체를 변화시키지는 않을 것이라고 분석되었다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Artificially intelligent agents in the social and behavioral sciences: A history and outlook",
+    "abstract": "We review the historical development and current trends of artificially intelligent agents (agentic AI) in the social and behavioral sciences: from the first programmable computers, and social simulations soon thereafter, to today's experiments with large language models. This overview emphasizes the role of AI in the scientific process and the changes brought about, both through technological advancements and the broader evolution of science from around 1950 to the present. Some of the specific points we cover include: the challenges of presenting the first social simulation studies to a world unaware of computers, the rise of social systems science, intelligent game theoretic agents, the age of big data and the epistemic upheaval in its wake, and the current enthusiasm around applications of generative AI, and many other topics. A pervasive theme is how deeply entwined we are with the technologies we use to understand ourselves.",
+    "authors": [
+      "Petter Holme",
+      "Milena Tsvetkova"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/8628d60003c1ea958ab5383932ad2e91ffd5db02",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 사회과학 및 행동과학 분야에서 인공지능 에이전트(agentic AI)의 역사적 발전과 현재 트렌드를 검토하는 것을 목적으로 한다. 1950년경부터 현재까지 기술적 발전과 과학의 광범위한 진화를 통해 과학적 과정에서 AI의 역할과 그로 인한 변화를 조명한다.",
+    "method": "초록에 명시되지 않음",
+    "result": "최초의 프로그래밍 가능한 컴퓨터와 사회 시뮬레이션, 사회 시스템 과학의 부상, 지능형 게임 이론 에이전트, 빅데이터 시대, 생성형 AI 응용에 이르기까지 주요 발전 과정을 다룬다. 인간이 자신을 이해하기 위해 사용하는 기술과 얼마나 깊이 얽혀 있는지가 핵심 주제로 도출된다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "MemorIA, an Architecture for Creating Interactive AI Historical Agents in Educational Contexts",
+    "abstract": "This article presents the architecture of MemorIA, an integrative system that combines existing AI technologies into a coherent educational framework for creating interactive historical agents, with the aim of fostering students' learning interest. MemorIA generates animated digital portraits of historical figures, synchronizing facial expressions with synthesized speech to enable natural conversations with students. The system leverages NVIDIA Audio2Face for real‐time facial animation with first‐order motion model for portrait manipulation, achieving fluid interaction through low‐latency audio‐visual streaming. To assess our architecture in a field situation, we conducted a pilot study in middle school history classes, where students and teachers engaged in direct conversation with a virtual Julius Caesar during Roman history lessons. Students asked questions about ancient Rome, receiving contextually appropriate responses. While qualitative feedback suggests a positive trend toward increased student participation, some weaknesses and ethical considerations emerged. Based on this assessment, we discuss implementation challenges, suggest architectural improvements, and explore potential applications across various disciplines.",
+    "authors": [
+      "Antoine Oger",
+      "G. Gorisse",
+      "S. Fleury",
+      "O. Christmann"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/77814c7d79c74b51f273f3f87418621c7d2202e4",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 학생들의 학습 흥미를 증진하기 위해 역사적 인물과 상호작용할 수 있는 대화형 AI 역사 에이전트를 교육 맥락에서 구현하는 통합 시스템 아키텍처를 제시하는 것을 목적으로 한다.",
+    "method": "MemorIA 시스템은 NVIDIA Audio2Face를 활용한 실시간 얼굴 애니메이션과 초상화 조작을 위한 first-order motion model을 결합하여 역사적 인물의 애니메이션 디지털 초상화를 생성하며, 저지연 오디오-비주얼 스트리밍을 통해 합성 음성과 표정을 동기화하여 자연스러운 대화를 구현한다. 파일럿 연구는 중학교 역사 수업에서 가상의 율리우스 카이사르와 학생 및 교사가 직접 대화하는 방식으로 현장 평가를 수행하였다.",
+    "result": "학생들은 고대 로마에 관한 질문을 하고 문맥에 적합한 응답을 받았으며, 질적 피드백은 학생 참여도 증가에 대한 긍정적인 경향을 시사하였다.",
+    "limitation": "파일럿 연구를 통해 일부 약점과 윤리적 고려사항이 도출되었으며, 논문에서는 구현 과제, 아키텍처 개선 방안, 그리고 다양한 분야에서의 잠재적 적용 가능성을 추가로 논의하였다."
+  },
+  {
+    "title": "Impact of AI in Humans Life",
+    "abstract": "This research paper is designed to compile, synthesize, and analyze the effects of artificial intelligence on human life. AI technology has a long history of continuous and aggressive development and growth. This focuses on smart agents, which are sensors that analyze the world and take action to improve odds of success. Artificial intelligence is developing rapidly in today's society, with new technological developments being developed on a daily basis. The previous study defined the existing AI basics and multiple representative AI applications. The capacity for artificial intelligence (AI), computer programs, and systems to fulfill a person's logical and creative activities, such as solving problems independently, drawing conclusions, and making decisions. The majority of artificial intelligence programs are capable of allowing humans to learn over time. Recent work on AI technologies, that include machine learning, deep learning, and predictive analysis, aimed to enhance the ability to plan, understand, reason, analyze, and act. The basic goal of artificial intelligence is to create advanced, complicated systems that beat people in all areas, in order to improve all human activities and provide better solutions to issues than humans can. This suggestion tries to identify how human intelligence differs from artificial intelligence",
+    "authors": [
+      "Shinde Snehal Hanumant",
+      "Prof. Sonali Gholve"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/41ce2c0d6ce7f513966ba03d627a7d694fb90912",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 인공지능이 인간의 삶에 미치는 영향을 정리, 종합, 분석하는 것을 목적으로 한다. 또한 인간 지능과 인공지능의 차이를 식별하고자 한다.",
+    "method": "기존 AI 기초 개념과 대표적인 AI 응용 사례들을 검토하며, 머신러닝, 딥러닝, 예측 분석 등 AI 기술들을 대상으로 분석하는 접근법을 사용하였다.",
+    "result": "초록에 명시되지 않음",
+    "limitation": "초록에 명시되지 않음"
   }
 ]
