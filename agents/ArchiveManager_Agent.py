@@ -12,7 +12,6 @@ if str(PROJECT_ROOT) not in sys.path:
 from services.archive_service import archive_pipeline_results
 
 REPORTS_DIR = PROJECT_ROOT / "outputs" / "reports"
-VISUALIZATION_DIR = PROJECT_ROOT / "outputs" / "visualizations"
 REVIEW_RESULT_PATH = PROJECT_ROOT / "data" / "processed" / "review_result.json"
 LOOP_LOG_DIR = PROJECT_ROOT / "outputs" / "logs"
 

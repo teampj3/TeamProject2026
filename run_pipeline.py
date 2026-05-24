@@ -7,6 +7,7 @@ from datetime import datetime
 from pathlib import Path
 
 from agents.archiveManager_agent import run_archive_pipeline
+from agents.export_docx_agent import run_docx_export_pipeline
 from agents.reader_agent import run_reader
 from agents.relevance_agent import run_relevance
 from agents.review_agent import run_review_pipeline
@@ -189,6 +190,11 @@ def main() -> None:
             visualization_result.get("manifest_path"),
         ],
         log_files=[loop_result.get("log_path")],
+    )
+
+    run_docx_export_pipeline(
+        topic=topic,
+        report_path=visualization_result.get("visualized_report") or final_writer_bundle.get("saved_path"),
     )
 
 
