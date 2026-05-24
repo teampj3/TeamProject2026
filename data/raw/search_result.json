@@ -1,260 +1,249 @@
 [
   {
-    "title": "How AI Agents Follow the Herd of AI? Network Effects, History, and Machine Optimism",
-    "abstract": "Understanding decision-making in multi-AI-agent frameworks is crucial for analyzing strategic interactions in network-effect-driven contexts. This study investigates how AI agents navigate network-effect games, where individual payoffs depend on peer participatio--a context underexplored in multi-agent systems despite its real-world prevalence. We introduce a novel workflow design using large language model (LLM)-based agents in repeated decision-making scenarios, systematically manipulating price trajectories (fixed, ascending, descending, random) and network-effect strength. Our key findings include: First, without historical data, agents fail to infer equilibrium. Second, ordered historical sequences (e.g., escalating prices) enable partial convergence under weak network effects but strong effects trigger persistent\"AI optimism\"--agents overestimate participation despite contradictory evidence. Third, randomized history disrupts convergence entirely, demonstrating that temporal coherence in data shapes LLMs'reasoning, unlike humans. These results highlight a paradigm shift: in AI-mediated systems, equilibrium outcomes depend not just on incentives, but on how history is curated, which is impossible for human.",
+    "title": "ML-Dev-Bench: Comparative Analysis of AI Agents on ML development workflows",
+    "abstract": "In this report, we present ML-Dev-Bench, a benchmark aimed at testing agentic capabilities on applied Machine Learning development tasks. While existing benchmarks focus on isolated coding tasks or Kaggle-style competitions, ML-Dev-Bench tests agents' ability to handle the full complexity of ML development workflows. The benchmark assesses performance across critical aspects including dataset handling, model training, improving existing models, debugging, and API integration with popular ML tools. We evaluate three agents - ReAct, Openhands, and AIDE - on a diverse set of 30 tasks, providing insights into their strengths and limitations in handling practical ML development challenges. We open source the benchmark for the benefit of the community at \\href{https://github.com/ml-dev-bench/ml-dev-bench}{https://github.com/ml-dev-bench/ml-dev-bench}.",
     "authors": [
-      "Yu Liu",
-      "Wenwen Li",
-      "Yifan Dou",
-      "Guangnan Ye"
+      "Harshith Padigela",
+      "Chintan Shah",
+      "Dinkar Juyal"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/a60bafb63e0022b9e04042d27361282e90a3df01",
+    "url": "https://www.semanticscholar.org/paper/d3dc789db41b8f6b633bbac276559d0e53bc91e5",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
-    "abstract": "Large Language Models (LLMs) have demonstrated remarkable prowess in generating contextually coherent responses, yet their fixed context windows pose fundamental challenges for maintaining consistency over prolonged multi-session dialogues. We introduce Mem0, a scalable memory-centric architecture that addresses this issue by dynamically extracting, consolidating, and retrieving salient information from ongoing conversations. Building on this foundation, we further propose an enhanced variant that leverages graph-based memory representations to capture complex relational structures among conversational elements. Through comprehensive evaluations on LOCOMO benchmark, we systematically compare our approaches against six baseline categories: (i) established memory-augmented systems, (ii) retrieval-augmented generation (RAG) with varying chunk sizes and k-values, (iii) a full-context approach that processes the entire conversation history, (iv) an open-source memory solution, (v) a proprietary model system, and (vi) a dedicated memory management platform. Empirical results show that our methods consistently outperform all existing memory systems across four question categories: single-hop, temporal, multi-hop, and open-domain. Notably, Mem0 achieves 26% relative improvements in the LLM-as-a-Judge metric over OpenAI, while Mem0 with graph memory achieves around 2% higher overall score than the base configuration. Beyond accuracy gains, we also markedly reduce computational overhead compared to full-context method. In particular, Mem0 attains a 91% lower p95 latency and saves more than 90% token cost, offering a compelling balance between advanced reasoning capabilities and practical deployment constraints. Our findings highlight critical role of structured, persistent memory mechanisms for long-term conversational coherence, paving the way for more reliable and efficient LLM-driven AI agents.",
+    "title": "DEVELOPMENT OF A HYBRID TESTING FRAMEWORK FOR MULTIMODAL SYSTEMS BASED ON AI AGENTS",
+    "abstract": ". The relevance of this research stems from the need to ensure the high quality and reliability of multimodal systems that integrate heterogeneous data and artificial intelligence algorithms. These systems are becoming increasingly complex, which requires new approaches to their testing. Existing methodologies are fragmented, do not consider integrated interactions between data channels, and fail to provide a comprehensive assessment of system performance in dynamic environments. This creates risks for the implementation of innovative technologies in critical domains such as healthcare, transportation, and the financial sector. Purpose of the article. The purpose of this study is to develop a hybrid testing framework for multimodal systems based on AI agents that enables a comprehensive assessment of their functional quality and reliability in practical applications. Research methodology. The research is based on systemic and interdisciplinary approaches that provide a holistic view of the problem of testing multimodal systems. Structural-functional analysis was used to identify key characteristics of reliability and quality, while logical and analytical methods were applied to generalize theoretical principles and compare existing approaches. In addition, the principles of agent-oriented architecture were employed to describe interactions between subsystems. This methodology made it possible to integrate different levels of research, from conceptual to applied, and to identify patterns in the functioning of the hybrid framework. Research results. The study identified key challenges in testing multimodal systems, such as data heterogeneity, the complexity of constructing representative scenarios, and the high computational cost of testing processes. It was established that the use of a hybrid approach reduces error risks and improves the accuracy of detecting critical deviations. The feasibility of implementing a multilevel verification model was demonstrated, ensuring consistency between modalities and adaptability",
     "authors": [
-      "P. Chhikara",
-      "Dev Khant",
-      "Saket Aryan",
-      "Taranjeet Singh",
-      "Deshraj Yadav"
+      "Dmytro Kyiashko"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/1d9c21a0fdb1cc16a32c5d490ebaf98436a23382",
+    "url": "https://www.semanticscholar.org/paper/0a9b1a7684afaa2efb7fffb15f6232d82df9e38d",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
-    "abstract": "AI agents negotiate and transact in natural language with unfamiliar counterparts: a buyer bot facing an unknown seller, or a procurement assistant negotiating with a supplier. In such interactions, the counterpart's LLM, prompts, control logic, and rule-based fallbacks are hidden, while each decision can have monetary consequences. We ask whether an agent can predict an unfamiliar counterpart's next decision from a few interactions. To avoid real-world logging confounds, we study this problem in controlled bargaining and negotiation games, formulating it as target-adaptive text-tabular prediction: each decision point is a table row combining structured game state, offer history, and dialogue, while $K$ previous games of the same target agent, i.e., the counterpart being modeled, are provided in the prompt as labeled adaptation examples. Our model is built on a tabular foundation model that represents rows using game-state features and LLM-based text representations, and adds LLM-as-Observer as an additional representation: a small frozen LLM reads the decision-time state and dialogue; its answer is discarded, and its hidden state becomes a decision-oriented feature, making the LLM an encoder rather than a direct few-shot predictor. Training on 13 frontier-LLM agents and testing on 91 held-out scaffolded agents, the full model outperforms direct LLM-as-Predictor prompting and game+text features baselines. Within this tabular model, Observer features contribute beyond the other feature schemes: at $K=16$, they improve response-prediction AUC by about 4 points across both tasks and reduce bargaining offer-prediction error by 14%. These results show that formulating counterpart prediction as a target-adaptive text-tabular task enables effective adaptation, and that hidden LLM representations expose decision-relevant signals that direct prompting does not surface.",
+    "title": "From Sprint Planning to Guardrail Engineering: Rethinking Software Development in the Age of AI Agents",
+    "abstract": "The rapid adoption of AI-assisted coding agents is reshaping software development by reducing the cost of feature creation while simultaneously increasing the risk of latent defects, architecture drift, and poorly understood system interactions. Traditional development processes assume that implementation effort is the primary constraint, making sprint planning, task decomposition, and team specialization central to delivery. In contrast, agent-assisted development shifts the bottleneck from code production to oversight, verification, and constraint design. This paper examines whether conventional agile structures remain adequate when feature implementation can be generated quickly by systems that operate with limited contextual understanding, uneven reasoning depth, and minimal accountability. We argue that future software en- gineering workflows will depend less on language-specific expertise and more on system-specific guardrails, eval- uation harnesses, policy enforcement, and release safety mechanisms. Through analysis of emerging development patterns, this work explores how AI agents change defect introduction, review responsibilities, testing strategy, and organizational roles. The paper proposes a framework for “guardrail-centric development,” where engineering quality is measured by the robustness of constraints, observability, and rollback design rather than by im- plementation velocity alone. The study further identifies novel failure modes, including agent-amplified technical debt, invisible requirement drift, and automated changes that satisfy local tests while violating global system intent. The goal is to define a new process model for software teams operating in an era where code is abundant, but trustworthy integration is scarce.",
     "authors": [
-      "Eilam Shapira",
-      "Moshe Tennenholtz",
-      "Roi Reichart"
+      "Anand Ganesh"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/3978ef8da2779dd2684829bd27628f68357b64dc",
+    "url": "https://www.semanticscholar.org/paper/bd05508f51856ebd96c9fa6ac820149d5da2da76",
     "year": "2026",
     "categories": []
   },
   {
-    "title": "Towards Automating Data Access Permissions in AI Agents",
-    "abstract": "As AI agents attempt to autonomously act on users'behalf, they raise transparency and control issues. We argue that permission-based access control is indispensable in providing meaningful control to the users, but conventional permission models are inadequate for the automated agentic execution paradigm. We therefore propose automated permission management for AI agents. Our key idea is to conduct a user study to identify the factors influencing users'permission decisions and to encode these factors into an ML-based permission management assistant capable of predicting users'future decisions. We find that participants'permission decisions are influenced by communication context but importantly individual preferences tend to remain consistent within contexts, and align with those of other participants. Leveraging these insights, we develop a permission prediction model achieving 85.1% accuracy overall and 94.4% for high-confidence predictions. We find that even without using permission history, our model achieves an accuracy of 66.9%, and a slight increase of training samples (i.e., 1-4) can substantially increase the accuracy by 10.8%.",
+    "title": "Cloud Infrastructure Management in the Age of AI Agents",
+    "abstract": "Cloud infrastructure is the cornerstone of the modern IT industry. However, managing this infrastructure effectively requires considerable manual effort from the DevOps engineering team. We make a case for developing AI agents powered by large language models (LLMs) to automate cloud infrastructure management tasks. In a preliminary study, we investigate the potential for AI agents to use different cloud/user interfaces such as software development kits (SDK), command line interfaces (CLI), Infrastructure-as-Code (IaC) platforms, and web portals. We report takeaways on their effectiveness on different management tasks, and identify research challenges and potential solutions.",
     "authors": [
-      "Yuhao Wu",
-      "Ke Yang",
-      "Franziska Roesner",
-      "Tadayoshi Kohno",
-      "Ning Zhang",
-      "Umar Iqbal"
+      "Zhenning Yang",
+      "Archit Bhatnagar",
+      "Yiming Qiu",
+      "Tongyuan Miao",
+      "Patrick Tser Jern Kon",
+      "Yunming Xiao",
+      "Yibo Huang",
+      "Martin Casado",
+      "Ang Chen"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/ab53a035ebac356dd532c3dd5886d2317f6f126e",
+    "url": "https://www.semanticscholar.org/paper/d56007253166c390c4109a499eb5cb4ec1e19cb1",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Incident Analysis for AI Agents",
-    "abstract": "As AI agents become more widely deployed, we are likely to see an increasing number of incidents: events involving AI agent use that directly or indirectly cause harm. For example, agents could be prompt-injected to exfiltrate private information or make unauthorized purchases. Structured information about such incidents (e.g., user prompts) can help us understand their causes and prevent future occurrences. However, existing incident reporting processes are not sufficient for understanding agent incidents. In particular, such processes are largely based on publicly available data, which excludes useful, but potentially sensitive, information such as an agent’s chain of thought or browser history. To inform the development of new, emerging incident reporting processes, we propose an incident analysis framework for agents. Drawing on systems safety approaches, our framework proposes three types of factors that can cause incidents: system-related (e.g., CBRN training data), contextual (e.g., prompt injections), and cognitive (e.g., misunderstanding a user request). We also identify specific information that could help clarify which factors are relevant to a given incident: activity logs, system documentation and access, and information about the tools an agent uses. We provide recommendations for 1) what information incident reports should include and 2) what information developers and deployers should retain and make available to incident investigators upon request. As we transition to a world with more agents, understanding agent incidents will become increasingly crucial for managing risks.",
+    "title": "Security of AI Agents",
+    "abstract": "AI agents have been boosted by large language models. AI agents can function as intelligent assistants and complete tasks on behalf of their users with access to tools and the ability to execute commands in their environments. Through studying and experiencing the workflow of typical AI agents, we have raised several concerns regarding their security. These potential vulnerabilities are not addressed by the frameworks used to build the agents, nor by research aimed at improving the agents. In this paper, we identify and describe these vulnerabilities in detail from a system security perspective, emphasizing their causes and severe effects. Furthermore, we introduce defense mechanisms corresponding to each vulnerability with design and experiments to evaluate their viability. Altogether, this paper contextualizes the security issues in the current development of AI agents and delineates methods to make AI agents safer and more reliable.",
     "authors": [
-      "Carson Ezell",
-      "Xavier Roberts-Gaal",
-      "Alan Chan"
+      "Yifeng He",
+      "Ethan Wang",
+      "Yuyang Rong",
+      "Zifei Cheng",
+      "Hao Chen"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/5403bb51a90e8d1b24dc9064ae8b10a70c3112cb",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Truthful and Trustworthy IoT AI Agents via Immediate-Penalty Enforcement under Approximate VCG Mechanisms",
-    "abstract": "The deployment of autonomous AI agents in Internet of Things (IoT) energy systems requires decision-making mechanisms that remain robust, efficient, and trustworthy under real-time constraints and imperfect monitoring. While reinforcement learning enables adaptive prosumer behaviors, ensuring economic consistency and preventing strategic manipulation remain open challenges, particularly when sensing noise or partial observability reduces the operator's ability to verify actions. This paper introduces a trust-enforcement framework for IoT energy trading that combines an approximate Vickrey-Clarke-Groves (VCG) double auction with an immediate one-shot penalty. Unlike reputation- or history-based approaches, the proposed mechanism restores truthful reporting within a single round, even when allocation accuracy is approximate and monitoring is noisy. We theoretically characterize the incentive gap induced by approximation and derive a penalty threshold that guarantees truthful bidding under bounded sensing errors. To evaluate learning-enabled prosumers, we embed the mechanism into a multi-agent reinforcement learning environment reflecting stochastic generation, dynamic loads, and heterogeneous trading opportunities. Experiments show that improved allocation accuracy reduces deviation incentives, the required penalty matches analytical predictions, and learned bidding behaviors remain stable and interpretable despite imperfect monitoring. These results demonstrate that lightweight penalty designs can reliably align strategic IoT agents with socially efficient energy-trading outcomes.",
-    "authors": [
-      "Xun Shao",
-      "Ryuuto Shimizu",
-      "Zhi Liu",
-      "K. Ota",
-      "M. Dong"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/8fab0995de3b054ccf29abe0b75729a37eda038f",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Research on Establishing a Digital Conservation System for Architectural cultural heritage Using AI Agents on the “Coze” Platform",
-    "abstract": "As a living fossil bearing history and culture, the protection of heritage buildings faces many threats, including multiple challenges at the level of ontology, such as natural disasters, man-made destruction and time erosion. At the same time, with the rapid development of tourism, the public perception of Tibetan architecture presents superficial cultural distortion and other problems. Although traditional digital protection methods rely on manual measurement and computer mapping, they can retain static data, but lack intelligent interaction ability, which makes it difficult to cope with the dual challenges of continuous protection of ontology and accurate dissemination of historical and cultural values. This paper explores a new way to carry out architectural cultural heritage education and publicity, and deepen public cultural cognition under the condition of a low technology threshold, focusing on the protection of Tibetan cultural relics. It proposes to construct high-efficiency AI agents based on a low-code “Coze” platform, thus forming an AI system for the digital protection of cultural relics. By integrating multi-source data such as text, images and 3D models, the agent builds a multi-modal knowledge graph and generates interactive websites that support VR roaming, which will provide multi-faceted services for teachers, students and the public.",
-    "authors": [
-      "Yating Zhang",
-      "Xiaolian Zhao",
-      "Qin Wei"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/97091b09add03421ca79423408a358580cb6ccbf",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "Intelligent Product 3.0: Decentralised AI Agents and Web3 Intelligence Standards",
-    "abstract": "Twenty-five years ago, the specification of the Intelligent Product was established, envisaging real-time connectivity that not only enables products to gather accurate data about themselves but also allows them to assess and influence their own destiny. Early work by the Auto-ID project focused on creating a single, open-standard repository for storing and retrieving product information, laying a foundation for scalable connectivity. A decade later, the approach was revisited in light of low-cost RFID systems that promised a low-cost link between physical goods and networked information environments. Since then, advances in blockchain, Web3, and artificial intelligence have introduced unprecedented levels of resilience, consensus, and autonomy. By leveraging decentralised identity, blockchain-based product information and history, and intelligent AI-to-AI collaboration, this paper examines these developments and outlines a new specification for the Intelligent Product 3.0, illustrating how decentralised and AI-driven capabilities facilitate seamless interaction between physical AI and everyday products.",
-    "authors": [
-      "A. Wong",
-      "D. McFarlane",
-      "C. Ellarby",
-      "M. Lee",
-      "M. Kuok"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/e9e8f8458095d36c4010ddea18fa5bfaf4f2b151",
-    "year": "2025",
-    "categories": []
-  },
-  {
-    "title": "A Social Group Chatbot System by Multiple Topics Tracking and Atkinson‐Shiffrin Memory Model Using AI Agents Collaboration",
-    "abstract": "The widespread use of Internet has accelerated the explosive growth of data, which in turn leads to information overload and information confusion. This makes it difficult for us to communicate effectively in social groups, thereby intensifying the demands for emotional companionship. Therefore, we propose a novel social group chatting framework based on Large Language Model (LLM) powered multiple autonomous agents collaboration in this article. Specifically, BERTopic is used to extract topics from history chatting content for each social group everyday, and then multiple topics tracking is realised through multi‐level association by adaptive time sliding‐window mechanism and optimal matching. Furthermore, we use topic tracking architecture and prompts to design and implement an AI Chatbot system with different characters that can conduct natural language conversations with users in online social group. LLM, as the controller and coordinator of the whole AI Chatbot for sub‐tasks, allows different AI Agents to autonomously decide whether to participate in current topic, how to generate response, and whether to propose a new topic. Each AI Agent has their own multi‐store memory system based on the Atkinson‐Shiffrin model. Finally, we construct a verification environment based on online game that is consistent with real society. Subjective and objective evaluation methods were deployed to perform qualitative and quantitative analyses to demonstrate the performance of our AI Chatbot system.",
-    "authors": [
-      "Guoshuai Zhang",
-      "Jiajing Wu",
-      "Gwanggil Jeon",
-      "Penghui Wang"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/077861f4f392f847d1e28f4a903c3b2e978563f2",
+    "url": "https://www.semanticscholar.org/paper/cb61ebdcbb36a799b7460ae33aaad8c08e98bb9f",
     "year": "2024",
     "categories": []
   },
   {
-    "title": "The Most Disruptive Near-Term Use of AI in Cancer Care: Patient Empowerment Through Software Agents",
-    "abstract": "Cancer care often involves making complex medical decisions within a challenging environment: a balkanized medical system of many specialists, information overload and obsolescence, limited time with doctors, and siloed data. New AI tools can enable patients and caregivers to more actively participate in treatment decisions. For example, consider receiving a complex scan report in a patient portal. While today, a patient may face confusion in interpreting a complex diagnostic report, a personalized generative AI agent could help by translating the scan report into language a patient can understand, and even contextualizing it within a patient’s personal health history and clinical evidence/guidelines. By providing an understandable version of the report and the clinical context of their test results, patients and their caregivers can engage more fully in decision-making with their oncology team. As described by Clayton Christensen’s “The Innovator’s Dilemma,” industry incumbents typically do not adopt disruptive technologies for fear of cannibalizing existing revenue streams (such as the case of Kodak and digital photography). This leads incumbents to serve their existing customers with the same value proposition, while ignoring “disruptive innovations” that offer a new value proposition to underserved customers (such as the transistor radio, which enabled teenagers to take their music with them). This theory predicts that institutional health care will focus on adopting AI for incremental operational improvements (e.g., patient scheduling, scan interpretation, claims processing). In this review, we argue that a positive disruptive impact of AI in oncology can come if AI-enabled software agents are used to support patients and caregivers in seeking better outcomes through personalized care. We review existing gaps and challenges that patients face as they go through receiving a cancer diagnosis, selecting a treatment plan, and then living with cancer. We use this process view to map uses of novel AI technologies that can assist patients and caregivers. This allows us to describe how current AI technologies/research and policies need to evolve to support patients and caregivers.",
+    "title": "RAG-Based AI Agents for Enterprise Software Development: Implementation Patterns and Production Deployment",
+    "abstract": "The integration of artificial intelligence (AI) agents into enterprise software development has emerged as a transformative approach to enhance productivity and code quality. Retrieval-Augmented Generation (RAG) represents a paradigm shift in how AI systems access and utilize knowledge, combining the generative capabilities of large language models (LLMs) with dynamic information retrieval mechanisms. This review paper examines the current state of RAG-based AI agents in enterprise software development contexts, focusing on implementation patterns and production deployment strategies. We analyze the architectural foundations of RAG systems, including vector databases, embedding models, and retrieval mechanisms that enable AI agents to access up-to-date code repositories, documentation, and organizational knowledge bases. The paper explores various implementation patterns such as code completion agents, automated testing assistants, documentation generators, and intelligent code review systems. We investigate production deployment challenges including scalability, latency optimization, security considerations, and integration with existing development workflows. Through systematic analysis of recent research and industrial applications, we identify key success factors for deploying RAG-based AI agents in enterprise environments, including context window management, retrieval accuracy, and hallucination mitigation strategies. The review also addresses emerging trends such as multi-agent collaboration, fine-tuning strategies for domain-specific tasks, and hybrid retrieval approaches. Our findings suggest that while RAG-based AI agents demonstrate significant potential for transforming enterprise software development, successful deployment requires careful consideration of organizational context, data privacy requirements, and continuous model evaluation frameworks.",
     "authors": [
-      "Frank E. Nothaft",
-      "Brad Power"
+      "Xiuyuan Zhao",
+      "Tiejiang Sun",
+      "Shaochen Ren",
+      "Jingyun Yang",
+      "Yang Liu"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/291388f45055f0fb4f4f910add51890939c104bd",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "History of generative Artificial Intelligence (AI) chatbots: past, present, and future development",
-    "abstract": "This research provides an in-depth comprehensive review of the progress of chatbot technology over time, from the initial basic systems relying on rules to today's advanced conversational bots powered by artificial intelligence. Spanning many decades, the paper explores the major milestones, innovations, and paradigm shifts that have driven the evolution of chatbots. Looking back at the very basic statistical model in 1906 via the early chatbots, such as ELIZA and ALICE in the 1960s and 1970s, the study traces key innovations leading to today's advanced conversational agents, such as ChatGPT and Google Bard. The study synthesizes insights from academic literature and industry sources to highlight crucial milestones, including the introduction of Turing tests, influential projects such as CALO, and recent transformer-based models. Tracing the path forward, the paper highlights how natural language processing and machine learning have been integrated into modern chatbots for more sophisticated capabilities. This chronological survey of the chatbot landscape provides a holistic reference to understand the technological and historical factors propelling conversational AI. By synthesizing learnings from this historical analysis, the research offers important context about the developmental trajectory of chatbots and their immense future potential across various field of application which could be the potential take ways for the respective research community and stakeholders.",
-    "authors": [
-      "Md. Al-Amin",
-      "Mohammad Ali",
-      "Abdus Salam",
-      "Arif Khan",
-      "Ashraf Ali",
-      "Ahsan Ullah",
-      "Md. Nur Alam",
-      "S. Chowdhury"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/da21fe0e1f6c10f0f5c8b7990ba0e344d5f670c8",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Cognis: Context-Aware Memory for Conversational AI Agents",
-    "abstract": "LLM agents lack persistent memory, causing conversations to reset each session and preventing personalization over time. We present Lyzr Cognis, a unified memory architecture for conversational AI agents that addresses this limitation through a multi-stage retrieval pipeline. Cognis combines a dual-store backend pairing OpenSearch BM25 keyword matching with Matryoshka vector similarity search, fused via Reciprocal Rank Fusion. Its context-aware ingestion pipeline retrieves existing memories before extraction, enabling intelligent version tracking that preserves full memory history while keeping the store consistent. Temporal boosting enhances time-sensitive queries, and a BGE-2 cross-encoder reranker refines final result quality. We evaluate Cognis on two independent benchmarks -- LoCoMo and LongMemEval -- across eight answer generation models, demonstrating state-of-the-art performance on both. The system is open-source and deployed in production serving conversational AI applications.",
-    "authors": [
-      "Parshva Daftari",
-      "Khush A. Patel",
-      "Shreyas Kapale",
-      "J. George",
-      "Siva Surendira"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/0a5d419200fb6bcaa07827ea917fa721a02574e2",
-    "year": "2026",
-    "categories": []
-  },
-  {
-    "title": "Commonsense AI in the History of the Web",
-    "abstract": "Machine common sense (MCS)-the challenge of enabling computers to grasp everyday human knowledge-has been a grand challenge in Artificial Intelligence (AI) since the 1950s. While recent advances in large language models have led to impressive progress, there is still no consensus on how much common sense today's AI actually possesses. In this brief review, we revisit the historical development of MCS in the context of the Web, examining how the Web's evolution-from early knowledge representation efforts to knowledge graphs, the Semantic Web, and crowdsourcing-has shaped MCS research. We argue that key breakthroughs in Web technologies were instrumental in addressing longstanding challenges of scale and coverage in commonsense reasoning. At the same time, MCS research has influenced the development of core Web applications, including intelligent agents, plausibility-based reasoning, and robust evaluation of black-box AI systems.",
-    "authors": [
-      "M. Kejriwal",
-      "Deborah L. McGuinness",
-      "Henry Lieberman"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/fb384f8d4c33d9e6db861bcf4236b18a2d394f5b",
+    "url": "https://www.semanticscholar.org/paper/c27d3248e95c6ff979476356358298d1216a43c9",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Generative Ghosts: Anticipating Benefits and Risks of AI Afterlives",
-    "abstract": "As AI systems quickly improve in both breadth and depth of performance, they lend themselves to creating increasingly powerful and realistic agents, including the possibility of agents modeled on specific people. We anticipate that within our lifetimes it may become common practice for people to create custom AI agents to interact with loved ones and/or the broader world after death; indeed, the past year has seen a boom in startups purporting to offer such services. We call these generative ghosts since such agents will be capable of generating novel content rather than merely parroting content produced by their creator while living. In this paper, we reflect on the history of technologies for AI afterlives, including current early attempts by individual enthusiasts and startup companies to create generative ghosts. We then introduce a novel design space detailing potential implementations of generative ghosts. We use this analytic framework to ground a discussion of the practical and ethical implications of various approaches to designing generative ghosts, including potential positive and negative impacts on individuals and society. Based on these considerations, we lay out a research agenda for the AI and HCI research communities to better understand the risk/benefit landscape of this novel technology to ultimately empower people who wish to create and interact with AI afterlives to do so in a beneficial manner.",
+    "title": "The Evolution of AI Agents: From Rule‐Based Systems to Autonomous Intelligence – A Comprehensive Review",
+    "abstract": "Artificial Intelligence (AI) agents have evolved from early rule‐based systems to today’s sophisticated autonomous systems. This comprehensive review examines the historical development, technical advancements, and emerging trends in AI agent research. Specifically, we address the following research questions:\n• How have AI agent architectures evolved over time, and what factors drove these changes?\n• What are the strengths and limitations of rule‐based versus learning‐based approaches in real-world applications?\n• How can ethical frameworks and empirical case studies inform future developments in AI agent technology?\nThis article outlines the selection criteria for the literature review, presents empirical examples from diverse application domains, and critically analyzes methodologies. It discusses both achievements and persistent challenges in AI agent research while offering recommendations for future research directions and governance.",
     "authors": [
-      "Meredith Ringel Morris",
-      "Jed R. Brubaker"
+      "S. Kota"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/49a1907070bde86352361fbe6856d5f949ca2201",
+    "url": "https://www.semanticscholar.org/paper/63af0b6b198ccfe715ea2833b94290ebeb218bc9",
     "year": "2024",
     "categories": []
   },
   {
-    "title": "Zero, Finite, and Infinite Belief History of Theory of Mind Reasoning in Large Language Models",
-    "abstract": "Large Language Models (LLMs) have recently shown a promise and emergence of Theory of Mind (ToM) ability and even outperform humans in certain ToM tasks. To evaluate and extend the boundaries of the ToM reasoning ability of LLMs, we propose a novel concept, taxonomy, and framework, the ToM reasoning with Zero, Finite, and Infinite Belief History and develop a multi-round text-based game, called $\\textit{Pick the Right Stuff}$, as a benchmark. We have evaluated six LLMs with this game and found their performance on Zero Belief History is consistently better than on Finite Belief History. In addition, we have found two of the models with small parameter sizes outperform all the evaluated models with large parameter sizes. We expect this work to pave the way for future ToM benchmark development and also for the promotion and development of more complex AI agents or systems which are required to be equipped with more complex ToM reasoning ability.",
+    "title": "Agentsway - Software Development Methodology for AI Agents-based Teams",
+    "abstract": "The emergence of Agentic AI is fundamentally transforming how software is designed, developed, and maintained. Traditional software development methodologies such as Agile, Kanban, ShapeUp, etc, were originally designed for human-centric teams and are increasingly inadequate in environments where autonomous AI agents contribute to planning, coding, testing, and continuous learning. To address this methodological gap, we present\"Agentsway\"a novel software development framework designed for ecosystems where AI agents operate as first-class collaborators. Agentsway introduces a structured lifecycle centered on human orchestration, and privacy-preserving collaboration among specialized AI agents. The framework defines distinct roles for planning, prompting, coding, testing, and fine-tuning agents, each contributing to iterative improvement and adaptive learning throughout the development process. By integrating fine-tuned LLMs that leverage outputs and feedback from different agents throughout the development cycle as part of a retrospective learning process, Agentsway enhances domain-specific reasoning, and explainable decision-making across the entire software development lifecycle. Responsible AI principles are further embedded across the agents through the coordinated use of multiple fine-tuned LLMs and advanced reasoning models, ensuring balanced, transparent, and accountable decision-making. This work advances software engineering by formalizing agent-centric collaboration, integrating privacy-by-design principles, and defining measurable metrics for productivity and trust. Agentsway represents a foundational step toward the next generation of AI-native, self-improving software development methodologies. To the best of our knowledge, this is the first research effort to introduce a dedicated methodology explicitly designed for AI agent-based software engineering teams.",
     "authors": [
-      "Weizhi Tang",
-      "Vaishak Belle"
+      "Eranga Bandara",
+      "Ross Gore",
+      "Xueping Liang",
+      "Sachini Rajapakse",
+      "Isurunima Kularathne",
+      "Pramoda Karunarathna",
+      "Peter B. Foytik",
+      "Sachin Shetty",
+      "R. Mukkamala",
+      "Abdul Rahman",
+      "Amin Hass",
+      "Ng Wee Keong",
+      "K. D. Zoysa",
+      "A. Withanage",
+      "Nilaan Loganathan"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/ea983bce3002ba3586daaf4fdbb18b79a5f38f68",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "The coevolution of technology, markets, and culture: the challenging case of AI",
-    "abstract": "Artificial intelligence (AI) is at the center of economic, social, political, and ethical debate. For the first time in human history, since the appearance of writing, a new type of “intelligence” is impacting the very nature of social relationships. New technologies are not only changing the operating model of markets and value chains in an accelerated way but also in how information is generated and processed, how labor, social relations, and culture evolve, etc. In this paper, we pursue two main goals. First, to set up an analytical framework in which cognitive, technical, and cultural dynamics are intertwined with the processes of deployment of economic action. Secondly, we utilize this framework to explore some key features and challenges of AI and its impact on coevolutionary processes at the cognitive, market, and cultural levels. We devote special attention to the consequences that AI may have for the concept of (economic) rationality and the formation of action plans. We conclude that AI will massively enhance agents’ spaces of action by improving efficiency and exploring new possibilities. However, AI will not change the nature of human action and the structure of the evolution of the economic system.",
-    "authors": [
-      "Félix-Fernando Muñoz"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/cee08f74cf82948b51f61136217423164e2b12bb",
-    "year": "2024",
-    "categories": []
-  },
-  {
-    "title": "Artificially intelligent agents in the social and behavioral sciences: A history and outlook",
-    "abstract": "We review the historical development and current trends of artificially intelligent agents (agentic AI) in the social and behavioral sciences: from the first programmable computers, and social simulations soon thereafter, to today's experiments with large language models. This overview emphasizes the role of AI in the scientific process and the changes brought about, both through technological advancements and the broader evolution of science from around 1950 to the present. Some of the specific points we cover include: the challenges of presenting the first social simulation studies to a world unaware of computers, the rise of social systems science, intelligent game theoretic agents, the age of big data and the epistemic upheaval in its wake, and the current enthusiasm around applications of generative AI, and many other topics. A pervasive theme is how deeply entwined we are with the technologies we use to understand ourselves.",
-    "authors": [
-      "Petter Holme",
-      "Milena Tsvetkova"
-    ],
-    "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/8628d60003c1ea958ab5383932ad2e91ffd5db02",
+    "url": "https://www.semanticscholar.org/paper/ee15c94d9e34fcc01cd42ffe39f079aa328dbccc",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "MemorIA, an Architecture for Creating Interactive AI Historical Agents in Educational Contexts",
-    "abstract": "This article presents the architecture of MemorIA, an integrative system that combines existing AI technologies into a coherent educational framework for creating interactive historical agents, with the aim of fostering students' learning interest. MemorIA generates animated digital portraits of historical figures, synchronizing facial expressions with synthesized speech to enable natural conversations with students. The system leverages NVIDIA Audio2Face for real‐time facial animation with first‐order motion model for portrait manipulation, achieving fluid interaction through low‐latency audio‐visual streaming. To assess our architecture in a field situation, we conducted a pilot study in middle school history classes, where students and teachers engaged in direct conversation with a virtual Julius Caesar during Roman history lessons. Students asked questions about ancient Rome, receiving contextually appropriate responses. While qualitative feedback suggests a positive trend toward increased student participation, some weaknesses and ethical considerations emerged. Based on this assessment, we discuss implementation challenges, suggest architectural improvements, and explore potential applications across various disciplines.",
+    "title": "AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds",
+    "abstract": "AI for IT Operations (AIOps) aims to automate complex operational tasks, such as fault localization and root cause analysis, to reduce human workload and minimize customer impact. While traditional DevOps tools and AIOps algorithms often focus on addressing isolated operational tasks, recent advances in Large Language Models (LLMs) and AI agents are revolutionizing AIOps by enabling end-to-end and multitask automation. This paper envisions a future where AI agents autonomously manage operational tasks throughout the entire incident lifecycle, leading to self-healing cloud systems, a paradigm we term AgentOps. Realizing this vision requires a comprehensive framework to guide the design, development, and evaluation of these agents. To this end, we present AIOPSLAB, a framework that not only deploys microservice cloud environments, injects faults, generates workloads, and exports telemetry data but also orchestrates these components and provides interfaces for interacting with and evaluating agents. We discuss the key requirements for such a holistic framework and demonstrate how AIOPSLAB can facilitate the evaluation of next-generation AIOps agents. Through evaluations of state-of-the-art LLM agents within the benchmark created by AIOPSLAB, we provide insights into their capabilities and limitations in handling complex operational tasks in cloud environments.",
     "authors": [
-      "Antoine Oger",
-      "G. Gorisse",
-      "S. Fleury",
-      "O. Christmann"
+      "Yinfang Chen",
+      "Manisha M Shetty",
+      "Gagan Somashekar",
+      "Ming-Jie Ma",
+      "Yogesh L. Simmhan",
+      "Jonathan Mace",
+      "Chetan Bansal",
+      "Rujia Wang",
+      "S. Rajmohan"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/77814c7d79c74b51f273f3f87418621c7d2202e4",
+    "url": "https://www.semanticscholar.org/paper/c8bbe39285da8e427250cc2a80da8f8f2f92b8cb",
     "year": "2025",
     "categories": []
   },
   {
-    "title": "Impact of AI in Humans Life",
-    "abstract": "This research paper is designed to compile, synthesize, and analyze the effects of artificial intelligence on human life. AI technology has a long history of continuous and aggressive development and growth. This focuses on smart agents, which are sensors that analyze the world and take action to improve odds of success. Artificial intelligence is developing rapidly in today's society, with new technological developments being developed on a daily basis. The previous study defined the existing AI basics and multiple representative AI applications. The capacity for artificial intelligence (AI), computer programs, and systems to fulfill a person's logical and creative activities, such as solving problems independently, drawing conclusions, and making decisions. The majority of artificial intelligence programs are capable of allowing humans to learn over time. Recent work on AI technologies, that include machine learning, deep learning, and predictive analysis, aimed to enhance the ability to plan, understand, reason, analyze, and act. The basic goal of artificial intelligence is to create advanced, complicated systems that beat people in all areas, in order to improve all human activities and provide better solutions to issues than humans can. This suggestion tries to identify how human intelligence differs from artificial intelligence",
+    "title": "DoomArena: A framework for Testing AI Agents Against Evolving Security Threats",
+    "abstract": "We present DoomArena, a security evaluation framework for AI agents. DoomArena is designed on three principles: 1) It is a plug-in framework and integrates easily into realistic agentic frameworks like BrowserGym (for web agents) and $\\tau$-bench (for tool calling agents); 2) It is configurable and allows for detailed threat modeling, allowing configuration of specific components of the agentic framework being attackable, and specifying targets for the attacker; and 3) It is modular and decouples the development of attacks from details of the environment in which the agent is deployed, allowing for the same attacks to be applied across multiple environments. We illustrate several advantages of our framework, including the ability to adapt to new threat models and environments easily, the ability to easily combine several previously published attacks to enable comprehensive and fine-grained security testing, and the ability to analyze trade-offs between various vulnerabilities and performance. We apply DoomArena to state-of-the-art (SOTA) web and tool-calling agents and find a number of surprising results: 1) SOTA agents have varying levels of vulnerability to different threat models (malicious user vs malicious environment), and there is no Pareto dominant agent across all threat models; 2) When multiple attacks are applied to an agent, they often combine constructively; 3) Guardrail model-based defenses seem to fail, while defenses based on powerful SOTA LLMs work better. DoomArena is available at https://github.com/ServiceNow/DoomArena.",
     "authors": [
-      "Shinde Snehal Hanumant",
-      "Prof. Sonali Gholve"
+      "L'eo Boisvert",
+      "Mihir Bansal",
+      "Chandra Kiran Reddy Evuru",
+      "Gabriel Huang",
+      "Abhay Puri",
+      "Avinandan Bose",
+      "Maryam Fazel",
+      "Quentin Cappart",
+      "Jason Stanley",
+      "Alexandre Lacoste",
+      "Alexandre Drouin",
+      "K. Dvijotham"
     ],
     "source": "Semantic Scholar",
-    "url": "https://www.semanticscholar.org/paper/41ce2c0d6ce7f513966ba03d627a7d694fb90912",
+    "url": "https://www.semanticscholar.org/paper/9e85ce8f1822105251870493e5326468fba18f0d",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "Embodied AI Agents: Modeling the World",
+    "abstract": "This paper describes our research on AI agents embodied in visual, virtual or physical forms, enabling them to interact with both users and their environments. These agents, which include virtual avatars, wearable devices, and robots, are designed to perceive, learn and act within their surroundings, which makes them more similar to how humans learn and interact with the environments as compared to disembodied agents. We propose that the development of world models is central to reasoning and planning of embodied AI agents, allowing these agents to understand and predict their environment, to understand user intentions and social contexts, thereby enhancing their ability to perform complex tasks autonomously. World modeling encompasses the integration of multimodal perception, planning through reasoning for action and control, and memory to create a comprehensive understanding of the physical world. Beyond the physical world, we also propose to learn the mental world model of users to enable better human-agent collaboration.",
+    "authors": [
+      "Pascale Fung",
+      "Yoram Bachrach",
+      "Asli Celikyilmaz",
+      "Kamalika Chaudhuri",
+      "Delong Chen",
+      "Willy Chung",
+      "Emmanuel Dupoux",
+      "Hervé Jégou",
+      "A. Lazaric",
+      "Arjun Majumdar",
+      "Andrea Madotto",
+      "F. Meier",
+      "Florian Metze",
+      "Théo Moutakanni",
+      "Juan Pino",
+      "Basile Terver",
+      "Joseph Tighe",
+      "J. Malik"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/121d34fe66a35ef11e408de4119477971ee6e2cc",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "Contribution of Artificial Intelligence and Virtual Worlds towards development of Super Intelligent AI Agents",
+    "abstract": "Artificial Intelligence (AI) has always been a goal as\nwell as a challenge in the scientific field with a whole new world\nbeing accessible to people by accomplishing various achievements\nin the past decades. However, in the last many years, tremendous\npopularity has been received by the interactive computer games\ninvolving multi-user virtual environment which has been the\nprime attraction for millions of users around the world. This\npaper focuses on AI agents along with exploring the progress\ntowards super intelligent AI and the roles played by artificial\nintelligence and virtual worlds in its development. It follows a\nunique approach to give an unbiased view on the various\nproblems and the relation between them. There are namely two\nbenefits from this research: firstly, evolution in science and\ntechnology requires a profound understanding on the advanced\nAI agents in the virtual worlds, and secondly, the virtual worlds\nhave always been a magnificent platform for research on the\nchallenging problems faced in the domain of Artificial\nIntelligence",
+    "authors": [
+      "Simran Koul"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/59d83a51f1e09c91bc3368571a3f1f25808cca95",
+    "year": "2020",
+    "categories": []
+  },
+  {
+    "title": "How Do Consumers Trust and Accept AI Agents? An Extended Theoretical Framework and Empirical Evidence",
+    "abstract": "With the rapid development of generative artificial intelligence (AI), AI agents are evolving into “intelligent partners” integrated into various consumer scenarios, posing new challenges to conventional consumer decision-making processes and perceptions. However, the mechanisms through which consumers develop trust and adopt AI agents in common scenarios remain unclear. Therefore, this article develops a framework based on the heuristic–systematic model to explain the behavioral decision-making mechanisms of future consumers. This model is validated through PLS-SEM with data from 632 participants in China. The results show that trust can link individuals’ dual decision paths to further drive user behavior. Additionally, we identify the key drivers of consumer behavior from two dimensions. These findings provide practical guidance for businesses and policymakers to optimize the design and development of AI agents and promote the widespread acceptance and adoption of AI technologies.",
+    "authors": [
+      "Xue Zhao",
+      "W. You",
+      "Ziqing Zheng",
+      "Shuhui Shi",
+      "Yinyu Lu",
+      "Lingyun Sun"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/ec54d7a834092ed9a7d9caab4be1c6b9ab62624d",
+    "year": "2025",
+    "categories": []
+  },
+  {
+    "title": "LeadLets: Towards a Pattern Language for Leadership Development of Human and AI Agents",
+    "abstract": "Advances in artificial intelligence (AI) technologies have inspired businesses and researchers to identify new ways in which AI can improve our way of life. One such quest lies in giving AIs complex human capabilities like leadership. We take the first step towards that goal and propose a pattern-based approach to leadership. We argue that leadership best practices are actually a series of mini interventions each of which results in a consistent and desired response from the followers. When codified, these repeatable interventions can serve as foundational blocks for AI algorithms. To this end, we introduce LeadLets: A pattern language that codifies named, scripted, and repeatable leadership techniques that have a predictable influence causing a purposeful effect on one or more individuals. We argue that a pattern-based approach such as LeadLets can create leadership templates that inform programing leadership behavior into AI artifacts and designing leaders development programs.",
+    "authors": [
+      "Triparna de Vreede",
+      "L. Steele",
+      "G. Vreede",
+      "R. Briggs"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/af1eb5b772e7f6f5f722329efec8364c48d697e1",
+    "year": "2020",
+    "categories": []
+  },
+  {
+    "title": "Generative AI Agents With Large Language Model for Satellite Networks via a Mixture of Experts Transmission",
+    "abstract": "In response to the needs of 6G global communications, satellite communication networks have emerged as a key solution. However, the large-scale development of satellite communication networks is constrained by complex system models, whose modeling is challenging for massive users. Moreover, transmission interference between satellites and users seriously affects communication performance. To solve these problems, this paper develops generative artificial intelligence (AI) agents for model formulation and then applies a mixture of experts (MoE) approach to design transmission strategies. Specifically, we leverage large language models (LLMs) to build an interactive modeling paradigm and utilize retrieval-augmented generation (RAG) to extract satellite expert knowledge that supports mathematical modeling. Afterward, by integrating the expertise of multiple specialized components, we propose an MoE-proximal policy optimization (PPO) approach to solve the formulated problem. Each expert can optimize the optimization variables at which it excels through specialized training through its own network and then aggregate them through the gating network to perform joint optimization. The simulation results validate the accuracy and effectiveness of employing a generative agent for problem formulation. Furthermore, the superiority of the proposed MoE-ppo approach over other benchmarks is confirmed in solving the formulated problem. The adaptability of MoE-PPO to various customized modeling problems has also been demonstrated.",
+    "authors": [
+      "Ruichen Zhang",
+      "Hongyang Du",
+      "Yinqiu Liu",
+      "Dusist Niyato",
+      "Jiawen Kang",
+      "Zehui Xiong",
+      "Abbas Jamalipour",
+      "Dong In Kim"
+    ],
+    "source": "Semantic Scholar",
+    "url": "https://www.semanticscholar.org/paper/6d533b0f318fd22d664356b56b68023560d3c60f",
     "year": "2024",
     "categories": []
   }

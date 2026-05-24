@@ -1,4 +1,4 @@
-"""Search -> Reader -> Relevance -> Writer -> Review loop -> Visualization pipeline."""
+"""Search -> Reader -> Relevance -> Writer -> Review loop -> Visualization -> Archive pipeline."""
 
 from __future__ import annotations
 
@@ -6,6 +6,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+from agents.archiveManager_agent import run_archive_pipeline
 from agents.reader_agent import run_reader
 from agents.relevance_agent import run_relevance
 from agents.review_agent import run_review_pipeline
@@ -111,10 +112,7 @@ def run_review_writer_loop(topic: str) -> dict:
             }
         )
 
-        if not should_rewrite:
-            break
-
-        if round_index >= MAX_REWRITE_ROUNDS:
+        if not should_rewrite or round_index >= MAX_REWRITE_ROUNDS:
             break
 
         revision_context = build_revision_context(
@@ -122,7 +120,7 @@ def run_review_writer_loop(topic: str) -> dict:
             reasons=reasons,
             revision_round=round_index + 1,
         )
-        print(f"\nReview-Writer 재작성 루프: {round_index + 1}회차 재작성 시작")
+        print(f"\nReview-Writer 피드백 루프: {round_index + 1}차 재작성 시작")
         writer_bundle = run_writer_draft_generation_bundle(
             topic=topic,
             revision_context=revision_context,
@@ -173,6 +171,25 @@ def main() -> None:
     visualization_result = run_visualization_pipeline(topic=topic)
     if not visualization_result.get("is_valid"):
         print("\nVisualization 단계에서 일부 결과를 확인할 필요가 있습니다.")
+
+    final_writer_bundle = loop_result.get("final_writer_bundle", {}) or {}
+    final_review_result = loop_result.get("final_review_result", {}) or {}
+
+    run_archive_pipeline(
+        topic=topic,
+        report_files=[
+            final_writer_bundle.get("saved_path"),
+            visualization_result.get("visualized_report"),
+        ],
+        visualization_files=list((visualization_result.get("assets", {}) or {}).values()),
+        processed_files=[
+            final_review_result.get("review_path"),
+            visualization_result.get("plan_path"),
+            visualization_result.get("asset_map_path"),
+            visualization_result.get("manifest_path"),
+        ],
+        log_files=[loop_result.get("log_path")],
+    )
 
 
 if __name__ == "__main__":
