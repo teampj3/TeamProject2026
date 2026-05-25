@@ -105,6 +105,26 @@ def build_search_status_callback(
     return callback
 
 
+def build_reader_status_callback(
+    run_id: str,
+    *,
+    started_at: str,
+    search_count: int,
+) -> Callable[[str, int], None]:
+    def callback(message: str, summary_count: int) -> None:
+        update_status(
+            run_id,
+            status="PROCESSING",
+            current_stage="reader",
+            message=message,
+            search_count=search_count,
+            summary_count=summary_count,
+            started_at=started_at,
+        )
+
+    return callback
+
+
 def should_request_revision(review_payload: dict) -> tuple[bool, list[str]]:
     reasons: list[str] = []
 
@@ -305,7 +325,14 @@ def main() -> None:
         started_at=started_at,
     )
     try:
-        summary_results = run_reader(run_id=run_id)
+        summary_results = run_reader(
+            run_id=run_id,
+            progress_callback=build_reader_status_callback(
+                run_id,
+                started_at=started_at,
+                search_count=len(search_results),
+            ),
+        )
     except Exception as error:
         write_failed_status(
             run_id,
