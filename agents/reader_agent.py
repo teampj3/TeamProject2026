@@ -120,7 +120,7 @@ def summarize_paper(
         response_text = llm.ask(prompt, max_tokens=1024)
     except Exception as error:
         log_reader(f"Claude 호출 실패: {title[:80]} / {error!r}")
-        raise RuntimeError(f"Claude call failed for '{title[:80]}'") from error
+        return None
 
     log_reader(f"Claude 응답 수신 완료: {title[:80]} / {len(response_text)} chars")
     if progress_callback:
@@ -201,19 +201,15 @@ def run_reader(
         if progress_callback:
             progress_callback(f"Processing paper {index}/{len(papers)}: {title[:80]}", len(summarized))
 
-        try:
-            summary = summarize_paper(
-                title,
-                abstract,
-                progress_callback=(
-                    (lambda message, idx=index: progress_callback(f"{message} ({idx}/{len(papers)})", len(summarized)))
-                    if progress_callback
-                    else None
-                ),
-            )
-        except Exception as error:
-            log_reader(f"[{index}/{len(papers)}] 처리 실패: {title[:80]} / {error!r}")
-            raise RuntimeError(f"Reader failed on paper {index}/{len(papers)}: {title[:80]}") from error
+        summary = summarize_paper(
+            title,
+            abstract,
+            progress_callback=(
+                (lambda message, idx=index: progress_callback(f"{message} ({idx}/{len(papers)})", len(summarized)))
+                if progress_callback
+                else None
+            ),
+        )
         if summary is None:
             skipped += 1
             log_reader(f"[{index}/{len(papers)}] 건너뜀 완료: {title[:80]}")
