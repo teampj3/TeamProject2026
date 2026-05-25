@@ -1,126 +1,310 @@
 [
   {
-    "title": "AI governance: a systematic literature review",
-    "abstract": "As artificial intelligence (AI) transforms a wide range of sectors and drives innovation, it also introduces different types of risks that should be identified, assessed, and mitigated. Various AI governance frameworks have been released recently by governments, organizations, and companies to mitigate risks associated with AI. However, it can be challenging for AI stakeholders to have a clear picture of the available AI governance frameworks, tools, or models and analyze the most suitable one for their AI system. To fill the gap, we present the literature to answer key questions: WHO is accountable for AI systems’ governance, WHAT elements are being governed, WHEN governance occurs within the AI development life cycle, and HOW it is implemented through frameworks, tools, policies, or models. Adopting the systematic literature review (SLR) methodology, this study meticulously searched, selected, and analyzed 28 articles, offering a foundation for understanding different facets of AI governance. The analysis is further enhanced by categorizing artifacts of AI governance under team-level governance, organization-level governance, industry-level governance, national-level governance, and international-level governance. The findings of this study on existing AI governance solutions can assist research communities in proposing comprehensive AI governance practices.",
+    "title": "ML-Dev-Bench: Comparative Analysis of AI Agents on ML development workflows",
+    "abstract": "In this report, we present ML-Dev-Bench, a benchmark aimed at testing agentic capabilities on applied Machine Learning development tasks. While existing benchmarks focus on isolated coding tasks or Kaggle-style competitions, ML-Dev-Bench tests agents' ability to handle the full complexity of ML development workflows. The benchmark assesses performance across critical aspects including dataset handling, model training, improving existing models, debugging, and API integration with popular ML tools. We evaluate three agents - ReAct, Openhands, and AIDE - on a diverse set of 30 tasks, providing insights into their strengths and limitations in handling practical ML development challenges. We open source the benchmark for the benefit of the community at \\href{https://github.com/ml-dev-bench/ml-dev-bench}{https://github.com/ml-dev-bench/ml-dev-bench}.",
     "authors": [
-      "Amna Batool",
-      "Didar Zowghi",
-      "Muneera Bano"
+      "Harshith Padigela",
+      "Chintan Shah",
+      "Dinkar Juyal"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/380dcd9a2dd61dabbc26c2b9b902420924721beb",
+    "url": "https://www.semanticscholar.org/paper/d3dc789db41b8f6b633bbac276559d0e53bc91e5",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 거버넌스 프레임워크, 도구, 모델에 대한 명확한 전체상을 제공하기 위해 AI 거버넌스의 책임 주체(WHO), 거버넌스 대상 요소(WHAT), 거버넌스 발생 시점(WHEN), 구현 방식(HOW)에 관한 핵심 질문에 답하는 것",
-    "method": "체계적 문헌 검토(Systematic Literature Review, SLR) 방법론을 채택하여 28편의 논문을 체계적으로 검색, 선별 및 분석",
-    "result": "AI 거버넌스의 다양한 측면을 이해하기 위한 기반을 제공하였으며, AI 거버넌스 산출물을 팀 수준, 조직 수준, 산업 수준, 국가 수준, 국제 수준 거버넌스로 분류하여 기존 AI 거버넌스 솔루션에 대한 포괄적인 분석 결과를 도출",
-    "limitation": "분석에 포함된 논문이 28편으로 제한적이며, 연구 결과가 포괄적인 AI 거버넌스 실천 방안 제안을 위한 기초 자료로서의 역할에 그치고 있어 향후 연구 커뮤니티의 추가적인 연구가 필요함"
+    "purpose": "기존 벤치마크가 고립된 코딩 작업이나 Kaggle 스타일 경쟁에 집중하는 한계를 극복하고, ML 개발 워크플로우의 전체적인 복잡성을 처리하는 AI 에이전트의 능력을 평가하기 위한 벤치마크를 제시하는 것을 목적으로 한다.",
+    "method": "데이터셋 처리, 모델 학습, 기존 모델 개선, 디버깅, 인기 있는 ML 도구와의 API 통합 등 핵심 측면을 포함한 30개의 다양한 태스크로 구성된 ML-Dev-Bench를 구축하고, ReAct, Openhands, AIDE 세 가지 에이전트를 평가하였다.",
+    "result": "세 에이전트(ReAct, Openhands, AIDE)를 30개의 태스크에 대해 평가하여 실제 ML 개발 과제 처리에 있어 각 에이전트의 강점과 한계에 대한 인사이트를 제공하였으며, 벤치마크를 오픈소스로 공개하였다.",
+    "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "TRiSM for Agentic AI: A Review of Trust, Risk, and Security Management in LLM-based Agentic Multi-Agent Systems",
-    "abstract": "Agentic AI systems, built upon large language models (LLMs) and deployed in multi-agent configurations, are redefining intelligence, autonomy, collaboration, and decision-making across enterprise and societal domains. This review presents a structured analysis of Trust, Risk, and Security Management (TRiSM) in the context of LLM-based Agentic Multi-Agent Systems (AMAS). We begin by examining the conceptual foundations of Agentic AI and highlight its architectural distinctions from traditional AI agents. We then adapt and extend the AI TRiSM framework for Agentic AI, structured around key pillars: \\textit{ Explainability, ModelOps, Security, Privacy} and \\textit{their Lifecycle Governance}, each contextualized to the challenges of AMAS. A risk taxonomy is proposed to capture the unique threats and vulnerabilities of Agentic AI, ranging from coordination failures to prompt-based adversarial manipulation. To support practical assessment in Agentic AI works, we introduce two novel metrics: the Component Synergy Score (CSS), which quantifies the quality of inter-agent collaboration, and the Tool Utilization Efficacy (TUE), which evaluates the efficiency of tool use within agent workflows. We further discuss strategies for improving explainability in Agentic AI, as well as approaches to enhancing security and privacy through encryption, adversarial robustness, and regulatory compliance. The review concludes with a research roadmap for the responsible development and deployment of Agentic AI, highlighting key directions to align emerging systems with TRiSM principles-ensuring safety, transparency, and accountability in their operation.",
+    "title": "DEVELOPMENT OF A HYBRID TESTING FRAMEWORK FOR MULTIMODAL SYSTEMS BASED ON AI AGENTS",
+    "abstract": ". The relevance of this research stems from the need to ensure the high quality and reliability of multimodal systems that integrate heterogeneous data and artificial intelligence algorithms. These systems are becoming increasingly complex, which requires new approaches to their testing. Existing methodologies are fragmented, do not consider integrated interactions between data channels, and fail to provide a comprehensive assessment of system performance in dynamic environments. This creates risks for the implementation of innovative technologies in critical domains such as healthcare, transportation, and the financial sector. Purpose of the article. The purpose of this study is to develop a hybrid testing framework for multimodal systems based on AI agents that enables a comprehensive assessment of their functional quality and reliability in practical applications. Research methodology. The research is based on systemic and interdisciplinary approaches that provide a holistic view of the problem of testing multimodal systems. Structural-functional analysis was used to identify key characteristics of reliability and quality, while logical and analytical methods were applied to generalize theoretical principles and compare existing approaches. In addition, the principles of agent-oriented architecture were employed to describe interactions between subsystems. This methodology made it possible to integrate different levels of research, from conceptual to applied, and to identify patterns in the functioning of the hybrid framework. Research results. The study identified key challenges in testing multimodal systems, such as data heterogeneity, the complexity of constructing representative scenarios, and the high computational cost of testing processes. It was established that the use of a hybrid approach reduces error risks and improves the accuracy of detecting critical deviations. The feasibility of implementing a multilevel verification model was demonstrated, ensuring consistency between modalities and adaptability",
     "authors": [
-      "Shaina Raza",
-      "Ranjan Sapkota",
-      "Manoj Karkee",
-      "Christos Emmanouilidis"
+      "Dmytro Kyiashko"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/753736d18fa9bf3ed730836b30b89bf5653cd8dd",
+    "url": "https://www.semanticscholar.org/paper/0a9b1a7684afaa2efb7fffb15f6232d82df9e38d",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "LLM 기반 에이전틱 멀티에이전트 시스템(AMAS)에서의 신뢰, 위험, 보안 관리(TRiSM) 프레임워크를 체계적으로 분석하고, 에이전틱 AI의 안전하고 책임감 있는 개발 및 배포를 위한 구조적 기반을 제공하는 것",
-    "method": "AI TRiSM 프레임워크를 에이전틱 AI에 맞게 확장하여 설명가능성, ModelOps, 보안, 프라이버시 및 생명주기 거버넌스 등 핵심 축을 중심으로 구조화하고, 위험 분류 체계(risk taxonomy) 제안 및 두 가지 새로운 평가 지표(Component Synergy Score, Tool Utilization Efficacy)를 도입하는 리뷰 연구 방법론 적용",
-    "result": "에이전틱 AI의 고유한 위협과 취약점을 포착하는 위험 분류 체계를 제안하고, 에이전트 간 협업 품질을 정량화하는 CSS와 도구 사용 효율성을 평가하는 TUE 지표를 개발하였으며, 암호화·적대적 견고성·규제 준수를 통한 보안 및 프라이버시 강화 전략과 TRiSM 원칙에 부합하는 에이전틱 AI 연구 로드맵을 제시",
-    "limitation": "제안된 CSS와 TUE 지표의 실증적 검증이 부족하며, 빠르게 진화하는 에이전틱 AI 환경에서의 프레임워크 적용 가능성과 실제 엔터프라이즈 환경에서의 구현 복잡성에 대한 추가 연구가 필요함"
+    "purpose": "이 논문은 이질적인 데이터와 인공지능 알고리즘을 통합하는 멀티모달 시스템의 높은 품질과 신뢰성을 보장하기 위한 하이브리드 테스팅 프레임워크를 개발하는 것을 목적으로 한다. 기존 방법론이 단편적이고 데이터 채널 간 통합적 상호작용을 고려하지 못하며 동적 환경에서의 종합적 성능 평가를 제공하지 못하는 문제를 해결하고자 한다.",
+    "method": "시스템적·학제간 접근법을 기반으로 하며, 신뢰성 및 품질의 핵심 특성을 식별하기 위해 구조-기능 분석을 사용하였다. 이론적 원칙을 일반화하고 기존 접근법을 비교하기 위해 논리적·분석적 방법을 적용하였으며, 하위 시스템 간 상호작용을 기술하기 위해 에이전트 지향 아키텍처 원칙을 활용하였다.",
+    "result": "멀티모달 시스템 테스팅에서 데이터 이질성, 대표적 시나리오 구성의 복잡성, 높은 계산 비용 등 핵심 과제를 식별하였다. 하이브리드 접근법의 사용이 오류 위험을 줄이고 중요 편차 탐지의 정확성을 향상시키며, 모달리티 간 일관성과 적응성을 보장하는 다단계 검증 모델의 구현 가능성이 입증되었다.",
+    "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Can We Trust AI Benchmarks? An Interdisciplinary Review of Current Issues in AI Evaluation",
-    "abstract": "Quantitative Artificial Intelligence (AI) Benchmarks have\nemerged as fundamental tools for evaluating the\nperformance, capability, and safety of AI models and\nsystems. Currently, they shape the direction of AI\ndevelopment and are playing an increasingly prominent role\nin regulatory frameworks. As their influence grows,\nhowever, so too does concerns about how and with what\neffects they evaluate highly sensitive topics such as\ncapabilities, including high-impact capabilities, safety\nand systemic risks. This paper presents an\ninterdisciplinary meta-review of about 110 studies that\ndiscuss shortcomings in quantitative benchmarking\npractices, published in the last 10 years. It brings\ntogether many fine-grained issues in the design and\napplication of benchmarks (such as biases in dataset\ncreation, inadequate documentation, data contamination, and\nfailures to distinguish signal from noise) with broader\nsociotechnical issues (such as an over-focus on evaluating\ntext-based AI models according to one-time testing logic\nthat fails to account for how AI models are increasingly\nmultimodal and interact with humans and other technical\nsystems). Our review also highlights a series of systemic\nflaws in current benchmarking practices, such as misaligned\nincentives, construct validity issues, unknown unknowns,\nand problems with the gaming of benchmark results.\nFurthermore, it underscores how benchmark practices are\nfundamentally shaped by cultural, commercial and\ncompetitive dynamics that often prioritise state-of-the-art\nperformance at the expense of broader societal concerns. By\nproviding an overview of risks associated with existing\nbenchmarking procedures, we problematise disproportionate\ntrust placed in benchmarks and contribute to ongoing\nefforts to improve the accountability and relevance of\nquantitative AI benchmarks within the complexities of\nreal-world scenarios.",
+    "title": "From Sprint Planning to Guardrail Engineering: Rethinking Software Development in the Age of AI Agents",
+    "abstract": "The rapid adoption of AI-assisted coding agents is reshaping software development by reducing the cost of feature creation while simultaneously increasing the risk of latent defects, architecture drift, and poorly understood system interactions. Traditional development processes assume that implementation effort is the primary constraint, making sprint planning, task decomposition, and team specialization central to delivery. In contrast, agent-assisted development shifts the bottleneck from code production to oversight, verification, and constraint design. This paper examines whether conventional agile structures remain adequate when feature implementation can be generated quickly by systems that operate with limited contextual understanding, uneven reasoning depth, and minimal accountability. We argue that future software en- gineering workflows will depend less on language-specific expertise and more on system-specific guardrails, eval- uation harnesses, policy enforcement, and release safety mechanisms. Through analysis of emerging development patterns, this work explores how AI agents change defect introduction, review responsibilities, testing strategy, and organizational roles. The paper proposes a framework for “guardrail-centric development,” where engineering quality is measured by the robustness of constraints, observability, and rollback design rather than by im- plementation velocity alone. The study further identifies novel failure modes, including agent-amplified technical debt, invisible requirement drift, and automated changes that satisfy local tests while violating global system intent. The goal is to define a new process model for software teams operating in an era where code is abundant, but trustworthy integration is scarce.",
     "authors": [
-      "Maria Eriksson",
-      "Erasmo Purificato",
-      "Arman Noroozian",
-      "João Vinagre",
-      "Guillaume Chaslot",
-      "Emilia Gómez",
-      "D. Fernández-Llorca"
+      "Anand Ganesh"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/9d99a18b4cbb8fcb8cffde79ade4f462c5b97afe",
+    "year": "2026",
+    "url": "https://www.semanticscholar.org/paper/bd05508f51856ebd96c9fa6ac820149d5da2da76",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "AI 벤치마크의 신뢰성에 대한 의문을 제기하고, 현재 정량적 AI 벤치마킹 관행의 문제점과 한계를 체계적으로 검토하여 AI 평가의 책임성과 관련성 향상에 기여하는 것",
-    "method": "지난 10년간 발표된 정량적 벤치마킹 관행의 단점을 다룬 약 110편의 연구를 대상으로 학제간 메타 리뷰(interdisciplinary meta-review) 수행",
-    "result": "데이터셋 편향, 불충분한 문서화, 데이터 오염, 신호-노이즈 구분 실패 등 세부적 설계 문제와 함께, 잘못된 인센티브 구조, 구성 타당성 문제, 미지의 미지수(unknown unknowns), 벤치마크 결과 조작 등 시스템적 결함이 존재하며, 벤치마킹 관행이 문화적·상업적·경쟁적 역학에 의해 최첨단 성능 중심으로 편향되어 사회적 우려를 경시한다는 점을 규명",
-    "limitation": "메타 리뷰 방식으로 기존 문헌에 의존하기 때문에 직접적인 실증 분석이 부재하며, 빠르게 변화하는 AI 평가 환경을 완전히 반영하는 데 한계가 있고, 벤치마킹 개선을 위한 구체적인 대안 제시보다는 문제 진단에 초점이 맞춰져 있어 후속 연구에서 실질적 해결 방안 마련이 필요함"
+    "purpose": "AI 보조 코딩 에이전트의 급속한 도입으로 인해 기존 애자일 개발 프로세스가 더 이상 적합하지 않을 수 있다는 문제를 제기하며, 코드 생산보다 감독·검증·제약 설계가 핵심 병목이 되는 새로운 소프트웨어 개발 프로세스 모델을 정의하는 것을 목적으로 한다.",
+    "method": "신흥 개발 패턴 분석을 통해 AI 에이전트가 결함 도입, 리뷰 책임, 테스트 전략, 조직 역할에 미치는 변화를 검토하였으며, 이를 바탕으로 '가드레일 중심 개발(guardrail-centric development)' 프레임워크를 제안하였다.",
+    "result": "구현 속도보다 제약의 견고성, 관찰 가능성, 롤백 설계로 엔지니어링 품질을 측정하는 가드레일 중심 개발 프레임워크를 제안하였으며, 에이전트로 인한 기술 부채 증폭, 보이지 않는 요구사항 드리프트, 전역 시스템 의도를 위반하는 자동화 변경 등 새로운 실패 유형을 식별하였다.",
+    "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Ethical and regulatory considerations in the use of AI and machine learning in nursing: A systematic review.",
-    "abstract": "AIM\nThis study systematically explores the ethical and regulatory considerations surrounding the integration of artificial intelligence (AI) and machine learning (ML) in nursing practice, with a focus on patient autonomy, data privacy, algorithmic bias, and accountability.\n\n\nBACKGROUND\nAI and ML are transforming nursing practice by enhancing clinical decision-making and operational efficiency. However, these technologies present significant ethical challenges related to ensuring patient autonomy, safeguarding data privacy, mitigating algorithmic bias, and ensuring transparency in decision-making processes. Current frameworks are not sufficiently tailored to nursing-specific contexts.\n\n\nMETHODS\nA systematic review was conducted, adhering to PRISMA guidelines. Six major databases were searched for studies published between 2000 and 2024. Seventeen studies met the inclusion criteria and were included in the final analysis.\n\n\nRESULTS\nFive key themes emerged from the review: enhancement of clinical decision-making, promotion of ethical awareness, support for routine nursing tasks, challenges in algorithmic bias, and the importance of public engagement in regulatory frameworks. The review identified critical gaps in nursing-specific ethical guidelines and regulatory oversight for AI integration in practice.\n\n\nDISCUSSION\nAI technologies offer substantial benefits for nursing, particularly in decision-making and task efficiency. However, these advantages must be balanced against ethical concerns, including the protection of patient rights, algorithmic transparency, and bias mitigation. Current regulatory frameworks require adaptation to meet the ethical needs of nursing.\n\n\nCONCLUSION AND IMPLICATIONS FOR NURSING AND HEALTH POLICY\nThe findings emphasize the need for the development of nursing-specific ethical guidelines and robust regulatory frameworks to ensure the responsible integration of AI technologies into nursing practice. AI integration must uphold ethical principles while enhancing the quality of care.",
+    "title": "Cloud Infrastructure Management in the Age of AI Agents",
+    "abstract": "Cloud infrastructure is the cornerstone of the modern IT industry. However, managing this infrastructure effectively requires considerable manual effort from the DevOps engineering team. We make a case for developing AI agents powered by large language models (LLMs) to automate cloud infrastructure management tasks. In a preliminary study, we investigate the potential for AI agents to use different cloud/user interfaces such as software development kits (SDK), command line interfaces (CLI), Infrastructure-as-Code (IaC) platforms, and web portals. We report takeaways on their effectiveness on different management tasks, and identify research challenges and potential solutions.",
     "authors": [
-      "Sobhia Ahmed Abdel Kader Mohammed",
-      "Yasmine M Osman",
-      "A. Ibrahim",
-      "Mostafa Shaban"
+      "Zhenning Yang",
+      "Archit Bhatnagar",
+      "Yiming Qiu",
+      "Tongyuan Miao",
+      "Patrick Tser Jern Kon",
+      "Yunming Xiao",
+      "Yibo Huang",
+      "Martin Casado",
+      "Ang Chen"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/0487760acb05d31a7601b54fed2139cef3c2bbf9",
+    "url": "https://www.semanticscholar.org/paper/d56007253166c390c4109a499eb5cb4ec1e19cb1",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "간호 실무에서 인공지능(AI) 및 머신러닝(ML) 통합과 관련된 윤리적·규제적 고려사항, 특히 환자 자율성, 데이터 프라이버시, 알고리즘 편향, 책임성을 체계적으로 탐구하는 것",
-    "method": "PRISMA 가이드라인을 준수한 체계적 문헌 고찰로, 6개의 주요 데이터베이스에서 2000년부터 2024년 사이에 발표된 연구를 검색하여 최종적으로 17개의 연구를 분석에 포함",
-    "result": "임상 의사결정 향상, 윤리적 인식 증진, 일상적 간호 업무 지원, 알고리즘 편향의 도전, 규제 프레임워크에서 공공 참여의 중요성 등 5가지 핵심 주제가 도출되었으며, 간호 특화 윤리 지침 및 AI 통합에 대한 규제 감독의 중요한 공백이 확인됨",
-    "limitation": "현재 규제 프레임워크가 간호 특화 맥락에 충분히 맞춰져 있지 않으며, 간호 분야 AI 통합을 위한 구체적인 윤리 지침 및 규제 체계 개발이 후속 과제로 필요함"
+    "purpose": "클라우드 인프라 관리에 상당한 수작업이 필요한 문제를 해결하기 위해, LLM 기반 AI 에이전트를 활용한 클라우드 인프라 관리 자동화의 가능성을 제시하는 것을 목적으로 한다.",
+    "method": "예비 연구를 통해 AI 에이전트가 SDK, CLI, IaC 플랫폼, 웹 포털 등 다양한 클라우드 및 사용자 인터페이스를 활용할 수 있는 가능성을 조사하였다.",
+    "result": "다양한 관리 작업에서 각 인터페이스의 효과성에 대한 시사점을 도출하였으며, 연구 과제 및 잠재적 해결책을 식별하였다.",
+    "limitation": "본 연구는 예비 연구 단계에 머물러 있으며, 연구 과제와 잠재적 해결책을 제시하는 수준에서 논의가 이루어졌다."
   },
   {
-    "title": "Exploring the Landscape of Generative AI (ChatGPT)-Powered Writing Instruction in English as a Foreign Language Education: A Scoping Review",
-    "abstract": "Purpose Recent advancements in artificial intelligence (AI)-powered technologies, particularly ChatGPT, have sparked significant interest in English as a Foreign Language (EFL) education. This review aims to explore the landscape of ChatGPT's application in EFL writing. Design/Approach/Method Given the nascence of this field, the study conducts a scoping review by analyzing 16 empirical studies published before December 2023 to investigate the role of ChatGPT in EFL writing. Findings The review explores the current and potential uses of ChatGPT in EFL writing, highlighting its dual role as both a writing assistant and an assessment tool. On one hand, ChatGPT is widely acknowledged for providing real-time feedback that enhances writing quality and efficiency. On the other hand, challenges and concerns remain prevalent. Originality/Value The findings reveal key gaps in the literature, such as the need for more interdisciplinary research, the adaptation of AI models to meet the linguistic and cultural needs of EFL learners, and the integration of multimodal AI tools. The review emphasizes the importance of critical thinking and information literacy training for educators and students while addressing ethical considerations. These insights offer a roadmap for future research and the practical implementation of AI in language education, providing valuable guidance for different stakeholders.",
+    "title": "Security of AI Agents",
+    "abstract": "AI agents have been boosted by large language models. AI agents can function as intelligent assistants and complete tasks on behalf of their users with access to tools and the ability to execute commands in their environments. Through studying and experiencing the workflow of typical AI agents, we have raised several concerns regarding their security. These potential vulnerabilities are not addressed by the frameworks used to build the agents, nor by research aimed at improving the agents. In this paper, we identify and describe these vulnerabilities in detail from a system security perspective, emphasizing their causes and severe effects. Furthermore, we introduce defense mechanisms corresponding to each vulnerability with design and experiments to evaluate their viability. Altogether, this paper contextualizes the security issues in the current development of AI agents and delineates methods to make AI agents safer and more reliable.",
     "authors": [
-      "Feiwen Xiao (肖斐文)",
-      "Siyu Zhu (朱思宇)",
-      "Wen Xin (辛闻)"
+      "Yifeng He",
+      "Ethan Wang",
+      "Yuyang Rong",
+      "Zifei Cheng",
+      "Hao Chen"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/9c2dcb66fbf8735541b0ec2ba2b0bd4daa7bd9a1",
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/cb61ebdcbb36a799b7460ae33aaad8c08e98bb9f",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "EFL(영어를 외국어로 배우는) 교육에서 ChatGPT를 활용한 쓰기 지도의 현황과 잠재적 활용 가능성을 탐색하는 것",
-    "method": "2023년 12월 이전에 출판된 16편의 실증 연구를 분석하는 스코핑 리뷰(scoping review) 방법론 사용",
-    "result": "ChatGPT는 EFL 쓰기에서 실시간 피드백을 제공하는 쓰기 보조 도구이자 평가 도구로서 이중적 역할을 수행하며 쓰기 품질과 효율성을 향상시키는 것으로 나타났으나, 동시에 여러 도전과 우려도 존재함",
-    "limitation": "학제 간 연구 부족, EFL 학습자의 언어적·문화적 필요에 맞는 AI 모델 적응 필요, 멀티모달 AI 도구 통합 부재, 교육자와 학생을 위한 비판적 사고 및 정보 리터러시 교육의 필요성, 윤리적 고려사항 해결 등이 후속 과제로 제시됨"
+    "purpose": "AI 에이전트의 워크플로우를 연구하여 보안 취약점을 식별하고, 기존 프레임워크 및 연구에서 다루지 않은 잠재적 보안 문제를 시스템 보안 관점에서 해결하는 것을 목적으로 한다.",
+    "method": "일반적인 AI 에이전트의 워크플로우를 연구하고 경험함으로써 취약점을 식별 및 상세히 기술하였으며, 각 취약점에 대응하는 방어 메커니즘을 설계하고 실험을 통해 그 실현 가능성을 평가하였다.",
+    "result": "AI 에이전트의 보안 취약점을 시스템 보안 관점에서 원인과 심각한 영향을 강조하며 식별 및 기술하였고, 각 취약점에 대응하는 방어 메커니즘을 제시하여 AI 에이전트를 더 안전하고 신뢰할 수 있게 만드는 방법을 제안하였다.",
+    "limitation": "초록에 명시되지 않음"
   },
   {
-    "title": "Holding AI-Based Systems Accountable in the Public Sector: A Systematic Review",
-    "abstract": "Abstract Due to the significant advancements in technology and computing power over the past few decades, artificial intelligence-based systems have emerged as desirable tools for improving public services. Scholars have dedicated considerable effort to understanding this growing trend. A key focus of this research has been accountability, which has become a prominent concern in the scholarly discourse. Studies reveal that the integration of AI into government processes introduces unique challenges to maintaining governmental accountability. In response, scholars have proposed various policy and management strategies to tackle these issues. Despite extensive research, there remains a divergence in how accountability is conceptualized in the context of using AI-based systems in government, indicating a gap in the systematic understanding regarding how to hold the use of such systems accountable. To bridge this gap, we conducted a systematic review of the existing research on AI-based system accountability in the public sector. Our findings based on thirty-six articles highlight the existence of different forums and actors, and the mechanisms recommended to ensure accountability. We also identified challenges and enablers that could affect the efficacy of these mechanisms. Lastly, our analysis uncovers several areas requiring further exploration, offering directions for future research in this field.",
+    "title": "RAG-Based AI Agents for Enterprise Software Development: Implementation Patterns and Production Deployment",
+    "abstract": "The integration of artificial intelligence (AI) agents into enterprise software development has emerged as a transformative approach to enhance productivity and code quality. Retrieval-Augmented Generation (RAG) represents a paradigm shift in how AI systems access and utilize knowledge, combining the generative capabilities of large language models (LLMs) with dynamic information retrieval mechanisms. This review paper examines the current state of RAG-based AI agents in enterprise software development contexts, focusing on implementation patterns and production deployment strategies. We analyze the architectural foundations of RAG systems, including vector databases, embedding models, and retrieval mechanisms that enable AI agents to access up-to-date code repositories, documentation, and organizational knowledge bases. The paper explores various implementation patterns such as code completion agents, automated testing assistants, documentation generators, and intelligent code review systems. We investigate production deployment challenges including scalability, latency optimization, security considerations, and integration with existing development workflows. Through systematic analysis of recent research and industrial applications, we identify key success factors for deploying RAG-based AI agents in enterprise environments, including context window management, retrieval accuracy, and hallucination mitigation strategies. The review also addresses emerging trends such as multi-agent collaboration, fine-tuning strategies for domain-specific tasks, and hybrid retrieval approaches. Our findings suggest that while RAG-based AI agents demonstrate significant potential for transforming enterprise software development, successful deployment requires careful consideration of organizational context, data privacy requirements, and continuous model evaluation frameworks.",
     "authors": [
-      "Qianli Yuan",
-      "Tzuhao Chen"
+      "Xiuyuan Zhao",
+      "Tiejiang Sun",
+      "Shaochen Ren",
+      "Jingyun Yang",
+      "Yang Liu"
     ],
     "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/3b72dde7b6a48b36b136bc63189594e40b0d27ca",
+    "url": "https://www.semanticscholar.org/paper/c27d3248e95c6ff979476356358298d1216a43c9",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "공공 부문에서 AI 기반 시스템의 책임성(accountability)을 어떻게 확보할 것인지에 대한 체계적 이해의 부재를 해소하고, 관련 연구의 개념적 다양성을 정리하기 위함",
-    "method": "공공 부문의 AI 기반 시스템 책임성에 관한 기존 연구를 대상으로 체계적 문헌 검토(systematic review) 수행 (총 36편의 논문 분석)",
-    "result": "AI 책임성 확보를 위한 다양한 포럼과 행위자의 존재를 확인하였으며, 책임성 메커니즘과 이를 촉진하거나 저해하는 도전 요인 및 활성화 요인을 식별함",
-    "limitation": "추가적인 탐구가 필요한 여러 영역이 존재하며, 향후 연구 방향을 제시하는 데 그쳐 구체적인 실증적 검증이 부족하고 AI 책임성 개념화 방식의 다양성으로 인한 연구 간 비교의 어려움이 존재함"
+    "purpose": "이 논문은 기업 소프트웨어 개발 환경에서 RAG 기반 AI 에이전트의 현재 상태를 검토하며, 구현 패턴과 프로덕션 배포 전략을 분석하는 것을 목적으로 한다.",
+    "method": "최근 연구 및 산업 적용 사례에 대한 체계적 분석을 통해 RAG 시스템의 아키텍처 기반(벡터 데이터베이스, 임베딩 모델, 검색 메커니즘)과 코드 완성 에이전트, 자동화 테스트 보조 도구, 문서 생성기, 지능형 코드 리뷰 시스템 등 다양한 구현 패턴을 조사하였다.",
+    "result": "RAG 기반 AI 에이전트는 기업 소프트웨어 개발 혁신에 상당한 잠재력을 보이며, 컨텍스트 윈도우 관리, 검색 정확도, 환각 완화 전략이 성공적 배포의 핵심 요인으로 식별되었다.",
+    "limitation": "성공적인 배포를 위해서는 조직적 맥락, 데이터 프라이버시 요구사항, 지속적인 모델 평가 프레임워크에 대한 신중한 고려가 필요하며, 확장성, 지연 최적화, 보안, 기존 개발 워크플로우와의 통합 등의 배포 과제가 존재한다."
   },
   {
-    "title": "A review of sustainability assessment of geopolymer concrete through AI-based life cycle analysis",
-    "abstract": "Geopolymer concrete is acknowledged as a sustainable alternative to conventional Portland cement concrete owing to its ability to reduce carbon emissions and reutilize industrial by-products. This paper reviews the application of Artificial Intelligence-based Life Cycle Analysis (LCA) techniques in the sustainability assessment of geopolymer concrete. The assessment covers the entire life cycle of geopolymer concrete, spanning from the extraction of raw materials to its ultimate disposal, with a particular focus on its environmental, economic, and social impacts. The incorporation of AI techniques into the LCA process offers notable advantages, such as the efficient management of large datasets, enhancement of data quality, prediction of environmental impacts, and facilitation of informed decision-making. Key sustainability metrics to be considered include environmental impacts such as carbon footprint and energy consumption, economic factors like cost-effectiveness, as well as social implications. The amalgamation of AI within the LCA framework provides a comprehensive and efficient approach to evaluating the sustainability of geopolymer concrete, thereby facilitating its application in sustainable construction practices.",
+    "title": "The Evolution of AI Agents: From Rule‐Based Systems to Autonomous Intelligence – A Comprehensive Review",
+    "abstract": "Artificial Intelligence (AI) agents have evolved from early rule‐based systems to today’s sophisticated autonomous systems. This comprehensive review examines the historical development, technical advancements, and emerging trends in AI agent research. Specifically, we address the following research questions:\n• How have AI agent architectures evolved over time, and what factors drove these changes?\n• What are the strengths and limitations of rule‐based versus learning‐based approaches in real-world applications?\n• How can ethical frameworks and empirical case studies inform future developments in AI agent technology?\nThis article outlines the selection criteria for the literature review, presents empirical examples from diverse application domains, and critically analyzes methodologies. It discusses both achievements and persistent challenges in AI agent research while offering recommendations for future research directions and governance.",
     "authors": [
-      "V. Ramesh",
-      "B. Muthramu",
-      "D. Rebekhal"
+      "S. Kota"
     ],
-    "year": "2025",
-    "url": "https://www.semanticscholar.org/paper/3f5f851249a51dac57da5327fc9bbead86862f68",
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/63af0b6b198ccfe715ea2833b94290ebeb218bc9",
     "source": "Semantic Scholar",
     "categories": [],
-    "purpose": "지오폴리머 콘크리트의 지속가능성 평가를 위해 AI 기반 전과정평가(LCA) 기법의 적용 현황을 검토하고, 환경적·경제적·사회적 영향을 종합적으로 분석하는 것",
-    "method": "지오폴리머 콘크리트의 원자재 추출부터 최종 폐기까지 전체 생애주기를 대상으로 AI 기술을 접목한 LCA 기법을 적용하여 문헌 검토(review) 방식으로 분석",
-    "result": "AI 기술을 LCA 프레임워크에 통합함으로써 대규모 데이터의 효율적 관리, 데이터 품질 향상, 환경 영향 예측, 의사결정 지원이 가능하며, 탄소 발자국·에너지 소비·비용 효율성 등 핵심 지속가능성 지표 평가에 있어 포괄적이고 효율적인 접근이 가능함을 확인",
-    "limitation": "리뷰 논문으로서 실험적 검증이 부재하며, AI 기반 LCA의 실제 현장 적용 사례 및 사회적 영향 평가에 대한 구체적 데이터가 부족하고, 향후 실증 연구 및 표준화된 평가 체계 마련이 필요함"
+    "purpose": "이 논문은 AI 에이전트의 역사적 발전 과정, 기술적 진보, 그리고 새로운 연구 동향을 종합적으로 검토하는 것을 목적으로 한다. 특히 AI 에이전트 아키텍처의 진화 요인, 규칙 기반 대 학습 기반 접근법의 강점과 한계, 윤리적 프레임워크와 사례 연구가 미래 AI 에이전트 기술 발전에 주는 시사점을 탐구한다.",
+    "method": "문헌 리뷰를 위한 선정 기준을 제시하고, 다양한 응용 분야의 실증적 사례를 활용하였으며, 관련 방법론을 비판적으로 분석하는 종합 리뷰 방식을 사용하였다.",
+    "result": "AI 에이전트 연구에서의 성과와 지속적인 도전 과제를 논의하였으며, 미래 연구 방향 및 거버넌스에 대한 권고사항을 제시하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Agentsway - Software Development Methodology for AI Agents-based Teams",
+    "abstract": "The emergence of Agentic AI is fundamentally transforming how software is designed, developed, and maintained. Traditional software development methodologies such as Agile, Kanban, ShapeUp, etc, were originally designed for human-centric teams and are increasingly inadequate in environments where autonomous AI agents contribute to planning, coding, testing, and continuous learning. To address this methodological gap, we present\"Agentsway\"a novel software development framework designed for ecosystems where AI agents operate as first-class collaborators. Agentsway introduces a structured lifecycle centered on human orchestration, and privacy-preserving collaboration among specialized AI agents. The framework defines distinct roles for planning, prompting, coding, testing, and fine-tuning agents, each contributing to iterative improvement and adaptive learning throughout the development process. By integrating fine-tuned LLMs that leverage outputs and feedback from different agents throughout the development cycle as part of a retrospective learning process, Agentsway enhances domain-specific reasoning, and explainable decision-making across the entire software development lifecycle. Responsible AI principles are further embedded across the agents through the coordinated use of multiple fine-tuned LLMs and advanced reasoning models, ensuring balanced, transparent, and accountable decision-making. This work advances software engineering by formalizing agent-centric collaboration, integrating privacy-by-design principles, and defining measurable metrics for productivity and trust. Agentsway represents a foundational step toward the next generation of AI-native, self-improving software development methodologies. To the best of our knowledge, this is the first research effort to introduce a dedicated methodology explicitly designed for AI agent-based software engineering teams.",
+    "authors": [
+      "Eranga Bandara",
+      "Ross Gore",
+      "Xueping Liang",
+      "Sachini Rajapakse",
+      "Isurunima Kularathne",
+      "Pramoda Karunarathna",
+      "Peter B. Foytik",
+      "Sachin Shetty",
+      "R. Mukkamala",
+      "Abdul Rahman",
+      "Amin Hass",
+      "Ng Wee Keong",
+      "K. D. Zoysa",
+      "A. Withanage",
+      "Nilaan Loganathan"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/ee15c94d9e34fcc01cd42ffe39f079aa328dbccc",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "기존의 Agile, Kanban, ShapeUp 등 전통적인 소프트웨어 개발 방법론은 인간 중심 팀을 위해 설계되어 자율적 AI 에이전트가 참여하는 환경에서는 점점 부적합해지고 있다. 이 논문은 AI 에이전트가 1등급 협력자로 운영되는 생태계를 위한 새로운 소프트웨어 개발 프레임워크인 'Agentsway'를 제시하여 이러한 방법론적 공백을 해소하는 것을 목적으로 한다.",
+    "method": "Agentsway는 인간 오케스트레이션과 프라이버시 보존 협업을 중심으로 한 구조화된 생명주기를 도입하며, 계획, 프롬프팅, 코딩, 테스트, 파인튜닝 에이전트 등 각기 다른 역할을 가진 특화된 AI 에이전트들로 구성된다. 개발 주기 전반에 걸쳐 다양한 에이전트의 출력과 피드백을 활용하는 파인튜닝된 LLM을 회고적 학습 프로세스의 일부로 통합하며, 다수의 파인튜닝된 LLM과 고급 추론 모델의 조율된 사용을 통해 책임 있는 AI 원칙을 에이전트 전반에 내재화한다.",
+    "result": "Agentsway는 에이전트 중심 협업의 공식화, 프라이버시 바이 디자인 원칙의 통합, 생산성 및 신뢰에 대한 측정 가능한 지표 정의를 통해 소프트웨어 공학을 발전시킨다. 저자들의 지식 범위 내에서 이 연구는 AI 에이전트 기반 소프트웨어 엔지니어링 팀을 위해 명시적으로 설계된 전용 방법론을 최초로 제안한 연구이다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "AIOpsLab: A Holistic Framework to Evaluate AI Agents for Enabling Autonomous Clouds",
+    "abstract": "AI for IT Operations (AIOps) aims to automate complex operational tasks, such as fault localization and root cause analysis, to reduce human workload and minimize customer impact. While traditional DevOps tools and AIOps algorithms often focus on addressing isolated operational tasks, recent advances in Large Language Models (LLMs) and AI agents are revolutionizing AIOps by enabling end-to-end and multitask automation. This paper envisions a future where AI agents autonomously manage operational tasks throughout the entire incident lifecycle, leading to self-healing cloud systems, a paradigm we term AgentOps. Realizing this vision requires a comprehensive framework to guide the design, development, and evaluation of these agents. To this end, we present AIOPSLAB, a framework that not only deploys microservice cloud environments, injects faults, generates workloads, and exports telemetry data but also orchestrates these components and provides interfaces for interacting with and evaluating agents. We discuss the key requirements for such a holistic framework and demonstrate how AIOPSLAB can facilitate the evaluation of next-generation AIOps agents. Through evaluations of state-of-the-art LLM agents within the benchmark created by AIOPSLAB, we provide insights into their capabilities and limitations in handling complex operational tasks in cloud environments.",
+    "authors": [
+      "Yinfang Chen",
+      "Manisha M Shetty",
+      "Gagan Somashekar",
+      "Ming-Jie Ma",
+      "Yogesh L. Simmhan",
+      "Jonathan Mace",
+      "Chetan Bansal",
+      "Rujia Wang",
+      "S. Rajmohan"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/c8bbe39285da8e427250cc2a80da8f8f2f92b8cb",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "복잡한 운영 작업(장애 위치 파악, 근본 원인 분석 등)을 자동화하여 인력 부담을 줄이고 고객 영향을 최소화하는 것을 목표로 하며, AI 에이전트가 전체 인시던트 생명주기에 걸쳐 자율적으로 운영 작업을 관리하는 'AgentOps' 패러다임 실현을 위한 포괄적인 프레임워크를 제시하고자 한다.",
+    "method": "AIOPSLAB이라는 프레임워크를 제시하며, 이 프레임워크는 마이크로서비스 클라우드 환경 배포, 장애 주입, 워크로드 생성, 텔레메트리 데이터 내보내기 기능을 제공하고, 이러한 구성 요소들을 조율하며 에이전트와 상호작용하고 평가하기 위한 인터페이스를 제공한다.",
+    "result": "AIOPSLAB이 생성한 벤치마크를 통해 최신 LLM 에이전트들을 평가하였으며, 클라우드 환경에서 복잡한 운영 작업을 처리하는 데 있어 이들 에이전트의 능력과 한계에 대한 인사이트를 도출하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "DoomArena: A framework for Testing AI Agents Against Evolving Security Threats",
+    "abstract": "We present DoomArena, a security evaluation framework for AI agents. DoomArena is designed on three principles: 1) It is a plug-in framework and integrates easily into realistic agentic frameworks like BrowserGym (for web agents) and $\\tau$-bench (for tool calling agents); 2) It is configurable and allows for detailed threat modeling, allowing configuration of specific components of the agentic framework being attackable, and specifying targets for the attacker; and 3) It is modular and decouples the development of attacks from details of the environment in which the agent is deployed, allowing for the same attacks to be applied across multiple environments. We illustrate several advantages of our framework, including the ability to adapt to new threat models and environments easily, the ability to easily combine several previously published attacks to enable comprehensive and fine-grained security testing, and the ability to analyze trade-offs between various vulnerabilities and performance. We apply DoomArena to state-of-the-art (SOTA) web and tool-calling agents and find a number of surprising results: 1) SOTA agents have varying levels of vulnerability to different threat models (malicious user vs malicious environment), and there is no Pareto dominant agent across all threat models; 2) When multiple attacks are applied to an agent, they often combine constructively; 3) Guardrail model-based defenses seem to fail, while defenses based on powerful SOTA LLMs work better. DoomArena is available at https://github.com/ServiceNow/DoomArena.",
+    "authors": [
+      "L'eo Boisvert",
+      "Mihir Bansal",
+      "Chandra Kiran Reddy Evuru",
+      "Gabriel Huang",
+      "Abhay Puri",
+      "Avinandan Bose",
+      "Maryam Fazel",
+      "Quentin Cappart",
+      "Jason Stanley",
+      "Alexandre Lacoste",
+      "Alexandre Drouin",
+      "K. Dvijotham"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/9e85ce8f1822105251870493e5326468fba18f0d",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "AI 에이전트의 보안 취약성을 평가하기 위한 프레임워크를 제시하는 것을 목적으로 하며, 다양한 보안 위협 모델에 대해 에이전트를 체계적으로 테스트할 수 있는 환경을 구축하고자 한다.",
+    "method": "DoomArena는 플러그인 방식으로 BrowserGym 및 τ-bench 등 현실적인 에이전틱 프레임워크와 통합되며, 공격 가능한 구성 요소와 공격 목표를 세부적으로 설정할 수 있는 구성 가능한 위협 모델링을 지원한다. 또한 공격 개발을 환경 세부사항으로부터 분리하는 모듈식 설계를 통해 동일한 공격을 여러 환경에 적용할 수 있도록 한다.",
+    "result": "최신(SOTA) 에이전트는 악의적 사용자 대 악의적 환경 등 위협 모델에 따라 취약성 수준이 다르며, 모든 위협 모델에서 우세한 단일 에이전트는 존재하지 않는다. 여러 공격이 동시에 적용될 경우 상호 보완적으로 결합되는 경향이 있으며, 가드레일 모델 기반 방어는 효과가 낮은 반면 강력한 SOTA LLM 기반 방어는 더 나은 성능을 보인다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Embodied AI Agents: Modeling the World",
+    "abstract": "This paper describes our research on AI agents embodied in visual, virtual or physical forms, enabling them to interact with both users and their environments. These agents, which include virtual avatars, wearable devices, and robots, are designed to perceive, learn and act within their surroundings, which makes them more similar to how humans learn and interact with the environments as compared to disembodied agents. We propose that the development of world models is central to reasoning and planning of embodied AI agents, allowing these agents to understand and predict their environment, to understand user intentions and social contexts, thereby enhancing their ability to perform complex tasks autonomously. World modeling encompasses the integration of multimodal perception, planning through reasoning for action and control, and memory to create a comprehensive understanding of the physical world. Beyond the physical world, we also propose to learn the mental world model of users to enable better human-agent collaboration.",
+    "authors": [
+      "Pascale Fung",
+      "Yoram Bachrach",
+      "Asli Celikyilmaz",
+      "Kamalika Chaudhuri",
+      "Delong Chen",
+      "Willy Chung",
+      "Emmanuel Dupoux",
+      "Hervé Jégou",
+      "A. Lazaric",
+      "Arjun Majumdar",
+      "Andrea Madotto",
+      "F. Meier",
+      "Florian Metze",
+      "Théo Moutakanni",
+      "Juan Pino",
+      "Basile Terver",
+      "Joseph Tighe",
+      "J. Malik"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/121d34fe66a35ef11e408de4119477971ee6e2cc",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "시각적·가상·물리적 형태로 구현된 AI 에이전트가 사용자 및 환경과 상호작용할 수 있도록 하며, 복잡한 작업을 자율적으로 수행하는 능력을 향상시키는 것을 목적으로 한다.",
+    "method": "세계 모델(world model) 개발을 중심으로 멀티모달 인식, 행동 및 제어를 위한 추론 기반 계획, 메모리를 통합하여 물리적 세계에 대한 포괄적인 이해를 구축하는 접근법을 제안한다. 또한 사용자의 의도와 사회적 맥락을 이해하기 위해 사용자의 정신적 세계 모델(mental world model)을 학습하는 방법도 포함한다.",
+    "result": "초록에 명시되지 않음",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Contribution of Artificial Intelligence and Virtual Worlds towards development of Super Intelligent AI Agents",
+    "abstract": "Artificial Intelligence (AI) has always been a goal as\nwell as a challenge in the scientific field with a whole new world\nbeing accessible to people by accomplishing various achievements\nin the past decades. However, in the last many years, tremendous\npopularity has been received by the interactive computer games\ninvolving multi-user virtual environment which has been the\nprime attraction for millions of users around the world. This\npaper focuses on AI agents along with exploring the progress\ntowards super intelligent AI and the roles played by artificial\nintelligence and virtual worlds in its development. It follows a\nunique approach to give an unbiased view on the various\nproblems and the relation between them. There are namely two\nbenefits from this research: firstly, evolution in science and\ntechnology requires a profound understanding on the advanced\nAI agents in the virtual worlds, and secondly, the virtual worlds\nhave always been a magnificent platform for research on the\nchallenging problems faced in the domain of Artificial\nIntelligence",
+    "authors": [
+      "Simran Koul"
+    ],
+    "year": "2020",
+    "url": "https://www.semanticscholar.org/paper/59d83a51f1e09c91bc3368571a3f1f25808cca95",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 AI 에이전트를 탐구하고, 초지능 AI를 향한 발전 과정과 인공지능 및 가상 세계가 그 발전에서 수행하는 역할을 분석하는 것을 목적으로 한다.",
+    "method": "다양한 문제들과 그 관계에 대해 편향되지 않은 시각을 제공하는 고유한 접근 방식을 따른다.",
+    "result": "가상 세계에서의 고급 AI 에이전트에 대한 심층적인 이해가 과학기술 발전에 필요하며, 가상 세계가 인공지능 분야의 도전적인 문제 연구를 위한 훌륭한 플랫폼임을 제시하였다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "How Do Consumers Trust and Accept AI Agents? An Extended Theoretical Framework and Empirical Evidence",
+    "abstract": "With the rapid development of generative artificial intelligence (AI), AI agents are evolving into “intelligent partners” integrated into various consumer scenarios, posing new challenges to conventional consumer decision-making processes and perceptions. However, the mechanisms through which consumers develop trust and adopt AI agents in common scenarios remain unclear. Therefore, this article develops a framework based on the heuristic–systematic model to explain the behavioral decision-making mechanisms of future consumers. This model is validated through PLS-SEM with data from 632 participants in China. The results show that trust can link individuals’ dual decision paths to further drive user behavior. Additionally, we identify the key drivers of consumer behavior from two dimensions. These findings provide practical guidance for businesses and policymakers to optimize the design and development of AI agents and promote the widespread acceptance and adoption of AI technologies.",
+    "authors": [
+      "Xue Zhao",
+      "W. You",
+      "Ziqing Zheng",
+      "Shuhui Shi",
+      "Yinyu Lu",
+      "Lingyun Sun"
+    ],
+    "year": "2025",
+    "url": "https://www.semanticscholar.org/paper/ec54d7a834092ed9a7d9caab4be1c6b9ab62624d",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "생성형 AI의 급속한 발전으로 AI 에이전트가 다양한 소비자 시나리오에 통합되면서, 소비자가 AI 에이전트에 대한 신뢰를 형성하고 이를 수용하는 메커니즘이 불분명한 문제를 해결하고자 한다. 이를 위해 미래 소비자의 행동적 의사결정 메커니즘을 설명하는 이론적 프레임워크를 개발하는 것을 목적으로 한다.",
+    "method": "휴리스틱-체계적 모델(heuristic–systematic model)을 기반으로 프레임워크를 구축하였으며, 중국의 632명 참가자로부터 수집한 데이터를 PLS-SEM을 통해 검증하였다.",
+    "result": "신뢰가 개인의 이중 의사결정 경로를 연결하여 사용자 행동을 촉진하는 것으로 나타났다. 또한 두 가지 차원에서 소비자 행동의 주요 동인을 식별하였으며, 이 결과는 AI 에이전트의 설계 및 개발 최적화와 AI 기술의 수용 촉진을 위한 실질적 지침을 제공한다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "LeadLets: Towards a Pattern Language for Leadership Development of Human and AI Agents",
+    "abstract": "Advances in artificial intelligence (AI) technologies have inspired businesses and researchers to identify new ways in which AI can improve our way of life. One such quest lies in giving AIs complex human capabilities like leadership. We take the first step towards that goal and propose a pattern-based approach to leadership. We argue that leadership best practices are actually a series of mini interventions each of which results in a consistent and desired response from the followers. When codified, these repeatable interventions can serve as foundational blocks for AI algorithms. To this end, we introduce LeadLets: A pattern language that codifies named, scripted, and repeatable leadership techniques that have a predictable influence causing a purposeful effect on one or more individuals. We argue that a pattern-based approach such as LeadLets can create leadership templates that inform programing leadership behavior into AI artifacts and designing leaders development programs.",
+    "authors": [
+      "Triparna de Vreede",
+      "L. Steele",
+      "G. Vreede",
+      "R. Briggs"
+    ],
+    "year": "2020",
+    "url": "https://www.semanticscholar.org/paper/af1eb5b772e7f6f5f722329efec8364c48d697e1",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "이 논문은 AI에 리더십과 같은 복잡한 인간 역량을 부여하기 위한 방법을 탐색하며, 리더십 모범 사례를 AI 알고리즘의 기초 블록으로 활용할 수 있도록 체계화하는 것을 목적으로 한다.",
+    "method": "리더십 모범 사례를 일관되고 예측 가능한 반응을 유발하는 일련의 미니 개입(intervention)으로 간주하고, 이를 패턴 언어 방식으로 코드화하는 접근법을 사용하였다.",
+    "result": "명명되고 스크립트화된 반복 가능한 리더십 기법을 패턴 언어로 코드화한 LeadLets를 제안하였으며, 이는 AI 아티팩트에 리더십 행동을 프로그래밍하고 리더 개발 프로그램을 설계하는 데 활용될 수 있는 리더십 템플릿을 제공한다.",
+    "limitation": "초록에 명시되지 않음"
+  },
+  {
+    "title": "Generative AI Agents With Large Language Model for Satellite Networks via a Mixture of Experts Transmission",
+    "abstract": "In response to the needs of 6G global communications, satellite communication networks have emerged as a key solution. However, the large-scale development of satellite communication networks is constrained by complex system models, whose modeling is challenging for massive users. Moreover, transmission interference between satellites and users seriously affects communication performance. To solve these problems, this paper develops generative artificial intelligence (AI) agents for model formulation and then applies a mixture of experts (MoE) approach to design transmission strategies. Specifically, we leverage large language models (LLMs) to build an interactive modeling paradigm and utilize retrieval-augmented generation (RAG) to extract satellite expert knowledge that supports mathematical modeling. Afterward, by integrating the expertise of multiple specialized components, we propose an MoE-proximal policy optimization (PPO) approach to solve the formulated problem. Each expert can optimize the optimization variables at which it excels through specialized training through its own network and then aggregate them through the gating network to perform joint optimization. The simulation results validate the accuracy and effectiveness of employing a generative agent for problem formulation. Furthermore, the superiority of the proposed MoE-ppo approach over other benchmarks is confirmed in solving the formulated problem. The adaptability of MoE-PPO to various customized modeling problems has also been demonstrated.",
+    "authors": [
+      "Ruichen Zhang",
+      "Hongyang Du",
+      "Yinqiu Liu",
+      "Dusist Niyato",
+      "Jiawen Kang",
+      "Zehui Xiong",
+      "Abbas Jamalipour",
+      "Dong In Kim"
+    ],
+    "year": "2024",
+    "url": "https://www.semanticscholar.org/paper/6d533b0f318fd22d664356b56b68023560d3c60f",
+    "source": "Semantic Scholar",
+    "categories": [],
+    "purpose": "6G 글로벌 통신을 위한 위성 통신 네트워크에서 복잡한 시스템 모델링의 어려움과 위성-사용자 간 전송 간섭 문제를 해결하는 것을 목적으로 한다.",
+    "method": "대형 언어 모델(LLM)을 활용한 인터랙티브 모델링 패러다임을 구축하고, 검색 증강 생성(RAG)을 통해 위성 전문 지식을 추출하여 수학적 모델링을 지원한다. 이후 MoE-근위 정책 최적화(MoE-PPO) 접근법을 제안하여, 각 전문가 네트워크가 특화 훈련을 통해 최적화 변수를 최적화하고 게이팅 네트워크를 통해 통합하는 방식으로 전송 전략을 설계한다.",
+    "result": "시뮬레이션 결과를 통해 생성형 AI 에이전트를 활용한 문제 공식화의 정확성과 효과성이 검증되었으며, 제안된 MoE-PPO 접근법이 다른 벤치마크 대비 우수한 성능을 보임이 확인되었다. 또한 MoE-PPO의 다양한 맞춤형 모델링 문제에 대한 적응성도 입증되었다.",
+    "limitation": "초록에 명시되지 않음"
   }
 ]

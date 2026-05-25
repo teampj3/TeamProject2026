@@ -1,0 +1,30 @@
+{
+  "topic": "development of ai agents",
+  "archived_at": "2026-05-24T14:22:26",
+  "archive_dir": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226",
+  "saved": {
+    "reports": [
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\reports\\development_of_ai_agents_20260524_142142_401438_rev2.md",
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\reports\\development_of_ai_agents_20260524_142142_401438_rev2_visualized.md"
+    ],
+    "visualizations": [
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\visualizations\\development_of_ai_agents_visual_1.png",
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\visualizations\\development_of_ai_agents_visual_2.png"
+    ],
+    "processed": [
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\processed\\review_result.json",
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\processed\\development_of_ai_agents_visual_plan.json",
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\processed\\development_of_ai_agents_visual_asset_map.json",
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\processed\\development_of_ai_agents_visualization_manifest.json"
+    ],
+    "logs": [
+      "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\archive\\development_of_ai_agents_20260524_142226\\logs\\development_of_ai_agents_review_writer_loop_20260524_142158_134973.json"
+    ]
+  },
+  "missing": {
+    "reports": [],
+    "visualizations": [],
+    "processed": [],
+    "logs": []
+  }
+}

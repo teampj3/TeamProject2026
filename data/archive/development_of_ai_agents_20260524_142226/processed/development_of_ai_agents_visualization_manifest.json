@@ -1,0 +1,11 @@
+{
+  "topic": "development of ai agents",
+  "planner": "claude",
+  "plan_file": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\visualizations\\development_of_ai_agents_visual_plan.json",
+  "visual_assets": {
+    "visual_1": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\visualizations\\development_of_ai_agents_visual_1.png",
+    "visual_2": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\visualizations\\development_of_ai_agents_visual_2.png"
+  },
+  "asset_map_file": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\visualizations\\development_of_ai_agents_visual_asset_map.json",
+  "visualized_report": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\development_of_ai_agents_20260524_142142_401438_rev2_visualized.md"
+}

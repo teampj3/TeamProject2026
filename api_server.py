@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import sys
 import threading
 from pathlib import Path
 
@@ -28,7 +29,7 @@ class PipelineRunResponse(BaseModel):
 
 def _launch_pipeline(topic: str) -> str:
     process = subprocess.Popen(
-        ["python", "-u", "run_pipeline.py"],
+        [sys.executable, "-u", "run_pipeline.py"],
         cwd=BASE_DIR,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE,

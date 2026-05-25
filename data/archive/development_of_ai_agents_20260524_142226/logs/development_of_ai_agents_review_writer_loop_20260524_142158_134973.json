@@ -1,0 +1,42 @@
+{
+  "topic": "development of ai agents",
+  "max_rewrite_rounds": 2,
+  "rewrite_score_threshold": 3.5,
+  "entries": [
+    {
+      "round": 0,
+      "draft_path": "outputs\\reports\\development_of_ai_agents_20260524_141545_640990_draft.md",
+      "review_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\processed\\review_result.json",
+      "average_score": 3.67,
+      "rewrite_requested": true,
+      "rewrite_reasons": [
+        "미완성 문장 2개 존재",
+        "어색한 표현이 5개 초과"
+      ],
+      "overall_verdict": "PASS"
+    },
+    {
+      "round": 1,
+      "draft_path": "outputs\\reports\\development_of_ai_agents_20260524_141836_804590_rev1.md",
+      "review_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\processed\\review_result.json",
+      "average_score": 3.0,
+      "rewrite_requested": true,
+      "rewrite_reasons": [
+        "평균 점수가 기준(3.5) 미만",
+        "미완성 문장 2개 존재"
+      ],
+      "overall_verdict": "PASS"
+    },
+    {
+      "round": 2,
+      "draft_path": "outputs\\reports\\development_of_ai_agents_20260524_142142_401438_rev2.md",
+      "review_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\data\\processed\\review_result.json",
+      "average_score": 3.67,
+      "rewrite_requested": false,
+      "rewrite_reasons": [
+        "미완성 문장 2개 존재"
+      ],
+      "overall_verdict": "PASS"
+    }
+  ]
+}

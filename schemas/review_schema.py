@@ -1,13 +1,22 @@
-"""Schema for report review results."""
+"""Schema for Review Agent output."""
+
+from __future__ import annotations
 
 from dataclasses import dataclass, field
 
 
 @dataclass
 class ReviewResult:
-    score: int  # 전체 품질 점수
-    needs_revision: bool  # 수정 필요 여부
-    logical_issues: list[str] = field(default_factory=list)  # 논리성 문제 목록
-    duplicated_expressions: list[str] = field(default_factory=list)  # 중복 표현 목록
-    missing_sections: list[str] = field(default_factory=list)  # 누락된 섹션 목록
-    feedback: list[str] = field(default_factory=list)  # 종합 피드백
+    title: str
+    source_file: str
+    reviewed_at: str
+    logic_score: int
+    duplication_score: int
+    structure_score: int
+    average_score: float
+    overall_verdict: str
+    awkward_expressions: list[str] = field(default_factory=list)
+    incomplete_sentences: list[str] = field(default_factory=list)
+    missing_sections: list[str] = field(default_factory=list)
+    detected_sections: list[str] = field(default_factory=list)
+    feedback_summary: str = ""
