@@ -1,0 +1,127 @@
+{
+  "topic": "history of AI agents",
+  "score_threshold": 35.0,
+  "selected_paper_count": 14,
+  "selected_titles": [
+    "A Social Group Chatbot System by Multiple Topics Tracking and Atkinson‐Shiffrin Memory Model Using AI Agents Collaboration",
+    "History of generative Artificial Intelligence (AI) chatbots: past, present, and future development",
+    "How AI Agents Follow the Herd of AI? Network Effects, History, and Machine Optimism",
+    "The coevolution of technology, markets, and culture: the challenging case of AI",
+    "Impact of AI in Humans Life",
+    "The Most Disruptive Near-Term Use of AI in Cancer Care: Patient Empowerment Through Software Agents",
+    "Commonsense AI in the History of the Web",
+    "Predicting Decisions of AI Agents from Limited Interaction through Text-Tabular Modeling",
+    "Mem0: Building Production-Ready AI Agents with Scalable Long-Term Memory",
+    "Zero, Finite, and Infinite Belief History of Theory of Mind Reasoning in Large Language Models",
+    "Cognis: Context-Aware Memory for Conversational AI Agents",
+    "Intelligent Product 3.0: Decentralised AI Agents and Web3 Intelligence Standards",
+    "Towards Automating Data Access Permissions in AI Agents",
+    "Research on Establishing a Digital Conservation System for Architectural cultural heritage Using AI Agents on the “Coze” Platform"
+  ],
+  "report_path": "C:\\Users\\s6151\\OneDrive\\문서\\New project\\TeamProject2026\\outputs\\reports\\history_of_ai_agents_20260523_125111.md",
+  "report_sections": [
+    "제목",
+    "초록",
+    "서론",
+    "AI 에이전트의 개념적 기원과 초기 발전",
+    "기계학습 및 신경망 도입에 따른 패러다임 전환",
+    "현대 AI 에이전트의 구조적 특성과 협력 메커니즘 분석",
+    "AI 에이전트 발전의 종합적 평가와 미래 방향 제언",
+    "논의",
+    "결론",
+    "참고문헌"
+  ],
+  "section_count": 10,
+  "supported_visual_types": {
+    "table": {
+      "description": "정의, 비교 항목, 실험 조건, 장단점처럼 표가 가장 잘 맞는 내용을 정리한다.",
+      "required_data_shape": {
+        "columns": [
+          "열1",
+          "열2"
+        ],
+        "rows": [
+          [
+            "값1",
+            "값2"
+          ]
+        ]
+      }
+    },
+    "bar_chart": {
+      "description": "범주별 수치 비교를 시각화한다. 예: A=93.7, B=31.6",
+      "required_data_shape": {
+        "labels": [
+          "A",
+          "B"
+        ],
+        "series": [
+          {
+            "name": "값",
+            "values": [
+              93.7,
+              31.6
+            ]
+          }
+        ],
+        "category_label": "비교 항목",
+        "value_label": "값"
+      }
+    },
+    "line_chart": {
+      "description": "시간, 단계, 조건 변화에 따른 수치 흐름을 시각화한다.",
+      "required_data_shape": {
+        "x_values": [
+          "1단계",
+          "2단계",
+          "3단계"
+        ],
+        "series": [
+          {
+            "name": "성능",
+            "values": [
+              40,
+              58,
+              72
+            ]
+          }
+        ],
+        "x_label": "단계",
+        "y_label": "값"
+      }
+    },
+    "timeline": {
+      "description": "역사, 발전 흐름, 연도별 사건, 연구 흐름을 시각화한다.",
+      "required_data_shape": {
+        "events": [
+          {
+            "time": "2009",
+            "label": "사건",
+            "detail": "설명"
+          },
+          {
+            "time": "2017",
+            "label": "확산",
+            "detail": "설명"
+          }
+        ]
+      }
+    },
+    "concept_diagram": {
+      "description": "개념 정의, 구조 설명, 구성 요소 관계를 도식화한다.",
+      "required_data_shape": {
+        "central_topic": "핵심 개념",
+        "branches": [
+          {
+            "label": "요소 1",
+            "detail": "설명"
+          },
+          {
+            "label": "요소 2",
+            "detail": "설명"
+          }
+        ]
+      }
+    }
+  }
+}

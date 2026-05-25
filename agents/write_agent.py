@@ -7,6 +7,7 @@ from pathlib import Path
 import re
 import sys
 import time
+from datetime import datetime
 
 ROOT_DIR = Path(__file__).resolve().parents[1]
 if str(ROOT_DIR) not in sys.path:
@@ -65,6 +66,36 @@ REQUIRED_WRITER_FIELDS = [
     "limitation",
 ]
 OUTLINE_CACHE: dict[str, dict] = {}
+
+
+def format_revision_context(revision_context: dict | None) -> str:
+    if not revision_context:
+        return ""
+
+    lines = [
+        "[재작성 지시]",
+        f"재작성 회차: {revision_context.get('revision_round', 0)}",
+        f"재작성 사유: {revision_context.get('reason_summary', '')}",
+        f"피드백 요약: {revision_context.get('feedback_summary', '')}",
+    ]
+
+    missing_sections = revision_context.get("missing_sections", []) or []
+    incomplete_sentences = revision_context.get("incomplete_sentences", []) or []
+    awkward_expressions = revision_context.get("awkward_expressions", []) or []
+
+    if missing_sections:
+        lines.append(f"보완할 누락 섹션: {', '.join(missing_sections)}")
+    if incomplete_sentences:
+        lines.append("반드시 고쳐야 할 미완성 문장:")
+        for sentence in incomplete_sentences[:5]:
+            lines.append(f"- {sentence}")
+    if awkward_expressions:
+        lines.append("다듬어야 할 어색한 표현:")
+        for expression in awkward_expressions[:5]:
+            lines.append(f"- {expression}")
+
+    lines.append("위 피드백을 반영해 기존 초안보다 더 완결되고 자연스러운 논문 초안을 다시 작성할 것.")
+    return "\n".join(lines)
 
 
 def safe_print(text: str) -> None:
@@ -439,10 +470,12 @@ def build_section_draft_prompt(
     section_name: str,
     subsection_names: list[str],
     selected_rows: list[dict],
+    revision_context: dict | None = None,
 ) -> str:
     paper_text = build_paper_context(selected_rows)
     subsection_text = " / ".join(subsection_names) if subsection_names else section_name
     section_role = infer_section_role(section_name, subsection_text)
+    revision_note = format_revision_context(revision_context)
     return f"""당신은 한국어 학술논문 초안을 작성하는 Writer Agent이다.
 
 주제: {topic}
@@ -461,6 +494,68 @@ def build_section_draft_prompt(
 - 문장은 중간에 끊기지 않게 완결하게 작성할 것.
 - 너무 길게 늘이지 말고, 이 섹션을 충실히 설명할 정도의 분량으로 작성할 것.
 - {section_role}"""
+    if revision_note:
+        return f"{prompt}\n\n{revision_note}"
+    return prompt
+
+
+def build_title_section_v2(topic: str, selected_rows: list[dict], revision_context: dict | None = None) -> str:
+    paper_text = build_paper_context(selected_rows)
+    revision_note = format_revision_context(revision_context)
+    prompt = "\n".join(
+        [
+            f"주제: {topic}",
+            "",
+            "[논문 데이터]",
+            paper_text,
+            "",
+            revision_note,
+            "",
+            "위 자료를 참고하여 한국어 학술 논문 제목 한 줄만 제시하십시오.",
+            "제목은 비교 보고서처럼 보이지 말고, 본 논문이 다루는 문제와 관점이 드러나야 합니다.",
+            "출력은 제목 한 줄만 작성하십시오.",
+        ]
+    ).strip()
+    title = generate_text(prompt, max_tokens=120).strip()
+    return f"# 제목\n\n{title}"
+
+
+def build_section_draft_prompt_v2(
+    topic: str,
+    section_name: str,
+    subsection_names: list[str],
+    selected_rows: list[dict],
+    revision_context: dict | None = None,
+) -> str:
+    paper_text = build_paper_context(selected_rows)
+    subsection_text = " / ".join(subsection_names) if subsection_names else section_name
+    section_role = infer_section_role(section_name, subsection_text)
+    revision_note = format_revision_context(revision_context)
+    prompt = "\n".join(
+        [
+            "당신은 한국어 학술논문 초안을 작성하는 Writer Agent이다.",
+            "",
+            f"주제: {topic}",
+            f"현재 섹션: {section_name}",
+            f"해당 섹션의 세부 주제: {subsection_text}",
+            "",
+            "[참고 논문 데이터]",
+            paper_text,
+            "",
+            revision_note,
+            "",
+            "[지시]",
+            "- 해당 섹션 전체를 한 번에 완성된 학술 문단으로 작성할 것",
+            "- 참고 논문은 근거 자료로만 사용하고, 본 섹션의 중심은 본 연구의 주장과 분석으로 둘 것",
+            "- 개별 논문을 길게 나열하지 말고 필요한 부분만 묶어서 연결할 것",
+            "- 세부 주제가 모두 자연스럽게 반영되도록 구성할 것",
+            "- 불완전한 bullet, 번호 목록, 메모체 표현은 사용하지 말 것",
+            "- 문장을 중간에 끊지 말고 완결된 형태로 작성할 것",
+            "- 너무 길게 쓰지 말고 2~3문단 안에서 핵심만 밀도 있게 서술할 것",
+            f"- {section_role}",
+        ]
+    ).strip()
+    return prompt
 
 
 def print_writer_prompt_preview(prompt: str, max_length: int = 2000) -> None:
@@ -493,8 +588,9 @@ def build_references_section(selected_rows: list[dict]) -> str:
     return "\n".join(lines).strip()
 
 
-def build_title_section(topic: str, selected_rows: list[dict]) -> str:
+def build_title_section(topic: str, selected_rows: list[dict], revision_context: dict | None = None) -> str:
     paper_text = build_paper_context(selected_rows)
+    revision_note = format_revision_context(revision_context)
     prompt = f"""주제: {topic}
 
 [논문 데이터]
@@ -505,6 +601,8 @@ def build_title_section(topic: str, selected_rows: list[dict]) -> str:
 "본 논문이 어떤 문제를 다루고 어떤 관점으로 접근하는지"가 드러나야 한다.
 출력은 제목 한 줄만 작성하시오.
 """
+    if revision_note:
+        prompt = f"{prompt}\n\n{revision_note}"
     title = generate_text(prompt, max_tokens=120).strip()
     return f"# 제목\n\n{title}"
 
@@ -538,19 +636,21 @@ def build_section_text(
     section_name: str,
     selected_rows: list[dict],
     outline: dict,
+    revision_context: dict | None = None,
 ) -> str:
     if section_name == "제목":
-        return build_title_section(topic, selected_rows)
+        return build_title_section_v2(topic, selected_rows, revision_context=revision_context)
     if section_name == "참고문헌":
         return build_references_section(selected_rows)
 
     section_plan = outline.get("section_plan", {})
     subsection_names = section_plan.get(section_name, [section_name])
-    section_prompt = build_section_draft_prompt(
+    section_prompt = build_section_draft_prompt_v2(
         topic=topic,
         section_name=section_name,
         subsection_names=subsection_names,
         selected_rows=selected_rows,
+        revision_context=revision_context,
     )
     section_text = generate_text(section_prompt, max_tokens=SECTION_MAX_TOKENS).strip()
     section_text = sanitize_generated_subsection_text(section_text, section_name, section_name)
@@ -604,10 +704,11 @@ def slugify_topic(topic: str) -> str:
     return normalized or "report"
 
 
-def save_report_draft(draft: str, topic: str) -> Path:
+def save_report_draft(draft: str, topic: str, suffix: str = "") -> Path:
     REPORT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    timestamp = time.strftime("%Y%m%d_%H%M%S")
-    filename = f"{slugify_topic(topic)}_{timestamp}.md"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+    suffix_text = f"_{suffix}" if suffix else ""
+    filename = f"{slugify_topic(topic)}_{timestamp}{suffix_text}.md"
     save_path = REPORT_OUTPUT_DIR / filename
     save_path.write_text(draft, encoding="utf-8")
     return save_path
@@ -795,7 +896,7 @@ def run_writer_preparation_flow(
     else:
         preview_section = "서론"
         preview_subsections = ["연구 필요성"]
-    preview_prompt = build_section_draft_prompt(
+    preview_prompt = build_section_draft_prompt_v2(
         topic=topic,
         section_name=preview_section,
         subsection_names=preview_subsections,
@@ -850,6 +951,66 @@ def run_writer_draft_generation(
     print(f"\n초안 저장 완료: {saved_path}")
     print("\n보고서 초안 생성 완료")
     return draft
+
+
+def run_writer_draft_generation_bundle(
+    topic: str | None = None,
+    score_threshold: float = DEFAULT_WRITER_SCORE_THRESHOLD,
+    revision_context: dict | None = None,
+    revision_round: int = 0,
+    run_id: str | None = None,
+) -> dict:
+    topic = resolve_writer_topic(topic)
+    preparation = run_writer_preparation_flow(topic=topic, score_threshold=score_threshold)
+    if not preparation:
+        print("Writer draft preparation failed.")
+        return {}
+
+    selected_rows = preparation["selected_rows"]
+    outline = preparation["outline"]
+
+    if run_id:
+        initialize_run_writer_outputs(run_id, topic)
+
+    section_outputs: list[tuple[str, str]] = []
+    for section_name in outline["sections"]:
+        print(f"\nSection generation: {section_name}")
+        section_text = build_section_text(
+            topic=topic,
+            section_name=section_name,
+            selected_rows=selected_rows,
+            outline=outline,
+            revision_context=revision_context,
+        )
+        section_outputs.append((section_name, section_text))
+        if run_id:
+            update_run_writer_progress(
+                run_id=run_id,
+                topic=topic,
+                section_outputs=section_outputs,
+            )
+
+    draft = assemble_draft(section_outputs)
+    print_report_draft_preview(draft)
+    synthesis_check = check_synthesis_markers(draft, topic=topic)
+    print_synthesis_check(synthesis_check)
+    suffix = f"rev{revision_round}" if revision_round > 0 else "draft"
+    saved_path = save_report_draft(draft, topic=topic, suffix=suffix)
+    if run_id:
+        save_run_writer_outputs(run_id=run_id, draft=draft, report_path=saved_path)
+    print(f"\nDraft saved: {saved_path}")
+    print("\nDraft generation complete")
+    return {
+        "draft": draft,
+        "saved_path": saved_path,
+        "topic": topic,
+        "selected_rows": selected_rows,
+        "outline": outline,
+        "synthesis_check": synthesis_check,
+        "revision_round": revision_round,
+        "revision_context": revision_context or {},
+        "run_id": run_id,
+    }
 
 
 def prompt_topic(default_topic: str = DEFAULT_WRITER_TOPIC) -> str:
