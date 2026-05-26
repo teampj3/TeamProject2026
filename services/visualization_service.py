@@ -29,6 +29,19 @@ ACCENT_5 = "#ea580c"
 PALETTE = [ACCENT, ACCENT_2, ACCENT_3, ACCENT_4, ACCENT_5]
 
 FONT_CANDIDATES = [
+    # Linux / Docker
+    Path("/usr/share/fonts/truetype/nanum/NanumGothic.ttf"),
+    Path("/usr/share/fonts/truetype/nanum/NanumGothicBold.ttf"),
+    Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc"),
+    Path("/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"),
+    Path("/usr/share/fonts/truetype/noto/NotoSansKR-Regular.otf"),
+    Path("/usr/share/fonts/truetype/noto/NotoSansKR-Bold.otf"),
+    # macOS
+    Path("/System/Library/Fonts/AppleSDGothicNeo.ttc"),
+    Path("/System/Library/Fonts/Helvetica.ttc"),
+    Path("/Library/Fonts/NanumGothic.ttf"),
+    Path("/Library/Fonts/NanumGothicBold.ttf"),
+    # Windows
     Path("C:/Windows/Fonts/malgun.ttf"),
     Path("C:/Windows/Fonts/malgunbd.ttf"),
     Path("C:/Windows/Fonts/NanumGothic.ttf"),
