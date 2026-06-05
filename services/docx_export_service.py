@@ -101,6 +101,31 @@ def find_latest_report(topic: str | None = None) -> Path | None:
 def parse_markdown_blocks(markdown_text: str) -> list[dict]:
     blocks: list[dict] = []
     paragraph_lines: list[str] = []
+    table_lines: list[str] = []
+
+    def is_table_line(value: str) -> bool:
+        stripped_value = value.strip()
+        return stripped_value.startswith("|") and stripped_value.endswith("|")
+
+    def parse_table(table_rows: list[str]) -> dict | None:
+        cleaned_rows = [row.strip() for row in table_rows if row.strip()]
+        if len(cleaned_rows) < 2:
+            return None
+
+        parsed_rows: list[list[str]] = []
+        for row in cleaned_rows:
+            cells = [cell.strip() for cell in row.strip("|").split("|")]
+            parsed_rows.append(cells)
+
+        separator_row = parsed_rows[1]
+        if not all(re.fullmatch(r"[-:\s]+", cell or "") for cell in separator_row):
+            return None
+
+        header = parsed_rows[0]
+        body = parsed_rows[2:]
+        if not header:
+            return None
+        return {"type": "table", "header": header, "rows": body}
 
     def flush_paragraph() -> None:
         nonlocal paragraph_lines
@@ -110,21 +135,36 @@ def parse_markdown_blocks(markdown_text: str) -> list[dict]:
                 blocks.append({"type": "paragraph", "text": text})
             paragraph_lines = []
 
+    def flush_table() -> None:
+        nonlocal table_lines
+        if table_lines:
+            table_block = parse_table(table_lines)
+            if table_block:
+                blocks.append(table_block)
+            else:
+                paragraph_text = "\n".join(table_lines).strip()
+                if paragraph_text:
+                    blocks.append({"type": "paragraph", "text": paragraph_text})
+            table_lines = []
+
     for raw_line in markdown_text.splitlines():
         line = raw_line.rstrip()
         stripped = line.strip()
 
         if not stripped:
             flush_paragraph()
+            flush_table()
             continue
 
         if stripped == "---":
             flush_paragraph()
+            flush_table()
             continue
 
         heading_match = re.match(r"^(#{1,6})\s+(.+)$", stripped)
         if heading_match:
             flush_paragraph()
+            flush_table()
             blocks.append(
                 {
                     "type": "heading",
@@ -137,12 +177,20 @@ def parse_markdown_blocks(markdown_text: str) -> list[dict]:
         image_match = re.match(r"^!\[[^\]]*\]\((.+)\)$", stripped)
         if image_match:
             flush_paragraph()
+            flush_table()
             blocks.append({"type": "image", "path": image_match.group(1).strip()})
             continue
 
+        if is_table_line(stripped):
+            flush_paragraph()
+            table_lines.append(line)
+            continue
+
+        flush_table()
         paragraph_lines.append(line)
 
     flush_paragraph()
+    flush_table()
     return blocks
 
 
@@ -207,6 +255,36 @@ def add_image(document: Document, image_path: Path) -> None:
     _set_paragraph_spacing(paragraph, before=6, after=10, line_spacing=1.0)
 
 
+def add_table(document: Document, header: list[str], rows: list[list[str]]) -> None:
+    column_count = max(len(header), max((len(row) for row in rows), default=0))
+    if column_count <= 0:
+        return
+
+    table = document.add_table(rows=1, cols=column_count)
+    table.style = "Table Grid"
+
+    header_cells = table.rows[0].cells
+    for index in range(column_count):
+        text = header[index] if index < len(header) else ""
+        paragraph = header_cells[index].paragraphs[0]
+        run = paragraph.add_run(text)
+        _set_run_font(run, 10, bold=True)
+        paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        _set_paragraph_spacing(paragraph, before=0, after=0, line_spacing=1.15)
+
+    for row in rows:
+        row_cells = table.add_row().cells
+        for index in range(column_count):
+            text = row[index] if index < len(row) else ""
+            paragraph = row_cells[index].paragraphs[0]
+            run = paragraph.add_run(text)
+            _set_run_font(run, 10, bold=False)
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.LEFT
+            _set_paragraph_spacing(paragraph, before=0, after=0, line_spacing=1.15)
+
+    document.add_paragraph()
+
+
 def export_markdown_to_docx(report_path: Path, topic: str | None = None) -> Path:
     markdown_text = report_path.read_text(encoding="utf-8")
     blocks = parse_markdown_blocks(markdown_text)
@@ -241,6 +319,8 @@ def export_markdown_to_docx(report_path: Path, topic: str | None = None) -> Path
                 image_path = (report_path.parent / image_path).resolve()
             if image_path.exists():
                 add_image(document, image_path)
+        elif block_type == "table":
+            add_table(document, block.get("header", []), block.get("rows", []))
 
     ensure_output_dir()
     output_path = DOCX_OUTPUT_DIR / f"{slugify_topic(active_topic)}_{report_path.stem}.docx"

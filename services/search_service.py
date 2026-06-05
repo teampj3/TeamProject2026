@@ -54,8 +54,55 @@ class SearchStageError(RuntimeError):
         self.message = message
 
 
+def _env_enabled(name: str) -> bool:
+    return os.getenv(name, "").strip().lower() in {"1", "true", "yes", "on"}
+
+
 def normalize_topic(topic: str) -> str:
     return re.sub(r"\s+", " ", topic.strip().lower())
+
+
+def build_mock_search_results(topic: str) -> list[dict]:
+    topic_label = topic.strip() or "AI agents"
+    samples = [
+        {
+            "title": f"{topic_label}를 위한 멀티 에이전트 파이프라인 설계",
+            "abstract": (
+                f"이 연구는 {topic_label} 주제에 대해 검색, 요약, 관련성 평가, 초안 생성, 시각화로 이어지는 "
+                "멀티 에이전트 파이프라인을 제안한다. 각 단계는 독립적으로 실행되며 산출물은 공통 스키마로 저장된다. "
+                "실험 결과 제안한 구조는 추적 가능성과 재현성을 높이는 데 유용함을 보였다."
+            ),
+            "authors": ["Kim Minseo", "Lee Jihun"],
+            "year": "2025",
+            "url": "https://example.org/papers/mock-pipeline-design",
+            "categories": ["mock"],
+        },
+        {
+            "title": f"{topic_label} 관련 논문 요약 자동화 프레임워크",
+            "abstract": (
+                f"본 논문은 {topic_label} 관련 문헌을 자동으로 수집하고 초록을 구조화 요약으로 변환하는 Reader Agent를 다룬다. "
+                "요약 결과는 purpose, method, result, limitation 구조로 정리되어 후속 Writer와 Review 단계에 활용된다. "
+                "이 접근은 대량 논문 검토 시간을 줄이는 데 효과적이다."
+            ),
+            "authors": ["Park Seoyeon", "Choi Donghyun"],
+            "year": "2024",
+            "url": "https://example.org/papers/mock-reader-framework",
+            "categories": ["mock"],
+        },
+        {
+            "title": f"{topic_label}의 시각화 기반 보고서 작성 전략",
+            "abstract": (
+                f"이 연구는 {topic_label} 보고서 초안에 표와 개념도를 삽입하여 이해도를 높이는 Visualization Agent 전략을 제안한다. "
+                "시각자료는 본문 섹션과 연결되어 Markdown과 DOCX 양쪽에서 재사용 가능하도록 설계된다. "
+                "실험에서는 핵심 구조와 시사점 전달이 개선되었다."
+            ),
+            "authors": ["Han Yujin", "Seo Minho"],
+            "year": "2025",
+            "url": "https://example.org/papers/mock-visualization-strategy",
+            "categories": ["mock"],
+        },
+    ]
+    return [parse_to_paper_schema(raw, source="Mock Search") for raw in samples]
 
 
 def parse_to_paper_schema(raw: dict, source: str) -> dict:
@@ -428,6 +475,17 @@ def run_search(
     """Integrated search flow for Search Agent."""
     if not topic.strip():
         raise SearchStageError("SEARCH_API_ERROR", "검색어가 비어 있습니다.")
+
+    if _env_enabled("TEAMPROJECT_USE_MOCK_SEARCH") or _env_enabled("TEAMPROJECT_USE_MOCK_PIPELINE"):
+        results = build_mock_search_results(topic)
+        if status_callback:
+            status_callback("Using mock search results for pipeline testing.", None)
+        display_results(results)
+        save_search_result(results, topic=topic)
+        if run_id:
+            save_run_search_result(results, run_id)
+        save_pipeline_topic(topic)
+        return results
 
     source_errors: list[SearchStageError] = []
 

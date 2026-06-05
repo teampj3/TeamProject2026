@@ -52,6 +52,10 @@ def resolve_report_path(topic: str | None = None, report_path: str | Path | None
 
 
 def find_bundled_python() -> Path | None:
+    current_python = Path(sys.executable)
+    if current_python.exists():
+        return current_python
+
     home = Path.home()
     candidates = sorted(
         home.glob(".cache/codex-runtimes/*/dependencies/python/python.exe"),
