@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from collections.abc import Callable
 from datetime import datetime
 from pathlib import Path
@@ -12,10 +13,14 @@ from zoneinfo import ZoneInfo
 from agents.ArchiveManager_Agent import run_archive_pipeline
 from agents.export_docx_agent import run_docx_export_pipeline
 from agents.reader_agent import run_reader
-from agents.relevance_agent import run_relevance
+from agents.relevance_agent import run_relevance_limited
 from agents.review_agent import run_review_pipeline
 from agents.visualization_agent import run_visualization_pipeline
-from agents.write_agent import run_writer_draft_generation_bundle, run_writer_output_test
+from agents.write_agent import (
+    run_writer_draft_generation_bundle,
+    run_writer_output_test,
+    save_run_writer_outputs,
+)
 from services.output_service import update_status
 from services.search_service import SearchStageError, run_search
 
@@ -34,6 +39,21 @@ def print_stage(stage_number: int, stage_name: str) -> None:
 
 def now_iso() -> str:
     return datetime.now(SEOUL_TZ).isoformat()
+
+
+def get_positive_int_env(name: str, default: int | None = None) -> int | None:
+    raw = os.getenv(name, "").strip()
+    if not raw:
+        return default
+    try:
+        value = int(raw)
+    except ValueError:
+        print(f"[경고] {name} 값이 정수가 아니어서 무시합니다: {raw}")
+        return default
+    if value <= 0:
+        print(f"[경고] {name} 값이 1 이상이 아니어서 무시합니다: {raw}")
+        return default
+    return value
 
 
 def write_processing_status(
@@ -233,10 +253,27 @@ def run_review_writer_loop(topic: str, *, run_id: str | None = None) -> dict:
         if not writer_bundle:
             break
 
-    log_path = save_review_writer_loop_log(topic, loop_entries)
-    print(f"\nReview-Writer 피드백 루프 로그 저장 완료: {log_path}")
-    print("Review-Writer 피드백 루프 완료")
-    return {
+        log_path = save_review_writer_loop_log(topic, loop_entries)
+        if run_id:
+            run_loop_path = Path("outputs") / "runs" / run_id / "review_writer_loop.json"
+            run_loop_path.parent.mkdir(parents=True, exist_ok=True)
+            run_loop_path.write_text(
+                json.dumps(
+                    {
+                        "topic": topic,
+                        "max_rewrite_rounds": MAX_REWRITE_ROUNDS,
+                        "rewrite_score_threshold": REWRITE_SCORE_THRESHOLD,
+                        "entries": loop_entries,
+                    },
+                    ensure_ascii=False,
+                    indent=2,
+                ),
+                encoding="utf-8",
+            )
+
+        print(f"\nReview-Writer 피드백 루프 로그 저장 완료: {log_path}")
+        print("Review-Writer 피드백 루프 완료")
+        return {
         "is_valid": bool(final_writer_bundle),
         "final_writer_bundle": final_writer_bundle,
         "final_review_result": final_review_result,
@@ -252,11 +289,20 @@ def main() -> None:
 
     run_id = str(uuid4())
     started_at = now_iso()
+    max_search_results = get_positive_int_env("TEAMPROJECT_MAX_SEARCH_RESULTS")
+    max_reader_papers = get_positive_int_env("TEAMPROJECT_MAX_READER_PAPERS")
+    max_relevance_results = get_positive_int_env("TEAMPROJECT_MAX_RELEVANCE_RESULTS")
 
     print("\n멀티 에이전트 파이프라인 실행")
     print(f"주제: {topic}")
     print(f"runId: {run_id}")
     print("흐름: Search -> Reader -> Relevance -> Writer -> Review -> Visualization -> Archive")
+    if max_search_results is not None:
+        print(f"Search 결과 제한: {max_search_results}")
+    if max_reader_papers is not None:
+        print(f"Reader 처리 논문 제한: {max_reader_papers}")
+    if max_relevance_results is not None:
+        print(f"Relevance 결과 제한: {max_relevance_results}")
     update_status(
         run_id,
         status="PENDING",
@@ -276,6 +322,7 @@ def main() -> None:
         search_results = run_search(
             topic,
             run_id=run_id,
+            max_results=max_search_results or 20,
             status_callback=build_search_status_callback(run_id, started_at=started_at),
         )
     except SearchStageError as error:
@@ -326,6 +373,7 @@ def main() -> None:
     )
     try:
         summary_results = run_reader(
+            max_papers=max_reader_papers,
             run_id=run_id,
             progress_callback=build_reader_status_callback(
                 run_id,
@@ -369,7 +417,11 @@ def main() -> None:
         started_at=started_at,
     )
     try:
-        relevance_results = run_relevance(topic, run_id=run_id)
+        relevance_results = run_relevance_limited(
+            topic,
+            run_id=run_id,
+            max_results=max_relevance_results,
+        )
     except Exception as error:
         write_failed_status(
             run_id,
@@ -437,10 +489,55 @@ def main() -> None:
         )
         print("\nWriter-Review 루프에서 초안 확정에 실패했습니다.")
         return
-
+      
     final_writer_bundle = loop_result.get("final_writer_bundle", {}) or {}
     final_review_result = loop_result.get("final_review_result", {}) or {}
     draft_text = str(final_writer_bundle.get("draft", ""))
+
+    review_payload = final_review_result.get("review", {}) or {}
+    review_text_parts = []
+
+    if review_payload:
+        review_text_parts.append(f"판정: {review_payload.get('overall_verdict', '')}")
+        review_text_parts.append(f"평균 점수: {review_payload.get('average_score', '')}")
+        review_text_parts.append(f"논리성: {review_payload.get('logic_score', '')}")
+        review_text_parts.append(f"중복도: {review_payload.get('duplication_score', '')}")
+        review_text_parts.append(f"구조 적절성: {review_payload.get('structure_score', '')}")
+
+        missing_sections = review_payload.get("missing_sections", []) or []
+        if missing_sections:
+            review_text_parts.append("\n누락 섹션:")
+            review_text_parts.extend([f"- {item}" for item in missing_sections])
+
+        awkward_expressions = review_payload.get("awkward_expressions", []) or []
+        if awkward_expressions:
+            review_text_parts.append("\n어색한 표현:")
+            review_text_parts.extend([f"- {item}" for item in awkward_expressions])
+
+        incomplete_sentences = review_payload.get("incomplete_sentences", []) or []
+        if incomplete_sentences:
+            review_text_parts.append("\n미완성 문장:")
+            review_text_parts.extend([f"- {item}" for item in incomplete_sentences])
+
+        feedback_summary = review_payload.get("feedback_summary", "")
+        if feedback_summary:
+            review_text_parts.append("\n종합 피드백:")
+            review_text_parts.append(feedback_summary)
+
+    print("\n====================")
+    print("DEBUG REVIEW")
+    print(final_review_result)
+    print("====================\n")
+    
+    review_text = "\n".join(review_text_parts)
+
+    save_run_writer_outputs(
+        run_id=run_id,
+        draft=draft_text,
+        report_path=final_writer_bundle.get("saved_path"),
+        review_result=review_text,
+    )
+    
     if not draft_text.strip():
         write_failed_status(
             run_id,
@@ -477,6 +574,28 @@ def main() -> None:
             print("\nVisualization 단계에서 일부 결과를 확인할 필요가 있습니다.")
     except Exception as error:
         print(f"\nVisualization 단계 예외: {error}")
+
+    try:
+        run_archive_pipeline(...)
+    except Exception as error:
+        print(f"\nArchive 단계 예외: {error}")
+
+    try:
+        run_docx_export_pipeline(...)
+    except Exception as error:
+        print(f"\nDOCX Export 단계 예외: {error}")
+
+    update_status(
+        run_id,
+        status="COMPLETED",
+        current_stage="completed",
+        message="Pipeline completed successfully.",
+        search_count=len(search_results),
+        summary_count=len(summary_results),
+        relevance_count=len(relevance_results),
+        started_at=started_at,
+        finished_at=now_iso(),
+    )
 
     print_stage(6, "Archive Agent")
     try:

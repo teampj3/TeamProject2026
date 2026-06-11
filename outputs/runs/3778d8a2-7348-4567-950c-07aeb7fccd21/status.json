@@ -1,0 +1,13 @@
+{
+  "status": "PROCESSING",
+  "current_stage": "search",
+  "message": "Search stage is running.",
+  "error_code": null,
+  "search_count": 0,
+  "summary_count": 0,
+  "relevance_count": 0,
+  "started_at": "2026-05-25T22:50:00.875147+09:00",
+  "finished_at": null,
+  "failed_stage": null,
+  "error_message": null
+}

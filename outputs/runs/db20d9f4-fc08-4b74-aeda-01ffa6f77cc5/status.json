@@ -1,0 +1,13 @@
+{
+  "status": "PROCESSING",
+  "current_stage": "reader",
+  "message": "Claude 호출 직전: Code Review Automation: Strengths and Weaknesses of the State of the Art (7/19)",
+  "error_code": null,
+  "search_count": 19,
+  "summary_count": 6,
+  "relevance_count": 0,
+  "started_at": "2026-05-25T22:50:59.825546+09:00",
+  "finished_at": null,
+  "failed_stage": null,
+  "error_message": null
+}

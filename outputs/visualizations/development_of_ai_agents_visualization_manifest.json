@@ -1,0 +1,11 @@
+{
+  "topic": "development of ai agents",
+  "planner": "claude",
+  "plan_file": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_plan.json",
+  "visual_assets": {
+    "visual_1": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_1.png",
+    "visual_2": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_2.png"
+  },
+  "asset_map_file": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_asset_map.json",
+  "visualized_report": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/reports/development_of_ai_agents_20260605_114040_400438_draft_visualized.md"
+}

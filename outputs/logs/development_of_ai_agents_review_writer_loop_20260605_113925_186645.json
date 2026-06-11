@@ -1,0 +1,16 @@
+{
+  "topic": "development of ai agents",
+  "max_rewrite_rounds": 2,
+  "rewrite_score_threshold": 3.5,
+  "entries": [
+    {
+      "round": 0,
+      "draft_path": "outputs/reports/development_of_ai_agents_20260605_113925_184961_draft.md",
+      "review_path": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/processed/review_result.json",
+      "average_score": 4.0,
+      "rewrite_requested": false,
+      "rewrite_reasons": [],
+      "overall_verdict": "PASS"
+    }
+  ]
+}

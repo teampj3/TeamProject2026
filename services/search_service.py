@@ -471,6 +471,7 @@ def run_search(
     topic: str,
     run_id: str | None = None,
     status_callback: Callable[[str, str | None], None] | None = None,
+    max_results: int = DEFAULT_MAX_RESULTS,
 ) -> list[dict]:
     """Integrated search flow for Search Agent."""
     if not topic.strip():
@@ -491,7 +492,7 @@ def run_search(
 
     print(f"\n[Semantic Scholar 검색 중...] '{topic}'")
     try:
-        semantic_results = search_semantic_scholar(topic, status_callback=status_callback)
+        semantic_results = search_semantic_scholar(topic, limit=max_results, status_callback=status_callback)
     except SearchStageError as error:
         print(f"Semantic Scholar 검색 실패: {error.message}")
         source_errors.append(error)

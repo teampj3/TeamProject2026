@@ -1,0 +1,13 @@
+{
+  "status": "COMPLETED",
+  "current_stage": "writer",
+  "message": "Writer completed successfully. Post-processing artifacts are being generated.",
+  "error_code": null,
+  "search_count": 3,
+  "summary_count": 3,
+  "relevance_count": 3,
+  "started_at": "2026-06-05T11:39:25.175327+09:00",
+  "finished_at": "2026-06-05T11:39:25.186902+09:00",
+  "failed_stage": null,
+  "error_message": null
+}

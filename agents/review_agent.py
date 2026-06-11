@@ -156,17 +156,22 @@ def parse_llm_response(raw: str) -> dict:
         normalized = extract_json_block(normalized)
         try:
             return json.loads(normalized)
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e:
+            safe_print("\n[ERROR] Review JSON Parse Failed")
+            safe_print(str(e))
+
+            safe_print("\n[ERROR] Raw Response Preview")
+            safe_print(raw[:3000])
+
             return {
                 "logic_score": 0,
                 "duplication_score": 0,
                 "structure_score": 0,
                 "awkward_expressions": [],
                 "incomplete_sentences": [],
-                "feedback_summary": "LLM 응답 파싱 오류 - 수동 검토 필요",
-                "raw_response": raw[:1000],
+                "feedback_summary": f"LLM 응답 파싱 오류: {e}",
+                "raw_response": raw[:3000],
             }
-
 
 def build_review_result(
     draft_content: str,
@@ -210,8 +215,22 @@ def review_draft(draft_content: str, draft_path: Path, client: LLMClient) -> Rev
     content_for_review = draft_content[:6000] if len(draft_content) > 6000 else draft_content
     prompt = REVIEW_PROMPT_TEMPLATE.format(draft_content=content_for_review)
 
+
     raw_response = client.ask(prompt, max_tokens=1200)
+
+    safe_print("\n" + "=" * 60)
+    safe_print("RAW REVIEW RESPONSE")
+    safe_print("=" * 60)
+    safe_print(raw_response[:5000])
+    safe_print("=" * 60)
+
     parsed_review = parse_llm_response(raw_response)
+
+    safe_print("\n" + "=" * 60)
+    safe_print("PARSED REVIEW RESPONSE")
+    safe_print("=" * 60)
+    safe_print(json.dumps(parsed_review, ensure_ascii=False, indent=2))
+    safe_print("=" * 60)
     return build_review_result(
         draft_content=draft_content,
         draft_path=draft_path,

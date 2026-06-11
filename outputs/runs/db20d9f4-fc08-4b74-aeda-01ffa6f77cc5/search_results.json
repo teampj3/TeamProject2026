@@ -1,0 +1,315 @@
+[
+  {
+    "id": "182e443a3cb7",
+    "title": "Automated Code Review in Practice",
+    "authors": [
+      "Umut Cihan",
+      "Vahid Haratian",
+      "Arda Içöz",
+      "Mert Kaan Gül",
+      "Ömercan Devran",
+      "Emircan Furkan Bayendur",
+      "Baykal Mehmet Uçar",
+      "Eray Tüzün"
+    ],
+    "year": "2025",
+    "source": "Semantic Scholar",
+    "abstract": "Context: Code review is a widespread practice among practitioners to improve software quality and transfer knowledge. It is often perceived as time-consuming due to the need for manual effort and potential delays in the development process. Several AI-assisted code review tools (Qodo, GitHub Copilot, Coderabbit, etc.) provide automated code reviews using large language models (LLMs). The overall effects of such tools in the industry setting are yet to be examined. Objective: This study examines the impact of LLM-based automated code review tools in an industry setting. Method: The study was conducted within an industrial software development environment that adopted an AI-assisted code review tool (based on open-source Qodo PR Agent). 238 practitioners across ten projects had access to the tool. We focused our analysis on three projects, which included $\\mathbf{4, 3 3 5}$ pull requests, 1,568 of which underwent automated reviews. Our data collection comprised three sources: (1) a quantitative analysis of pull request data, including comment labels indicating whether developers acted on the automated comments, (2) surveys sent to developers regarding their experience with the reviews on individual pull requests, and (3) a broader survey of 22 practitioners capturing their general opinions on automated code reviews. Results: $73.8\\%$ of automated code review comments were labeled as resolved. However, the overall average pull request closure duration increased from five hours 52 minutes to eight hours 20 minutes, with varying trends observed across different projects. According to survey responses, most practitioners observed a minor improvement in code quality as a result of automated code reviews. Conclusion: The LLM-based automated code review tool proved useful in software development, enhancing bug detection, increasing awareness of code quality, and promoting best practices. However, it also led to longer pull request closure times and introduced drawbacks such as faulty reviews, unnecessary corrections, and irrelevant comments. Based on these findings, we discussed how practitioners can more effectively utilize automated code review technologies.",
+    "snippet": "Context: Code review is a widespread practice among practitioners to improve software quality and transfer knowledge. It is often perceived as time-consuming due to the need for manual effort and potential delays in the development process. Several AI-assisted code review tools ("
+  },
+  {
+    "id": "98bea8707ea5",
+    "title": "Combining Large Language Models with Static Analyzers for Code Review Generation",
+    "authors": [
+      "Imen Jaoua",
+      "O. Sghaier",
+      "H. Sahraoui"
+    ],
+    "year": "2025",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is a crucial but often complex, subjective, and time-consuming activity in software development. Over the past decades, significant efforts have been made to automate this process. Early approaches focused on knowledge-based systems (KBS) that apply rule-based mechanisms to detect code issues, providing precise feedback but struggling with complex, context-dependent cases. More recent work has shifted toward fine-tuning pre-trained language models for code review, enabling broader issue coverage but often at the expense of precision. In this paper, we propose a hybrid approach that combines the strengths of KBS and learning-based systems (LBS) to generate high-quality, comprehensive code reviews. Our method integrates knowledge at three distinct stages of the language model pipeline: during data preparation (DataAugmented Training, DAT), at inference (Retrieval-Augmented Generation, RAG), and after inference (Naive Concatenation of Outputs, NCO). We empirically evaluate our combination strategies against standalone KBS and LBS fine-tuned on a realworld dataset. Our results show that these hybrid strategies enhance the relevance, completeness, and overall quality of review comments, effectively bridging the gap between rule-based tools and deep learning models.",
+    "snippet": "Code review is a crucial but often complex, subjective, and time-consuming activity in software development. Over the past decades, significant efforts have been made to automate this process. Early approaches focused on knowledge-based systems (KBS) that apply rule-based mechani"
+  },
+  {
+    "id": "98bb208e351f",
+    "title": "Too Noisy To Learn: Enhancing Data Quality for Code Review Comment Generation",
+    "authors": [
+      "Chunhua Liu",
+      "H. Lin",
+      "Patanamon Thongtanunam"
+    ],
+    "year": "2025",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is an important practice in software development, yet it is time-consuming and requires substantial effort. While open-source datasets have been used to train neural models for automating code review tasks, including review comment generation, these datasets contain a significant amount of noisy comments (e.g., vague or non-actionable feedback) that persist despite cleaning methods using heuristics and machine learning approaches. Such remaining noise may lead models to generate low-quality review comments, yet removing them requires a complex semantic understanding of both code changes and natural language comments. In this paper, we investigate the impact of such noise on review comment generation and propose a novel approach using large language models (LLMs) to further clean these datasets. Based on an empirical study on a large-scale code review dataset, our LLM-based approach achieves $66-85 \\%$ precision in detecting valid comments. Using the predicted valid comments to fine-tune the state-of-the-art code review models (cleaned models) can generate review comments that are $13.0 \\%-12.4 \\%$ more similar to valid human-written comments than the original models. We also find that the cleaned models can generate more informative and relevant comments than the original models. Our findings underscore the critical impact of dataset quality on the performance of review comment generation. We advocate for further research into cleaning training data to enhance the practical utility and quality of automated code review.",
+    "snippet": "Code review is an important practice in software development, yet it is time-consuming and requires substantial effort. While open-source datasets have been used to train neural models for automating code review tasks, including review comment generation, these datasets contain a"
+  },
+  {
+    "id": "f16119ccf40c",
+    "title": "Automating code review activities by large-scale pre-training",
+    "authors": [
+      "Zhiyu Li",
+      "Shuai Lu",
+      "Daya Guo",
+      "Nan Duan",
+      "Shailesh Jannu",
+      "Grant Jenks",
+      "Deep Majumder",
+      "Jared Green",
+      "Alexey Svyatkovskiy",
+      "Shengyu Fu",
+      "Neel Sundaresan"
+    ],
+    "year": "2022",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is an essential part to software development lifecycle since it aims at guaranteeing the quality of codes. Modern code review activities necessitate developers viewing, understanding and even running the programs to assess logic, functionality, latency, style and other factors. It turns out that developers have to spend far too much time reviewing the code of their peers. Accordingly, it is in significant demand to automate the code review process. In this research, we focus on utilizing pre-training techniques for the tasks in the code review scenario. We collect a large-scale dataset of real-world code changes and code reviews from open-source projects in nine of the most popular programming languages. To better understand code diffs and reviews, we propose CodeReviewer, a pre-trained model that utilizes four pre-training tasks tailored specifically for the code review scenario. To evaluate our model, we focus on three key tasks related to code review activities, including code change quality estimation, review comment generation and code refinement. Furthermore, we establish a high-quality benchmark dataset based on our collected data for these three tasks and conduct comprehensive experiments on it. The experimental results demonstrate that our model outperforms the previous state-of-the-art pre-training approaches in all tasks. Further analysis show that our proposed pre-training tasks and the multilingual pre-training dataset benefit the model on the understanding of code changes and reviews.",
+    "snippet": "Code review is an essential part to software development lifecycle since it aims at guaranteeing the quality of codes. Modern code review activities necessitate developers viewing, understanding and even running the programs to assess logic, functionality, latency, style and othe"
+  },
+  {
+    "id": "19db7cca86d8",
+    "title": "Fine-tuning and prompt engineering for large language models-based code review automation",
+    "authors": [
+      "Chanathip Pornprasit",
+      "C. Tantithamthavorn"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Context: The rapid evolution of Large Language Models (LLMs) has sparked significant interest in leveraging their capabilities for automating code review processes. Prior studies often focus on developing LLMs for code review automation, yet require expensive resources, which is infeasible for organizations with limited budgets and resources. Thus, fine-tuning and prompt engineering are the two common approaches to leveraging LLMs for code review automation. Objective: We aim to investigate the performance of LLMs-based code review automation based on two contexts, i.e., when LLMs are leveraged by fine-tuning and prompting. Fine-tuning involves training the model on a specific code review dataset, while prompting involves providing explicit instructions to guide the model's generation process without requiring a specific code review dataset. Method: We leverage model fine-tuning and inference techniques (i.e., zero-shot learning, few-shot learning and persona) on LLMs-based code review automation. In total, we investigate 12 variations of two LLMs-based code review automation (i.e., GPT- 3.5 and Magicoder), and compare them with the Guo et al.'s approach and three existing code review automation approaches. Results: The fine-tuning of GPT 3.5 with zero-shot learning helps GPT-3.5 to achieve 73.17% -74.23% higher EM than the Guo et al.'s approach. In addition, when GPT-3.5 is not fine-tuned, GPT-3.5 with few-shot learning achieves 46.38% - 659.09% higher EM than GPT-3.5 with zero-shot learning. Conclusions: Based on our results, we recommend that (1) LLMs for code review automation should be fine-tuned to achieve the highest performance; and (2) when data is not sufficient for model fine-tuning (e.g., a cold-start problem), few-shot learning without a persona should be used for LLMs for code review automation.",
+    "snippet": "Context: The rapid evolution of Large Language Models (LLMs) has sparked significant interest in leveraging their capabilities for automating code review processes. Prior studies often focus on developing LLMs for code review automation, yet require expensive resources, which is "
+  },
+  {
+    "id": "c96e31cad204",
+    "title": "AI-powered Code Review with LLMs: Early Results",
+    "authors": [
+      "Zeeshan Rasheed",
+      "Malik Abdul Sami",
+      "Muhammad Waseem",
+      "Kai-Kristian Kemell",
+      "Xiaofeng Wang",
+      "Anh Nguyen",
+      "Kari Systä",
+      "Pekka Abrahamsson"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "In this paper, we present a novel approach to improving software quality and efficiency through a Large Language Model (LLM)-based model designed to review code and identify potential issues. Our proposed LLM-based AI agent model is trained on large code repositories. This training includes code reviews, bug reports, and documentation of best practices. It aims to detect code smells, identify potential bugs, provide suggestions for improvement, and optimize the code. Unlike traditional static code analysis tools, our LLM-based AI agent has the ability to predict future potential risks in the code. This supports a dual goal of improving code quality and enhancing developer education by encouraging a deeper understanding of best practices and efficient coding techniques. Furthermore, we explore the model's effectiveness in suggesting improvements that significantly reduce post-release bugs and enhance code review processes, as evidenced by an analysis of developer sentiment toward LLM feedback. For future work, we aim to assess the accuracy and efficiency of LLM-generated documentation updates in comparison to manual methods. This will involve an empirical study focusing on manually conducted code reviews to identify code smells and bugs, alongside an evaluation of best practice documentation, augmented by insights from developer discussions and code reviews. Our goal is to not only refine the accuracy of our LLM-based tool but also to underscore its potential in streamlining the software development lifecycle through proactive code improvement and education.",
+    "snippet": "In this paper, we present a novel approach to improving software quality and efficiency through a Large Language Model (LLM)-based model designed to review code and identify potential issues. Our proposed LLM-based AI agent model is trained on large code repositories. This traini"
+  },
+  {
+    "id": "3442778bbaf9",
+    "title": "Code Review Automation: Strengths and Weaknesses of the State of the Art",
+    "authors": [
+      "Rosalia Tufano",
+      "Ozren Dabić",
+      "A. Mastropaolo",
+      "Matteo Ciniselli",
+      "G. Bavota"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "The automation of code review has been tackled by several researchers with the goal of reducing its cost. The adoption of deep learning in software engineering pushed the automation to new boundaries, with techniques <italic>imitating</italic> developers in generative tasks, such as commenting on a code change as a reviewer would do or addressing a reviewer's comment by modifying code. The performance of these techniques is usually assessed through quantitative metrics, <italic>e.g.,</italic> the percentage of instances in the test set for which correct predictions are generated, leaving many open questions on the techniques’ capabilities. For example, knowing that an approach is able to correctly address a reviewer's comment in 10% of cases is of little value without knowing what was asked by the reviewer: What if in all successful cases the code change required to address the comment was just the removal of an empty line? In this paper we aim at characterizing the cases in which three code review automation techniques tend to succeed or fail in the two above-described tasks. The study has a strong qualitative focus, with <inline-formula><tex-math notation=\"LaTeX\">$\\sim$</tex-math><alternatives><mml:math><mml:mo>∼</mml:mo></mml:math><inline-graphic xlink:href=\"bavota-ieq1-3348172.gif\"/></alternatives></inline-formula>105 man-hours of manual inspection invested in manually analyzing correct and wrong predictions generated by the three techniques, for a total of 2,291 inspected predictions. The output of this analysis are two taxonomies reporting, for each of the two tasks, the types of code changes on which the experimented techniques tend to succeed or to fail, pointing to areas for future work. A result of our manual analysis was also the identification of several issues in the datasets used to train and test the experimented techniques. Finally, we assess the importance of researching in techniques specialized for code review automation by comparing their performance with ChatGPT, a general purpose large language model, finding that ChatGPT struggles in commenting code as a human reviewer would do.",
+    "snippet": "The automation of code review has been tackled by several researchers with the goal of reducing its cost. The adoption of deep learning in software engineering pushed the automation to new boundaries, with techniques <italic>imitating</italic> developers in generative tasks, such"
+  },
+  {
+    "id": "1047328790c2",
+    "title": "Fine-Tuning Large Language Models to Improve Accuracy and Comprehensibility of Automated Code Review",
+    "authors": [
+      "Yongda Yu",
+      "Guoping Rong",
+      "Haifeng Shen",
+      "He Zhang",
+      "Dong Shao",
+      "Min Wang",
+      "Zhao Wei",
+      "Yong Xu",
+      "Juhong Wang"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "As code review is a tedious and costly software quality practice, researchers have proposed several machine learning-based methods to automate the process. The primary focus has been on accuracy, that is, how accurately the algorithms are able to detect issues in the code under review. However, human intervention still remains inevitable since results produced by automated code review are not 100% correct. To assist human reviewers in making their final decisions on automatically generated review comments, the comprehensibility of the comments underpinned by accurate localization and relevant explanations for the detected issues with repair suggestions is paramount. However, this has largely been neglected in the existing research. Large language models (LLMs) have the potential to generate code review comments that are more readable and comprehensible by humans, thanks to their remarkable processing and reasoning capabilities. However, even mainstream LLMs perform poorly in detecting the presence of code issues because they have not been specifically trained for this binary classification task required in code review. In this article, we contribute Comprehensibility of Automated Code Review using Large Language Models (Carllm), a novel fine-tuned LLM that has the ability to improve not only the accuracy but, more importantly, the comprehensibility of automated code review, as compared to state-of-the-art pre-trained models and general LLMs.",
+    "snippet": "As code review is a tedious and costly software quality practice, researchers have proposed several machine learning-based methods to automate the process. The primary focus has been on accuracy, that is, how accurately the algorithms are able to detect issues in the code under r"
+  },
+  {
+    "id": "a66595a3b3fc",
+    "title": "CodeAgent: Autonomous Communicative Agents for Code Review",
+    "authors": [
+      "Xunzhu Tang",
+      "Kisub Kim",
+      "Yewei Song",
+      "Cedric Lothritz",
+      "Bei Li",
+      "Saad Ezzini",
+      "Haoye Tian",
+      "Jacques Klein",
+      "Tégawendé F. Bissyandé"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Code review, which aims at ensuring the overall quality and reliability of software, is a cornerstone of software development. Unfortunately, while crucial, Code review is a labor-intensive process that the research community is looking to automate. Existing automated methods rely on single input-output generative models and thus generally struggle to emulate the collaborative nature of code review. This work introduces CodeAgent, a novel multi-agent Large Language Model (LLM) system for code review automation. CodeAgent incorporates a supervisory agent, QA-Checker, to ensure that all the agents’ contributions address the initial review question. We evaluated CodeAgent on critical code review tasks: (1) detect inconsistencies between code changes and commit messages, (2) identify vulnerability introductions, (3) validate code style adherence, and (4) suggest code revisions. The results demonstrate CodeAgent’s effectiveness, contributing to a new state-of-the-art in code review automation. Our data and code are publicly available (https://github.com/Daniel4SE/codeagent).",
+    "snippet": "Code review, which aims at ensuring the overall quality and reliability of software, is a cornerstone of software development. Unfortunately, while crucial, Code review is a labor-intensive process that the research community is looking to automate. Existing automated methods rel"
+  },
+  {
+    "id": "becf2ee47322",
+    "title": "An Empirical Study of Static Analysis Tools for Secure Code Review",
+    "authors": [
+      "Wachiraphan Charoenwet",
+      "Patanamon Thongtanunam",
+      "Van-Thuan Pham",
+      "Christoph Treude"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Early identification of security issues in software development is vital to minimize their unanticipated impacts. Code review is a widely used manual analysis method that aims to uncover security issues along with other coding issues in software projects. While some studies suggest that automated static application security testing tools (SASTs) could enhance security issue identification, there is limited understanding of SAST’s practical effectiveness in supporting secure code review. Moreover, most SAST studies rely on synthetic or fully vulnerable versions of the subject program, which may not accurately represent real-world code changes in the code review process. To address this gap, we study C/C++ SASTs using a dataset of actual code changes that contributed to exploitable vulnerabilities. Beyond SAST’s effectiveness, we quantify potential benefits when changed functions are prioritized by SAST warnings. Our dataset comprises 319 real-world vulnerabilities from 815 vulnerability-contributing commits (VCCs) in 92 C and C++ projects. The result reveals that a single SAST can produce warnings in vulnerable functions of 52% of VCCs. Prioritizing changed functions with SAST warnings can improve accuracy (i.e., 12% of precision and 5.6% of recall) and reduce Initial False Alarm (lines of code in non-vulnerable functions inspected until the first vulnerable function) by 13%. Nevertheless, at least 76% of the warnings in vulnerable functions are irrelevant to the VCCs, and 22% of VCCs remain undetected due to limitations of SAST rules. Our findings highlight the benefits and the remaining gaps of SAST-supported secure code reviews and challenges that should be addressed in future work.",
+    "snippet": "Early identification of security issues in software development is vital to minimize their unanticipated impacts. Code review is a widely used manual analysis method that aims to uncover security issues along with other coding issues in software projects. While some studies sugge"
+  },
+  {
+    "id": "3fb3a96e97b3",
+    "title": "Resolving Code Review Comments with Machine Learning",
+    "authors": [
+      "Alexander Frömmgen",
+      "Jacob Austin",
+      "Peter Choy",
+      "Nimesh Ghelani",
+      "Lera Kharatyan",
+      "G. Surita",
+      "Elena Khrapko",
+      "Pascal Lamblin",
+      "Pierre-Antoine Manzagol",
+      "Marcus Revaj",
+      "Maxim Tabachnyk",
+      "Daniel Tarlow",
+      "Kevin Villela",
+      "Daniel Zheng",
+      "Petros Satish Chandra",
+      "Maniatis Google"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Code reviews are a critical part of the software development process, taking a significant amount of the code authors' and the code reviewers' time. As part of this process, the reviewer inspects the proposed code and asks the author for code changes through comments written in natural language. At Google, we see millions of reviewer comments per year, and authors require an average of ~60 minutes active shepherding time between sending changes for review and finally submitting the change. In our measurements, the required active work time that the code author must devote to address reviewer comments grows almost linearly with the number of comments. However, with machine learning (ML), we have an opportunity to automate and streamline the code-review process, e.g., by proposing code changes based on a comment's text. We describe our application of recent advances in large sequence models in a real-world setting to automatically resolve code-review comments in the day-to-day development workflow at Google. We present the evolution of this feature from an asynchronous generation of suggested edits after the reviewer sends feedback, to an interactive experience that suggests code edits to the reviewer at review time. In deployment, code-change authors at Google address 7.5% of all reviewer comments by applying an ML-suggested edit. The impact of this will be to reduce the time spent on code reviews by hundreds of thousands of engineer hours annually at Google scale. Unsolicited, very positive feedback highlights that the impact of ML-suggested code edits increases Googlers' productivity and allows them to focus on more creative and complex tasks.",
+    "snippet": "Code reviews are a critical part of the software development process, taking a significant amount of the code authors' and the code reviewers' time. As part of this process, the reviewer inspects the proposed code and asks the author for code changes through comments written in n"
+  },
+  {
+    "id": "294ab0b2a2c3",
+    "title": "AI-Assisted Assessment of Coding Practices in Modern Code Review",
+    "authors": [
+      "Manushree Vijayvergiya",
+      "M. Salawa",
+      "Ivan Budiselić",
+      "Dan Zheng",
+      "Pascal Lamblin",
+      "Marko Ivanković",
+      "Juanjo Carin",
+      "Mateusz Lewko",
+      "Jovan Andonov",
+      "Goran Petrović",
+      "Daniel Tarlow",
+      "Petros Maniatis",
+      "René Just"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Modern code review is a process in which an incremental code contribution made by a code author is reviewed by one or more peers before it is committed to the version control system. An important element of modern code review is verifying that code contributions adhere to best practices. While some of these best practices can be automatically verified, verifying others is commonly left to human reviewers. This paper reports on the development, deployment, and evaluation of AutoCommenter, a system backed by a large language model that automatically learns and enforces coding best practices. We implemented AutoCommenter for four programming languages (C++, Java, Python, and Go) and evaluated its performance and adoption in a large industrial setting. Our evaluation shows that an end-to-end system for learning and enforcing coding best practices is feasible and has a positive impact on the developer workflow. Additionally, this paper reports on the challenges associated with deploying such a system to tens of thousands of developers and the corresponding lessons learned.",
+    "snippet": "Modern code review is a process in which an incremental code contribution made by a code author is reviewed by one or more peers before it is committed to the version control system. An important element of modern code review is verifying that code contributions adhere to best pr"
+  },
+  {
+    "id": "8459472c86f3",
+    "title": "On the Use of ChatGPT for Code Review: Do Developers Like Reviews By ChatGPT?",
+    "authors": [
+      "Miku Watanabe",
+      "Yutaro Kashiwa",
+      "Bin Lin",
+      "Toshiki Hirao",
+      "Ken'Ichi Yamaguchi",
+      "Hajimu Iida"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is a critical but time-consuming process for ensuring code quality in modern software engineering. To alleviate the effort of reviewing source code, recent studies have investigated the possibility of automating the review process. Moreover, tools based on large language models such as ChatGPT are playing an increasingly important role in this vision. Understanding how these tools are used during code review can provide valuable insights for code review automation. This study investigates for what purposes developers use ChatGPT during code review and how developers react to the information and suggestions provided by ChatGPT. We manually analyze 229 review comments in 205 pull requests from 179 projects. We find that developers often use ChatGPT for outsourcing their work as frequently as asking for references. Moreover, we observe that only 30.7% of responses to the answers provided by ChatGPT are negative. We further analyze the reasons behind the negative reactions. Our results provide valuable insights for improving the effectiveness of LLMs in code reviews.",
+    "snippet": "Code review is a critical but time-consuming process for ensuring code quality in modern software engineering. To alleviate the effort of reviewing source code, recent studies have investigated the possibility of automating the review process. Moreover, tools based on large langu"
+  },
+  {
+    "id": "52a3561f3a2f",
+    "title": "Improving the Learning of Code Review Successive Tasks with Cross-Task Knowledge Distillation",
+    "authors": [
+      "Oussama Ben Sghaier",
+      "H. Sahraoui"
+    ],
+    "year": "2024",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is a fundamental process in software development that plays a pivotal role in ensuring code quality and reducing the likelihood of errors and bugs. However, code review can be complex, subjective, and time-consuming. Quality estimation, comment generation, and code refinement constitute the three key tasks of this process, and their automation has traditionally been addressed separately in the literature using different approaches. In particular, recent efforts have focused on fine-tuning pre-trained language models to aid in code review tasks, with each task being considered in isolation. We believe that these tasks are interconnected, and their fine-tuning should consider this interconnection. In this paper, we introduce a novel deep-learning architecture, named DISCOREV, which employs cross-task knowledge distillation to address these tasks simultaneously. In our approach, we utilize a cascade of models to enhance both comment generation and code refinement models. The fine-tuning of the comment generation model is guided by the code refinement model, while the fine-tuning of the code refinement model is guided by the quality estimation model. We implement this guidance using two strategies: a feedback-based learning objective and an embedding alignment objective. We evaluate DISCOREV by comparing it to state-of-the-art methods based on independent training and fine-tuning. Our results show that our approach generates better review comments, as measured by the BLEU score, as well as more accurate code refinement according to the CodeBLEU score.",
+    "snippet": "Code review is a fundamental process in software development that plays a pivotal role in ensuring code quality and reducing the likelihood of errors and bugs. However, code review can be complex, subjective, and time-consuming. Quality estimation, comment generation, and code re"
+  },
+  {
+    "id": "d26e6614c898",
+    "title": "Using Pre-Trained Models to Boost Code Review Automation",
+    "authors": [
+      "Rosalia Tufano",
+      "S. Masiero",
+      "A. Mastropaolo",
+      "L. Pascarella",
+      "D. Poshyvanyk",
+      "G. Bavota"
+    ],
+    "year": "2022",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is a practice widely adopted in open source and industrial projects. Given the non-negligible cost of such a process, researchers started investigating the possibility of automating specific code review tasks. We recently proposed Deep Learning (DL) models targeting the automation of two tasks: the first model takes as input a code submitted for review and implements in it changes likely to be recommended by a reviewer; the second takes as input the submitted code and a reviewer comment posted in natural language and automatically implements the change required by the reviewer. While the preliminary results we achieved are encouraging, both models had been tested in rather simple code review scenarios, substantially simplifying the targeted problem. This was also due to the choices we made when designing both the technique and the experiments. In this paper, we build on top of that work by demonstrating that a pre-trained Text-To-Text Transfer Transformer (T5) model can outperform previous DL models for automating code review tasks. Also, we conducted our experiments on a larger and more realistic (and challenging) dataset of code review activities.",
+    "snippet": "Code review is a practice widely adopted in open source and industrial projects. Given the non-negligible cost of such a process, researchers started investigating the possibility of automating specific code review tasks. We recently proposed Deep Learning (DL) models targeting t"
+  },
+  {
+    "id": "b34c68468d6e",
+    "title": "LLaMA-Reviewer: Advancing Code Review Automation with Large Language Models through Parameter-Efficient Fine-Tuning",
+    "authors": [
+      "Jun Lu",
+      "Lei Yu",
+      "Xiaojia Li",
+      "Li Yang",
+      "Chun Zuo"
+    ],
+    "year": "2023",
+    "source": "Semantic Scholar",
+    "abstract": "The automation of code review activities, a long-standing pursuit in software engineering, has been primarily addressed by numerous domain-specific pre-trained models. Despite their success, these models frequently demand extensive resources for pre-training from scratch. In contrast, Large Language Models (LLMs) provide an intriguing alternative, given their remarkable capabilities when supplemented with domain-specific knowledge. However, their potential for automating code review tasks remains largely unexplored.In response to this research gap, we present LLaMA-Reviewer, an innovative framework that leverages the capabilities of LLaMA, a popular LLM, in the realm of code review. Mindful of resource constraints, this framework employs parameter-efficient fine-tuning (PEFT) methods, delivering high performance while using less than 1% of trainable parameters.An extensive evaluation of LLaMA-Reviewer is conducted on two diverse, publicly available datasets. Notably, even with the smallest LLaMA base model consisting of 6.7B parameters and a limited number of tuning epochs, LLaMA-Reviewer equals the performance of existing code-review-focused models.The ablation experiments provide insights into the influence of various fine-tuning process components, including input representation, instruction tuning, and different PEFT methods. To foster continuous progress in this field, the code and all PEFT-weight plugins have been made open-source.",
+    "snippet": "The automation of code review activities, a long-standing pursuit in software engineering, has been primarily addressed by numerous domain-specific pre-trained models. Despite their success, these models frequently demand extensive resources for pre-training from scratch. In cont"
+  },
+  {
+    "id": "b5d43e0e978c",
+    "title": "Towards Automating Code Review Activities",
+    "authors": [
+      "Rosalia Tufano",
+      "L. Pascarella",
+      "Michele Tufano",
+      "D. Poshyvanyk",
+      "G. Bavota"
+    ],
+    "year": "2021",
+    "source": "Semantic Scholar",
+    "abstract": "Code reviews are popular in both industrial and open source projects. The benefits of code reviews are widely recognized and include better code quality and lower likelihood of introducing bugs. However, since code review is a manual activity it comes at the cost of spending developers' time on reviewing their teammates' code. Our goal is to make the first step towards partially automating the code review process, thus, possibly reducing the manual costs associated with it. We focus on both the contributor and the reviewer sides of the process, by training two different Deep Learning architectures. The first one learns code changes performed by developers during real code review activities, thus providing the contributor with a revised version of her code implementing code transformations usually recommended during code review before the code is even submitted for review. The second one automatically provides the reviewer commenting on a submitted code with the revised code implementing her comments expressed in natural language. The empirical evaluation of the two models shows that, on the contributor side, the trained model succeeds in replicating the code transformations applied during code reviews in up to 16% of cases. On the reviewer side, the model can correctly implement a comment provided in natural language in up to 31% of cases. While these results are encouraging, more research is needed to make these models usable by developers.",
+    "snippet": "Code reviews are popular in both industrial and open source projects. The benefits of code reviews are widely recognized and include better code quality and lower likelihood of introducing bugs. However, since code review is a manual activity it comes at the cost of spending deve"
+  },
+  {
+    "id": "84cebcba87f6",
+    "title": "What makes a code review useful to OpenDev developers? An empirical investigation",
+    "authors": [
+      "A. K. Turzo",
+      "A. Bosu"
+    ],
+    "year": "2023",
+    "source": "Semantic Scholar",
+    "abstract": "Context Due to the association of significant efforts, even a minor improvement in the effectiveness of Code Reviews(CR) can incur significant savings for a software development organization. Objective This study aims to develop a finer grain understanding of what makes a code review comment useful to OSS developers, to what extent a code review comment is considered useful to them, and how various contextual and participant-related factors influence its degree of usefulness . Method On this goal, we have conducted a three-stage mixed-method study. We randomly selected 2,500 CR comments from the OpenDev Nova project and manually categorized the comments. We designed a survey of OpenDev developers to better understand their perspectives on useful CRs. Combining our survey-obtained scores with our manually labeled dataset, we trained two regression models - one to identify factors that influence the usefulness of CR comments and the other to identify factors that improve the odds of ‘Functional’ defect identification over the others. Results The results of our study suggest that a CR comment’s usefulness is dictated not only by its technical contributions, such as defect findings or quality improvement tips but also by its linguistic characteristics, such as comprehensibility and politeness. While a reviewer’s coding experience is positively associated with CR usefulness, the number of mutual reviews, comment volume in a file, the total number of lines added /modified, and CR interval have the opposite associations. While authorship and reviewership experiences for the files under review have been the most popular attributes for reviewer recommendation systems, we do not find any significant association of those attributes with CR usefulness. Conclusion We recommend discouraging frequent code review associations between two individuals as such associations may decrease CR usefulness. We also recommend authoring CR comments in a constructive and empathetic tone. As several of our results deviate from prior studies, we recommend more investigations to identify context-specific attributes to build reviewer recommendation models.",
+    "snippet": "Context Due to the association of significant efforts, even a minor improvement in the effectiveness of Code Reviews(CR) can incur significant savings for a software development organization. Objective This study aims to develop a finer grain understanding of what makes a code re"
+  },
+  {
+    "id": "bb7aa3b045ee",
+    "title": "Generation-based Code Review Automation: How Far Are Weƒ",
+    "authors": [
+      "Xin Zhou",
+      "Kisub Kim",
+      "Bowen Xu",
+      "Donggyun Han",
+      "Junda He",
+      "David Lo"
+    ],
+    "year": "2023",
+    "source": "Semantic Scholar",
+    "abstract": "Code review is an effective software quality assurance activity; however, it is labor-intensive and time-consuming. Thus, a number of generation-based automatic code review (ACR) approaches have been proposed recently, which leverage deep learning techniques to automate various activities in the code review process (e.g., code revision generation and review comment generation).We find the previous works carry three main limitations. First, the ACR approaches have been shown to be beneficial in each work, but those methods are not comprehensively compared with each other to show their superiority over their peer ACR approaches. Second, general-purpose pre-trained models such as CodeT5 are proven to be effective in a wide range of Software Engineering (SE) tasks. However, no prior work has investigated the effectiveness of these models in ACR tasks yet. Third, prior works heavily rely on the Exact Match (EM) metric which only focuses on the perfect predictions and ignores the positive progress made by incomplete answers. To fill such a research gap, we conduct a comprehensive study by comparing the effectiveness of recent ACR tools as well as the general-purpose pre-trained models. The results show that a general-purpose pre-trained model CodeT5 can outperform other models in most cases. Specifically, CodeT5 outperforms the prior state-of-the-art by 13.4%–38.9% in two code revision generation tasks. In addition, we introduce a new metric namely Edit Progress (EP) to quantify the partial progress made by ACR tools. The results show that the rankings of models for each task could be changed according to whether EM or EP is being utilized. Lastly, we derive several insightful lessons from the experimental results and reveal future research directions for generation-based code review automation.",
+    "snippet": "Code review is an effective software quality assurance activity; however, it is labor-intensive and time-consuming. Thus, a number of generation-based automatic code review (ACR) approaches have been proposed recently, which leverage deep learning techniques to automate various a"
+  }
+]

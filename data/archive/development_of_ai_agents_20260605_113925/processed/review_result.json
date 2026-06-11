@@ -1,0 +1,27 @@
+[
+  {
+    "title": "development of ai agents 기반 멀티 에이전트 파이프라인 설계와 적용 분석",
+    "source_file": "development_of_ai_agents_20260605_113925_184961_draft.md",
+    "reviewed_at": "2026-06-05T11:39:25",
+    "logic_score": 4,
+    "duplication_score": 4,
+    "structure_score": 4,
+    "average_score": 4.0,
+    "overall_verdict": "PASS",
+    "awkward_expressions": [],
+    "incomplete_sentences": [],
+    "missing_sections": [],
+    "detected_sections": [
+      "제목",
+      "초록",
+      "서론",
+      "development of ai agents의 개념과 배경",
+      "development of ai agents의 적용 구조와 사례",
+      "development of ai agents의 시사점과 발전 방향",
+      "논의",
+      "결론",
+      "참고문헌"
+    ],
+    "feedback_summary": "초안의 구조와 논리 흐름은 전반적으로 안정적이며, 세부 근거를 보강하면 바로 활용 가능한 수준입니다."
+  }
+]

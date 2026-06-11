@@ -1,0 +1,27 @@
+{
+  "topic": "development of ai agents",
+  "archived_at": "2026-06-05T11:39:25",
+  "archive_dir": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925",
+  "saved": {
+    "reports": [
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/reports/development_of_ai_agents_20260605_113925_184961_draft.md",
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/reports/development_of_ai_agents_20260605_113925_184961_draft_visualized.md"
+    ],
+    "visualizations": [],
+    "processed": [
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/processed/review_result.json",
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/processed/development_of_ai_agents_visual_plan.json",
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/processed/development_of_ai_agents_visual_asset_map.json",
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/processed/development_of_ai_agents_visualization_manifest.json"
+    ],
+    "logs": [
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/data/archive/development_of_ai_agents_20260605_113925/logs/development_of_ai_agents_review_writer_loop_20260605_113925_186645.json"
+    ]
+  },
+  "missing": {
+    "reports": [],
+    "visualizations": [],
+    "processed": [],
+    "logs": []
+  }
+}

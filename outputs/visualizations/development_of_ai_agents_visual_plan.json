@@ -1,0 +1,160 @@
+{
+  "need_visual": "yes",
+  "need_reason": "development of ai agents의 핵심 요소와 적용 구조를 표와 개념도로 정리하면 이해가 쉬워집니다.",
+  "visuals": [
+    {
+      "visual_id": "visual_1",
+      "visual_type": "table",
+      "title": "development of ai agents 핵심 비교 요약",
+      "target_section": "논의",
+      "choice_reason": "정성적 차이를 한 번에 비교하기 적합합니다.",
+      "data_spec": {
+        "columns": [
+          "항목",
+          "핵심 내용",
+          "시사점"
+        ],
+        "rows": [
+          [
+            "개념",
+            "주요 역할과 범위를 정의",
+            "분석 기준 정립"
+          ],
+          [
+            "적용",
+            "실무 흐름에 맞춘 활용 구조",
+            "현장 적용성 향상"
+          ],
+          [
+            "한계",
+            "비용과 평가 범위 제약",
+            "추가 검증 필요"
+          ]
+        ]
+      }
+    },
+    {
+      "visual_id": "visual_2",
+      "visual_type": "concept_diagram",
+      "title": "development of ai agents 구성 요소 개요",
+      "target_section": "결론",
+      "choice_reason": "핵심 구성 요소와 관계를 직관적으로 보여주기 적합합니다.",
+      "data_spec": {
+        "central_topic": "development of ai agents",
+        "branches": [
+          {
+            "label": "구조",
+            "detail": ""
+          },
+          {
+            "label": "활용",
+            "detail": ""
+          },
+          {
+            "label": "한계",
+            "detail": ""
+          },
+          {
+            "label": "확장",
+            "detail": ""
+          }
+        ]
+      }
+    }
+  ],
+  "planner": "claude",
+  "planning_note": "",
+  "candidates": [
+    {
+      "section": "제목",
+      "paragraph_index": 1,
+      "text": "development of ai agents 기반 멀티 에이전트 파이프라인 설계와 적용 분석"
+    },
+    {
+      "section": "제목",
+      "paragraph_index": 2,
+      "text": "---"
+    },
+    {
+      "section": "초록",
+      "paragraph_index": 1,
+      "text": "초록에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    },
+    {
+      "section": "초록",
+      "paragraph_index": 2,
+      "text": "또한 본 절은 development of ai agents가 실제 환경에서 어떻게 활용될 수 있는지와 함께, 품질 검증과 운영 측면에서 어떤 보완이 필요한지를 함께 다룬다. 이를 통해 이후 논의와 결론에서 활용 가능한 정리된 근거를 제공한다."
+    },
+    {
+      "section": "초록",
+      "paragraph_index": 3,
+      "text": "---"
+    },
+    {
+      "section": "서론",
+      "paragraph_index": 1,
+      "text": "서론에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    },
+    {
+      "section": "서론",
+      "paragraph_index": 2,
+      "text": "또한 본 절은 development of ai agents가 실제 환경에서 어떻게 활용될 수 있는지와 함께, 품질 검증과 운영 측면에서 어떤 보완이 필요한지를 함께 다룬다. 이를 통해 이후 논의와 결론에서 활용 가능한 정리된 근거를 제공한다."
+    },
+    {
+      "section": "서론",
+      "paragraph_index": 3,
+      "text": "---"
+    },
+    {
+      "section": "development of ai agents의 개념과 배경",
+      "paragraph_index": 1,
+      "text": "development of ai agents의 개념과 배경에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    },
+    {
+      "section": "development of ai agents의 개념과 배경",
+      "paragraph_index": 2,
+      "text": "또한 본 절은 development of ai agents가 실제 환경에서 어떻게 활용될 수 있는지와 함께, 품질 검증과 운영 측면에서 어떤 보완이 필요한지를 함께 다룬다. 이를 통해 이후 논의와 결론에서 활용 가능한 정리된 근거를 제공한다."
+    },
+    {
+      "section": "development of ai agents의 개념과 배경",
+      "paragraph_index": 3,
+      "text": "---"
+    },
+    {
+      "section": "development of ai agents의 적용 구조와 사례",
+      "paragraph_index": 1,
+      "text": "development of ai agents의 적용 구조와 사례에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    },
+    {
+      "section": "development of ai agents의 적용 구조와 사례",
+      "paragraph_index": 2,
+      "text": "또한 본 절은 development of ai agents가 실제 환경에서 어떻게 활용될 수 있는지와 함께, 품질 검증과 운영 측면에서 어떤 보완이 필요한지를 함께 다룬다. 이를 통해 이후 논의와 결론에서 활용 가능한 정리된 근거를 제공한다."
+    },
+    {
+      "section": "development of ai agents의 적용 구조와 사례",
+      "paragraph_index": 3,
+      "text": "---"
+    },
+    {
+      "section": "development of ai agents의 시사점과 발전 방향",
+      "paragraph_index": 1,
+      "text": "development of ai agents의 시사점과 발전 방향에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    },
+    {
+      "section": "development of ai agents의 시사점과 발전 방향",
+      "paragraph_index": 2,
+      "text": "또한 본 절은 development of ai agents가 실제 환경에서 어떻게 활용될 수 있는지와 함께, 품질 검증과 운영 측면에서 어떤 보완이 필요한지를 함께 다룬다. 이를 통해 이후 논의와 결론에서 활용 가능한 정리된 근거를 제공한다."
+    },
+    {
+      "section": "development of ai agents의 시사점과 발전 방향",
+      "paragraph_index": 3,
+      "text": "---"
+    },
+    {
+      "section": "논의",
+      "paragraph_index": 1,
+      "text": "논의에서는 development of ai agents와 관련된 핵심 쟁점을 정리하고, 선행 연구와 적용 사례를 연결하여 본 논문의 분석 관점을 분명히 제시한다. 특히 문제 정의, 적용 구조, 한계와 시사점을 한 흐름으로 묶어 설명함으로써 단순한 문헌 나열이 아니라 논지 중심의 초안을 구성한다."
+    }
+  ],
+  "validation_errors": []
+}

@@ -719,6 +719,7 @@ def save_run_writer_outputs(
     run_id: str,
     draft: str,
     report_path: Path | None = None,
+    review_result: str = "",
 ) -> None:
     run_dir = get_run_output_dir(run_id)
     writer_payload = {
@@ -726,7 +727,7 @@ def save_run_writer_outputs(
         "claudeDraft": draft,
         "commonHighlights": [],
         "differentHighlights": [],
-        "reviewResult": "",
+        "reviewResult": review_result,
         "mergedReport": draft,
     }
     write_json(run_dir / "writer_output.json", writer_payload)

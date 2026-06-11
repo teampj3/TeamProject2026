@@ -1,0 +1,24 @@
+{
+  "topic": "development of ai agents",
+  "source_report": "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/reports/development_of_ai_agents_20260605_114040_400438_draft.md",
+  "section_to_assets": {
+    "논의": [
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_1.png"
+    ],
+    "결론": [
+      "/Users/jeongseog-u/VSCode-workspace/TeamProject2026/outputs/visualizations/development_of_ai_agents_visual_2.png"
+    ]
+  },
+  "visual_notes": {
+    "visual_1": {
+      "title": "development of ai agents 핵심 비교 요약",
+      "reason": "정성적 차이를 한 번에 비교하기 적합합니다.",
+      "visual_type": "table"
+    },
+    "visual_2": {
+      "title": "development of ai agents 구성 요소 개요",
+      "reason": "핵심 구성 요소와 관계를 직관적으로 보여주기 적합합니다.",
+      "visual_type": "concept_diagram"
+    }
+  }
+}

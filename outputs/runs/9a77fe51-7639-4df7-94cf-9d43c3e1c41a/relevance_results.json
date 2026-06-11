@@ -1,0 +1,20 @@
+[
+  {
+    "id": "935809c95aec",
+    "relevance_score": 44.7,
+    "selected": true,
+    "reason": "주제와 겹치는 키워드가 3개 있음, 컴퓨터 분야 핵심 용어가 총 2회 등장함, 제목에서 관련 키워드 ['agent', 'ai', 'development']가 확인됨, 선별 기준 이상으로 관련 논문 후보로 볼 수 있음"
+  },
+  {
+    "id": "80f13e718b9a",
+    "relevance_score": 31.9,
+    "selected": true,
+    "reason": "주제와 겹치는 키워드가 3개 있음, 컴퓨터 분야 핵심 용어가 총 1회 등장함, 제목에서 관련 키워드 ['ai', 'development']가 확인됨, 선별 기준 이상으로 관련 논문 후보로 볼 수 있음"
+  },
+  {
+    "id": "1be2a7f1b15f",
+    "relevance_score": 31.9,
+    "selected": true,
+    "reason": "주제와 겹치는 키워드가 3개 있음, 컴퓨터 분야 핵심 용어가 총 1회 등장함, 제목에서 관련 키워드 ['ai', 'development']가 확인됨, 선별 기준 이상으로 관련 논문 후보로 볼 수 있음"
+  }
+]

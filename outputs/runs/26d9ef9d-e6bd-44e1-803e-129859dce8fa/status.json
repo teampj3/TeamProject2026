@@ -1,0 +1,13 @@
+{
+  "status": "FAILED",
+  "current_stage": "search",
+  "message": "Semantic Scholar API connection failed: [Errno 8] nodename nor servname provided, or not known",
+  "error_code": "SEARCH_API_ERROR",
+  "search_count": 0,
+  "summary_count": 0,
+  "relevance_count": 0,
+  "started_at": "2026-05-25T22:49:33.324733+09:00",
+  "finished_at": "2026-05-25T22:49:33.336491+09:00",
+  "failed_stage": "search",
+  "error_message": "Semantic Scholar API connection failed: [Errno 8] nodename nor servname provided, or not known"
+}

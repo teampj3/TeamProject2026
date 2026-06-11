@@ -351,6 +351,14 @@ def save_run_relevance_results(results: list[dict], run_id: str) -> None:
 
 
 def run_relevance(topic: str, run_id: str | None = None) -> list[dict]:
+    return run_relevance_limited(topic, run_id=run_id, max_results=None)
+
+
+def run_relevance_limited(
+    topic: str,
+    run_id: str | None = None,
+    max_results: int | None = None,
+) -> list[dict]:
     papers = load_summary_results()
     if not papers:
         return []
@@ -427,6 +435,8 @@ def run_relevance(topic: str, run_id: str | None = None) -> list[dict]:
 
     relevance_results.extend(skipped_results)
     sorted_results = sorted(relevance_results, key=lambda item: item["score"], reverse=True)
+    if max_results is not None and max_results > 0:
+        sorted_results = sorted_results[:max_results]
     print_selected_papers(sorted_results)
     save_relevance_results(sorted_results)
     if run_id:
